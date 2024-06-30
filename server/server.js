@@ -5,6 +5,7 @@ const adminRoutes = require('./routes/adminRoutes');
 const imageRoutes = require('./routes/imageRoutes');
 const importantDateRoutes = require('./routes/importantDateRoutes');
 const noticeRoutes = require('./routes/noticeRoutes');
+const researchTrackRoutes = require('./routes/researchTrackRoutes');
 
 const { MONGO_URI } = require('./config/config');
 const { initializeAdmin } = require('./models/admin');
@@ -19,6 +20,7 @@ app.use('/admin', adminRoutes);
 app.use('/images', imageRoutes);
 app.use('/important-dates', importantDateRoutes);
 app.use('/notices', noticeRoutes);
+app.use('/research-tracks', researchTrackRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome to ARCES_2024');
