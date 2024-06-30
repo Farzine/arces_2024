@@ -57,9 +57,9 @@ export default function ResearchTracks() {
   };
 
   return (
-    <main className="h-screen flex items-center justify-center">
+    <main className="min-h-screen flex items-center justify-center p-4">
       <form className="w-full max-w-lg p-8 bg-white shadow-md rounded-lg" onSubmit={handleSubmit}>
-        <h1 className="text-3xl font-semibold mb-8">Research Tracks Registration</h1>
+        <h1 className="text-3xl font-semibold mb-8 text-center">Research Tracks Registration</h1>
         <div className="mb-6">
           <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
             Name
@@ -182,3 +182,4 @@ export default function ResearchTracks() {
     </main>
   );
 }
+
