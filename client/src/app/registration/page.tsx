@@ -27,7 +27,9 @@ export default function ResearchTracks() {
           name: country.name.common,
           flag: country.flags.svg,
           callingCode: country.idd.root + (country.idd.suffixes ? country.idd.suffixes[0] : ""),
-        })).sort((a, b) => a.name.localeCompare(b.name)); // Sort countries alphabetically
+        }));
+        // Sort the countries alphabetically by name
+        countryData.sort((a: Country, b: Country) => a.name.localeCompare(b.name));
         setCountries(countryData);
       })
       .catch(error => console.error('Error fetching countries:', error));
@@ -52,13 +54,12 @@ export default function ResearchTracks() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(form);
-    // Handle form submission logic here
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-100">
+    <main className="h-screen flex items-center justify-center">
       <form className="w-full max-w-lg p-8 bg-white shadow-md rounded-lg" onSubmit={handleSubmit}>
-        <h1 className="text-3xl font-semibold mb-8 text-center">Research Tracks Registration</h1>
+        <h1 className="text-3xl font-semibold mb-8">Research Tracks Registration</h1>
         <div className="mb-6">
           <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
             Name
@@ -121,35 +122,39 @@ export default function ResearchTracks() {
             required
           />
         </div>
-        <div className="mb-6 flex flex-col lg:flex-row">
-          <label htmlFor="phoneNumber" className="block text-gray-700 font-medium mb-2 lg:mb-0 lg:mr-4">
+        <div className="mb-6">
+          <label htmlFor="countryCode" className="block text-gray-700 font-medium mb-2">
+            Country Code
+          </label>
+          <select
+            id="countryCode"
+            name="countryCode"
+            value={form.countryCode}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+            required
+          >
+            <option value="" disabled>Select</option>
+            {countries.map((country) => (
+              <option key={country.callingCode} value={country.callingCode}>
+                {country.name} ({country.callingCode})
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="mb-6">
+          <label htmlFor="phoneNumber" className="block text-gray-700 font-medium mb-2">
             Phone Number
           </label>
-          <div className="flex w-full">
-            <select
-              name="countryCode"
-              value={form.countryCode}
-              onChange={handleChange}
-              className="w-full lg:w-1/3 px-4 py-2 border rounded-md mb-2 lg:mb-0 lg:mr-2 focus:outline-none focus:ring-2 focus:ring-blue-600"
-              required
-            >
-              <option value="" disabled>Select</option>
-              {countries.map((country) => (
-                <option key={country.callingCode} value={country.callingCode}>
-                  {country.name} ({country.callingCode})
-                </option>
-              ))}
-            </select>
-            <input
-              type="text"
-              id="phoneNumber"
-              name="phoneNumber"
-              value={form.phoneNumber}
-              onChange={handleChange}
-              className="w-full lg:w-2/3 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-              required
-            />
-          </div>
+          <input
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            value={form.phoneNumber}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
+            required
+          />
         </div>
         <div className="mb-6">
           <label htmlFor="picture" className="block text-gray-700 font-medium mb-2">
