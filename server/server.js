@@ -14,6 +14,9 @@ app.use(cookieParser());
 
 app.use('/admin', adminRoutes);
 app.use('/images', imageRoutes);
+app.get('/', (req, res) => {
+  res.send('Welcome to ARCES_2024');
+});
 
 mongoose.connect(MONGO_URI)
   .then(async () => {
