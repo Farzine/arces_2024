@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const adminRoutes = require('./routes/adminRoutes');
+const imageRoutes = require('./routes/imageRoutes');
 const { MONGO_URI } = require('./config/config');
 const { initializeAdmin } = require('./models/admin');
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use('/admin', adminRoutes);
+app.use('/images', imageRoutes);
 
 mongoose.connect(MONGO_URI)
   .then(async () => {
