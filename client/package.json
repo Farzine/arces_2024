@@ -18,6 +18,7 @@
     "react": "^18",
     "react-datepicker": "^7.2.0",
     "react-dom": "^18",
+    "react-router-dom": "^6.24.0",
     "shadcn-ui": "^0.2.3"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 "use client";
 
+import IndustryTrack from "@/components/IndustryTrackAddCard";
 import Footer from "@/components/Footer";
 import ImportantDateCard from "@/components/ImportantDateAddCard";
 import Navbar from "@/components/NavBar";
@@ -11,7 +12,9 @@ export default function Authors() {
         <Navbar/>
         <NoticeCard/>
         <ImportantDateCard/>
+        <IndustryTrack/>
         <Footer/>
+        
       </div>
     );
   }
