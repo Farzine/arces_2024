@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -21,10 +22,11 @@ export default function Login() {
       });
 
       const data = await response.json();
+      console.log(data);
 
       if (response.ok) {
         alert("Logged in successfully");
-        document.cookie = `token=${data.token}; max-age=${30 * 24 * 60 * 60}`;
+        Cookies.set('token', data.token);
         router.push("/Admin/ControllerPage");
       } else {
         alert(data.message || "Login failed");
@@ -81,7 +83,7 @@ export default function Login() {
             <div className="flex items-center justify-center">
               <button
                 className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex justify-center items-center"
-                type="submit"
+                type="submit" 
               >
                 Log in
               </button>

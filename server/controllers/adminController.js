@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const  generateToken  = require('../utils/generateToken');
 const { Admin } = require('../models/admin');
-const { SECRET_KEY } = require('../config/config');
+
 
 // Login function to authenticate the admin
 exports.login = async (req, res) => {
@@ -15,9 +16,9 @@ exports.login = async (req, res) => {
       if (err) throw err;
       if (!isMatch) return res.status(400).json({ message: 'Invalid email or password' });
 
-      const token = jwt.sign({ email: admin.email }, SECRET_KEY, { expiresIn: '30d' });
+      const token = jwt.sign({ email: admin.email }, process.env.SECRET_KEY, { expiresIn: '30d' });
       res.cookie('token', token, { maxAge: 30 * 24 * 60 * 60 * 1000 });
-      res.json({ message: 'Logged in successfully' });
+      res.json({ token });
     });
   } catch (err) {
     res.status(500).json({ message: 'Server error' });
