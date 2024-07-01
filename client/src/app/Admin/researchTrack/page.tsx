@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
@@ -14,10 +16,12 @@ const ResearchTracksPage: React.FC = () => {
   useEffect(() => {
     const fetchResearchTracks = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/research-tracks', {
+        const token = Cookies.get('token');
+        const response = await fetch('http://localhost:5000/research-tracks', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
           },
         });
   
@@ -38,7 +42,7 @@ const ResearchTracksPage: React.FC = () => {
   const handleDelete = async (id: string) => {
     try {
       const token = Cookies.get('token');
-      const response = await fetch(`http://localhost:5000/api/research-tracks/${id}`, {
+      const response = await fetch(`http://localhost:5000/research-tracks/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

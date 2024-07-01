@@ -1,23 +1,27 @@
+"use client"
+
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
-type ResearchTrack = {
+type IndustryTrack = {
   _id: string;
   title: string;
   topics: string[];
 };
 
-const ResearchTracksPage: React.FC = () => {
-  const [researchTracks, setResearchTracks] = useState<ResearchTrack[]>([]);
+const IndustryTracksPage: React.FC = () => {
+  const [researchTracks, setResearchTracks] = useState<IndustryTrack[]>([]);
   const [message, setMessage] = useState<string>('');
 
   useEffect(() => {
     const fetchResearchTracks = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/research-tracks', {
+        const token = Cookies.get('token');
+        const response = await fetch('http://localhost:5000/industry-tracks', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
           },
         });
   
@@ -38,7 +42,7 @@ const ResearchTracksPage: React.FC = () => {
   const handleDelete = async (id: string) => {
     try {
       const token = Cookies.get('token');
-      const response = await fetch(`http://localhost:5000/api/research-tracks/${id}`, {
+      const response = await fetch(`http://localhost:5000/industry-tracks/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -84,4 +88,4 @@ const ResearchTracksPage: React.FC = () => {
   );
 };
 
-export default ResearchTracksPage;
+export default IndustryTracksPage;
