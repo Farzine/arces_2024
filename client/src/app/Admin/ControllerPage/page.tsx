@@ -6,6 +6,7 @@ import ImportantDateCard from "@/components/ImportantDateAddCard";
 import Navbar from "@/components/NavBar";
 import NoticeCard from "@/components/NoticeAddCard";
 import ResearchTrack from "@/components/ResearchTrackAddCard";
+import FrontendNoticeCard from "@/components/FrontendNoticeCard";
 
 export default function Authors() {
     return (
@@ -15,6 +16,7 @@ export default function Authors() {
         <ImportantDateCard/>
         <IndustryTrack/>
         <ResearchTrack/>
+        <FrontendNoticeCard/>
         <Footer/>
         
       </div>

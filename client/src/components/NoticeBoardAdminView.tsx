@@ -31,7 +31,6 @@ const NoticeBoard: React.FC = () => {
 
   const deleteNotice = async (id: string) => {
     const token = Cookies.get('token');
-    console.log(token);
     try {
       const response = await fetch(`http://localhost:5000/notices/${id}`, {
         method: 'DELETE',
