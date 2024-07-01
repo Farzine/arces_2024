@@ -63,12 +63,14 @@ const ResearchTracksPage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Research Tracks</h1>
+    <div className="container mx-auto p-4 bg-white">
+      <div className='mb-4 bg-gray-400 p-2 rounded-md flex items-center justify-center'> 
+      <h1 className="text-2xl font-bold mb-4 p-1">Research Tracks</h1>
+      </div>
       {message && <p className="text-red-500">{message}</p>}
       {researchTracks.map((track) => (
-        <div key={track._id} className="mb-4 p-4 border rounded shadow">
-          <div className="flex justify-between items-center mb-2">
+        <div key={track._id} className="mb-4 p-4 border rounded shadow bg-gray-50">
+          <div className="flex mb-2 bg-gray-400 rounded-md p-3 items-center justify-between">
             <h2 className="text-xl font-semibold">{track.title}</h2>
             <button
               className="bg-red-500 text-white px-3 py-1 rounded"
@@ -77,11 +79,17 @@ const ResearchTracksPage: React.FC = () => {
               Delete
             </button>
           </div>
-          <ul className="list-disc list-inside">
+          <div className='bg-white rounded-md'>
+          <div className="list-disc list-inside">
             {track.topics.map((topic, index) => (
-              <li key={index}>{topic}</li>
+              <div className='bg-white rounded-md' key={index}>
+              <div className='bg-gray-300 rounded items-center p-1 mb-1'>
+                {topic}
+              </div>
+              </div>
             ))}
-          </ul>
+          </div>
+          </div>
         </div>
       ))}
     </div>

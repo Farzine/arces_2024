@@ -52,7 +52,7 @@ const ResearchTrack: React.FC = () => {
   };
 
   const handleSeeAll = () => {
-    routes.push('/Admin/Notice');
+    routes.push('/Admin/researchTrack');
   };
 
   return (

@@ -52,7 +52,7 @@ const IndustryTrack: React.FC = () => {
   };
 
   const handleSeeAll = () => {
-    routes.push('/Admin/Notice');
+    routes.push('/Admin/industryTrack');
   };
 
   return (
