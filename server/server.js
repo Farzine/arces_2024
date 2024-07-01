@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors'); 
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const adminRoutes = require('./routes/adminRoutes');
@@ -11,11 +12,18 @@ const industryTrackRoutes = require('./routes/industryTrackRoutes');
 const { MONGO_URI } = require('./config/config');
 const { initializeAdmin } = require('./models/admin');
 
+const corsOptions ={
+  origin:'http://localhost:3000', 
+  credentials:true,            
+  optionSuccessStatus:200,
+}
+
 const app = express();
 const PORT = 5000;
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors(corsOptions));
 
 app.use('/admin', adminRoutes);
 app.use('/images', imageRoutes);
