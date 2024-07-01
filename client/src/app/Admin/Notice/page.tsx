@@ -1,6 +1,6 @@
 "use client"
 
-import NoticeBoard from "@/components/NoticeBoard";
+import NoticeBoard from "@/components/NoticeBoardAdminView";
 
 export default function Authors() {
     return (

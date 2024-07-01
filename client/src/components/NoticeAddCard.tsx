@@ -1,29 +1,42 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 const NoticeCard: React.FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
+  const router = useRouter();
 
   const handleAddNotice = async () => {
     try {
-      const response = await axios.post(
-        'http://localhost:5000/api/notices/add',
-        { title, description },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
-        }
-      );
-      setMessage(response.data.message);
+      const token = Cookies.get('token');
+      const response = await fetch('http://localhost:5000/notices/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ title, description }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error adding notice');
+      }
+  
+      const data = await response.json();
+      setMessage(data.message);
       setTitle('');
       setDescription('');
     } catch (error) {
       setMessage('Error adding notice');
+      console.error(error);
     }
+  };
+  
+
+  const handleSeeAll = () => {
+    router.push('/Admin/notice');
   };
 
   return (
@@ -50,13 +63,13 @@ const NoticeCard: React.FC = () => {
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full p-2 mb-4 border border-gray-300 rounded"
+          className="w-full p-2 mb-4 border border-gray-300 rounded text-black"
         />
         <textarea
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          className="w-full p-2 mb-4 border border-gray-300 rounded"
+          className="w-full p-2 mb-4 border border-gray-300 rounded text-black"
         />
         <div className="flex justify-between">
           <button
@@ -65,7 +78,7 @@ const NoticeCard: React.FC = () => {
           >
             Add
           </button>
-          <button className="w-1/2 p-2 bg-blue-500 text-white rounded ml-1">
+          <button className="w-1/2 p-2 bg-blue-500 text-white rounded ml-1" onClick={handleSeeAll}>
             See all
           </button>
         </div>
