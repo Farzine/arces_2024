@@ -6,6 +6,7 @@ import NoticeCard from '@/components/NoticeAddCard';
 import ImportantDateCard from '@/components/ImportantDateAddCard';
 import ResearchTrack from '@/components/ResearchTrackAddCard';
 import IndustryTrack from '@/components/IndustryTrackAddCard';
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 const AdminPage: React.FC = () => {
   const routes = useRouter();
@@ -40,6 +41,9 @@ const AdminPage: React.FC = () => {
       >
         CHANGE EMAIL AND PASSWORD
       </button>
+      <div>
+        <ScrollToTopButton />
+      </div>
     </div>
   );
 };
