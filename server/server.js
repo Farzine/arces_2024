@@ -16,7 +16,7 @@ const { MONGO_URI } = require('./config/config');
 const { initializeAdmin } = require('./models/admin');
 
 const corsOptions ={
-  origin:'http://localhost:3000', 
+  origin:'https://arces2024.vercel.app', 
   credentials:true,            
   optionSuccessStatus:200,
 }
