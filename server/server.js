@@ -11,7 +11,7 @@ const importantDateRoutes = require('./routes/importantDateRoutes');
 const noticeRoutes = require('./routes/noticeRoutes');
 const researchTrackRoutes = require('./routes/researchTrackRoutes');
 const industryTrackRoutes = require('./routes/industryTrackRoutes');
-const frontUrl = process.env.APP_FRONTEND_URL;
+const frontUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 
 const { MONGO_URI } = require('./config/config');
 const { initializeAdmin } = require('./models/admin');

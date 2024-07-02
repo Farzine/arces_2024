@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { format, parse } from 'date-fns';
-const baseUrl = process.env.APP_BACKEND_URL;
+const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 
 const ImportantDateCard: React.FC = () => {
   const [date, setDate] = useState<Date | null>(null);

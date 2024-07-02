@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-const baseUrl = process.env.APP_BACKEND_URL;
+const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 
 const NoticeCard: React.FC = () => {
   const [title, setTitle] = useState('');

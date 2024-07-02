@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 
-const baseUrl = process.env.APP_BACKEND_URL;
+const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 
 export default function UpdateEmailAndPassword() {
   const [newEmail, setNewEmail] = useState('');
