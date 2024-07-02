@@ -11,8 +11,9 @@ const AdminPage: React.FC = () => {
   const routes = useRouter();
 
   const handleChange = () => {
-    routes.push('/change-email-password');
+    routes.push('/Admin/changeEmailPass');
   };
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">

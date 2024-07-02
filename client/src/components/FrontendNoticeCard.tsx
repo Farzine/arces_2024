@@ -30,7 +30,7 @@ const FrontendNoticeCard: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-green-200 p-2 rounded-lg shadow-lg w-80">
+      <div className="bg-orange-200 p-2 rounded-lg shadow-lg w-80">
         <h2 className="text-xl font-bold mb-4 text-black">NOTICE</h2>
         {error && <p className="text-red-500">{error}</p>}
         <div className='bg-white rounded p-2'>
