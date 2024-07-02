@@ -17,6 +17,7 @@ const { initializeAdmin } = require('./models/admin');
 
 const corsOptions ={
   origin:'https://arces2024.vercel.app', 
+  method:['GET','POST','PUT','DELETE'],
   credentials:true,            
   optionSuccessStatus:200,
 }
