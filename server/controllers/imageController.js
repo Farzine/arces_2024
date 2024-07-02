@@ -9,14 +9,9 @@ exports.uploadImage = async (req, res) => {
       return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    const result = await cloudinary.uploader.upload(file.path, {
-      folder: 'uploads',
-      format: 'webp',
-    });
-
     const image = new Image({
-      path: result.secure_url,
-      public_id: result.public_id,
+      path: file.path,
+      public_id: file.filename,
     });
 
     await image.save();

@@ -1,4 +1,7 @@
+require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
+const multer = require('multer');
 const cors = require('cors'); 
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -21,6 +24,10 @@ const corsOptions ={
 const app = express();
 const PORT = 5000;
 
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
@@ -39,7 +46,7 @@ app.get('/', (req, res) => {
 mongoose.connect(MONGO_URI)
   .then(async () => {
     console.log('Connected to MongoDB');
-    await initializeAdmin(); // Initialize admin if not exists
+    await initializeAdmin(); 
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });

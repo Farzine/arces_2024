@@ -7,6 +7,7 @@ import ImportantDateCard from '@/components/ImportantDateAddCard';
 import ResearchTrack from '@/components/ResearchTrackAddCard';
 import IndustryTrack from '@/components/IndustryTrackAddCard';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
+import ImageUpload from '@/components/ImageUpload';
 
 const AdminPage: React.FC = () => {
   const routes = useRouter();
@@ -21,7 +22,7 @@ const AdminPage: React.FC = () => {
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-blue-400">ADMIN PAGE</h1>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4 w-full justify-center items-center">
         <div className="bg-white p-4">
           <NoticeCard />
         </div>
@@ -34,13 +35,17 @@ const AdminPage: React.FC = () => {
         <div className="bg-white p-4">
           <IndustryTrack />
         </div>
-      </div>
+        <div className="bg-white p-4">
+          <ImageUpload/>
+        </div>
+        <div className="p-4 border-gray-400 right-52">        
       <button
         onClick={handleChange}
-        className="bg-purple-700 text-white py-2 px-4 rounded-full hover:bg-purple-800"
-      >
+        className="bg-purple-700 text-white py-2 px-4 rounded-full hover:bg-purple-800 items-center justify-center">
         CHANGE EMAIL AND PASSWORD
       </button>
+      </div>
+      </div>
       <div>
         <ScrollToTopButton />
       </div>
