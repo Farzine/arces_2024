@@ -11,13 +11,14 @@ const importantDateRoutes = require('./routes/importantDateRoutes');
 const noticeRoutes = require('./routes/noticeRoutes');
 const researchTrackRoutes = require('./routes/researchTrackRoutes');
 const industryTrackRoutes = require('./routes/industryTrackRoutes');
+const frontUrl = process.env.APP_FRONTEND_URL;
 
 const { MONGO_URI } = require('./config/config');
 const { initializeAdmin } = require('./models/admin');
 
 const corsOptions ={
-  origin:'https://arces2024.vercel.app', 
-  method:['GET','POST','PUT','DELETE'],
+  origin:`${frontUrl}`, 
+  methods:['GET','POST','PUT','DELETE'],
   credentials:true,            
   optionSuccessStatus:200,
 }

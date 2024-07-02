@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+const baseUrl = process.env.APP_BACKEND_URL;
 
 interface Notice {
   _id: string;
@@ -13,7 +14,7 @@ const FrontendNoticeCard: React.FC = () => {
   useEffect(() => {
     const fetchNotices = async () => {
       try {
-        const response = await fetch('http://localhost:5000/notices');
+        const response = await fetch(`${baseUrl}/notices`);
         if (!response.ok) {
           throw new Error('Error fetching notices');
         }

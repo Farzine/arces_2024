@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
+const baseUrl = process.env.APP_BACKEND_URL;
+
 interface Image {
   _id: string;
   path: string;
@@ -19,7 +21,7 @@ const ImageList: React.FC = () => {
   const fetchImages = async () => {
     try {
       const token = Cookies.get('token');
-      const response = await fetch('http://localhost:5000/images', {
+      const response = await fetch(`${baseUrl}/images`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -41,7 +43,7 @@ const ImageList: React.FC = () => {
   const handleDelete = async (id: string) => {
     try {
       const token = Cookies.get('token');
-      const response = await fetch(`http://localhost:5000/images/${id}`, {
+      const response = await fetch(`${baseUrl}/images/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

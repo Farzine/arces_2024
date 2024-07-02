@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
+const baseUrl = process.env.APP_BACKEND_URL;
 
 
 interface ResearchTrackProps {
@@ -30,7 +31,7 @@ const ResearchTrack: React.FC = () => {
     const data: ResearchTrackProps = { title, topics };
 
     try {
-      const response = await fetch('http://localhost:5000/research-tracks/add', {
+      const response = await fetch(`${baseUrl}/research-tracks/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

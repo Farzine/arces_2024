@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import moment from 'moment';
+const baseUrl = process.env.APP_BACKEND_URL;
 
 interface ImportantDate {
   _id: string;
@@ -19,7 +20,7 @@ const ImportantDates: React.FC = () => {
 
   const fetchImportantDates = async () => {
     try {
-      const response = await fetch('http://localhost:5000/important-dates', {
+      const response = await fetch(`${baseUrl}/important-dates`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +40,7 @@ const ImportantDates: React.FC = () => {
     const token = Cookies.get('token');
     console.log(token);
     try {
-      const response = await fetch(`http://localhost:5000/important-dates/${id}`, {
+      const response = await fetch(`${baseUrl}/important-dates/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

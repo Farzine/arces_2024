@@ -1,6 +1,6 @@
 const IndustryTrack = require('../models/IndustryTrack');
 
-// Add a new industry track
+
 exports.addIndustryTrack = async (req, res) => {
   const { title, topics } = req.body;
 
@@ -14,7 +14,7 @@ exports.addIndustryTrack = async (req, res) => {
   }
 };
 
-// Update industry track topics by ID
+
 exports.updateIndustryTrackTopics = async (req, res) => {
   const { id } = req.params;
   const { topics } = req.body;
@@ -32,7 +32,7 @@ exports.updateIndustryTrackTopics = async (req, res) => {
   }
 };
 
-// Delete an industry track by ID
+
 exports.deleteIndustryTrack = async (req, res) => {
   const { id } = req.params;
 
@@ -47,7 +47,7 @@ exports.deleteIndustryTrack = async (req, res) => {
   }
 };
 
-// Get all industry tracks
+
 exports.getIndustryTracks = async (req, res) => {
   try {
     const industryTracks = await IndustryTrack.find();

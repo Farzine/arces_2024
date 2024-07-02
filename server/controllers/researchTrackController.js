@@ -1,6 +1,6 @@
 const ResearchTrack = require('../models/ResearchTrack');
 
-// Add a new research track
+
 exports.addResearchTrack = async (req, res) => {
   const { title, topics } = req.body;
 
@@ -14,7 +14,7 @@ exports.addResearchTrack = async (req, res) => {
   }
 };
 
-// Update research track topics by ID
+
 exports.updateResearchTrackTopics = async (req, res) => {
   const { id } = req.params;
   const { topics } = req.body;
@@ -32,7 +32,7 @@ exports.updateResearchTrackTopics = async (req, res) => {
   }
 };
 
-// Delete a research track by ID
+
 exports.deleteResearchTrack = async (req, res) => {
   const { id } = req.params;
 
@@ -47,7 +47,7 @@ exports.deleteResearchTrack = async (req, res) => {
   }
 };
 
-// Get all research tracks
+
 exports.getResearchTracks = async (req, res) => {
   try {
     const researchTracks = await ResearchTrack.find();

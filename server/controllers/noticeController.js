@@ -1,6 +1,6 @@
 const Notice = require('../models/Notice');
 
-// Add a new notice
+
 exports.addNotice = async (req, res) => {
   const { title, description } = req.body;
 
@@ -14,7 +14,7 @@ exports.addNotice = async (req, res) => {
   }
 };
 
-// Delete a notice by ID
+
 exports.deleteNotice = async (req, res) => {
   const { id } = req.params;
 
@@ -29,7 +29,7 @@ exports.deleteNotice = async (req, res) => {
   }
 };
 
-// Get all notices
+
 exports.getNotices = async (req, res) => {
   try {
     const notices = await Notice.find();

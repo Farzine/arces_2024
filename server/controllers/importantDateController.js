@@ -1,7 +1,7 @@
 const ImportantDate = require('../models/ImportantDate');
 const moment = require('moment');  
 
-// Add a new important date
+
 exports.addImportantDate = async (req, res) => {
   const { date, description } = req.body;
 
@@ -20,7 +20,7 @@ exports.addImportantDate = async (req, res) => {
   }
 };
 
-// Delete an important date by ID
+
 exports.deleteImportantDate = async (req, res) => {
   const { id } = req.params;
 
@@ -35,7 +35,7 @@ exports.deleteImportantDate = async (req, res) => {
   }
 };
 
-// Get all important dates
+
 exports.getImportantDates = async (req, res) => {
   try {
     const importantDates = await ImportantDate.find();

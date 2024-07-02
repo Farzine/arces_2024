@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { format, parse } from 'date-fns';
+const baseUrl = process.env.APP_BACKEND_URL;
 
 const ImportantDateCard: React.FC = () => {
   const [date, setDate] = useState<Date | null>(null);
@@ -16,7 +17,7 @@ const ImportantDateCard: React.FC = () => {
       const token = Cookies.get('token');
       const formattedDate = date ? format(date, 'dd MMMM yyyy') : '';
 
-      const response = await fetch('http://localhost:5000/important-dates/add', {
+      const response = await fetch(`${baseUrl}/important-dates/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

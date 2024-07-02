@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
+const baseUrl = process.env.APP_BACKEND_URL;
 
 const ImageUpload: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -24,7 +25,7 @@ const ImageUpload: React.FC = () => {
       const formData = new FormData();
       formData.append('image', image);
 
-      const response = await fetch('http://localhost:5000/images/upload', {
+      const response = await fetch(`${baseUrl}/images/upload`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

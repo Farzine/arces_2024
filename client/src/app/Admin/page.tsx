@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+const baseUrl = process.env.APP_BACKEND_URL;
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:5000/admin/login", {
+      const response = await fetch(`${baseUrl}/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

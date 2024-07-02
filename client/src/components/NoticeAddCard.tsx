@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
+const baseUrl = process.env.APP_BACKEND_URL;
 
 const NoticeCard: React.FC = () => {
   const [title, setTitle] = useState('');
@@ -12,7 +13,7 @@ const NoticeCard: React.FC = () => {
   const handleAddNotice = async () => {
     try {
       const token = Cookies.get('token');
-      const response = await fetch('http://localhost:5000/notices/add', {
+      const response = await fetch(`${baseUrl}/notices/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

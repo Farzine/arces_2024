@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { Admin } = require('../models/admin');
 
 
-// Login function to authenticate the admin
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
   }
 };
 
-// Function to update admin email and password
+
 exports.updateEmailAndPassword = async (req, res) => {
     const { newEmail, newPassword } = req.body;
   

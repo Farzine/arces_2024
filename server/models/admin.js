@@ -44,7 +44,7 @@ const initializeAdmin = async () => {
   if (!existingAdmin) {
     const initialAdmin = new Admin({
       email: 'admin@example.com',
-      passwordHash: 'password123' // This will be hashed by the pre-save hook
+      passwordHash: 'password123' 
     });
     await initialAdmin.save();
     console.log('Initial admin created with email: admin@example.com and password: password123');

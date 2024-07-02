@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+const baseUrl = process.env.APP_BACKEND_URL;
 
 interface Notice {
   _id: string;
@@ -16,7 +17,7 @@ const NoticeBoard: React.FC = () => {
 
   const fetchNotices = async () => {
     try {
-      const response = await fetch('http://localhost:5000/notices', {
+      const response = await fetch(`${baseUrl}/notices`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -32,7 +33,7 @@ const NoticeBoard: React.FC = () => {
   const deleteNotice = async (id: string) => {
     const token = Cookies.get('token');
     try {
-      const response = await fetch(`http://localhost:5000/notices/${id}`, {
+      const response = await fetch(`${baseUrl}/notices/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

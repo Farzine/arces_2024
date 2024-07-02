@@ -1,7 +1,7 @@
 const cloudinary = require('../config/cloudinary');
 const Image = require('../models/image');
 
-// Upload image
+
 exports.uploadImage = async (req, res) => {
   try {
     const file = req.file;

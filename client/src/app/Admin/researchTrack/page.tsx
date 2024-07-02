@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+const baseUrl = process.env.APP_BACKEND_URL;
 
 type ResearchTrack = {
   _id: string;
@@ -17,7 +18,7 @@ const ResearchTracksPage: React.FC = () => {
     const fetchResearchTracks = async () => {
       try {
         const token = Cookies.get('token');
-        const response = await fetch('http://localhost:5000/research-tracks', {
+        const response = await fetch(`${baseUrl}/research-tracks`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -42,7 +43,7 @@ const ResearchTracksPage: React.FC = () => {
   const handleDelete = async (id: string) => {
     try {
       const token = Cookies.get('token');
-      const response = await fetch(`http://localhost:5000/research-tracks/${id}`, {
+      const response = await fetch(`${baseUrl}/research-tracks/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

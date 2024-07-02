@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 
+const baseUrl = process.env.APP_BACKEND_URL;
+
 export default function UpdateEmailAndPassword() {
   const [newEmail, setNewEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -12,7 +14,7 @@ export default function UpdateEmailAndPassword() {
   const handleUpdate = async () => {
     try {
         const token = Cookies.get('token');
-        const response = await fetch('http://localhost:5000/admin/update-email-password', {
+        const response = await fetch(`${baseUrl}/admin/update-email-password`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
