@@ -14,7 +14,7 @@ export default function ResearchTracks() {
     university: "",
     country: "",
     email: "",
-    phoneNumber: "",
+    phone: "",
     countryCode: "",
     picture: null as File | null,
   });
@@ -143,14 +143,14 @@ export default function ResearchTracks() {
           </select>
         </div>
         <div className="mb-6">
-          <label htmlFor="phoneNumber" className="block text-gray-700 font-medium mb-2">
+          <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
             Phone Number
           </label>
           <input
             type="text"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={form.phoneNumber}
+            id="phone"
+            name="phone"
+            value={form.phone}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
             required

@@ -15,6 +15,7 @@ const frontUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 
 const { MONGO_URI } = require('./config/config');
 const { initializeAdmin } = require('./models/admin');
+const regRouter = require('./routes/registration');
 
 const corsOptions ={
   origin:`${frontUrl}`, 
@@ -40,6 +41,7 @@ app.use('/important-dates', importantDateRoutes);
 app.use('/notices', noticeRoutes);
 app.use('/research-tracks', researchTrackRoutes);
 app.use('/industry-tracks', industryTrackRoutes);
+app.use('/registration',regRouter);
 
 app.get('/', (req, res) => {
   res.send('Welcome to ARCES_2024');
