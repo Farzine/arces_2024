@@ -1,148 +1,179 @@
-import React, { useState } from 'react';
-import Image from 'next/image'; // If using Next.js for image optimization
+import Image from "next/image"; // If using Next.js for image optimization
+import { SetStateAction, useState } from "react";
 
 const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isTrackOpen, setIsTrackOpen] = useState(false);
-    const [isAttendingOpen, setIsAttendingOpen] = useState(false);
-    const [activeLink, setActiveLink] = useState('');
+  const [activeLink, setActiveLink] = useState("");
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+  const handleLinkClick = (link: SetStateAction<string>) => {
+    setActiveLink(link);
+  };
 
-    const handleLinkClick = (link: string) => {
-        setActiveLink(link);
-        setIsTrackOpen(false);
-        setIsAttendingOpen(false);
-    };
+  return (
+    <header className="bg-white shadow-2xl">
+      <nav className="flex justify-between items-center w-[100%] h-14 mx-auto ">
+        <div>
+          <Image
+            className="w-16 cursor-pointer"
+            src="/logo1.png"
+            alt="Logo"
+            width={64}
+            height={64}
+            
+          />
+        </div>
+        <div className="nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 ">
+          <ul className="flex md:flex-row flex-col md:items-center md:gap-[1.4vw] gap-2 text-black text-sm mt-4 ">
+            <li>
+              <a
+                className={`relative inline-block group ${
+                  activeLink === "Home" ? "text-=black " : "text-black"
+                }`}
+                href="#home"
+                onClick={() => handleLinkClick("Home")}
+              >
+                Home
+                <span
+                  className={`${
+                    activeLink === "Home"
+                      ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 "
+                      : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                className={`relative inline-block group ${
+                  activeLink === "Track" ? "text-=black " : "text-black"
+                }`}
+                href="#home"
+                onClick={() => handleLinkClick("Track")}
+              >
+                Tracks
+                <span
+                  className={`${
+                    activeLink === "Track"
+                      ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 "
+                      : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                className={`relative inline-block group ${
+                  activeLink === "For-Authors" ? "text-=black " : "text-black"
+                }`}
+                href="#For-Authors"
+                onClick={() => handleLinkClick("For-Authors")}
+              >
+                For Authors
+                <span
+                  className={`${
+                    activeLink === "For-Authors"
+                      ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 "
+                      : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                className={`relative inline-block group ${
+                  activeLink === "Committee" ? "text-=black " : "text-black"
+                }`}
+                href="#Committees"
+                onClick={() => handleLinkClick("Committee")}
+              >
+                Committee
+                <span
+                  className={`${
+                    activeLink === "Committee"
+                      ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 "
+                      : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
 
-    const handleMouseEnterTrack = () => {
-        setIsTrackOpen(true);
-        setIsAttendingOpen(false);
-    };
-
-    const handleMouseLeaveTrack = () => {
-        setIsTrackOpen(false);
-    };
-
-    const handleMouseEnterAttending = () => {
-        setIsAttendingOpen(true);
-        setIsTrackOpen(false);
-    };
-
-    const handleMouseLeaveAttending = () => {
-        setIsAttendingOpen(false);
-    };
-
-    return (
-        <header className="bg-white">
-            <nav className="flex justify-between items-center w-[92%] mx-auto">
-                <div>
-                    <Image className="w-16 cursor-pointer" src="https://res.cloudinary.com/djmgdgx86/image/upload/v1719935885/iakiez3xo3g0v2nxymhj.jpg" alt="Logo" width={64} height={64} />
-                </div>
-                <div className={`nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-${isMenuOpen ? '9%' : '-100%'} md:w-auto w-full flex items-center px-5`}>
-                    <ul className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
-                        <li>
-                            <a
-                                className={`hover:underline ${activeLink === 'Home' ? 'underline' : ''} hover:underline-offset-2 hover:text-blue-500`}
-                                href="#home"
-                                onClick={() => handleLinkClick('Home')}
-                            >
-                                Home
-                            </a>
-                        </li>
-                        <li
-                            className="relative"
-                            onMouseEnter={handleMouseEnterTrack}
-                            onMouseLeave={handleMouseLeaveTrack}
-                        >
-                            <a
-                                className={`hover:underline cursor-pointer ${activeLink === 'Track' ? 'underline' : ''} hover:underline-offset-2 hover:text-blue-500`}
-                            >
-                                Track
-                            </a>
-                            {isTrackOpen && (
-                                <ul className="absolute bg-white shadow-md mt-2">
-                                    <li><a href="#research-track" className="block px-4 py-2 hover:bg-gray-100">Research Track</a></li>
-                                    <li><a href="#industry-track" className="block px-4 py-2 hover:bg-gray-100">Industry Track</a></li>
-                                </ul>
-                            )}
-                        </li>
-                        <li>
-                            <a
-                                className={`hover:underline ${activeLink === 'For-Authors' ? 'underline' : ''} hover:underline-offset-2 hover:text-blue-500`}
-                                href="#for-authors"
-                                onClick={() => handleLinkClick('For-Authors')}
-                            >
-                                For-Authors
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                className={`hover:underline ${activeLink === 'Committees' ? 'underline' : ''} hover:underline-offset-2 hover:text-blue-500`}
-                                href="#committees"
-                                onClick={() => handleLinkClick('Committees')}
-                            >
-                                Committees
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                className={`hover:underline ${activeLink === 'Important Dates' ? 'underline' : ''} hover:underline-offset-2 hover:text-blue-500`}
-                                href="#important-dates"
-                                onClick={() => handleLinkClick('Important Dates')}
-                            >
-                                Important Dates
-                            </a>
-                        </li>
-                        <li
-                            className="relative"
-                            onMouseEnter={handleMouseEnterAttending}
-                            onMouseLeave={handleMouseLeaveAttending}
-                        >
-                            <a
-                                className={`hover:underline cursor-pointer ${activeLink === 'Attending' ? 'underline' : ''} hover:underline-offset-2 hover:text-blue-500`}
-                            >
-                                Attending
-                            </a>
-                            {isAttendingOpen && (
-                                <ul className="absolute bg-white shadow-md mt-2">
-                                    <li><a href="#venue" className="block px-4 py-2 hover:bg-gray-100">Venue: SUST</a></li>
-                                    <li><a href="#location" className="block px-4 py-2 hover:bg-gray-100">Location: SUST</a></li>
-                                    <li><a href="#accommodation" className="block px-4 py-2 hover:bg-gray-100">Accommodation</a></li>
-                                    <li><a href="#travel-information" className="block px-4 py-2 hover:bg-gray-100">Travel Information</a></li>
-                                    <li><a href="#code-of-conduct" className="block px-4 py-2 hover:bg-gray-100">Code of Conduct</a></li>
-                                    <li><a href="#equity-diversity-inclusion" className="block px-4 py-2 hover:bg-gray-100">Equity, Diversity, and Inclusion</a></li>
-                                </ul>
-                            )}
-                        </li>
-                        <li>
-                            <a
-                                className={`hover:underline ${activeLink === 'Gallery' ? 'underline' : ''} hover:underline-offset-2 hover:text-blue-500`}
-                                href="#gallery"
-                                onClick={() => handleLinkClick('Gallery')}
-                            >
-                                Gallery
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                className={`hover:underline ${activeLink === 'Contact' ? 'underline' : ''} hover:underline-offset-2 hover:text-blue-500`}
-                                href="#contact"
-                                onClick={() => handleLinkClick('Contact')}
-                            >
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div className="flex items-center gap-6">
-                    <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec]">Register +</button>
-                </div>
-            </nav>
-        </header>
-    );
+            <li>
+              <a
+                className={`relative inline-block group ${
+                  activeLink === "Attending" ? "text-=black " : "text-black"
+                }`}
+                href="#Attending"
+                onClick={() => handleLinkClick("Attending")}
+              >
+                Attending
+                <span
+                  className={`${
+                    activeLink === "Attending"
+                      ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 "
+                      : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                className={`relative inline-block group ${
+                  activeLink === "Gallery" ? "text-=black " : "text-black"
+                }`}
+                href="#Gallery"
+                onClick={() => handleLinkClick("Gallery")}
+              >
+                Gallery
+                <span
+                  className={`${
+                    activeLink === "Gallery"
+                      ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 "
+                      : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a
+                className={`relative inline-block group ${
+                  activeLink === "Contact" ? "text-=black " : "text-black"
+                }`}
+                href="#Contact"
+                onClick={() => handleLinkClick("Contact")}
+              >
+                Contact
+                <span
+                  className={`${
+                    activeLink === "Contact"
+                      ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 "
+                      : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="flex items-center gap-6">
+          <button className="bg-indigo-600 text-white px-5 py-2 text-sm rounded-full hover:bg-black flex justify-between items-center mx-5">
+            <svg
+              className="w-4 h-4 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="3"
+                d="M12 4v16m8-8H4"
+              ></path>
+            </svg>
+            Register
+          </button>
+        </div>
+      </nav>
+    </header>
+  );
 };
 
 export default Navbar;
