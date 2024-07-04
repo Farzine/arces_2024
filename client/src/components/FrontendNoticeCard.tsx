@@ -38,9 +38,8 @@ const FrontendNoticeCard: React.FC = () => {
         {notices.map((title, index) => (
           <div
             key={index}
-            className={`flex p-2 rounded-md items-start pl-4 ${
-              index % 2 !== 0 ? "bg-white" : "bg-gray-200"
-            }`}
+            className={`flex p-2 rounded-md items-start pl-4 ${index % 2 !== 0 ? "bg-white" : "bg-gray-200"
+              }`}
           >
             <div className="w-6 h-6 mr-2">
               <svg
@@ -52,9 +51,9 @@ const FrontendNoticeCard: React.FC = () => {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="-183.6 -183.6 979.20 979.20"
                 stroke="#000000"
-                stroke-width="5.507991"
+                strokeWidth="5.507991"
               >
-                <g id="SVGRepo_bgCarrier" stroke-width="0">
+                <g id="SVGRepo_bgCarrier" strokeWidth="0">
                   <rect
                     x="-183.6"
                     y="-183.6"
@@ -66,8 +65,8 @@ const FrontendNoticeCard: React.FC = () => {
                 </g>
                 <g
                   id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
                   {" "}

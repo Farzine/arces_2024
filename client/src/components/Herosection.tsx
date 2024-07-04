@@ -61,9 +61,8 @@ export default function Herosection() {
           {images.map((image, index) => (
             <div
               key={index}
-              className={`ease-in-out ${
-                index === currentIndex ? "" : "hidden"
-              }`}
+              className={`ease-in-out ${index === currentIndex ? "" : "hidden"
+                }`}
               data-carousel-item
             >
               <img
@@ -83,11 +82,10 @@ export default function Herosection() {
             <button
               key={index}
               type="button"
-              className={`w-3 h-3 rounded-full ${
-                index === currentIndex
-                  ? "bg-blue-500" // Change this to your active indicator style
-                  : "bg-gray-300" // Change this to your inactive indicator style
-              }`}
+              className={`w-3 h-3 rounded-full ${index === currentIndex
+                ? "bg-blue-500" // Change this to your active indicator style
+                : "bg-gray-300" // Change this to your inactive indicator style
+                }`}
               aria-current={index === currentIndex}
               aria-label={`Slide ${index + 1}`}
               data-carousel-slide-to={index}
@@ -112,9 +110,9 @@ export default function Herosection() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M5 1 1 5l4 4"
               />
             </svg>
@@ -137,9 +135,9 @@ export default function Herosection() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="m1 9 4-4-4-4"
               />
             </svg>
