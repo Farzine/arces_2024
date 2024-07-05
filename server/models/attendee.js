@@ -30,6 +30,9 @@ const attendeeSchema = new mongoose.Schema({
     required: true,
     default: false,
   },
+  val_id: {
+    type: String
+  },
 });
 
 const Attendee = mongoose.model("Attendee", attendeeSchema);

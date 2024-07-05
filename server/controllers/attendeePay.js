@@ -6,10 +6,9 @@ const store_passwd = process.env.STORE_PASSWD;
 const is_live = false; //true for live, false for sandbox
 const billAmount = 1000; // registration fee
 
-
 const AttendeePay = async (req, res) => {
   const { id } = req.params;
-//   console.log(id)
+  //   console.log(id)
   try {
     const attendee = await Attendee.findById(id);
     if (!attendee) {
@@ -45,25 +44,45 @@ const AttendeePay = async (req, res) => {
   }
 };
 
-const PaySuccess = async(req,res)=>{
-    const { id } = req.params;
-    try {
-        await Attendee.findByIdAndUpdate(id,{payment_status:true});
-        console.log("Payment successfull");
-        res.redirect(`${FRONTENDURL}success`);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+const PaySuccess = async (req, res) => {
+  const { id } = req.params;
+  const { val_id } = req.body;
+  const data = { val_id };
+
+  try {
+    const sslcz = new SSLCommerzPayment(store_id, store_passwd, is_live);
+    const apiResponse = await sslcz.validate(data);
+    
+    if ((apiResponse.status === 'VALID' || apiResponse.status === 'VALIDATED') && apiResponse.tran_id === id) {
+      await Attendee.findByIdAndUpdate(id, { payment_status: true, val_id });
+      console.log("Payment successful");
+      res.redirect(`${FRONTENDURL}success`);
+    } else {
+      res.status(500).json({ message: "Payment Validation Failed" });
     }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-const PayFail = async(req,res)=>{
-    console.log("Payment failed.");
-    res.redirect(`${FRONTENDURL}fail`);
+const Validate = async (req,res)=>{
+  const data = req.body;
+  const sslcz = new SSLCommerzPayment(store_id, store_passwd, is_live)
+  sslcz.validate(data).then(response=>{
+    res.status(200).json(response);
+  })
+}
+
+const PayFail = async (req, res) => {
+  console.log(req.body);
+
+  console.log("Payment failed.");
+  res.redirect(`${FRONTENDURL}fail`);
 };
 
-const PayCancel = async(req,res)=>{
-    console.log("Payment canceled. Please complete payment soon.");
-    res.redirect(`${FRONTENDURL}cancel`);
+const PayCancel = async (req, res) => {
+  console.log("Payment canceled. Please complete payment soon.");
+  res.redirect(`${FRONTENDURL}cancel`);
 };
 
-module.exports = {AttendeePay, PaySuccess, PayFail, PayCancel};
+module.exports = { AttendeePay, PaySuccess, PayFail, PayCancel, Validate };
