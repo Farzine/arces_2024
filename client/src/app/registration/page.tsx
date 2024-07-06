@@ -70,12 +70,16 @@ export default function ResearchTracks() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const response = await axios.post(`${baseUrl}registration`, form);
+      // console.log(`${baseUrl}registration`)
+      // console.log("Form data:", form);
+      const response = await axios.post(`${baseUrl}/registration`, form);
+
       if (response.status === 201) {
-        route.push(`${frontendUrl}attendee/${response.data._id}`);
+        route.push(`${frontendUrl}/attendee/${response.data._id}`);
       }
     } catch (error) {
       window.alert("Can't Register User");
+      console.error("Error registering user:", error);
     }
     setSubmitting(false);
   };
@@ -191,7 +195,7 @@ export default function ResearchTracks() {
             className="rounded-full h-32 w-32"
           />
         ) : null}
-        <CldUploadWidget onUpload={handleProfilePicUpload} uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}>
+        <CldUploadWidget onUpload={handleProfilePicUpload} uploadPreset={process.env.NEXT_PUBLIC_IMG_UPLOAD_PRESET}>
           {({ open }) => {
             return (
               <button
