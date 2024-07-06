@@ -30,7 +30,7 @@ const FrontendNoticeCard: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-80 mx-auto bg-white shadow-lg rounded-2xl  overflow-hidden">
+    <div className="max-w-80 mx-auto bg-white shadow-lg rounded-sm  overflow-hidden">
       <div className="bg-customPurple text-white text-left py-4 px-6">
         <h2 className="text-xl font-bold text-black">NOTICES</h2>
       </div>
@@ -41,7 +41,7 @@ const FrontendNoticeCard: React.FC = () => {
             className={`flex p-2 rounded-md items-start pl-4 ${index % 2 !== 0 ? "bg-white" : "bg-gray-200"
               }`}
           >
-            <div className="w-6 h-6 mr-2">
+            <div className="w-6 h-6 mr-2 mt-1">
               <svg
                 fill="#000000"
                 height="30px"
@@ -53,16 +53,7 @@ const FrontendNoticeCard: React.FC = () => {
                 stroke="#000000"
                 strokeWidth="5.507991"
               >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0">
-                  <rect
-                    x="-183.6"
-                    y="-183.6"
-                    width="979.20"
-                    height="979.20"
-                    rx="489.6"
-                    fill="#e2e4e4"
-                  ></rect>
-                </g>
+
                 <g
                   id="SVGRepo_tracerCarrier"
                   strokeLinecap="round"

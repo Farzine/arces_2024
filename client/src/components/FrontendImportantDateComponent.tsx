@@ -30,7 +30,7 @@ const ImportantDates: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-80 mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="max-w-80 mx-auto bg-white shadow-lg rounded-sm overflow-hidden">
       <div className="bg-customPurple text-white text-left py-4 px-6">
         <h2 className="text-xl font-bold text-black">IMPORTANT DATES</h2>
       </div>
@@ -42,7 +42,7 @@ const ImportantDates: React.FC = () => {
               index % 2 !== 0 ? 'bg-white' : 'bg-gray-200'
             }`}
           >
-            <div className="w-6 h-6 mr-2">
+            <div className="w-6 h-6 mr-2 mt-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
