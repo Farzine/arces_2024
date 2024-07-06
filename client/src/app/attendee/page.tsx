@@ -1,4 +1,5 @@
-import { BACKENDURL } from "@/URL";
+
+const BACKENDURL = process.env.NEXT_PUBLIC_APP_BACKEND_URL
 import axios from "axios";
 axios.get(`${BACKENDURL}registration`)
 export default function Attendee() {
