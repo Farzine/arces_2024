@@ -1,9 +1,10 @@
 const express = require("express");
-const RegisterAttendee = require("../controllers/registerAttendee");
+const {RegisterAttendee, getAllAttendee} = require("../controllers/registerAttendee");
 const { AttendeePay, PaySuccess, PayFail, PayCancel, Validate } = require("../controllers/attendeePay");
 const regRouter = express.Router();
 
 regRouter.post("/",RegisterAttendee);
+regRouter.get("/",getAllAttendee);
 regRouter.get('/pay/:id',AttendeePay);
 regRouter.post('/paySuccess/:id',PaySuccess);
 regRouter.post('/payFail/:id',PayFail);

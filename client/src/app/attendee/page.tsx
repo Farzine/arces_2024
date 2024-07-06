@@ -1,3 +1,6 @@
+import { BACKENDURL } from "@/URL";
+import axios from "axios";
+axios.get(`${BACKENDURL}registration`)
 export default function Attendee() {
     return (
       <main className="h-screen">
