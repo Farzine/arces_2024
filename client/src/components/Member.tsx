@@ -1,3 +1,5 @@
+import ScrollToTopButton from "./ScrollToTopButton";
+
 interface ProfileCardProps {
   profile: {
     name: string;
@@ -9,9 +11,9 @@ interface ProfileCardProps {
 
 const ProfileCard: React.FC<ProfileCardProps> = ({ profile }) => {
   return (
-    <div className="w-full  mx-auto p-6 bg-white border rounded-lg shadow">
+    <div className="w-11/12 mx-auto p-1 bg-white border rounded-lg shadow py-3">
       <div className="flex flex-col items-center">
-        <div className="w-40 h-40 overflow-hidden rounded-full">
+        <div className="w-36 h-36 overflow-hidden rounded-full">
           <img src={profile.imageUrl} alt={profile.name} className="object-cover w-full h-full" />
         </div>
         <div className="mt-4 text-center">
@@ -20,6 +22,7 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profile }) => {
           <p className="mt-1 text-sm font-bold text-gray-600">{profile.role}</p>
         </div>
       </div>
+      <ScrollToTopButton />
     </div>
   );
 };

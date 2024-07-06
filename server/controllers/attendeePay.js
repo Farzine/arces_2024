@@ -1,6 +1,7 @@
 const SSLCommerzPayment = require("sslcommerz-lts");
 const Attendee = require("../models/attendee");
-const { BACKENDURL, FRONTENDURL } = require("../URL");
+const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
+const FRONTENDURL = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 const store_id = process.env.STORE_ID;
 const store_passwd = process.env.STORE_PASSWD;
 const is_live = false; //true for live, false for sandbox
@@ -26,9 +27,9 @@ const AttendeePay = async (req, res) => {
       product_name: "Registration for ARCES 2024",
       product_category: "N/A",
       product_profile: "Ticket",
-      success_url: `${BACKENDURL}registration/paySuccess/${id}`,
-      fail_url: `${BACKENDURL}registration/payFail/${id}`,
-      cancel_url: `${BACKENDURL}registration/payCancel/${id}`,
+      success_url: `${baseUrl}registration/paySuccess/${id}`,
+      fail_url: `${baseUrl}registration/payFail/${id}`,
+      cancel_url: `${baseUrl}registration/payCancel/${id}`,
       emi_option: 0,
     };
     const sslcommerz = new SSLCommerzPayment(store_id, store_passwd, is_live);

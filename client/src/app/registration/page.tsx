@@ -3,8 +3,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
-import { BACKENDURL, FRONTENDURL } from "@/URL";
 import { useRouter } from "next/navigation";
+
+const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
+const frontendUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
+
 
 interface Country {
   name: string;
@@ -67,9 +70,9 @@ export default function ResearchTracks() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const response = await axios.post(`${BACKENDURL}registration`, form);
+      const response = await axios.post(`${baseUrl}registration`, form);
       if (response.status === 201) {
-        route.push(`${FRONTENDURL}attendee/${response.data._id}`);
+        route.push(`${frontendUrl}attendee/${response.data._id}`);
       }
     } catch (error) {
       window.alert("Can't Register User");
@@ -188,7 +191,7 @@ export default function ResearchTracks() {
             className="rounded-full h-32 w-32"
           />
         ) : null}
-        <CldUploadWidget onUpload={handleProfilePicUpload} uploadPreset={process.env.NEXT_PUBLIC_IMG_UPLOAD_PRESET}>
+        <CldUploadWidget onUpload={handleProfilePicUpload} uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}>
           {({ open }) => {
             return (
               <button
