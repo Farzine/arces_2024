@@ -42,3 +42,8 @@ exports.updateEmailAndPassword = async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
   };
+
+  exports.logout = (req, res) => {
+    res.clearCookie('token');
+    res.json({ message: 'Logged out successfully' });
+  };

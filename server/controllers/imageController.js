@@ -5,6 +5,7 @@ const Image = require('../models/image');
 exports.uploadImage = async (req, res) => {
   try {
     const file = req.file;
+    const { description } = req.body;
     if (!file) {
       return res.status(400).json({ message: 'No file uploaded' });
     }
@@ -12,6 +13,7 @@ exports.uploadImage = async (req, res) => {
     const image = new Image({
       path: file.path,
       public_id: file.filename,
+      description: description,
     });
 
     await image.save();

@@ -9,6 +9,10 @@ const imageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description: {
+    type: String,
+    required: false  
+  }
 });
 
 const Image = mongoose.model('Image', imageSchema);
