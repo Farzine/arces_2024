@@ -1,7 +1,7 @@
 "use client"
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
-import ProfileCard from "@/components/Member";
+import ProfileCard from "@/lossProject/Member";
 
 const profileData = [
   { name: "Professor Farid Uddin Ahmed ", title: "Vice Chancellor, SUST", role: "CHIEF PATRON", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },

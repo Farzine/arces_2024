@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import NoticeCard from '@/components/NoticeAddCard';
-import ImportantDateCard from '@/components/ImportantDateAddCard';
-import ResearchTrack from '@/components/ResearchTrackAddCard';
-import IndustryTrack from '@/components/IndustryTrackAddCard';
+import NoticeCard from '@/lossProject/NoticeAddCard';
+import ImportantDateCard from '@/lossProject/ImportantDateAddCard';
+import ResearchTrack from '@/lossProject/ResearchTrackAddCard';
+import IndustryTrack from '@/lossProject/IndustryTrackAddCard';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
-import ImageUpload from '@/components/ImageUpload';
+import ImageUpload from '@/lossProject/ImageUpload';
 
 const AdminPage: React.FC = () => {
   const routes = useRouter();

@@ -27,7 +27,7 @@ export default function Login() {
       if (response.ok) {
         alert("Logged in successfully");
         Cookies.set('token', data.token);
-        router.push("/Admin/controllerPage");
+        router.push("/admin/notices");
       } else {
         alert(data.message || "Login failed");
       }

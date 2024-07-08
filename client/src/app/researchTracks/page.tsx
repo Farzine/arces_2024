@@ -3,9 +3,9 @@ import Footer from "@/components/Footer";
 import ImportantDates from "@/components/FrontendImportantDateComponent";
 import FrontendNoticeCard from "@/components/FrontendNoticeCard";
 import Navbar from "@/components/NavBar";
-import ResearchTrackFontend from "@/components/ResearchTrackFontend";
+import ResearchTrackFontend from "@/lossProject/ResearchTrackFontend";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import TrackCard from '@/components/TrackCardFontend';
+import TrackCard from '@/lossProject/TrackCardFontend';
 
 export default function Home() {
   return (

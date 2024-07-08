@@ -1,11 +1,11 @@
 "use client"
 
-import NoticeBoard from "@/components/NoticeBoardAdminView";
+import ImportantDates from "@/lossProject/ImportantDatesAdminView";
 
 export default function Authors() {
     return (
       <div>
-      <NoticeBoard />
+      <ImportantDates />
     </div>
     );
   }
