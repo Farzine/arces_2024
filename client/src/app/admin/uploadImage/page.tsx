@@ -1,13 +1,16 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Sidebar from '@/components/Sidebar';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
 const UploadImagePage: React.FC = () => {
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState<any[]>([]);
     const [file, setFile] = useState<File | null>(null);
     const [description, setDescription] = useState('');
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const router = useRouter();
 
@@ -61,6 +64,8 @@ const UploadImagePage: React.FC = () => {
         formData.append('image', file);
         formData.append('description', description);
 
+        setLoading(true);
+
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/images/upload`, {
                 method: 'POST',
@@ -78,17 +83,26 @@ const UploadImagePage: React.FC = () => {
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
-                alert('Image uploaded successfully');
+                setSuccessMessage('Image uploaded successfully');
+                setTimeout(() => setSuccessMessage(null), 3000);
             } else {
                 const errorText = await response.text();
                 console.error('Error uploading image:', errorText);
+                setErrorMessage('Failed to upload image. Please try again.');
+                setTimeout(() => setErrorMessage(null), 3000);
             }
         } catch (error) {
             console.error('Error uploading image:', error);
+            setErrorMessage('Failed to upload image. Please try again.');
+            setTimeout(() => setErrorMessage(null), 3000);
+        } finally {
+            setLoading(false);
         }
     };
 
     const handleDelete = async (id: string) => {
+        setLoading(true);
+
         try {
             const token = Cookies.get('token');
             const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/images/${id}`, {
@@ -101,6 +115,8 @@ const UploadImagePage: React.FC = () => {
 
             if (response.ok) {
                 fetchImages();
+                setSuccessMessage('Image deleted successfully');
+                setTimeout(() => setSuccessMessage(null), 3000);
             } else {
                 console.error('Error deleting image:', response.statusText);
                 if (response.status === 403) {
@@ -110,54 +126,81 @@ const UploadImagePage: React.FC = () => {
             }
         } catch (error) {
             console.error('Error deleting image:', error);
+            setErrorMessage('Failed to delete image. Please try again.');
+            setTimeout(() => setErrorMessage(null), 3000);
+        } finally {
+            setLoading(false);
         }
     };
 
     const truncateText = (text: string, maxLength: number) => {
         if (text.length <= maxLength) {
-          return text;
+            return text;
         }
         return text.slice(0, maxLength) + '...';
-      };
+    };
 
     return (
         <div className="flex">
             <Sidebar />
-            <div className="ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb]">
+            {loading && (
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
+                    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                </div>
+            )}
+            <div className={`ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb] ${loading ? 'filter blur-sm' : ''}`}>
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-1/3">
-                    <input 
-                        type="file" 
+                    <input
+                        type="file"
                         ref={fileInputRef}
-                        onChange={handleFileChange} 
+                        onChange={handleFileChange}
                         className="border-2 border-white p-1"
                     />
-                    <input 
-                        type="text" 
+                    <input
+                        type="text"
                         value={description}
                         onChange={handleDescriptionChange}
                         placeholder="Enter Picture Description"
                         className="border p-2"
                     />
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
+                        disabled={loading}
                     >
-                        Upload Image
+                        {loading ? 'Uploading...' : 'Upload Image'}
                     </button>
                 </form>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
+                {/* Success message display */}
+                {successMessage && (
+                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <strong className="font-bold">Success!</strong>
+                        <span className="block sm:inline"> {successMessage}</span>
+                    </div>
+                )}
+
+                {/* Error message display */}
+                {errorMessage && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                        <strong className="font-bold">Error!</strong>
+                        <span className="block sm:inline"> {errorMessage}</span>
+                    </div>
+                )}
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {images.map((image: any) => (
                         <div key={image._id} className="flex justify-between items-center border p-4 rounded shadow-lg bg-[#eaefef]">
                             <div style={{ flex: 1 }}>
                                 <p className="mb-2 text-gray-700" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {truncateText(image.description, 30)}
+                                    {truncateText(image.description, 30)}
                                 </p>
                                 <button
                                     onClick={() => handleDelete(image._id)}
                                     className="mt-2 px-2 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
                                     style={{ fontSize: '0.75rem' }}
+                                    disabled={loading}
                                 >
-                                    Delete
+                                    {loading ? 'Deleting...' : 'Delete'}
                                 </button>
                             </div>
                             <img src={image.path} alt={image.description} className="w-32 h-24 object-cover rounded ml-4" />

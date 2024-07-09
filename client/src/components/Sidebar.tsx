@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { FaBell, FaImage, FaEnvelope, FaCalendarCheck } from 'react-icons/fa';
 
-
-
 const Sidebar: React.FC = () => {
     const router = useRouter();
     const pathname = usePathname();
+    const [loggingOut, setLoggingOut] = useState(false);
 
     const handleLogout = async () => {
         try {
+            setLoggingOut(true);
             const token = Cookies.get('token');
             const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/admin/logout`, {
                 method: 'POST',
@@ -22,12 +22,14 @@ const Sidebar: React.FC = () => {
 
             if (response.ok) {
                 router.push('/admin');
-                alert('Logged out successfully');
+                console.log('Logged out successfully');
             } else {
                 console.error('Logout failed');
             }
         } catch (error) {
             console.error('Logout error:', error);
+        } finally {
+            setLoggingOut(false);
         }
     };
 
@@ -40,7 +42,7 @@ const Sidebar: React.FC = () => {
     };
 
     return (
-        <div className="fixed h-full bg-[#a8c1c1] w-64 py-8 px-4 flex flex-col items-center"> 
+        <div className="fixed h-full bg-[#a8c1c1] w-64 py-8 px-4 flex flex-col items-center">
             <div className="text-2xl font-bold mb-8">Hello, Admin</div>
             <div className="flex flex-col space-y-6 w-full">
                 <div
@@ -71,14 +73,20 @@ const Sidebar: React.FC = () => {
                     <FaEnvelope className="h-6 w-6" />
                     <span>Email</span>
                 </div>
-
             </div>
-            <button
-                onClick={handleLogout}
-                className="mt-20 py-2 px-4 border border-green-600 text-black rounded hover:bg-green-600 hover:text-white"
-            >
-                Log Out
-            </button>
+            {loggingOut ? (
+                <div className="mt-20 flex items-center space-x-4">
+                    <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-900"></div>
+                    <span className="text-black">Logging out...</span>
+                </div>
+            ) : (
+                <button
+                    onClick={handleLogout}
+                    className="mt-20 py-2 px-4 border border-green-600 text-black rounded hover:bg-green-600 hover:text-white"
+                >
+                    Log Out
+                </button>
+            )}
         </div>
     );
 };

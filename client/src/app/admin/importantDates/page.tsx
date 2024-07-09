@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
 import moment from 'moment';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { format, parse } from 'date-fns';
+import { format } from 'date-fns';
 import Sidebar from '@/components/Sidebar';
 
 interface Dates {
@@ -19,6 +19,8 @@ const ImportantDates: React.FC = () => {
   const [importantDates, setImportantDates] = useState<Dates[]>([]);
   const [dates, setDates] = useState<Date | null>(null);
   const [description, setDescription] = useState('');
+  const [error, setError] = useState<string | null>(null); 
+  const [success, setSuccess] = useState<boolean>(false); 
   const router = useRouter();
 
   useEffect(() => {
@@ -27,11 +29,9 @@ const ImportantDates: React.FC = () => {
 
   const fetchImportantDates = async () => {
     try {
-        
       const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates`, {
         method: 'GET',
         credentials: 'include',
-       
       });
       if (response.ok) {
         const data = await response.json();
@@ -41,6 +41,7 @@ const ImportantDates: React.FC = () => {
       }
     } catch (error) {
       console.error('Error fetching important dates:', error);
+      setError('Failed to fetch important dates. Please try again.'); 
     }
   };
 
@@ -64,12 +65,14 @@ const ImportantDates: React.FC = () => {
         fetchImportantDates();
         setDates(null);
         setDescription('');
-        alert('Important date added successfully');
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 3000);
       } else {
         throw new Error('Failed to add important date');
       }
     } catch (error) {
       console.error('Error adding important date:', error);
+      setError('Failed to add important date. Please try again.'); 
     }
   };
 
@@ -86,11 +89,14 @@ const ImportantDates: React.FC = () => {
       });
       if (response.ok) {
         fetchImportantDates();
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 3000); 
       } else {
         throw new Error('Failed to delete important date');
       }
     } catch (error) {
       console.error('Error deleting important date:', error);
+      setError('Failed to delete important date. Please try again.'); 
     }
   };
 
@@ -100,6 +106,20 @@ const ImportantDates: React.FC = () => {
       <div className="ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb]">
         <h1 className="text-3xl font-bold mb-4">Important Dates</h1>
 
+        {importantDates.length === 0 && <p>No important dates found</p>}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <strong className="font-bold">Error!</strong>
+            <span className="block sm:inline"> {error}</span>
+          </div>
+        )}
+        {success && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            <strong className="font-bold">Success!</strong>
+            <span className="block sm:inline"> Operation successful.</span>
+          </div>
+        )}
+
         <div className="flex flex-col space-y-2">
           <DatePicker
             selected={dates}
@@ -107,7 +127,7 @@ const ImportantDates: React.FC = () => {
             dateFormat="dd MMMM, yyyy"
             placeholderText="Select a date"
             className="p-2 border rounded"
-            popperPlacement="bottom-start" // Ensures the calendar appears properly aligned
+            popperPlacement="bottom-start" 
           />
           <textarea
             placeholder="Description"
