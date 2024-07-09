@@ -1,6 +1,5 @@
 const ImportantDate = require('../models/ImportantDate');
-const moment = require('moment');  
-
+const moment = require('moment');
 
 exports.addImportantDate = async (req, res) => {
   const { date, description } = req.body;
@@ -20,7 +19,6 @@ exports.addImportantDate = async (req, res) => {
   }
 };
 
-
 exports.deleteImportantDate = async (req, res) => {
   const { id } = req.params;
 
@@ -35,11 +33,31 @@ exports.deleteImportantDate = async (req, res) => {
   }
 };
 
-
 exports.getImportantDates = async (req, res) => {
   try {
     const importantDates = await ImportantDate.find();
     res.status(200).json(importantDates);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+exports.editImportantDate = async (req, res) => {
+  const { id } = req.params;
+  const { date, description } = req.body;
+
+  try {
+    const formattedDate = moment(date).format('DD MMMM, YYYY');  // Format date as "30 June, 2024"
+    const updatedDate = await ImportantDate.findByIdAndUpdate(
+      id,
+      { date: formattedDate, description },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedDate) return res.status(404).json({ message: 'Date not found' });
+
+    res.status(200).json({ message: 'Date updated successfully', updatedDate });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });

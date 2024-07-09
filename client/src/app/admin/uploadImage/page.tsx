@@ -123,7 +123,7 @@ const UploadImagePage: React.FC = () => {
     return (
         <div className="flex">
             <Sidebar />
-            <div className="ml-64 flex-1 p-8 overflow-y-auto">
+            <div className="ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb]">
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-1/3">
                     <input 
                         type="file" 
@@ -145,9 +145,9 @@ const UploadImagePage: React.FC = () => {
                         Upload Image
                     </button>
                 </form>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 ">
                     {images.map((image: any) => (
-                        <div key={image._id} className="flex justify-between items-center border p-4 rounded shadow-md">
+                        <div key={image._id} className="flex justify-between items-center border p-4 rounded shadow-lg bg-[#eaefef]">
                             <div style={{ flex: 1 }}>
                                 <p className="mb-2 text-gray-700" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                 {truncateText(image.description, 30)}

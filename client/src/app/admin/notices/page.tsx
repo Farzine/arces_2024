@@ -94,7 +94,7 @@ const Notices: React.FC = () => {
   return (
     <div className="flex">
      <Sidebar />
-      <div className="ml-64 flex-1 p-8 overflow-y-auto">
+      <div className="ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb]">
         <h1 className="text-3xl font-bold mb-4">Notices</h1>
 
         <div className="flex flex-col space-y-2">
@@ -103,13 +103,13 @@ const Notices: React.FC = () => {
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="p-2 border rounded"
+            className="p-2 border rounded w-1/3"
           />
           <textarea
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="p-2 border rounded"
+            className="p-2 border rounded w-1/3"
           ></textarea>
           <button
             onClick={editId ? handleSaveEdit : handleAddNotice}

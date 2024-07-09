@@ -1,7 +1,9 @@
 import React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
-import { FaBell, FaImage, FaEnvelope } from 'react-icons/fa';
+import { FaBell, FaImage, FaEnvelope, FaCalendarCheck } from 'react-icons/fa';
+
+
 
 const Sidebar: React.FC = () => {
     const router = useRouter();
@@ -34,11 +36,11 @@ const Sidebar: React.FC = () => {
     };
 
     const getActiveClass = (path: string) => {
-        return pathname === path ? 'bg-white text-black' : '';
+        return pathname === path ? 'bg-[#EAEFEF] text-black pt-2 pb-2' : '';
     };
 
     return (
-        <div className="fixed h-full bg-gray-200 w-64 py-8 px-4 flex flex-col items-center"> 
+        <div className="fixed h-full bg-[#a8c1c1] w-64 py-8 px-4 flex flex-col items-center"> 
             <div className="text-2xl font-bold mb-8">Hello, Admin</div>
             <div className="flex flex-col space-y-6 w-full">
                 <div
@@ -56,12 +58,20 @@ const Sidebar: React.FC = () => {
                     <span>Image</span>
                 </div>
                 <div
+                    onClick={() => handleNavigation('/admin/importantDates')}
+                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/importantDates')}`}
+                >
+                    <FaCalendarCheck className="h-6 w-6" />
+                    <span>Important Dates</span>
+                </div>
+                <div
                     onClick={() => handleNavigation('/admin/updateEmailPassword')}
                     className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/updateEmailPassword')}`}
                 >
                     <FaEnvelope className="h-6 w-6" />
                     <span>Email</span>
                 </div>
+
             </div>
             <button
                 onClick={handleLogout}
