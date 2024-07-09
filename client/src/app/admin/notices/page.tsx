@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { FaEdit, FaTrash } from 'react-icons/fa'; // Import icons as needed
 import Sidebar from '@/components/Sidebar';
+import { ro } from 'date-fns/locale';
 
 
 
@@ -54,6 +55,7 @@ const Notices: React.FC = () => {
 
   const handleDeleteNotice = async (id: string) => {
     const token = Cookies.get('token');
+    if(!token) router.push('/admin');
     await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/notices/${id}`, {
       method: 'DELETE',
       headers: {
@@ -92,7 +94,7 @@ const Notices: React.FC = () => {
   return (
     <div className="flex">
      <Sidebar />
-      <div className="p-8 flex flex-col space-y-4">
+      <div className="p-8 flex flex-col w-full">
         <h1 className="text-3xl font-bold mb-4">Notices</h1>
 
         <div className="flex flex-col space-y-2">

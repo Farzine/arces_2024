@@ -2,12 +2,15 @@
 import Sidebar from '@/components/Sidebar';
 import React, { useState } from 'react';
 import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 
 const EmailPage = () => {
   const [newEmail, setNewEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const router = useRouter();
   const token = Cookies.get('token');
+  if(!token) router.push('/admin');
 
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
@@ -35,8 +38,8 @@ const EmailPage = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <div className="flex-grow p-10">
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-1/2">
+      <div className="flex flex-col w-full p-8">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-1/3">
           <input
             type="email"
             placeholder="New Email"

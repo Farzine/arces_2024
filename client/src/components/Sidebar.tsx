@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React from 'react';
+import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { FaBell, FaImage, FaEnvelope } from 'react-icons/fa';
 
 const Sidebar: React.FC = () => {
     const router = useRouter();
-    const [active, setActive] = useState('');
+    const pathname = usePathname();
 
     const handleLogout = async () => {
         try {
@@ -29,8 +29,11 @@ const Sidebar: React.FC = () => {
     };
 
     const handleNavigation = (path: string) => {
-        setActive(path);
         router.push(path);
+    };
+
+    const getActiveClass = (path: string) => {
+        return pathname === path ? 'bg-white text-black' : '';
     };
 
     return (
@@ -39,21 +42,21 @@ const Sidebar: React.FC = () => {
             <div className="flex flex-col space-y-6 w-full">
                 <div
                     onClick={() => handleNavigation('/admin/notices')}
-                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${active === '/admin/notices' ? 'bg-white' : ''}`}
+                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/notices')}`}
                 >
                     <FaBell className="h-6 w-6" />
                     <span>Notice</span>
                 </div>
                 <div
                     onClick={() => handleNavigation('/admin/uploadImage')}
-                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${active === '/admin/uploadImage' ? 'bg-white' : ''}`}
+                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/uploadImage')}`}
                 >
                     <FaImage className="h-6 w-6" />
                     <span>Image</span>
                 </div>
                 <div
                     onClick={() => handleNavigation('/admin/updateEmailPassword')}
-                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${active === '/admin/updateEmailPassword' ? 'bg-white' : ''}`}
+                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/updateEmailPassword')}`}
                 >
                     <FaEnvelope className="h-6 w-6" />
                     <span>Email</span>
@@ -61,7 +64,7 @@ const Sidebar: React.FC = () => {
             </div>
             <button
                 onClick={handleLogout}
-                className="mt-20 py-2 px-4 border border-green-600 text-green-600 rounded hover:bg-green-600 hover:text-white"
+                className="mt-20 py-2 px-4 border border-green-600 text-black rounded hover:bg-green-600 hover:text-white"
             >
                 Log Out
             </button>
