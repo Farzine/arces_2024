@@ -11,7 +11,6 @@ export default function Home() {
       <Herosection />
       <div className=" w-auto h-full bg-black">
         </div>
-      <Sidebar />
       <Footer />
     </main>
   );
