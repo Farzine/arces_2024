@@ -113,6 +113,13 @@ const UploadImagePage: React.FC = () => {
         }
     };
 
+    const truncateText = (text: string, maxLength: number) => {
+        if (text.length <= maxLength) {
+          return text;
+        }
+        return text.slice(0, maxLength) + '...';
+      };
+
     return (
         <div className="flex">
             <Sidebar />
@@ -143,7 +150,7 @@ const UploadImagePage: React.FC = () => {
                         <div key={image._id} className="flex justify-between items-center border p-4 rounded shadow-md">
                             <div style={{ flex: 1 }}>
                                 <p className="mb-2 text-gray-700" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                    {image.description}
+                                {truncateText(image.description, 30)}
                                 </p>
                                 <button
                                     onClick={() => handleDelete(image._id)}
