@@ -19,15 +19,23 @@ const UploadImagePage: React.FC = () => {
 
     const fetchImages = async () => {
         try {
+            const token = Cookies.get('token');
             const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/images`, {
                 method: 'GET',
                 credentials: 'include',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
             });
             if (response.ok) {
                 const data = await response.json();
                 setImages(data);
             } else {
                 console.error('Error fetching images:', response.statusText);
+                if (response.status === 403) {
+                    alert('Unauthorized: Please log in again.');
+                    router.push('/admin');
+                }
             }
         } catch (error) {
             console.error('Error fetching images:', error);
@@ -60,6 +68,9 @@ const UploadImagePage: React.FC = () => {
                 method: 'POST',
                 credentials: 'include',
                 body: formData,
+                headers: {
+                    'Authorization': `Bearer ${Cookies.get('token')}`,
+                }
             });
 
             if (response.ok) {
@@ -81,15 +92,23 @@ const UploadImagePage: React.FC = () => {
 
     const handleDelete = async (id: string) => {
         try {
+            const token = Cookies.get('token');
             const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/images/${id}`, {
                 method: 'DELETE',
                 credentials: 'include',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
             });
 
             if (response.ok) {
                 fetchImages();
             } else {
                 console.error('Error deleting image:', response.statusText);
+                if (response.status === 403) {
+                    alert('Unauthorized: Please log in again.');
+                    router.push('/admin');
+                }
             }
         } catch (error) {
             console.error('Error deleting image:', error);
