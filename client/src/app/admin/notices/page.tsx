@@ -94,7 +94,7 @@ const Notices: React.FC = () => {
   return (
     <div className="flex">
      <Sidebar />
-      <div className="p-8 flex flex-col w-full">
+      <div className="ml-64 flex-1 p-8 overflow-y-auto">
         <h1 className="text-3xl font-bold mb-4">Notices</h1>
 
         <div className="flex flex-col space-y-2">

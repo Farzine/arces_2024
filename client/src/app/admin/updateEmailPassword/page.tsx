@@ -38,7 +38,7 @@ const EmailPage = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <div className="flex flex-col w-full p-8">
+      <div className="ml-64 flex-1 p-8 overflow-y-auto">
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-1/3">
           <input
             type="email"

@@ -1,7 +1,5 @@
-"use client";
-
+"use client"
 import React, { useState, useEffect, useRef } from 'react';
-import { FaTrash } from 'react-icons/fa';
 import Sidebar from '@/components/Sidebar';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
@@ -118,7 +116,7 @@ const UploadImagePage: React.FC = () => {
     return (
         <div className="flex">
             <Sidebar />
-            <div className="flex flex-col w-full p-8">
+            <div className="ml-64 flex-1 p-8 overflow-y-auto">
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-1/3">
                     <input 
                         type="file" 
@@ -142,16 +140,20 @@ const UploadImagePage: React.FC = () => {
                 </form>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {images.map((image: any) => (
-                        <div key={image._id} className="border p-4 rounded flex flex-col">
-                            <img src={image.path} alt={image.description} className="w-full h-48 object-cover mb-4" />
-                            <p>{image.description}</p>
-                            <button 
-                                onClick={() => handleDelete(image._id)} 
-                                className="mt-auto bg-red-500 text-white px-4 py-2 rounded flex items-center justify-center"
-                            >
-                                <FaTrash className="mr-2" />
-                                Delete
-                            </button>
+                        <div key={image._id} className="flex justify-between items-center border p-4 rounded shadow-md">
+                            <div style={{ flex: 1 }}>
+                                <p className="mb-2 text-gray-700" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                    {image.description}
+                                </p>
+                                <button
+                                    onClick={() => handleDelete(image._id)}
+                                    className="mt-2 px-2 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
+                                    style={{ fontSize: '0.75rem' }}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                            <img src={image.path} alt={image.description} className="w-32 h-24 object-cover rounded ml-4" />
                         </div>
                     ))}
                 </div>

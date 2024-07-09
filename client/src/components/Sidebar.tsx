@@ -20,6 +20,7 @@ const Sidebar: React.FC = () => {
 
             if (response.ok) {
                 router.push('/admin');
+                alert('Logged out successfully');
             } else {
                 console.error('Logout failed');
             }
@@ -37,7 +38,7 @@ const Sidebar: React.FC = () => {
     };
 
     return (
-        <div className="h-screen bg-gray-200 w-64 py-8 px-4 flex flex-col items-center">
+        <div className="fixed h-full bg-gray-200 w-64 py-8 px-4 flex flex-col items-center"> 
             <div className="text-2xl font-bold mb-8">Hello, Admin</div>
             <div className="flex flex-col space-y-6 w-full">
                 <div
