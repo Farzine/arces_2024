@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { FaBell, FaImage, FaEnvelope, FaCalendarCheck } from 'react-icons/fa';
+import { FaNoteSticky } from 'react-icons/fa6';
 
 const Sidebar: React.FC = () => {
     const router = useRouter();
@@ -65,6 +66,13 @@ const Sidebar: React.FC = () => {
                 >
                     <FaCalendarCheck className="h-6 w-6" />
                     <span>Important Dates</span>
+                </div>
+                <div
+                    onClick={() => handleNavigation('/admin/importantUpdate')}
+                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/importantUpdate')}`}
+                >
+                    <FaNoteSticky className="h-6 w-6" />
+                    <span>Important Update</span>
                 </div>
                 <div
                     onClick={() => handleNavigation('/admin/updateEmailPassword')}
