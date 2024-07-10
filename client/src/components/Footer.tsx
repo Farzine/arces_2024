@@ -1,14 +1,21 @@
 import React from 'react';
+import { FaWhatsapp, FaFacebookF, FaEnvelope } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const copyEmailToClipboard = () => {
     navigator.clipboard.writeText('arces@sust.edu');
     alert('Email copied to clipboard!');
   };
+  
+    const iconStyle = { width: '40px', height: '40px', color: 'currentColor' }
+  
 
   return (
     <footer className="bg-gray-800 text-white flex justify-between items-center p-4">
       <div className="flex items-center justify-center w-full space-x-4">
+        <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer">
+          <FaWhatsapp style={iconStyle} />
+        </a>
         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <svg className="w-10 h-10 fill-current" viewBox="3 5 50 40">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">

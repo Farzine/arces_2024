@@ -11,6 +11,7 @@ const importantDateRoutes = require('./routes/importantDateRoutes');
 const noticeRoutes = require('./routes/noticeRoutes');
 const researchTrackRoutes = require('./routes/researchTrackRoutes');
 const industryTrackRoutes = require('./routes/industryTrackRoutes');
+const importantUpdateRoutes = require('./routes/importantUpdateRoutes');
 const frontUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 
 const { MONGO_URI } = require('./config/config');
@@ -42,6 +43,7 @@ app.use('/notices', noticeRoutes);
 app.use('/research-tracks', researchTrackRoutes);
 app.use('/industry-tracks', industryTrackRoutes);
 app.use('/registration',regRouter);
+app.use('/important-updates', importantUpdateRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome to ARCES_2024');
