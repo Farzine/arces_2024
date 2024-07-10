@@ -1,4 +1,5 @@
 "use client";
+import ConferenceDateView from "@/components/ConferenceDateView";
 import Footer from "@/components/Footer";
 import Herosection from "@/components/Herosection";
 import Navbar from "@/components/NavBar";
@@ -8,10 +9,11 @@ export default function Home() {
   return (
     <main className="h-screen">
       <Navbar />
-      
-     
-      <div className=" w-auto h-full bg-black">
-        </div>
+      <Herosection />
+      <div className="pb-100">
+
+      <ConferenceDateView />
+      </div>
       <Footer />
     </main>
   );
