@@ -20,7 +20,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="bg-white shadow-lg p-3">
+    <header className="bg-white shadow-lg p-3 z-50 relative">
       <nav className="flex justify-between items-center w-full h-14 mx-auto ">
         <div>
           <Image
@@ -31,7 +31,7 @@ const Navbar = () => {
             height={64}
           />
         </div>
-        <div className="nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 ">
+        <div className="nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50">
           <ul className="flex md:flex-row flex-col md:items-center md:gap-6 gap-2 text-black text-sm mt-4 ">
             <li>
               <a
@@ -86,7 +86,7 @@ const Navbar = () => {
                 ></span>
               </a>
               {dropdownOpen === "For-Authors" && (
-                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48">
+                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48 z-50">
                   <li className="hover:bg-gray-200">
                     <a href="#submission" className="block px-4 py-2">Submission</a>
                   </li>
@@ -171,7 +171,7 @@ const Navbar = () => {
                 ></span>
               </a>
               {dropdownOpen === "Previous Conferences" && (
-                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48">
+                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48 z-50">
                   <li className="hover:bg-gray-200">
                     <a href="#Previous Conferences" className="block px-4 py-2">ICERIE 20023</a>
                   </li>
@@ -208,7 +208,7 @@ const Navbar = () => {
                 ></span>
               </a>
               {dropdownOpen === "about" && (
-                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48">
+                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48 z-50">
                   <li className="hover:bg-gray-200">
                     <a href="#about-icerie" className="block px-4 py-2">About ICERIE</a>
                   </li>
@@ -224,8 +224,25 @@ const Navbar = () => {
                 </ul>
               )}
             </li>
+            <li>
+              <a
+                className={`relative inline-block group ${activeLink === "Contact US" ? "text-black" : "text-gray-700"
+                  }`}
+                href="#Contact US"
+                onClick={() => handleLinkClick("Contact US")}
+              >
+                Contact US
+                <span
+                  className={`${activeLink === "Contact US"
+                      ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0"
+                      : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                    }`}
+                ></span>
+              </a>
+            </li>
           </ul>
         </div>
+      
         <div className="flex items-center gap-6">
           <button className="bg-indigo-600 text-white px-5 py-2 text-sm rounded-full hover:bg-black flex justify-between items-center mx-5">
             <svg
@@ -249,5 +266,4 @@ const Navbar = () => {
     </header>
   );
 };
-
 export default Navbar;
