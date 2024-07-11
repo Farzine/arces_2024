@@ -24,8 +24,13 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.24.0",
+<<<<<<< HEAD
     "react-toastify": "^10.0.5",
     "shadcn-ui": "^0.2.3"
+=======
+    "shadcn-ui": "^0.2.3",
+    "tailwind-merge": "^2.4.0"
+>>>>>>> a48e4a61bb866a20626d397f143ee40cdff3f822
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",

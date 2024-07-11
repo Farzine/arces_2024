@@ -70,12 +70,38 @@ export default function Herosection() {
                 className="absolute block w-full h-full object-cover"
                 alt={`Slide ${index + 1}`}
               />
-              <div className="absolute inset-0 flex items-end justify-start text-white text-4xl font-bold font-mono bg-black/50">
-                {image.text}
-              </div>
             </div>
           ))}
         </div>
+
+        {/* Fixed text overlay */}
+        <div className="absolute inset-0 flex items-crnter justify-center text-white  font-bold font-mono bg-black/55 p-4">
+          <div  className="flex">
+            <div className="flex items-center ml-28">
+              <img src="/logoNavBar.png" alt="logo" className="w-36 h-36" />
+            </div>
+            <div className="flex items-center">
+              <div>
+                <div className="text-3xl">
+                  <h1>8th International Conference on <br />Engineering Research, Innovation and Education <br />(ICERIE 2025)</h1>
+                </div>
+
+                <div className="flex">
+                <div className="bg-orange-600 w-1/4 flex justify-center text-1xl">
+                  <p >January 09-11, 2025</p>
+                </div>
+                <div className="ml-3 text-1xl">
+                  <p>Sylhet, Bangladesh</p>
+                </div>
+              </div>
+              </div>
+              
+            </div>
+
+          </div>
+
+        </div>
+
         {/* Slider indicators */}
         <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
           {images.map((_, index) => (

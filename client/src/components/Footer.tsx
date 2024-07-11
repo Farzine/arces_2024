@@ -1,14 +1,21 @@
 import React from 'react';
+import { FaWhatsapp, FaFacebookF, FaEnvelope } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const copyEmailToClipboard = () => {
     navigator.clipboard.writeText('arces@sust.edu');
     alert('Email copied to clipboard!');
   };
+  
+    const iconStyle = { width: '40px', height: '40px', color: 'currentColor' }
+  
 
   return (
     <footer className="bg-gray-800 text-white flex justify-between items-center p-4">
       <div className="flex items-center justify-center w-full space-x-4">
+        <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer">
+          <FaWhatsapp style={iconStyle} />
+        </a>
         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <svg className="w-10 h-10 fill-current" viewBox="3 5 50 40">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px">
@@ -19,8 +26,8 @@ const Footer: React.FC = () => {
         <a href="mailto:arces@sust.edu">
           <svg className="w-10 h-10 fill-current" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="45" stroke="white" strokeWidth="3" fill="none" />
-            <rect x="30" y="35" width="40" height="30" stroke="white" strokeWidth="2" fill="none" />
-            <polyline points="30,35 50,50 70,35" stroke="white" strokeWidth="2" fill="none" />
+            <rect x="30" y="35" width="40" height="30" stroke="white" strokeWidth="4" fill="none" />
+            <polyline points="30,35 50,50 70,35" stroke="white" strokeWidth="4" fill="none" />
           </svg>
         </a>
         <span className="flex items-center">
