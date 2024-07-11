@@ -1,21 +1,46 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+
+
+const home = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
+const tracks = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/tracks";
+const submissionUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/submission";
+const callForPaperUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/callForPaper";
+const conferenceTracks = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/tracks";
+const importantDates = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/importantDates";
+const registration = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/registration";
+const attendee = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/attendee";
+const schedule = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/schedule";
+const gallery = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/gallery";
+const aboutIcerie = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/icerie";
+const committee = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/committee";
+const sponsors = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/sponsors";
+const accommodation = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/accommodation";
+const venue = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/venue";
+const contactUs = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/contact";
+
+
 
 const navLinks = [
-  { name: "Home", href: "#home" },
-  { name: "Tracks", href: "#tracks" },
+  { name: "Home", href: `${home}` },
+  { name: "Tracks", href: `${tracks}` },
   {
     name: "For Authors", href: "#For-Authors", dropdown: [
-      { name: "Submission", href: "#submission" },
-      { name: "Call For Paper", href: "#call-for-paper" },
-      { name: "Tracks", href: "#tracks" },
-      { name: "Important Dates", href: "#important-dates" }
+      { name: "Submission", href: `${submissionUrl}` },
+      { name: "Call For Paper", href: `${callForPaperUrl}`},
+      { name: "Conference Tracks", href: `${conferenceTracks}`},
+      { name: "Important Dates", href: `${importantDates}` }
     ]
   },
-  { name: "Registration", href: "#registration" },
-  { name: "Schedule", href: "#schedule" },
-  { name: "Gallery", href: "#gallery" },
+  { name: "Registration", href: "#registration", dropdown: [
+    { name: "Registration", href: `${registration}` },
+    { name: "Attending", href: `${attendee}` }
+  ]
+  },
+  { name: "Schedule", href: `${schedule}` },
+  { name: "Gallery", href: `${gallery}` },
   {
     name: "Previous Conferences", href: "#Previous-Conferences", dropdown: [
       { name: "ICERIE 2023", href: "#Previous-Conferences" },
@@ -26,19 +51,20 @@ const navLinks = [
   },
   {
     name: "About", href: "#about", dropdown: [
-      { name: "About ICERIE", href: "#about-icerie" },
-      { name: "Committee", href: "#committee" },
-      { name: "Sponsors", href: "#sponsors" },
-      { name: "Accommodation", href: "#contact-us" },
-      { name: "Venue", href: "#contact-us" }
+      { name: "About ICERIE", href: `${aboutIcerie}`},
+      { name: "Committee", href: `${committee}`},
+      { name: "Sponsors", href: `${sponsors}` },
+      { name: "Accommodation", href: `${accommodation}`},
+      { name: "Venue", href: `${venue}` }
     ]
   },
-  { name: "Contact US", href: "#Contact-US" }
+  { name: "Contact US", href: `${contactUs}` }
 ];
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState("");
+  const router = useRouter();
 
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
@@ -52,6 +78,10 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     setDropdownOpen("");
   };
+
+  const handleNavigation = (path: string) => {
+    router.push(path);
+};
 
   return (
   
@@ -103,7 +133,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-6">
-          <button className="bg-red-500 text-white px-5 py-2 text-sm rounded-full hover:bg-black flex justify-between items-center mx-5">
+          <button className="bg-red-500 text-white px-5 py-2 text-sm rounded-full hover:bg-black flex justify-between items-center mx-5" onClick={() => handleNavigation('/registration')}>
             <svg
               className="w-4 h-4 mr-2"
               fill="none"
