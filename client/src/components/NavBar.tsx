@@ -1,4 +1,5 @@
 import Image from "next/image"; // If using Next.js for image optimization
+import Link from "next/link";
 import { SetStateAction, useState } from "react";
 
 const Navbar = () => {
@@ -97,11 +98,11 @@ const Navbar = () => {
             </li>
 
             <li>
-              <a
+              <Link
                 className={`relative inline-block group ${
                   activeLink === "Attending" ? "text-=black " : "text-black"
                 }`}
-                href="#Attending"
+                href="/attendee"
                 onClick={() => handleLinkClick("Attending")}
               >
                 Attending
@@ -112,7 +113,7 @@ const Navbar = () => {
                       : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
                   }`}
                 ></span>
-              </a>
+              </Link>
             </li>
             <li>
               <a
@@ -153,6 +154,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-6">
+          <Link href={"/registration"}>
           <button className="bg-indigo-600 text-white px-5 py-2 text-sm rounded-full hover:bg-black flex justify-between items-center mx-5">
             <svg
               className="w-4 h-4 mr-2"
@@ -170,6 +172,7 @@ const Navbar = () => {
             </svg>
             Register
           </button>
+                </Link>
         </div>
       </nav>
     </header>

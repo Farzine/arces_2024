@@ -9,7 +9,6 @@ const billAmount = 1000; // registration fee
 
 const AttendeePay = async (req, res) => {
   const { id } = req.params;
-  //   console.log(id)
   try {
     const attendee = await Attendee.findById(id);
     if (!attendee) {
@@ -34,10 +33,9 @@ const AttendeePay = async (req, res) => {
     };
     const sslcommerz = new SSLCommerzPayment(store_id, store_passwd, is_live);
     sslcommerz.init(data).then((apiResponse) => {
-      // Redirect the user to payment gateway
       let GatewayPageURL = apiResponse.GatewayPageURL;
-      res.redirect(GatewayPageURL);
-      console.log("Redirecting to: ", GatewayPageURL);
+      res.json({ url: GatewayPageURL });
+      // console.log("Payment gateway URL: ", GatewayPageURL);
     });
   } catch (error) {
     console.log(error);
@@ -56,8 +54,8 @@ const PaySuccess = async (req, res) => {
     
     if ((apiResponse.status === 'VALID' || apiResponse.status === 'VALIDATED') && apiResponse.tran_id === id) {
       await Attendee.findByIdAndUpdate(id, { payment_status: true, val_id });
-      console.log("Payment successful");
-      res.redirect(`${FRONTENDURL}success`);
+      // console.log("Payment successful");
+      res.redirect(`${FRONTENDURL}/attendee/${id}`);
     } else {
       res.status(500).json({ message: "Payment Validation Failed" });
     }
@@ -75,15 +73,17 @@ const Validate = async (req,res)=>{
 }
 
 const PayFail = async (req, res) => {
-  console.log(req.body);
+  const { id } = req.params;
+  // console.log(req.body);
 
-  console.log("Payment failed.");
-  res.redirect(`${FRONTENDURL}fail`);
+  // console.log("Payment failed.");
+  res.redirect(`${FRONTENDURL}/attendee/${id}`);
 };
 
 const PayCancel = async (req, res) => {
-  console.log("Payment canceled. Please complete payment soon.");
-  res.redirect(`${FRONTENDURL}cancel`);
+  const { id } = req.params;
+  // console.log("Payment canceled. Please complete payment soon.");
+  res.redirect(`${FRONTENDURL}/attendee/${id}`);
 };
 
 module.exports = { AttendeePay, PaySuccess, PayFail, PayCancel, Validate };

@@ -33,6 +33,10 @@ const attendeeSchema = new mongoose.Schema({
   val_id: {
     type: String
   },
+  pin: {
+    type: Number,
+    required: true
+  }
 });
 
 const Attendee = mongoose.model("Attendee", attendeeSchema);

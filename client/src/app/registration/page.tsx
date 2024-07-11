@@ -4,10 +4,17 @@ import axios from "axios";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import Navbar from "@/components/NavBar";
+import Footer from "@/components/Footer";
+import iictImg from "@/app/assets/IICT.jpg";
+import logo from "@/app/assets/logo1.png";
+import camera from "@/app/assets/camera.png";
+import { ImagePlus } from "lucide-react";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 const frontendUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
-
 
 interface Country {
   name: string;
@@ -15,7 +22,7 @@ interface Country {
   callingCode: string;
 }
 
-export default function ResearchTracks() {
+export default function Registration() {
   const [form, setForm] = useState({
     name: "",
     university: "",
@@ -65,159 +72,187 @@ export default function ResearchTracks() {
       photoUrl: uploadedURL,
     });
   };
-
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
+    if (!form.name || !form.university || !form.country || !form.email || !form.phone || !form.photoUrl) {
+      toast.error("Please upload your image.");
+      setSubmitting(false);
+      return;
+    }
     try {
-      // console.log(`${baseUrl}registration`)
-      // console.log("Form data:", form);
-      const response = await axios.post(`${baseUrl}/registration`, form);
-
+      const response = await axios.post(`${baseUrl}registration`, form);
       if (response.status === 201) {
         route.push(`${frontendUrl}/attendee/${response.data._id}`);
+        toast.success("Registration successful.")
       }
     } catch (error) {
-      window.alert("Can't Register User");
+      toast.error("Failed to register. Please try again.")
       console.error("Error registering user:", error);
     }
     setSubmitting(false);
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center p-4">
-      <form
-        className="w-full max-w-lg p-8 bg-white shadow-md rounded-lg"
-        onSubmit={handleSubmit}
-      >
-        <h1 className="text-3xl font-semibold mb-8 text-center">
-          Research Tracks Registration
-        </h1>
-        <div className="mb-6">
-          <label
-            htmlFor="name"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="university"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            University
-          </label>
-          <input
-            type="text"
-            id="university"
-            name="university"
-            value={form.university}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="country"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Country
-          </label>
-          <select
-            id="country"
-            name="country"
-            value={form.country}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-            required
-          >
-            <option value="" disabled>
-              Select your country
-            </option>
-            {countries.map((country) => (
-              <option key={country.name} value={country.name}>
-                {country.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="email"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-            required
-          />
-        </div>
-        <div className="mb-6">
-          <label
-            htmlFor="phone"
-            className="block text-gray-700 font-medium mb-2"
-          >
-            Phone Number
-          </label>
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            value={form.phone}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-600"
-            required
-          />
-        </div>
-        {form.photoUrl ? (
+    <main className="flex flex-col min-h-screen">
+      <Navbar />
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <div className="grid md:grid-cols-2 grid-cols-1 justify-center items-center">
+        {/* Background Image Section */}
+        <div className="relative h-full bg-black bg-opacity-50 overflow-hidden md:visible invisible">
           <Image
-            src={form.photoUrl}
+            src={iictImg}
+            alt="IICT SUST"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-50 z-0"
+          />
+          <div className="absolute inset-0 flex flex-col justify-end items-center z-10">
+            <p className="text-white text-center font-mono text-5xl font-semibold p-4">
+              8th International Conference on
+            </p>
+            <p className="text-white text-center font-mono text-3xl font-semibold p-4 mb-8">
+              Engineering Research, Innovation and Education (ICERIE 2025)
+            </p>
+          </div>
+        </div>
+        {/* Registration Form Section */}
+        <div className="p-8 bg-white shadow-md rounded-lg flex flex-col items-center ">
+          <Image
+            src={logo}
             height={200}
             width={200}
             alt=""
-            className="rounded-full h-32 w-32"
+            className="aspect-square w-32"
           />
-        ) : null}
-        <CldUploadWidget onUpload={handleProfilePicUpload} uploadPreset={process.env.NEXT_PUBLIC_IMG_UPLOAD_PRESET}>
-          {({ open }) => {
-            return (
-              <button
-                type="button"  // Changed type to "button" to prevent form submission
-                className="border my-2 p-2 rounded-md hover:bg-slate-300"
-                onClick={() => open()}
+          <h1 className="text-2xl font-serif font-semibold mb-8 text-center">
+            Register Now
+          </h1>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-2">
+              <label htmlFor="name" className="mb-1 text-sm">
+                Name <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="university" className="mb-1 text-sm">
+                University<span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="university"
+                name="university"
+                value={form.university}
+                onChange={handleChange}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="country" className="mb-1 text-sm">
+                Country<span className="text-red-500">*</span>
+              </label>
+              <select
+                id="country"
+                name="country"
+                value={form.country}
+                onChange={handleChange}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                required
               >
-                Upload your image <span className="text-red-600">*</span>
+                <option value="" disabled>
+                  Select your country
+                </option>
+                {countries.map((country) => (
+                  <option key={country.name} value={country.name}>
+                    {country.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-2">
+              <label htmlFor="email" className="mb-1 text-sm">
+                Email<span className="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                required
+              />
+            </div>
+            <div className="mb-2">
+              <label htmlFor="phone" className="mb-1 text-sm">
+                Phone Number<span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                required
+              />
+            </div>
+            {form.photoUrl ? (
+              <Image
+                src={form.photoUrl}
+                height={200}
+                width={200}
+                alt=""
+                className="rounded-full h-32 w-32"
+              />
+            ) : (
+              <Image
+                src={camera}
+                height={200}
+                width={200}
+                alt=""
+                className="rounded-full h-32 w-32"
+              />
+            )}
+            <CldUploadWidget
+              onUpload={handleProfilePicUpload}
+              uploadPreset={process.env.NEXT_PUBLIC_IMG_UPLOAD_PRESET}
+            >
+              {({ open }) => (
+                <button
+                  type="button"
+                  className="border my-2 p-2 rounded-md hover:bg-slate-300 flex gap-2"
+                  onClick={() => open()}
+                >
+                  <ImagePlus />
+                  Upload your image <span className="text-red-600">*</span>
+                </button>
+              )}
+            </CldUploadWidget>
+            <div className="text-center mt-4">
+              <button
+                type="submit"
+                disabled={submitting}
+                className="w-full py-2 px-4 rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              >
+                {submitting ? "Submitting..." : "Submit"}
               </button>
-            );
-          }}
-        </CldUploadWidget>
-        <div className="text-center">
-          <button
-            type="submit"
-            disabled={submitting}
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-          >
-            Submit
-          </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
+      <Footer />
     </main>
   );
 }
