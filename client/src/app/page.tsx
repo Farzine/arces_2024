@@ -32,7 +32,7 @@ export default function Home() {
               <p className="text-sm text-gray-500">Conference Chair, 2025</p>
             </div>
           </div>
-          <blockquote className="italic border-l-4 border-blue-500 pl-4">
+          <blockquote className="italic text-justify border-l-4 border-blue-500 pl-4">
             <p className="mb-4">
               The International Conference on Advanced Research in Computer,
               Electrical, and Software Engineering (ARCES) is a prestigious platform
