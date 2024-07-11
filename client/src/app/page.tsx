@@ -6,18 +6,18 @@ import ImportantUpdates from "@/components/ImportantUpdateFrontendView";
 import Navbar from "@/components/NavBar";
 import OrganizedBy from "@/components/OrganizedBy";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import Sidebar from "@/components/Sidebar";
+import Sponsors from "@/components/Sponsors";
 
 export default function Home() {
   return (
-    <main className="h-screen">
+    <main className="h-screen bg-white">
       <Navbar />
       <Herosection />
       <div className="pb-100">
       <ImportantUpdates />
       <ConferenceDateView />
       <OrganizedBy />
-      
+      <Sponsors />
       </div>
       <ScrollToTopButton />
       <Footer />

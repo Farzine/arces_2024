@@ -75,7 +75,7 @@ export default function Herosection() {
         </div>
 
         {/* Fixed text overlay */}
-        <div className="absolute inset-0 flex items-crnter justify-center text-white  font-bold font-mono bg-black/50 p-4">
+        <div className="absolute inset-0 flex items-crnter justify-center text-white  font-bold font-mono bg-black/55 p-4">
           <div  className="flex">
             <div className="flex items-center ml-28">
               <img src="/logoNavBar.png" alt="logo" className="w-36 h-36" />
