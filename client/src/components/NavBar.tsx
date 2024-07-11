@@ -244,7 +244,7 @@ const Navbar = () => {
         </div>
       
         <div className="flex items-center gap-6">
-          <button className="bg-indigo-600 text-white px-5 py-2 text-sm rounded-full hover:bg-black flex justify-between items-center mx-5">
+          <button className="bg-red-500 text-white px-5 py-2 text-sm rounded-full hover:bg-black flex justify-between items-center mx-5">
             <svg
               className="w-4 h-4 mr-2"
               fill="none"

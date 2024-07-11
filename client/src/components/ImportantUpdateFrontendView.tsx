@@ -19,7 +19,7 @@ const ImportantUpdates: React.FC = () => {
 
   return (
     <div className='w-full bg-white pb-10'>
-      <div className='flex items-center justify-center space-x-2 pt-10 pb-4'>
+      <div className='flex items-center justify-center space-x-2 pt-10 pb-4 mb-5'>
         <div>
           <svg height="45px" width="45px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="-19.71 -19.71 236.56 236.56" xmlSpace="preserve" fill="#ff0000" stroke="#ff0000" strokeWidth="10.645722000000001">
 

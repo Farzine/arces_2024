@@ -10,57 +10,75 @@ import Sponsors from "@/components/Sponsors";
 
 export default function Home() {
   return (
-    <main className="h-screen bg-white">
-     <div className="bg-white">
-     <Navbar />
+    <main className="bg-white">
+      <Navbar />
       <Herosection />
-      <div className="pb-100">
+      <div className="mt-5">
         <ImportantUpdates />
-        <div className="bg-white">
-          <div className="bg-white p-6 border-2 m-10 rounded-lg">
-            <h1 className="text-3xl font-bold mb-4">“Message”</h1>
-            <div className="flex items-center mb-4">
-              <img
-                src="/logoNavBar.png"
-                alt="Md Farhad Rabbi"
-                className="w-16 h-16 rounded-full mr-4"
-              />
-              <div>
-                <p className="text-xl font-semibold">Md Farhad Rabbi</p>
-                <p className="text-sm text-gray-500">Conference Chair, 2025</p>
-              </div>
-            </div>
-            <blockquote className="italic border-l-4 pl-4">
-              <p className="mb-4">
-              The International Conference on Advanced Research in Computer,
-                Electrical, and Software Engineering (ARCES) is a prestigious platform
-                for research in computer, software, and electrical engineering. The key
-                aspect of ARCES is its encouragement of the necessary interaction between
-                scientists, researchers, engineers, corporate executives, and academic
-                students to bridge the gap between government, business,<br /> <br />
-                
-                 and academia.To develop this motivation, eminent scholars in pertinent domains provide
-                keynote addresses, tutorials, workshops, exhibitions, and oral
-                presentations. Academic researchers will disclose the results and findings
-                of laboratory-based investigations at this conference. To inform academia
-                about recent developments and useful findings, industry professionals
-                illustrate cutting-edge research in 4IR technologies. For discussions of
-                recent developments in contemporary computing <br /> <br />
-                
-                intelligence, the ARCES platform will also address regional and global challenges in the
-                aforementioned fields.
-              </p>
-            </blockquote>
-          </div>
-        </div>
+      </div>
 
+      <div className="px-4 py-6 lg:px-8">
+
+        <div className="bg-white p-6 border-2 rounded-lg shadow-sm ml-20 mr-20 mt-10 mb-10">
+          <h1 className="text-3xl font-bold mb-4">“Message”</h1>
+          <div className="flex items-center mb-4">
+            <img
+              src="/logoNavBar.png"
+              alt="Md Farhad Rabbi"
+              className="w-16 h-16 rounded-full mr-4"
+            />
+            <div>
+              <p className="text-xl font-semibold">Md Farhad Rabbi</p>
+              <p className="text-sm text-gray-500">Conference Chair, 2025</p>
+            </div>
+          </div>
+          <blockquote className="italic border-l-4 border-blue-500 pl-4">
+            <p className="mb-4">
+              The International Conference on Advanced Research in Computer,
+              Electrical, and Software Engineering (ARCES) is a prestigious platform
+              for research in computer, software, and electrical engineering. The key
+              aspect of ARCES is its encouragement of the necessary interaction between
+              scientists, researchers, engineers, corporate executives, and academic
+              students to bridge the gap between government, business, and academia. To
+              develop this motivation, eminent scholars in pertinent domains provide
+              keynote addresses, tutorials, workshops, exhibitions, and oral
+              <br />
+              <br />
+
+              presentations. Academic researchers will disclose the results and findings
+              of laboratory-based investigations at this conference. To inform academia
+              <br />
+
+              about recent developments and useful findings, industry professionals
+              illustrate cutting-edge research in 4IR technologies. For discussions of
+
+              <br />
+              <br />
+              recent developments in contemporary computing intelligence, the ARCES
+              platform will also address regional and global challenges in the
+              aforementioned fields.
+
+
+            </p>
+          </blockquote>
+        </div>
+      </div>
+      <div className="mt-3">
         <ConferenceDateView />
+      </div>
+
+      <div className="mt-28">
         <OrganizedBy />
+      </div>
+      <div className="mt-28">
         <Sponsors />
+
       </div>
       <ScrollToTopButton />
-      <Footer />
-     </div>
+
+      <div>
+        <Footer />
+      </div>
     </main>
   );
 }
