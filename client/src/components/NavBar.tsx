@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa"; 
 
+
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(""); 
@@ -219,7 +220,10 @@ const Navbar = () => {
                     <a href="#sponsors" className="block px-4 py-2">Sponsors</a>
                   </li>
                   <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
-                    <a href="#contact-us" className="block px-4 py-2">Contact Us</a>
+                    <a href="#contact-us" className="block px-4 py-2">Accomodation</a>
+                  </li>
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
+                    <a href="#contact-us" className="block px-4 py-2">Venue</a>
                   </li>
                 </ul>
               )}
