@@ -32,7 +32,7 @@ const ConferenceDateView: React.FC = () => {
   const cardWidth = `${maxDescriptionLength * 10 + 120}px`; // Adjust 10 and 120 according to your design
 
   return (
-    <div className="container mx-auto p-4 shadow-lg rounded-lg bg-white">
+    <div className=" p-7 shadow-lg rounded-lg bg-white">
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold">Conference Date</h1>
         <p className="text-2xl text-red-500">January 09-11, 2025</p>

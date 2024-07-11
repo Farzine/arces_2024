@@ -86,17 +86,17 @@ const Navbar = () => {
                 ></span>
               </a>
               {dropdownOpen === "For-Authors" && (
-                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48 z-50">
-                  <li className="hover:bg-gray-200">
+                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48 z-50 pt-5">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#submission" className="block px-4 py-2">Submission</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#call-for-paper" className="block px-4 py-2">Call For Paper</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#tracks" className="block px-4 py-2">Tracks</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#important-dates" className="block px-4 py-2">Important Dates</a>
                   </li>
                 </ul>
@@ -171,17 +171,17 @@ const Navbar = () => {
                 ></span>
               </a>
               {dropdownOpen === "Previous Conferences" && (
-                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48 z-50">
-                  <li className="hover:bg-gray-200">
+                <ul className="absolute bg-white shadow-lg mt-1 pt-5 rounded w-48 z-50">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#Previous Conferences" className="block px-4 py-2">ICERIE 20023</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#Previous Conferences" className="block px-4 py-2">ICERIE 20023</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#Previous Conferences" className="block px-4 py-2">ICERIE 20023</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#Previous Conferences" className="block px-4 py-2">ICERIE 20023</a>
                   </li>
                 </ul>
@@ -208,17 +208,17 @@ const Navbar = () => {
                 ></span>
               </a>
               {dropdownOpen === "about" && (
-                <ul className="absolute bg-white shadow-lg mt-1 rounded w-48 z-50">
-                  <li className="hover:bg-gray-200">
+                <ul className="absolute bg-white shadow-lg mt-1 pt-5 rounded w-48 z-50">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#about-icerie" className="block px-4 py-2">About ICERIE</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#committee" className="block px-4 py-2">Committee</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#sponsors" className="block px-4 py-2">Sponsors</a>
                   </li>
-                  <li className="hover:bg-gray-200">
+                  <li className="hover:bg-gray-200 mx-2 mr-2 mb-2">
                     <a href="#contact-us" className="block px-4 py-2">Contact Us</a>
                   </li>
                 </ul>
