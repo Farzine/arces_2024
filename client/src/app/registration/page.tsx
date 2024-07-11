@@ -6,12 +6,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import iictImg from "@/app/assets/IICT.jpg";
-import logo from "@/app/assets/logo1.png";
-import camera from "@/app/assets/camera.png";
 import { ImagePlus } from "lucide-react";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 const frontendUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
@@ -102,7 +99,7 @@ export default function Registration() {
         {/* Background Image Section */}
         <div className="relative h-full bg-black bg-opacity-50 overflow-hidden md:visible invisible">
           <Image
-            src={iictImg}
+            src="/IICT.jpg"
             alt="IICT SUST"
             layout="fill"
             objectFit="cover"
@@ -120,7 +117,7 @@ export default function Registration() {
         {/* Registration Form Section */}
         <div className="p-8 bg-white shadow-md rounded-lg flex flex-col items-center ">
           <Image
-            src={logo}
+            src="/logo1.png"
             height={200}
             width={200}
             alt=""
@@ -218,7 +215,7 @@ export default function Registration() {
               />
             ) : (
               <Image
-                src={camera}
+                src="/camera.png"
                 height={200}
                 width={200}
                 alt=""
