@@ -1,4 +1,4 @@
-const cloudinary = require('../config/cloudinary');
+
 const Schedule = require('../models/schedule');
 
 
