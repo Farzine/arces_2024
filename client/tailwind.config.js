@@ -21,6 +21,10 @@ module.exports = {
           '100%': { transform: 'translateX(-100%)' },
         },
       },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],
