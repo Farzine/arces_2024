@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'customPurple': '#6A68EC',
+        'customPurple': '#4B47FF',
         'customGray': '#E9E4E4',
       },
       animation: {
