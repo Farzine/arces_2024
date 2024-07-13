@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const TrackCard: React.FC = () => {
     const router = useRouter();
@@ -10,10 +11,11 @@ const TrackCard: React.FC = () => {
 
                 <h2 className="text-2xl font-bold">TRACKS</h2>
 
-                <img
+                <Image
                     src="https://img.icons8.com/ios-filled/50/000000/running.png" 
                     alt="Tracks Icon"
                     className="w-6 h-6 ml-3" 
+                    width={100} height={100}
                 />
             </div>
 

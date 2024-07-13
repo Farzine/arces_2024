@@ -101,8 +101,8 @@ const Navbar = () => {
             className="ml-10 w-16 cursor-pointer"
             src="/logoNavBar.png"
             alt="Logo"
-            width={64}
-            height={64}
+            width={1000}
+            height={1000}
           />
         </div>
         <div className="nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50">

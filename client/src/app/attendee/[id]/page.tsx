@@ -4,6 +4,7 @@ import axios from 'axios';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/NavBar';
 import { LoaderCircle } from 'lucide-react';
+import Image from 'next/image';
 
 const BACKENDURL = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 
@@ -49,10 +50,11 @@ export default function SoloAttendee({ params }: { params: { id: string } }) {
       <div className="flex flex-grow flex-col justify-center items-center p-4">
         {/* <h1 className="text-3xl font-semibold mb-4">Attendee Details</h1> */}
         <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md w-full md:w-1/2">
-          <img
+          <Image
             src={attendee.photoUrl}
             alt={`${attendee.name}'s photo`}
             className="w-32 h-32 rounded-full mb-4"
+            width={100} height={100}
           />
           <h2 className="text-2xl font-bold">{attendee.name}</h2>
           <p className="text-lg">Email: {attendee.email}</p>

@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import TimePicker from "react-time-picker"; 
+import "react-time-picker/dist/TimePicker.css";
 
 interface ScheduleItem {
   _id: string;
@@ -18,23 +20,24 @@ interface ScheduleItem {
   end_time: string;
 }
 
-const ScheduleItem: React.FC = () => {
-  const [ScheduleItem, setScheduleItem] = useState<ScheduleItem[]>([]);
+const Schedule: React.FC = () => {
+  const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>([]);
   // Individual state variables for each field
   const [session, setSession] = useState<string>("");
   const [room, setRoom] = useState<string>("");
   const [date, setDate] = useState<Date | null>(null);
-  const [start_time, setStartTime] = useState<string>("");
-  const [end_time, setEndTime] = useState<string>("");
+  const [start_time, setStartTime] = useState<string | null>(null);
+  const [end_time, setEndTime] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [editId, setEditId] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
-    fetchScheduleItem();
+    fetchScheduleItems();
   }, []);
 
-  const fetchScheduleItem = async () => {
+  const fetchScheduleItems = async () => {
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/schedule`,
@@ -45,17 +48,22 @@ const ScheduleItem: React.FC = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        setScheduleItem(data);
+        setScheduleItems(data);
       } else {
-        throw new Error("Failed to fetch ScheduleItem");
+        throw new Error("Failed to fetch schedule items");
       }
     } catch (error) {
-      console.error("Error fetching ScheduleItem:", error);
-      setError("Failed to fetch ScheduleItem. Please try again.");
+      console.error("Error fetching schedule items:", error);
+      setError("Failed to fetch schedule items. Please try again.");
     }
   };
 
   const handleAddScheduleItem = async () => {
+    if (!session || !room || !date || !start_time || !end_time) {
+      setError("All fields are required.");
+      return;
+    }
+
     try {
       const token = Cookies.get("token");
       const formattedDate = date ? format(date, "dd MMMM yyyy") : "";
@@ -69,30 +77,30 @@ const ScheduleItem: React.FC = () => {
           },
           credentials: "include",
           body: JSON.stringify({
-            session: session,
-            room: room,
+            session,
+            room,
             date: formattedDate,
-            start_time: start_time,
-            end_time: end_time,
+            start_time,
+            end_time,
           }),
         }
       );
       if (response.ok) {
-        fetchScheduleItem();
+        fetchScheduleItems();
         setSession("");
         setRoom("");
         setDate(null);
-        setStartTime("");
-        setEndTime("");
-
+        setStartTime(null);
+        setEndTime(null);
+        setError(null);
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
       } else {
-        throw new Error("Failed to add ScheduleItem");
+        throw new Error("Failed to add schedule item");
       }
     } catch (error) {
-      console.error("Error adding ScheduleItem:", error);
-      setError("Failed to add ScheduleItem. Please try again.");
+      console.error("Error adding schedule item:", error);
+      setError("Failed to add schedule item. Please try again.");
     }
   };
 
@@ -111,25 +119,90 @@ const ScheduleItem: React.FC = () => {
         }
       );
       if (response.ok) {
-        fetchScheduleItem();
+        fetchScheduleItems();
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
       } else {
-        throw new Error("Failed to delete ScheduleItem");
+        throw new Error("Failed to delete schedule item");
       }
     } catch (error) {
-      console.error("Error deleting ScheduleItem:", error);
-      setError("Failed to delete ScheduleItem. Please try again.");
+      console.error("Error deleting schedule item:", error);
+      setError("Failed to delete schedule item. Please try again.");
     }
+  };
+
+  const handleEditScheduleItem = async () => {
+    if (!editId || !session || !room || !date || !start_time || !end_time) {
+      setError("All fields are required.");
+      return;
+    }
+
+    try {
+      const token = Cookies.get("token");
+      const formattedDate = date ? format(date, "dd MMMM yyyy") : "";
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/schedule/edit/${editId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          credentials: "include",
+          body: JSON.stringify({
+            session,
+            room,
+            date: formattedDate,
+            start_time,
+            end_time,
+          }),
+        }
+      );
+      if (response.ok) {
+        fetchScheduleItems();
+        setSession("");
+        setRoom("");
+        setDate(null);
+        setStartTime(null);
+        setEndTime(null);
+        setEditId(null);
+        setError(null);
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 3000);
+      } else {
+        throw new Error("Failed to edit schedule item");
+      }
+    } catch (error) {
+      console.error("Error editing schedule item:", error);
+      setError("Failed to edit schedule item. Please try again.");
+    }
+  };
+
+  const handleEditClick = (item: ScheduleItem) => {
+    setSession(item.session);
+    setRoom(item.room);
+    setDate(moment(item.date, "DD MMMM yyyy").toDate());
+    setStartTime(item.start_time);
+    setEndTime(item.end_time);
+    setEditId(item._id);
+  };
+
+  const handleCancelEdit = () => {
+    setSession("");
+    setRoom("");
+    setDate(null);
+    setStartTime(null);
+    setEndTime(null);
+    setEditId(null);
   };
 
   return (
     <div className="flex">
       <Sidebar />
       <div className="ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb]">
-        <h1 className="text-3xl font-bold mb-4">ScheduleItem</h1>
+        <h1 className="text-3xl font-bold mb-4">Schedule Management</h1>
 
-        {ScheduleItem.length === 0 && <p>No ScheduleItem found</p>}
+        {scheduleItems.length === 0 && <p>No schedule items found</p>}
         {error && (
           <div
             className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
@@ -170,28 +243,41 @@ const ScheduleItem: React.FC = () => {
             onChange={(e) => setRoom(e.target.value)}
             className="p-2 border rounded w-1/3"
           ></textarea>
-               {/* start time  */}
-          <textarea
-            placeholder="Start Time 10:00 AM"
+          
+          <label className="block font-bold">Start Time</label>
+          <TimePicker
+            onChange={(start_time: string | null) => setStartTime(start_time)}
             value={start_time}
-            onChange={(e) => setStartTime(e.target.value)}
-            className="p-2 border rounded w-1/5"
-          ></textarea>
-         {/* end time  */}
-         
-          <textarea
-            placeholder="End Time 12:00 PM"
+            className="p-2 rounded w-1/5 border-2 border-white"
+            disableClock
+            format="h:mm a"
+          />
+          
+          <label className="block font-bold">End Time</label>
+          <TimePicker
+            onChange={(end_time: string | null) => setEndTime(end_time)}
             value={end_time}
-            onChange={(e) => setEndTime(e.target.value)}
-            className="p-2 border rounded w-1/5"
-          ></textarea>
+            className="p-2 rounded w-1/5 border-2 border-white "
+            disableClock
+            format="h:mm a"
+          />
 
-          <button
-            onClick={handleAddScheduleItem}
-            className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
-          >
-            Add Schedule
-          </button>
+          <div className="flex space-x-2">
+            <button
+              onClick={editId ? handleEditScheduleItem : handleAddScheduleItem}
+              className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
+            >
+              {editId ? "Update Schedule" : "Add Schedule"}
+            </button>
+            {editId && (
+              <button
+                onClick={handleCancelEdit}
+                className="bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 w-40"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="mt-8">
@@ -204,10 +290,11 @@ const ScheduleItem: React.FC = () => {
                 <th className="py-2 px-4 border">Room/Building</th>
                 <th className="py-2 px-4 border">Start Time</th>
                 <th className="py-2 px-4 border">End Time</th>
+                <th className="py-2 px-4 border">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {ScheduleItem.map((item) => (
+              {scheduleItems.map((item) => (
                 <tr key={item._id}>
                   <td className="py-2 px-4 border">{item._id}</td>
                   <td className="py-2 px-4 border">
@@ -218,6 +305,12 @@ const ScheduleItem: React.FC = () => {
                   <td className="py-2 px-4 border">{item.start_time}</td>
                   <td className="py-2 px-4 border">{item.end_time}</td>
                   <td className="py-2 px-4 border space-x-2">
+                    <button
+                      onClick={() => handleEditClick(item)}
+                      className="text-black py-1 px-3 rounded hover:bg-green-600 border-2 border-green-600"
+                    >
+                      Edit
+                    </button>
                     <button
                       onClick={() => handleDeleteScheduleItem(item._id)}
                       className="text-black py-1 px-3 rounded hover:bg-red-600 border-2 border-red-600"
@@ -235,4 +328,4 @@ const ScheduleItem: React.FC = () => {
   );
 };
 
-export default ScheduleItem;
+export default Schedule;

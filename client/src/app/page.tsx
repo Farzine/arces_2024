@@ -7,6 +7,7 @@ import Navbar from "@/components/NavBar";
 import OrganizedBy from "@/components/OrganizedBy";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Sponsors from "@/components/Sponsors";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -22,10 +23,11 @@ export default function Home() {
         <div className="bg-white p-6 border-2 rounded-lg shadow-sm ml-20 mr-20 mt-10 mb-10">
           <h1 className="text-3xl font-bold mb-4">“Message”</h1>
           <div className="flex items-center mb-4">
-            <img
+            <Image
               src="/logoNavBar.png"
               alt="Md Farhad Rabbi"
               className="w-16 h-16 rounded-full mr-4"
+              width={100} height={100}
             />
             <div>
               <p className="text-xl font-semibold">Md Farhad Rabbi</p>

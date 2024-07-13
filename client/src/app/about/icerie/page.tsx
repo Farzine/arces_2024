@@ -3,6 +3,7 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/NavBar';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
+import Image from 'next/image';
 
 import React from 'react';
 
@@ -27,8 +28,8 @@ const AboutPage: React.FC = () => {
         </div>
         <div className="bg-white shadow-lg rounded-lg p-8 mr-16 ml-16">
           <div className="flex justify-center mb-10 mt-10">
-            <img src="/sustLogo.png" alt="Logo 1" className="h-28 mx-4 pr-5 mt-2" />
-            <img src="/logoNavBar.png" alt="Logo 2" className="h-32 mx-4 mb-6" />
+            <Image src="/sustLogo.png" alt="Logo 1" className="h-28 mx-4 pr-5 mt-2" width={150} height={170} />
+            <Image src="/logoNavBar.png" alt="Logo 2" className="h-32 mx-4 mb-6"width={150} height={170}  />
           </div>
           <div className="text-justify text-lg mx-16 ">
             <p>

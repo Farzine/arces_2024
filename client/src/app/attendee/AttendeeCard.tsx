@@ -1,5 +1,6 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import Image from 'next/image';
 
 interface AttendeeCardProps {
   _id: string;
@@ -21,7 +22,7 @@ function AttendeeCard(props: AttendeeCardProps) {
       className='bg-white p-4 rounded-md shadow-md m-3 hover:shadow-lg flex flex-col justify-center items-center cursor-pointer'
       onClick={handleClick}
     >
-      <img src={props.photoUrl} alt={props.name} className='aspect-square h-32 rounded-full object-cover' />
+      <Image src={props.photoUrl} alt={props.name} className='aspect-square h-32 rounded-full object-cover' width={100} height={100} />
       <p className='text-lg font-semibold mt-4 text-center'>{props.name}</p>
       <p className='text-sm text-gray-500 text-center'>{props.email}</p>
       <p className='text-sm text-blue-500 text-center'>{props.university}</p>      

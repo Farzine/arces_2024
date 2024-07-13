@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
 import OrganizedBy from "@/components/OrganizedBy";
+import Image from "next/image";
 
 export default function Authors() {
   return (
@@ -13,10 +14,11 @@ export default function Authors() {
 
           <div className="flex items-center justify-center space-x-10 mb-10 ">
             <div>
-            <img
+            <Image
               src="/paper.png"
               alt="Call for Paper"
               className="w-16 h-16   "
+              width={100} height={100}
             />
             </div>
             <div>

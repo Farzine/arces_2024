@@ -1,4 +1,5 @@
 import { SetStateAction, useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Herosection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -65,10 +66,11 @@ export default function Herosection() {
                 }`}
               data-carousel-item
             >
-              <img
+              <Image
                 src={image.src}
                 className="absolute block w-full h-full object-cover"
                 alt={`Slide ${index + 1}`}
+                width={1000} height={1000}
               />
             </div>
           ))}
@@ -78,7 +80,7 @@ export default function Herosection() {
         <div className="absolute inset-0 flex items-crnter justify-center text-white  font-bold font-mono bg-black/55 p-4">
           <div  className="flex">
             <div className="flex items-center ml-28">
-              <img src="/logoNavBar.png" alt="logo" className="w-36 h-36" />
+              <Image src="/logoNavBar.png" alt="logo" className="w-36 h-36" width={1000} height={1000}/>
             </div>
             <div className="flex items-center">
               <div>

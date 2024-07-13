@@ -19,7 +19,7 @@ const Schedule: React.FC = () => {
     const fetchSchedule = async () => {
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/schedule/`
+          `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/schedule`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch schedule");
