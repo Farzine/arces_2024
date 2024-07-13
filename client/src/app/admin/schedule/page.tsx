@@ -302,8 +302,8 @@ const Schedule: React.FC = () => {
                   </td>
                   <td className="py-2 px-4 border">{item.session}</td>
                   <td className="py-2 px-4 border">{item.room}</td>
-                  <td className="py-2 px-4 border">{item.start_time}</td>
-                  <td className="py-2 px-4 border">{item.end_time}</td>
+                  <td className="py-2 px-4 border">{moment(item.start_time, "HH:mm").format("h:mm A")}</td>
+                  <td className="py-2 px-4 border">{moment(item.end_time, "HH:mm").format("h:mm A")}</td>
                   <td className="py-2 px-4 border space-x-2">
                     <button
                       onClick={() => handleEditClick(item)}

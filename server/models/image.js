@@ -11,7 +11,16 @@ const imageSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    required: false  
+    required: false,
+  },
+  tag: {
+    type: String,
+    enum: ['conference', 'meeting', 'tour', 'programs'],
+    required: true,
+  },
+  year: {
+    type: Number,
+    required: true,
   }
 });
 

@@ -9,6 +9,8 @@ const UploadImagePage: React.FC = () => {
     const [images, setImages] = useState<any[]>([]);
     const [file, setFile] = useState<File | null>(null);
     const [description, setDescription] = useState('');
+    const [tag, setTag] = useState('');
+    const [year, setYear] = useState('');
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
@@ -31,6 +33,7 @@ const UploadImagePage: React.FC = () => {
             });
             if (response.ok) {
                 const data = await response.json();
+                console.log('Fetched images:', data); // Log fetched data
                 setImages(data);
             } else {
                 console.error('Error fetching images:', response.statusText);
@@ -54,6 +57,14 @@ const UploadImagePage: React.FC = () => {
         setDescription(event.target.value);
     };
 
+    const handleTagChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setTag(event.target.value);
+    };
+
+    const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setYear(event.target.value);
+    };
+
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         if (!file) {
@@ -64,6 +75,8 @@ const UploadImagePage: React.FC = () => {
         const formData = new FormData();
         formData.append('image', file);
         formData.append('description', description);
+        formData.append('tag', tag);
+        formData.append('year', year);
 
         setLoading(true);
 
@@ -81,6 +94,8 @@ const UploadImagePage: React.FC = () => {
                 fetchImages();
                 setFile(null);
                 setDescription('');
+                setTag('');
+                setYear('');
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
@@ -164,6 +179,24 @@ const UploadImagePage: React.FC = () => {
                         placeholder="Enter Picture Description"
                         className="border p-2"
                     />
+                    <select
+                        value={tag}
+                        onChange={handleTagChange}
+                        className="border p-2"
+                    >
+                        <option value="">Select Tag</option>
+                        <option value="conference">Conference</option>
+                        <option value="meeting">Meeting</option>
+                        <option value="tour">Tour</option>
+                        <option value="programs">Programs</option>
+                    </select>
+                    <input
+                        type="number"
+                        value={year}
+                        onChange={handleYearChange}
+                        placeholder="Enter Year"
+                        className="border p-2"
+                    />
                     <button
                         type="submit"
                         className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
@@ -195,6 +228,12 @@ const UploadImagePage: React.FC = () => {
                                 <p className="mb-2 text-gray-700" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                                     {truncateText(image.description, 30)}
                                 </p>
+                                <p className="mb-2 text-gray-700">
+                                    <strong>Tag:</strong> {image.tag}
+                                </p>
+                                <p className="mb-2 text-gray-700">
+                                    <strong>Year:</strong> {image.year}
+                                </p>
                                 <button
                                     onClick={() => handleDelete(image._id)}
                                     className="mt-2 px-2 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
@@ -204,7 +243,7 @@ const UploadImagePage: React.FC = () => {
                                     {loading ? 'Deleting...' : 'Delete'}
                                 </button>
                             </div>
-                            <Image src={image.path} alt={image.description} className="w-32 h-24 object-cover rounded ml-4"width={100} height={100} />
+                            <Image src={image.path} alt={image.description} className="w-32 h-24 object-cover rounded ml-4" width={100} height={100} />
                         </div>
                     ))}
                 </div>
