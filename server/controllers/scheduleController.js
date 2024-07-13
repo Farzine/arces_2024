@@ -20,6 +20,35 @@ exports.addSchedule = async (req, res) => {
   }
 };
 
+
+exports.updateSchedule = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedata = req.body;
+    const schedule = await Schedule.findById(id);
+
+    if (!schedule) {
+      return res.status(404).json({ message: 'schedule not found' });
+    }
+
+
+    await Schedule.findByIdAndUpdate(id,updatedata);
+
+    res.status(200).json({ message: 'Schedule Updated successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+
+
+
+
+
+
+
 exports.deleteSchedule = async (req, res) => {
   try {
     const { id } = req.params;

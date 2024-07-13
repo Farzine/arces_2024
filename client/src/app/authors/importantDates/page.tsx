@@ -14,6 +14,7 @@ const ImportantDates: React.FC = () => {
   const [dates, setDates] = useState<ImportantDate[]>([]);
 
   useEffect(() => {
+    
     const fetchDates = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates`);

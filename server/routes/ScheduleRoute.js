@@ -6,6 +6,7 @@ const authenticateToken = require('../middlewares/authMiddleware');
 
 router.post('/add', authenticateToken, ScheduleController.addSchedule);
 router.delete('/:id', authenticateToken, ScheduleController.deleteSchedule);
+router.put('/edit/:id', ScheduleController.updateSchedule);
 router.get('/', ScheduleController.getSchedule);
 
 
