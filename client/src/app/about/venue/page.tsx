@@ -11,6 +11,9 @@ import { useCallback, useEffect, useState } from "react";
 import { GiDirectionSigns } from "react-icons/gi";
 import { PiMapPinArea } from "react-icons/pi";
 
+
+const libraries: ("places" | "drawing" | "geometry" | "visualization")[] = ["places"];
+
 const containerStyle = {
   width: "100%",
   height: "400px",
@@ -28,8 +31,8 @@ const mapOptions = {
 export default function Venue() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: `${process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY}`,
-    libraries: ["places"],
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY ?? '',
+    libraries, 
   });
 
   const [map, setMap] = useState<google.maps.Map | null>(null);
