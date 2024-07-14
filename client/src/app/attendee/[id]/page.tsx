@@ -16,7 +16,7 @@ export default function SoloAttendee({ params }: { params: { id: string } }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BACKENDURL}registration/${params.id}`);
+        const response = await axios.get(`${BACKENDURL}/registration/${params.id}`);
         setAttendee(response.data);
         setLoading(false);
       } catch (error:any) {
@@ -30,7 +30,7 @@ export default function SoloAttendee({ params }: { params: { id: string } }) {
 
   const payment = async () => {
     try {
-      const response = await axios.get(`${BACKENDURL}registration/pay/${params.id}`);
+      const response = await axios.get(`${BACKENDURL}/registration/pay/${params.id}`);
       const { url } = response.data;
       window.location.href = url;
     } catch (error) {

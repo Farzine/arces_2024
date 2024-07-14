@@ -24,7 +24,7 @@ export default function Attendee() {
 
   useEffect(() => {
     axios
-      .get(`${BACKENDURL}registration`)
+      .get(`${BACKENDURL}/registration`)
       .then((response) => {
         setAttendees(response.data);
         setFetching(false);
