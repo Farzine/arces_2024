@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { FaAngleDown } from "react-icons/fa";
+import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
 
 const home = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 const tracks = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/tracks";
@@ -74,11 +74,13 @@ const navLinks = [
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
   const router = useRouter();
 
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
     setDropdownOpen("");
+    setMenuOpen(false); // Close menu on link click
   };
 
   const handleMouseEnter = (link: string) => {
@@ -91,12 +93,17 @@ const Navbar = () => {
 
   const handleNavigation = (path: string) => {
     router.push(path);
+    setMenuOpen(false); // Close menu on button click
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   return (
     <header className="bg-white shadow-lg p-3 z-50 relative">
-      <nav className="flex justify-between items-center w-full h-14 mx-auto ">
-        <div>
+      <nav className="flex justify-between items-center w-full h-14 mx-auto">
+        <div className="flex items-center">
           <Image
             className="ml-10 w-16 cursor-pointer"
             src="/logoNavBar.png"
@@ -104,9 +111,18 @@ const Navbar = () => {
             width={1000}
             height={1000}
           />
+          <div className="md:hidden ml-2">
+            <button onClick={toggleMenu}>
+              {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            </button>
+          </div>
         </div>
-        <div className="nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50">
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-6 gap-2 text-black text-sm mt-4 ">
+        <div
+          className={`nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${
+            menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
+          } md:opacity-100`}
+        >
+          <ul className="flex md:flex-row flex-col md:items-center md:gap-6 gap-4 text-black text-sm mt-5 w-full">
             {navLinks.map((link, index) => (
               <li
                 key={index}
@@ -149,11 +165,33 @@ const Navbar = () => {
                 )}
               </li>
             ))}
+            <li className="ml-7">
+              <button
+                className="bg-indigo-700 text-white px-5 py-2 text-sm rounded-full hover:bg-indigo-500 flex justify-between items-center mx-5"
+                onClick={() => handleNavigation("/registration")}
+              >
+                <svg
+                  className="w-4 h-4 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="3"
+                    d="M12 4v16m8-8H4"
+                  ></path>
+                </svg>
+                Register
+              </button>
+            </li>
           </ul>
         </div>
-        <div className="flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-6">
           <button
-            className="bg-indigo-700 text-white px-5 py-2 text-sm rounded-full hover:bg-indigo-500  flex justify-between items-center mx-5"
+            className="bg-indigo-700 text-white px-5 py-2 text-sm rounded-full hover:bg-indigo-500 flex justify-between items-center mx-5"
             onClick={() => handleNavigation("/registration")}
           >
             <svg
