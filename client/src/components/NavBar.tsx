@@ -5,22 +5,19 @@ import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
 
 const home = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 const tracks = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/tracks";
-const submissionUrl =
-  process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/submission";
-const callForPaperUrl =
-  process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/callForPaper";
+const submissionUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/submission";
+const callForPaperUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/callForPaper";
 const conferenceTracks = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/tracks";
-const importantDates =
-  process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/importantDates";
+const importantDates = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/authors/importantDates";
 const registration = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/registration";
+const registrationFees = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/registration/registrationFees";
 const attendee = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/attendee";
 const schedule = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/schedule";
 const gallery = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/gallery";
 const aboutIcerie = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/icerie";
 const committee = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/committee";
 const sponsors = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/sponsors";
-const accommodation =
-  process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/accommodation";
+const accommodation = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/accommodation";
 const venue = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/about/venue";
 const contactUs = process.env.NEXT_PUBLIC_APP_FRONTEND_URL + "/contact";
 
@@ -41,7 +38,7 @@ const navLinks = [
     name: "Registration",
     href: "#registration",
     dropdown: [
-      { name: "Registration", href: `${registration}` },
+      { name: "Registration Fees", href: `${registrationFees}` },
       { name: "Attending", href: `${attendee}` },
     ],
   },
@@ -80,7 +77,7 @@ const Navbar = () => {
   const handleLinkClick = (link: string) => {
     setActiveLink(link);
     setDropdownOpen("");
-    setMenuOpen(false); // Close menu on link click
+    setMenuOpen(false); 
   };
 
   const handleMouseEnter = (link: string) => {
@@ -93,7 +90,7 @@ const Navbar = () => {
 
   const handleNavigation = (path: string) => {
     router.push(path);
-    setMenuOpen(false); // Close menu on button click
+    setMenuOpen(false); 
   };
 
   const toggleMenu = () => {
