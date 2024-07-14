@@ -164,7 +164,7 @@ const UploadImagePage: React.FC = () => {
                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
                 </div>
             )}
-            <div className={`ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb] ${loading ? 'filter blur-sm' : ''}`}>
+            <div className={`ml-64 flex-1 p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-1/3">
                     <input
                         type="file"

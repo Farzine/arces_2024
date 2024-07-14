@@ -145,7 +145,7 @@ const Notices: React.FC = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb]">
+      <div className="ml-64 flex-1 p-8 overflow-y-auto bg-gray-100">
         <h1 className="text-3xl font-bold mb-4">Notices</h1>
 
         {/* Success message display */}

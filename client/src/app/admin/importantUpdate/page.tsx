@@ -139,7 +139,7 @@ const ImportantUpdates: React.FC = () => {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="ml-64 flex-1 p-8 overflow-y-auto bg-[#d7dbdb]">
+      <div className="ml-64 flex-1 p-8 overflow-y-auto bg-gray-100 h-screen">
         <h1 className="text-3xl font-bold mb-4">Important Update</h1>
 
         {/* Success message display */}
@@ -170,7 +170,7 @@ const ImportantUpdates: React.FC = () => {
           </div>
         )}
 
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 bg-gray-100">
           <input
             type="text"
             placeholder="Title"
@@ -186,7 +186,7 @@ const ImportantUpdates: React.FC = () => {
           </button>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 bg-gray-100">
           <table className="min-w-full bg-white border">
             <thead>
               <tr>
