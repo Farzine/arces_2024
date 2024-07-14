@@ -88,7 +88,7 @@ const Sidebar: React.FC = () => {
                     className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/updateEmailPassword')}`}
                 >
                     <FaEnvelope className="h-6 w-6" />
-                    <span>Email</span>
+                    <span>Change Email-Pass</span>
                 </div>
             </div>
             {loggingOut ? (

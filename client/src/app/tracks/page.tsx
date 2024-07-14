@@ -1,6 +1,7 @@
 "use client";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 
 export default function IndustryTracks() {
@@ -79,10 +80,10 @@ export default function IndustryTracks() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       <div className="flex flex-col md:flex-row">
-        <aside className="bg-white p-4 w-full md:w-1/4">
+        <aside className="bg-white p-4 w-full md:w-1/4 ml-16 mt-8">
           <div className="flex justify-center mt-2 pt-5 border-2">
             <div>
               <h2 className="text-5xl font-bold mt-2 mb-6">Tracks</h2>
@@ -113,9 +114,9 @@ export default function IndustryTracks() {
             </button>
           ))}
         </aside>
-        <main className="flex-1 p-4 bg-white">
+        <main className="flex-1 p-4 bg-white mb-20">
           {sections.map(section => (
-            <section key={section.id} id={section.id} className="mb-8">
+            <section key={section.id} id={section.id} className="mb-8 mt-14 ml-16">
               <h3 className="text-2xl font-bold mb-4 text-red-500">{section.title}</h3>
               <ul className="list-disc list-inside">
                 {section.description.map((item, index) => (
@@ -126,6 +127,7 @@ export default function IndustryTracks() {
           ))}
         </main>
       </div>
+      <ScrollToTopButton />
       <Footer />
     </div>
   );

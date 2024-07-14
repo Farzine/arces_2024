@@ -106,7 +106,7 @@ const Navbar = () => {
         <div className="flex items-center">
           <Image
             className="ml-10 w-16 cursor-pointer"
-            src="/logoNavBar.png"
+            src="/icerieLogo.jpg"
             alt="Logo"
             width={1000}
             height={1000}
@@ -165,28 +165,7 @@ const Navbar = () => {
                 )}
               </li>
             ))}
-            <li className="ml-7">
-              <button
-                className="bg-indigo-700 text-white px-5 py-2 text-sm rounded-full hover:bg-indigo-500 flex justify-between items-center mx-5"
-                onClick={() => handleNavigation("/registration")}
-              >
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="3"
-                    d="M12 4v16m8-8H4"
-                  ></path>
-                </svg>
-                Register
-              </button>
-            </li>
+            
           </ul>
         </div>
         <div className="hidden md:flex items-center gap-6">

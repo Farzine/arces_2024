@@ -21,6 +21,7 @@ const ImportantDates: React.FC = () => {
   const [description, setDescription] = useState('');
   const [error, setError] = useState<string | null>(null); 
   const [success, setSuccess] = useState<boolean>(false); 
+  const [editId, setEditId] = useState<string | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -45,12 +46,18 @@ const ImportantDates: React.FC = () => {
     }
   };
 
-  const handleAddImportantDates = async () => {
+  const handleAddOrEditImportantDates = async () => {
     try {
       const token = Cookies.get('token');
       const formattedDate = dates ? format(dates, 'dd MMMM yyyy') : '';
-      const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates/add`, {
-        method: 'POST',
+
+      const url = editId 
+        ? `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates/edit/${editId}` 
+        : `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates/add`;
+      const method = editId ? 'PUT' : 'POST';
+
+      const response = await fetch(url, {
+        method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -61,18 +68,20 @@ const ImportantDates: React.FC = () => {
           description
         }),
       });
+
       if (response.ok) {
         fetchImportantDates();
         setDates(null);
         setDescription('');
+        setEditId(null);
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
       } else {
-        throw new Error('Failed to add important date');
+        throw new Error(editId ? 'Failed to edit important date' : 'Failed to add important date');
       }
     } catch (error) {
-      console.error('Error adding important date:', error);
-      setError('Failed to add important date. Please try again.'); 
+      console.error(editId ? 'Error editing important date:' : 'Error adding important date:', error);
+      setError(editId ? 'Failed to edit important date. Please try again.' : 'Failed to add important date. Please try again.'); 
     }
   };
 
@@ -98,6 +107,18 @@ const ImportantDates: React.FC = () => {
       console.error('Error deleting important date:', error);
       setError('Failed to delete important date. Please try again.'); 
     }
+  };
+
+  const handleEditClick = (date: Dates) => {
+    setDates(moment(date.date, 'DD MMMM yyyy').toDate());
+    setDescription(date.description);
+    setEditId(date._id);
+  };
+
+  const handleCancelEdit = () => {
+    setDates(null);
+    setDescription('');
+    setEditId(null);
   };
 
   return (
@@ -135,12 +156,22 @@ const ImportantDates: React.FC = () => {
             onChange={(e) => setDescription(e.target.value)}
             className="p-2 border rounded w-1/3"
           ></textarea>
-          <button
-            onClick={handleAddImportantDates}
-            className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
-          >
-            Submit Date
-          </button>
+          <div className="flex space-x-2">
+            <button
+              onClick={handleAddOrEditImportantDates}
+              className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
+            >
+              {editId ? 'Update Date' : 'Submit Date'}
+            </button>
+            {editId && (
+              <button
+                onClick={handleCancelEdit}
+                className="bg-gray-600 text-white py-2 px-4 rounded hover:bg-gray-700 w-40"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
         </div>
 
         <div className="mt-8">
@@ -160,6 +191,12 @@ const ImportantDates: React.FC = () => {
                   <td className="py-2 px-4 border">{moment(date.date).format('DD MMMM, YYYY')}</td>
                   <td className="py-2 px-4 border">{date.description}</td>
                   <td className="py-2 px-4 border space-x-2">
+                    <button
+                      onClick={() => handleEditClick(date)}
+                      className="text-black py-1 px-3 rounded hover:bg-green-600 border-2 border-green-600"
+                    >
+                      Edit
+                    </button>
                     <button
                       onClick={() => handleDeleteImportantDates(date._id)}
                       className="text-black py-1 px-3 rounded hover:bg-red-600 border-2 border-red-600"

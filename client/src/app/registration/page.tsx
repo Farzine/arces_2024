@@ -117,7 +117,7 @@ export default function Registration() {
         {/* Registration Form Section */}
         <div className="p-8 bg-white shadow-md rounded-lg flex flex-col items-center ">
           <Image
-            src="/logo1.png"
+            src="/icerieLogo.jpg"
             height={200}
             width={200}
             alt=""

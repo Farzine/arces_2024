@@ -26,7 +26,7 @@ export default function Authors() {
             </div>
           </div>
 
-          <div className="bg-gray-50 shadow-md rounded-lg p-6 mb-10">
+          <div className="bg-gray-100 shadow-md rounded-lg p-6 mb-14 ml-20 mr-20 mt-5">
             <h2 className="text-2xl font-bold text-red-600 mb-4">Important Deadlines:</h2>
             <ul className="list-disc list-inside text-lg">
               <li>Extended Abstract Submission: July 30, 2024</li>
@@ -38,7 +38,7 @@ export default function Authors() {
             </ul>
           </div>
 
-          <div className="bg-gray-50 shadow-md rounded-lg p-6">
+          <div className="bg-gray-100 shadow-md rounded-lg p-6 ml-20 mr-20">
             <h2 className="text-2xl font-bold text-red-600 mb-4">Extended Abstract Submission:</h2>
             <p className="mb-4">The extended abstract (not over 600 words) must include research objectives, methodology, results and conclusion of the study. The submitting file should contain the following:</p>
             <ul className="list-disc list-inside font-bold text-lg mb-4">
