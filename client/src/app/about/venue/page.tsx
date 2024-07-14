@@ -102,7 +102,7 @@ export default function Venue() {
         key="destination"
         position={center}
         icon={{
-          url: "/venue.png", // Custom PNG icon for destination
+          url: "/venue.png", 
           scaledSize: new google.maps.Size(40, 40),
         }}
       />

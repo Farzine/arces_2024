@@ -43,14 +43,14 @@ export default function Attendee() {
   return (
     <main className="flex flex-col min-h-screen">
       <Navbar />
-      <div className="flex-grow">
+      <div className="flex-grow mt-5">
         {fetching ? (
           <div role="status" className="flex flex-col justify-center items-center h-screen">
           <LoaderCircle className="animate-spin" size={45} />
         </div>
         ) : (
           <>
-            <h1 className="text-4xl font-serif text-center my-6">
+            <h1 className="text-4xl font-bold text-center my-6">
               Meet our attendees
             </h1>
             <div className="flex justify-center mx-6">

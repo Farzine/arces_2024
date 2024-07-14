@@ -16,9 +16,9 @@ const RegistrationFees: React.FC = () => {
     }
 
     return (
-        <div>
+        <div className='min-h-screen'>
             <Navbar />
-            <div className="container mx-auto px-4 py-8 bg-white mb-10">
+            <div className="container mx-auto px-4 py-8 bg-white mb-10 min-h-screen">
                 <div className='flex items-center justify-center mt-14 mb-10'>
                     <Image
                         src="/fees.png"

@@ -46,7 +46,7 @@ const EmailPage = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gray-100">
       <Sidebar />
       <div className="ml-64 flex-1 p-8 overflow-y-auto">
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-1/3">

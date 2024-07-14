@@ -119,7 +119,7 @@ const Navbar = () => {
             menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
           } md:opacity-100`}
         >
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-6 gap-4 text-black font-semibold text-lg mt-5 w-full">
+          <ul className="flex md:flex-row flex-col md:items-center md:gap-6 gap-4 text-black text-lg font-semibold mt-5 w-full">
             {navLinks.map((link, index) => (
               <li
                 key={index}
@@ -141,19 +141,19 @@ const Navbar = () => {
                   <span
                     className={`${
                       activeLink === link.name
-                        ? "absolute w-full h-1 bg-customPurple top-4 my-1 left-0"
-                        : "absolute w-full h-1 bg-customPurple top-4 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                        ? "absolute w-full h-1 bg-customPurple top-5 my-1 left-0"
+                        : "absolute w-full h-1 bg-customPurple top-5 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
                     }`}
                   ></span>
                 </a>
                 {dropdownOpen === link.name && link.dropdown && (
-                  <ul className="absolute bg-white shadow-lg mt-1 rounded w-48 z-50 pt-5">
+                  <ul className="absolute bg-white shadow-lg rounded w-48 z-50 pt-5">
                     {link.dropdown.map((sublink, subIndex) => (
                       <li
                         key={subIndex}
                         className="hover:bg-gray-200 mx-2 mr-2 mb-2"
                       >
-                        <a href={sublink.href} className="block px-4 py-2">
+                        <a href={sublink.href} className="block px-4 py-2 text-lg font-semibold">
                           {sublink.name}
                         </a>
                       </li>
@@ -162,12 +162,11 @@ const Navbar = () => {
                 )}
               </li>
             ))}
-            
           </ul>
         </div>
         <div className="hidden md:flex items-center gap-6">
           <button
-            className="bg-indigo-700 text-white px-5 py-2 text-sm rounded-full hover:bg-indigo-500 flex justify-between items-center mx-5"
+            className="bg-indigo-700 text-white px-5 py-2 text-lg font-semibold rounded-full hover:bg-indigo-500 flex justify-between items-center mx-5"
             onClick={() => handleNavigation("/registration")}
           >
             <svg

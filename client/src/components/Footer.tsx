@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <FaFacebookF className="w-6 h-6  md:w-8 md:h-8" />
         </a>
-        <a href="mailto:arces@sust.edu">
+        <a href="mailto:icerie2025@sust.edu">
           <FaEnvelope className="w-6 h-6 md:w-8 md:h-8" />
         </a>
       </div>
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
         <span className="text-xs md:text-sm">
           Copyright © 2024. All rights reserved |{' '}
           <button onClick={copyEmailToClipboard} className="ml-1 underline cursor-pointer">
-            Contact: arces@sust.edu
+            Contact: icerie2025@sust.edu
           </button>
         </span>
       </div>

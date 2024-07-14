@@ -37,8 +37,8 @@ const Schedule: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-200 p-16 ">
-        <div className="w-4/5 bg-white mx-auto h-auto pb-10 rounded-md justify-center">
+      <div className="bg-white p-16 min-h-screen ">
+        <div className="w-4/5 bg-white mx-auto h-auto pb-10 rounded-md justify-center shadow-lg">
           {/* heading box */}
           <div className="heading flex my-4 justify-center">
             <svg
