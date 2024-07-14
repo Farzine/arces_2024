@@ -17,12 +17,21 @@ function AttendeeCard(props: AttendeeCardProps) {
     router.push(`/attendee/${props._id}`);
   };
 
+  // Fallback image URL in case the provided photoUrl is not valid
+  const validPhotoUrl = props.photoUrl.startsWith('http') ? props.photoUrl : '/default-profile.jpg';
+
   return (
     <div 
       className='bg-white p-4 rounded-md shadow-md m-3 hover:shadow-lg flex flex-col justify-center items-center cursor-pointer'
       onClick={handleClick}
     >
-      <Image src={props.photoUrl} alt={props.name} className='aspect-square h-32 rounded-full object-cover' width={100} height={100} />
+      <Image 
+        src={validPhotoUrl} 
+        alt={props.name} 
+        className='h-32 w-32 rounded-full object-cover' 
+        width={128} 
+        height={128} 
+      />
       <p className='text-lg font-semibold mt-4 text-center'>{props.name}</p>
       <p className='text-sm text-gray-500 text-center'>{props.email}</p>
       <p className='text-sm text-blue-500 text-center'>{props.university}</p>      
