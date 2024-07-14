@@ -119,7 +119,7 @@ const Navbar = () => {
             menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
           } md:opacity-100`}
         >
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-6 gap-4 text-black text-sm mt-5 w-full">
+          <ul className="flex md:flex-row flex-col md:items-center md:gap-6 gap-4 text-black font-semibold text-lg mt-5 w-full">
             {navLinks.map((link, index) => (
               <li
                 key={index}

@@ -7,7 +7,9 @@ import Image from "next/image";
 export default function Authors() {
   return (
     <main className="h-screen">
-      <Navbar />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
 
       <div className="bg-white min-h-screen">
         <div className="container mx-auto py-10">

@@ -46,7 +46,9 @@ export default function SoloAttendee({ params }: { params: { id: string } }) {
 
   return (
     <main className="flex flex-col min-h-screen">
-      <Navbar />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
       <div className="flex flex-grow flex-col justify-center items-center p-4">
         {/* <h1 className="text-3xl font-semibold mb-4">Attendee Details</h1> */}
         <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md w-full md:w-1/2">

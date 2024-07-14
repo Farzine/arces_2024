@@ -9,7 +9,9 @@ import React from 'react';
 const Submission: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Navbar />
+     <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
       <main className="flex-grow">
         <div className="container mx-auto p-4">
           <h1 className="text-4xl font-bold text-center my-12">
