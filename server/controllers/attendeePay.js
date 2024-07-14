@@ -26,9 +26,9 @@ const AttendeePay = async (req, res) => {
       product_name: "Registration for ARCES 2024",
       product_category: "N/A",
       product_profile: "Ticket",
-      success_url: `${baseUrl}registration/paySuccess/${id}`,
-      fail_url: `${baseUrl}registration/payFail/${id}`,
-      cancel_url: `${baseUrl}registration/payCancel/${id}`,
+      success_url: `${baseUrl}/registration/paySuccess/${id}`,
+      fail_url: `${baseUrl}/registration/payFail/${id}`,
+      cancel_url: `${baseUrl}/registration/payCancel/${id}`,
       emi_option: 0,
     };
     const sslcommerz = new SSLCommerzPayment(store_id, store_passwd, is_live);
