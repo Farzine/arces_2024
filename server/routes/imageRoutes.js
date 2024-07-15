@@ -6,6 +6,6 @@ const authenticateToken = require('../middlewares/authMiddleware');
 
 router.post('/upload', authenticateToken, upload.single('image'), imageController.uploadImage);
 router.delete('/:id', authenticateToken, imageController.deleteImage);
-router.get('/', authenticateToken, imageController.getImages);
+router.get('/', imageController.getImages);
 
 module.exports = router;
