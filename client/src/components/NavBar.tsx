@@ -119,7 +119,7 @@ const Navbar = () => {
             menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
           } md:opacity-100`}
         >
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-6 gap-4 text-black text-lg font-semibold mt-5 w-full">
+          <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black text-lg font-semibold mt-5 w-full">
             {navLinks.map((link, index) => (
               <li
                 key={index}
@@ -153,7 +153,7 @@ const Navbar = () => {
                         key={subIndex}
                         className="hover:bg-gray-200 mx-2 mr-2 mb-2"
                       >
-                        <a href={sublink.href} className="block px-4 py-2 text-lg font-semibold">
+                        <a href={sublink.href} className="block px-4 py-2 text-base font-normal">
                           {sublink.name}
                         </a>
                       </li>
