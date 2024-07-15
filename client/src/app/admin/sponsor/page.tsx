@@ -5,12 +5,10 @@ import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-const UploadImagePage: React.FC = () => {
+const UploadSponsorImagePage: React.FC = () => {
     const [images, setImages] = useState<any[]>([]);
     const [file, setFile] = useState<File | null>(null);
-    const [description, setDescription] = useState('');
-    const [tag, setTag] = useState('');
-    const [year, setYear] = useState('');
+    const [sponsorName, setsponsorName] = useState('');
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
@@ -24,7 +22,7 @@ const UploadImagePage: React.FC = () => {
     const fetchImages = async () => {
         try {
             const token = Cookies.get('token');
-            const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/images`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sponsors`, {
                 method: 'GET',
                 credentials: 'include',
                 headers: {
@@ -54,15 +52,7 @@ const UploadImagePage: React.FC = () => {
     };
 
     const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setDescription(event.target.value);
-    };
-
-    const handleTagChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        setTag(event.target.value);
-    };
-
-    const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setYear(event.target.value);
+        setsponsorName(event.target.value);
     };
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -74,14 +64,12 @@ const UploadImagePage: React.FC = () => {
 
         const formData = new FormData();
         formData.append('image', file);
-        formData.append('description', description);
-        formData.append('tag', tag);
-        formData.append('year', year);
+        formData.append('sponsorName', sponsorName);
 
         setLoading(true);
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/images/upload`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sponsors/upload`, {
                 method: 'POST',
                 credentials: 'include',
                 body: formData,
@@ -93,9 +81,7 @@ const UploadImagePage: React.FC = () => {
             if (response.ok) {
                 fetchImages();
                 setFile(null);
-                setDescription('');
-                setTag('');
-                setYear('');
+                setsponsorName('');
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
@@ -121,7 +107,7 @@ const UploadImagePage: React.FC = () => {
 
         try {
             const token = Cookies.get('token');
-            const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/images/${id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sponsors/${id}`, {
                 method: 'DELETE',
                 credentials: 'include',
                 headers: {
@@ -166,9 +152,8 @@ const UploadImagePage: React.FC = () => {
                 </div>
             )}
             <div className={`ml-64 flex-1 p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
-                <h1 className="text-3xl font-bold mb-4">Image Management</h1>
-
-                {images.length === 0 && <p>No image items found</p>}
+                <h1 className="text-3xl font-bold mb-4">Sponsor Management</h1>
+                {images.length === 0 && <p>No sponsor items found</p>}
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-1/3">
                     <input
                         type="file"
@@ -178,27 +163,9 @@ const UploadImagePage: React.FC = () => {
                     />
                     <input
                         type="text"
-                        value={description}
+                        value={sponsorName}
                         onChange={handleDescriptionChange}
-                        placeholder="Enter Picture Description"
-                        className="border p-2"
-                    />
-                    <select
-                        value={tag}
-                        onChange={handleTagChange}
-                        className="border p-2"
-                    >
-                        <option value="">Select Tag</option>
-                        <option value="conference">Conference</option>
-                        <option value="meeting">Meeting</option>
-                        <option value="tour">Tour</option>
-                        <option value="programs">Programs</option>
-                    </select>
-                    <input
-                        type="number"
-                        value={year}
-                        onChange={handleYearChange}
-                        placeholder="Enter Year"
+                        placeholder="Enter Sponsor Name"
                         className="border p-2"
                     />
                     <button
@@ -206,7 +173,7 @@ const UploadImagePage: React.FC = () => {
                         className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
                         disabled={loading}
                     >
-                        {loading ? 'Uploading...' : 'Upload Image'}
+                        {loading ? 'Uploading...' : 'Upload Sponsor'}
                     </button>
                 </form>
                 {/* Success message display */}
@@ -230,13 +197,7 @@ const UploadImagePage: React.FC = () => {
                         <div key={image._id} className="flex justify-between items-center border p-4 rounded shadow-lg bg-[#eaefef]">
                             <div style={{ flex: 1 }}>
                                 <p className="mb-2 text-gray-700" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                    {truncateText(image.description, 30)}
-                                </p>
-                                <p className="mb-2 text-gray-700">
-                                    <strong>Tag:</strong> {image.tag}
-                                </p>
-                                <p className="mb-2 text-gray-700">
-                                    <strong>Year:</strong> {image.year}
+                                    {truncateText(image.sponsorName, 30)}
                                 </p>
                                 <button
                                     onClick={() => handleDelete(image._id)}
@@ -247,7 +208,7 @@ const UploadImagePage: React.FC = () => {
                                     {loading ? 'Deleting...' : 'Delete'}
                                 </button>
                             </div>
-                            <Image src={image.path} alt={image.description} className="w-32 h-24 object-cover rounded ml-4" width={100} height={100} />
+                            <Image src={image.path} alt={image.sponsorName} className="w-32 h-24 object-cover rounded ml-4" width={100} height={100} />
                         </div>
                     ))}
                 </div>
@@ -256,4 +217,4 @@ const UploadImagePage: React.FC = () => {
     );
 };
 
-export default UploadImagePage;
+export default UploadSponsorImagePage;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
-import { FaBell, FaImage, FaEnvelope, FaCalendarCheck} from 'react-icons/fa';
+import { FaBell, FaImage, FaEnvelope, FaCalendarCheck, FaHandshake} from 'react-icons/fa';
 import { FaNoteSticky } from 'react-icons/fa6';
 import { RiListCheck, RiTimerLine } from "react-icons/ri";
 
@@ -44,9 +44,9 @@ const Sidebar: React.FC = () => {
     };
 
     return (
-        <div className="fixed h-full bg-[#a8c1c1] w-64 py-8 px-4 flex flex-col items-center">
+        <div className="fixed h-full bg-[#a8c1c1] w-64 py-8 px-4 flex flex-col items-center overflow-y-auto">
             <div className="text-2xl font-bold mb-8">Hello, Admin</div>
-            <div className="flex flex-col space-y-6 w-full">
+            <div className="flex flex-col space-y-1 w-full">
                 <div
                     onClick={() => handleNavigation('/admin/notices')}
                     className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/notices')}`}
@@ -60,6 +60,13 @@ const Sidebar: React.FC = () => {
                 >
                     <FaImage className="h-6 w-6" />
                     <span>Image</span>
+                </div>
+                <div
+                    onClick={() => handleNavigation('/admin/sponsor')}
+                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/sponsor')}`}
+                >
+                    <FaHandshake className="h-6 w-6" />
+                    <span>Sponsors</span>
                 </div>
                 <div
                     onClick={() => handleNavigation('/admin/importantDates')}
@@ -94,18 +101,18 @@ const Sidebar: React.FC = () => {
                     className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/updateEmailPassword')}`}
                 >
                     <FaEnvelope className="h-6 w-6" />
-                    <span>Change Email-Pass</span>
+                    <span>Change Email and Password</span>
                 </div>
             </div>
             {loggingOut ? (
-                <div className="mt-20 flex items-center space-x-4">
+                <div className="mt-5 flex items-center space-x-4">
                     <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-900"></div>
                     <span className="text-black">Logging out...</span>
                 </div>
             ) : (
                 <button
                     onClick={handleLogout}
-                    className="mt-20 py-2 px-4 border border-green-600 text-black rounded hover:bg-green-600 hover:text-white"
+                    className="mt-5 py-2 px-4 border border-green-600 text-black rounded hover:bg-green-600 hover:text-white"
                 >
                     Log Out
                 </button>

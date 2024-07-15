@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const adminRoutes = require('./routes/adminRoutes');
 const imageRoutes = require('./routes/imageRoutes');
+const sponsorRoutes = require('./routes/sponsorRoutes');
 const importantDateRoutes = require('./routes/importantDateRoutes');
 const noticeRoutes = require('./routes/noticeRoutes');
 const researchTrackRoutes = require('./routes/researchTrackRoutes');
@@ -48,6 +49,7 @@ app.use('/registration',regRouter);
 app.use('/important-updates', importantUpdateRoutes);
 app.use('/schedule',ScheduleRoutes);
 app.use('/sessionList',sessionListRoutes);
+app.use('/sponsors', sponsorRoutes);
 
 app.get('/', (req, res) => {
   res.send('Welcome to ARCES_2024');
