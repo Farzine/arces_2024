@@ -1,11 +1,12 @@
+
 const mongoose = require('mongoose');
 
-const ScheduleSchema = new mongoose.Schema({
-  session: {
+const SessionListSchema = new mongoose.Schema({
+  sessionTheme: {
     type: String,
     required: true,
   },
-  date: {
+  venue: {
     type: String,
     required: false  
   },
@@ -19,6 +20,6 @@ const ScheduleSchema = new mongoose.Schema({
   }
 });
 
-const Schedule = mongoose.model('Schedule', ScheduleSchema);
+const SessionList = mongoose.model('SessionList', SessionListSchema);
 
-module.exports = Schedule;
+module.exports = SessionList;

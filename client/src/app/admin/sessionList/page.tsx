@@ -12,18 +12,18 @@ import "react-datepicker/dist/react-datepicker.css";
 import TimePicker from "react-time-picker"; 
 import "react-time-picker/dist/TimePicker.css";
 
-interface ScheduleItem {
+interface SessionListItem {
   _id: string;
-  session: string;
-  date: string;
+  sessionTheme: string;
+  venue: string;
   start_time: string;
   end_time: string;
 }
 
-const Schedule: React.FC = () => {
-  const [scheduleItems, setScheduleItems] = useState<ScheduleItem[]>([]);
-  const [session, setSession] = useState<string>("");
-  const [date, setDate] = useState<Date | null>(null);
+const SessionList: React.FC = () => {
+  const [sessionListItems, setSessionListItems] = useState<SessionListItem[]>([]);
+  const [sessionTheme, setSessionTheme] = useState<string>("");
+  const [venue, setVenue] = useState<string>("");
   const [start_time, setStartTime] = useState<string | null>(null);
   const [end_time, setEndTime] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -32,13 +32,13 @@ const Schedule: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    fetchScheduleItems();
+    fetchSessionListItems();
   }, []);
 
-  const fetchScheduleItems = async () => {
+  const fetchSessionListItems = async () => {
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/schedule`,
+        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sessionList`,
         {
           method: "GET",
           credentials: "include",
@@ -46,27 +46,26 @@ const Schedule: React.FC = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        setScheduleItems(data);
+        setSessionListItems(data);
       } else {
-        throw new Error("Failed to fetch schedule items");
+        throw new Error("Failed to fetch SessionList items");
       }
     } catch (error) {
-      console.error("Error fetching schedule items:", error);
-      setError("Failed to fetch schedule items. Please try again.");
+      console.error("Error fetching SessionList items:", error);
+      setError("Failed to fetch SessionList items. Please try again.");
     }
   };
 
-  const handleAddScheduleItem = async () => {
-    if (!session || !date || !start_time || !end_time) {
+  const handleAddSessionListItem = async () => {
+    if (!sessionTheme || !venue || !start_time || !end_time) {
       setError("All fields are required.");
       return;
     }
 
     try {
       const token = Cookies.get("token");
-      const formattedDate = date ? format(date, "dd MMMM yyyy") : "";
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/schedule/add`,
+        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sessionList/add`,
         {
           method: "POST",
           headers: {
@@ -75,37 +74,37 @@ const Schedule: React.FC = () => {
           },
           credentials: "include",
           body: JSON.stringify({
-            session,
-            date: formattedDate,
+            sessionTheme: sessionTheme,
+            venue: venue,
             start_time,
             end_time,
           }),
         }
       );
       if (response.ok) {
-        fetchScheduleItems();
-        setSession("");
-        setDate(null);
+        fetchSessionListItems();
+        setSessionTheme("");
+        setVenue("");
         setStartTime(null);
         setEndTime(null);
         setError(null);
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
       } else {
-        throw new Error("Failed to add schedule item");
+        throw new Error("Failed to add SessionList item");
       }
     } catch (error) {
-      console.error("Error adding schedule item:", error);
-      setError("Failed to add schedule item. Please try again.");
+      console.error("Error adding SessionList item:", error);
+      setError("Failed to add SessionList item. Please try again.");
     }
   };
 
-  const handleDeleteScheduleItem = async (id: string) => {
+  const handleDeleteSessionListItem = async (id: string) => {
     try {
       const token = Cookies.get("token");
       if (!token) router.push("/admin");
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/schedule/${id}`,
+        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sessionList/${id}`,
         {
           method: "DELETE",
           headers: {
@@ -115,29 +114,28 @@ const Schedule: React.FC = () => {
         }
       );
       if (response.ok) {
-        fetchScheduleItems();
+        fetchSessionListItems();
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
       } else {
-        throw new Error("Failed to delete schedule item");
+        throw new Error("Failed to delete SessionList item");
       }
     } catch (error) {
-      console.error("Error deleting schedule item:", error);
-      setError("Failed to delete schedule item. Please try again.");
+      console.error("Error deleting SessionList item:", error);
+      setError("Failed to delete SessionList item. Please try again.");
     }
   };
 
-  const handleEditScheduleItem = async () => {
-    if (!editId || !session || !date || !start_time || !end_time) {
+  const handleEditSessionListItem = async () => {
+    if (!editId || !sessionTheme || !venue || !start_time || !end_time) {
       setError("All fields are required.");
       return;
     }
 
     try {
       const token = Cookies.get("token");
-      const formattedDate = date ? format(date, "dd MMMM yyyy") : "";
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/schedule/edit/${editId}`,
+        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sessionList/edit/${editId}`,
         {
           method: "PUT",
           headers: {
@@ -146,17 +144,17 @@ const Schedule: React.FC = () => {
           },
           credentials: "include",
           body: JSON.stringify({
-            session,
-            date: formattedDate,
+            sessionTheme: sessionTheme,
+            venue: venue,
             start_time,
             end_time,
           }),
         }
       );
       if (response.ok) {
-        fetchScheduleItems();
-        setSession("");
-        setDate(null);
+        fetchSessionListItems();
+        setSessionTheme("");
+        setVenue("");
         setStartTime(null);
         setEndTime(null);
         setEditId(null);
@@ -164,25 +162,25 @@ const Schedule: React.FC = () => {
         setSuccess(true);
         setTimeout(() => setSuccess(false), 3000);
       } else {
-        throw new Error("Failed to edit schedule item");
+        throw new Error("Failed to edit SessionList item");
       }
     } catch (error) {
-      console.error("Error editing schedule item:", error);
-      setError("Failed to edit schedule item. Please try again.");
+      console.error("Error editing SessionList item:", error);
+      setError("Failed to edit SessionList item. Please try again.");
     }
   };
 
-  const handleEditClick = (item: ScheduleItem) => {
-    setSession(item.session);
-    setDate(moment(item.date, "DD MMMM yyyy").toDate());
+  const handleEditClick = (item: SessionListItem) => {
+    setSessionTheme(item.sessionTheme);
+    setVenue(item.venue);
     setStartTime(item.start_time);
     setEndTime(item.end_time);
     setEditId(item._id);
   };
 
   const handleCancelEdit = () => {
-    setSession("");
-    setDate(null);
+    setSessionTheme("");
+    setVenue("");
     setStartTime(null);
     setEndTime(null);
     setEditId(null);
@@ -192,9 +190,9 @@ const Schedule: React.FC = () => {
     <div className="flex min-h-screen">
       <Sidebar />
       <div className="ml-64 flex-1 p-8 overflow-y-auto bg-gray-100">
-        <h1 className="text-3xl font-bold mb-4">Schedule Management</h1>
+        <h1 className="text-3xl font-bold mb-4">Session List Management</h1>
 
-        {scheduleItems.length === 0 && <p>No schedule items found</p>}
+        {sessionListItems.length === 0 && <p>No session list items found</p>}
         {error && (
           <div
             className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
@@ -215,18 +213,16 @@ const Schedule: React.FC = () => {
         )}
 
         <div className="flex flex-col space-y-2">
-          <DatePicker
-            selected={date}
-            onChange={(date: Date | null) => setDate(date)}
-            dateFormat="dd MMMM, yyyy"
-            placeholderText="Select a date"
-            className="p-2 border rounded"
-            popperPlacement="bottom-start"
-          />
           <textarea
-            placeholder="Session"
-            value={session}
-            onChange={(e) => setSession(e.target.value)}
+            placeholder="Session Theme"
+            value={sessionTheme}
+            onChange={(e) => setSessionTheme(e.target.value)}
+            className="p-2 border rounded w-1/3"
+          ></textarea>
+          <textarea
+            placeholder="Venue/Building"
+            value={venue}
+            onChange={(e) => setVenue(e.target.value)}
             className="p-2 border rounded w-1/3"
           ></textarea>
           
@@ -250,10 +246,10 @@ const Schedule: React.FC = () => {
 
           <div className="flex space-x-2">
             <button
-              onClick={editId ? handleEditScheduleItem : handleAddScheduleItem}
+              onClick={editId ? handleEditSessionListItem : handleAddSessionListItem}
               className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
             >
-              {editId ? "Update Schedule" : "Add Schedule"}
+              {editId ? "Update Session" : "Add Session"}
             </button>
             {editId && (
               <button
@@ -270,32 +266,30 @@ const Schedule: React.FC = () => {
           <table className="min-w-full bg-white border">
             <thead>
               <tr>
-                <th className="py-2 px-4 border">Date</th>
-                <th className="py-2 px-4 border">Session</th>
+                <th className="py-2 px-4 border">Session Theme</th>
+                <th className="py-2 px-4 border">Room/Building</th>
                 <th className="py-2 px-4 border">Start Time</th>
                 <th className="py-2 px-4 border">End Time</th>
                 <th className="py-2 px-4 border">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {scheduleItems.map((item) => (
+              {sessionListItems.map((item) => (
                 <tr key={item._id} className="text-center">
-                  <td className="py-2 px-4 border">
-                    {moment(item.date).format("DD MMMM, YYYY")}
-                  </td>
-                  <td className="py-2 px-4 border">{item.session}</td>
+                  <td className="py-2 px-4 border">{item.sessionTheme}</td>
+                  <td className="py-2 px-4 border">{item.venue}</td>
                   <td className="py-2 px-4 border">{moment(item.start_time, "HH:mm").format("h:mm A")}</td>
                   <td className="py-2 px-4 border">{moment(item.end_time, "HH:mm").format("h:mm A")}</td>
                   <td className="py-2 px-4 border space-x-2">
                     <button
                       onClick={() => handleEditClick(item)}
-                      className="text-black py-1 px-3 rounded hover:bg-green-600 border-2 border-green-600"
+                      className="text-black py-1 px-1 rounded hover:bg-green-600 border-2 border-green-600"
                     >
                       Edit
                     </button>
                     <button
-                      onClick={() => handleDeleteScheduleItem(item._id)}
-                      className="text-black py-1 px-3 rounded hover:bg-red-600 border-2 border-red-600"
+                      onClick={() => handleDeleteSessionListItem(item._id)}
+                      className="text-black py-1 px-1 rounded hover:bg-red-600 border-2 border-red-600"
                     >
                       Delete
                     </button>
@@ -311,4 +305,4 @@ const Schedule: React.FC = () => {
   );
 };
 
-export default Schedule;
+export default SessionList;

@@ -3,7 +3,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { FaBell, FaImage, FaEnvelope, FaCalendarCheck} from 'react-icons/fa';
 import { FaNoteSticky } from 'react-icons/fa6';
-import { RiTimerLine } from "react-icons/ri";
+import { RiListCheck, RiTimerLine } from "react-icons/ri";
 
 const Sidebar: React.FC = () => {
     const router = useRouter();
@@ -75,13 +75,19 @@ const Sidebar: React.FC = () => {
                     <FaNoteSticky className="h-6 w-6" />
                     <span>Important Update</span>
                 </div>
-                {/* Schedule  */}
                 <div
                     onClick={() => handleNavigation('/admin/schedule')}
                     className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/schedule')}`}
                 >
                     <RiTimerLine className="h-6 w-6" />
                     <span>Schedule</span>
+                </div>
+                <div
+                    onClick={() => handleNavigation('/admin/sessionList')}
+                    className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/sessionList')}`}
+                >
+                    <RiListCheck className="h-6 w-6" />
+                    <span>Session List</span>
                 </div>
                 <div
                     onClick={() => handleNavigation('/admin/updateEmailPassword')}
