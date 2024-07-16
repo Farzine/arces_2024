@@ -2,11 +2,11 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
 import Schedulecard from "@/components/Schedulecard";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import { useEffect, useState } from "react";
 
 interface ScheduleItem {
   session: string;
-  room: string;
   date: string;
   start_time: string;
   end_time: string;
@@ -36,8 +36,10 @@ const Schedule: React.FC = () => {
 
   return (
     <>
-      <Navbar />
-      <div className="bg-white p-16 min-h-screen ">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
+      <div className="bg-white p-16 min-h-screen mt-16 ">
         <div className="w-4/5 bg-white mx-auto h-auto pb-10 rounded-md justify-center shadow-lg">
           {/* heading box */}
           <div className="heading flex my-4 justify-center">
@@ -63,17 +65,14 @@ const Schedule: React.FC = () => {
           </div>
 
           {/* schedule table */}
-          <div className="bg-indigo-700 flex justify-center w-auto py-3 mx-auto my-2 px-40 items-center divide-solid">
-            <h1 className="inline-block text-white font-bold text-lg text-center mx-auto">
+          <div className="bg-indigo-700 flex justify-center w-auto py-3 my-2 px-40 items-center divide-solid">
+            <h1 className="flex text-white font-bold text-lg text-center mr-36 ml-20">
               Session
             </h1>
-            <h1 className="inline-block text-white font-bold text-lg text-center mx-auto">
-              Room/Building
-            </h1>
-            <h1 className="inline-block text-white font-bold text-lg text-center mx-auto">
+            <h1 className="flex text-white font-bold text-lg text-center mr-36 ml-36">
               Date
             </h1>
-            <h1 className="inline-block text-white font-bold text-lg text-center mx-auto">
+            <h1 className="flex text-white font-bold text-lg text-center ml-36">
               Time
             </h1>
           </div>
@@ -83,7 +82,6 @@ const Schedule: React.FC = () => {
             <Schedulecard
               key={index} // Ensure each element has a unique key
               title={item.session}
-              room={item.room}
               date={item.date}
               start_time={item.start_time}
               end_time={item.end_time}
@@ -94,7 +92,7 @@ const Schedule: React.FC = () => {
 
         {/* Background */}
       </div>
-
+      <ScrollToTopButton />
       <Footer />
     </>
   );

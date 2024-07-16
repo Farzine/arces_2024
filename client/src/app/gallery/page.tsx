@@ -80,9 +80,11 @@ export default function Gallery() {
 
   return (
     <main className="h-auto">
-      <Navbar />
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
 
-      <div className="gallery h-screen flex flex-col md:flex-row mx-auto">
+      <div className="gallery h-screen flex flex-col md:flex-row mx-auto mt-20">
         {/* left side bar */}
         <div className="leftbar w-full md:w-1/5 h-auto md:h-screen bg-white hidden md:block">
           <div className="tags">
@@ -139,8 +141,8 @@ export default function Gallery() {
         <div className="rightbar w-full md:w-4/5 h-auto bg-neutral-100 md:h-screen">
           {/* Heading */}
           <div className="heading flex justify-center items-center">
-            <CiImageOn className="w-10 h-10" />
-            <h1 className="text-center font-semibold font-inter text-2xl my-5">
+            <CiImageOn className="w-10 h-10 mt-5 mr-3" />
+            <h1 className="text-center font-semibold font-inter text-2xl my-5 pt-5">
               GALLERY
             </h1>
           </div>

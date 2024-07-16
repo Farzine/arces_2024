@@ -17,8 +17,10 @@ const RegistrationFees: React.FC = () => {
 
     return (
         <div className='min-h-screen'>
-            <Navbar />
-            <div className="container mx-auto px-4 py-8 bg-white mb-10 min-h-screen">
+            <div className="fixed top-0 left-0 right-0 z-50">
+                <Navbar />
+            </div>
+            <div className="container mx-auto px-4 py-8 bg-white mb-10 min-h-screen mt-16">
                 <div className='flex items-center justify-center mt-14 mb-10'>
                     <Image
                         src="/fees.png"
@@ -35,9 +37,9 @@ const RegistrationFees: React.FC = () => {
                     Click to Registration
                 </p>
 
-                    <p className="text-start font-semibold text-2xl ml-24 ">
-                        FEES :
-                    </p>
+                <p className="text-start font-semibold text-2xl ml-24 ">
+                    FEES :
+                </p>
                 <div className="flex justify-center mb-8 ml-24 mr-24 mt-5">
                     <table className="min-w-full bg-white border-2 border-gray-400">
                         <thead className='text-lg'>
@@ -79,16 +81,16 @@ const RegistrationFees: React.FC = () => {
 
                 <div className="mb-8 ml-24">
                     <div className='flex'>
-                    <h2 className="text-2xl font-bold mb-4 text-red-600">PAYMENT DEADLINE</h2>
-                    <div>
-                    <Image
-                        src="/information-button.png"
-                        alt="information icon"
-                        width={27}
-                        height={27}
-                        className=" ml-4 mt-1"
-                    />
-                    </div>
+                        <h2 className="text-2xl font-bold mb-4 text-red-600">PAYMENT DEADLINE</h2>
+                        <div>
+                            <Image
+                                src="/information-button.png"
+                                alt="information icon"
+                                width={27}
+                                height={27}
+                                className=" ml-4 mt-1"
+                            />
+                        </div>
                     </div>
                     <p className="flex items-center mb-4">
                         <span className="text-xl font-semibold">Early Bird</span>

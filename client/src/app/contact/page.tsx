@@ -7,8 +7,10 @@ import Image from 'next/image';
 const ContactUs: React.FC = () => {
   return (
     <div className='min-h-screen'>
-      <Navbar />
-      <div className="min-h-screen px-4 py-8 mt-8">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
+      <div className="min-h-screen px-4 py-8 mt-24">
         <div className='flex items-center justify-center mb-10'>
           <div className='mb-5'>
             <Image

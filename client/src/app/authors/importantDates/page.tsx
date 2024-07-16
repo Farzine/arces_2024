@@ -33,8 +33,10 @@ const ImportantDates: React.FC = () => {
 
   return (
     <div className='min-h-screen'>
-      <Navbar />
-      <div className="container mx-auto px-4 py-8 bg-white min-h-screen">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
+      <div className="container mx-auto px-4 py-8 bg-white min-h-screen mt-20">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center justify-center mb-14 mt-8">
             <Calendar className="w-8 h-8 mr-2" />

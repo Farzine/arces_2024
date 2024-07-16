@@ -42,8 +42,10 @@ export default function Attendee() {
 
   return (
     <main className="flex flex-col min-h-screen">
-      <Navbar />
-      <div className="flex-grow mt-5">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
+      <div className="flex-grow mt-24">
         {fetching ? (
           <div role="status" className="flex flex-col justify-center items-center h-screen">
           <LoaderCircle className="animate-spin" size={45} />

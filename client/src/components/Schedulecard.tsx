@@ -5,15 +5,12 @@ interface ScheduleCardProps {
   date: string;
   start_time: string;
   end_time: string;
-  room: string;
   checkend: boolean;
-  // Using Date object for time
 }
 
 const ScheduleCard: React.FC<ScheduleCardProps> = ({
   title,
   date,
-  room,
   start_time,
   end_time,
   checkend,
@@ -50,13 +47,10 @@ const ScheduleCard: React.FC<ScheduleCardProps> = ({
       </svg>
     )}
 
-      <div className="inline-block flex w-5/6 h-12 my-5  bg-gray-200 items-center  ">
-        <h2 className=" text-sm mx-auto px-auto font-inter font-semibold  border-black text-center w-1/4 break-words overflow-wrap ">
+      <div className=" flex w-11/12 h-12 my-5  bg-gray-200 items-center  ">
+        <h2 className=" text-sm mx-auto px-auto font-inter font-semibold  border-black text-center w-1/3 break-words overflow-wrap ">
           {title}
         </h2>
-        <p className="text-sm  mx-auto px-auto font-inter font-semibold border-black  text-center w-1/4 break-words overflow-wrap">
-          {room}
-        </p>
         <p className=" text-sm mx-auto px-auto font-inter font-semibold border-black text-center w-1/4 break-words overflow-wrap ">
           {" "}
           {date}

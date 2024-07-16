@@ -81,8 +81,10 @@ export default function IndustryTracks() {
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      <Navbar />
-      <div className="flex flex-col md:flex-row">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
+      <div className="flex flex-col md:flex-row mt-20">
         <aside className="bg-white p-4 w-full md:w-1/4 ml-16 mt-8">
           <div className="flex justify-center mt-2 pt-5 border-2">
             <div>

@@ -6,13 +6,15 @@ import { PiMapPinArea } from "react-icons/pi";
 export default function Venue() {
   return (
     <main className="h-full w-full">
-      <Navbar />
-      <div className="w-full h-full bg-white mx-auto flex flex-col items-center p-4 md:p-10">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
+      <div className="w-full h-full bg-white mx-auto flex flex-col items-center p-4 md:p-10 mt-20">
         {/* heading */}
         <div className="heading flex w-full justify-center mb-1">
           <PiMapPinArea className="w-10 h-10 md:w-12 md:h-12" />
-          <h1 className="font-inter font-bold text-xl md:text-2xl mx-2">
-            VENUE
+          <h1 className="font-inter font-bold text-xl md:text-4xl mx-2">
+            Venue
           </h1>
         </div>
         <hr className="w-1/6" />
