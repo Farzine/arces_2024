@@ -4,29 +4,29 @@ import Navbar from "@/components/NavBar";
 import ProfileCard from "@/components/ProfileCard";
 
 const profileData = [
-  { name: "Professor Farid Uddin Ahmed ", title: "Vice Chancellor, SUST", role: "CHIEF PATRON", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
+  { name: "Professor Farid Uddin Ahmed ", title: "Vice Chancellor, SUST", role: "CHIEF PATRON", imageUrl: "/teacher/vc.jpg" },
   
-  { name: "Prof. Dr. Md. Reza Selim ", title: "Chair", role: "ORGANISING COMMITTEE", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
+  { name: "Prof. Dr. Md. Reza Selim ", title: "Dean, School of Applied Sciences and Technology, SUST", role: "CONFERENCE CHAIR", imageUrl: "/teacher/selim.jpeg" },
  
-  { name: "Prof. Dr. Muhammad Muhsin Aziz Khan", title: "IPE, SUST", role: "TREASURER", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
+  { name: "Prof. Dr. Muhammad Muhsin Aziz Khan", title: "Professor, IPE SUST", role: "CONFERENCE TREASURER", imageUrl: "/teacher/Aziz Khan.png" },
   
-  { name: " Prof. Dr. Md. Tamez Uddin", title: " CEP,SUST", role: "CONFERENCE SECRETARY", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
+  { name: " Prof. Dr. Md. Tamez Uddin", title: "Professor & Head, CEP SUST", role: "CONFERENCE SECRETARY", imageUrl: "/teacher/Tammiz Uddin.png" },
   
-  { name: "Prof. Dr. Md. Forhad Rabbi", title: "CSE, SUST", role: "JOINT SECRETARIES", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. Md. Rezaul Hasan Shumon", title: "IPE, SUST", role: "JOINT SECRETARIES", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. H.M.A Mahzuz", title: "CEE, SUST", role: "JOINT SECRETARIES", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
+  { name: "Prof. Dr. Md. Forhad Rabbi", title: "Professor, CSE SUST", role: "JOINT SECRETARIE", imageUrl: "/teacher/Farhad Rabbi.png" },
+  { name: "Prof. Dr. Md. Rezaul Hasan Shumon", title: "Professor, IPE SUST", role: "JOINT SECRETARIE", imageUrl: "/teacher/shumon.png" },
+  { name: "Prof. Dr. H.M.A Mahzuz", title: "Professor, CEE SUST", role: "JOINT SECRETARIE", imageUrl: "/teacher/mahzuz.jpg" },
  //member 
 
-  { name: "Jahirul Islam",                      title: "Director, IICT, SUST", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. Muhammad Mahamood Hasan ", title: "IPE, SUST.", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. Md. Tamez Uddin",          title: "CEP, SUST", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. Mohammad Shahidur Rahman",                      title: "CEE, SUST", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. Muhammad Farhad Howladar", title: "PME, SUST", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. Wahiduzzaman",          title: "FET, SUST", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. Md. Masum",                      title: "CSE, SUST", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Prof. Dr. Ar. Iftekhar Rahman", title: "ARC, SUST", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: "Mr. Md. Mahmud-Or-Rashid",          title: "MEE, SUST", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
-  { name: " Mr. Abdur Rouf",                      title: "Principal, SEC", role: "MEMBERS", imageUrl: "https://res.cloudinary.com/djmgdgx86/image/upload/v1719695813/samples/upscale-face-1.jpg" },
+  { name: "Jahirul Islam",                      title: "Director, IICT SUST", role: "MEMBER", imageUrl: "/teacher/jahirul.jpg" },
+  { name: "Prof. Dr. Muhammad Mahamood Hasan ", title: "Professor & Head, IPE SUST.", role: "MEMBER", imageUrl: "/teacher/mahamood.jpg" },
+  { name: "Prof. Dr. Md. Tamez Uddin",          title: "Professor & Head, CEP SUST", role: "MEMBER", imageUrl: "/teacher/Tammiz Uddin.png" },
+  { name: "Prof. Dr. Mohammad Shahidur Rahman", title: "Professor, CEE SUST", role: "MEMBER", imageUrl: "/teacher/shahidur.jpg" },
+  { name: "Prof. Dr. Muhammad Farhad Howladar", title: "Professor, PME SUST", role: "MEMBER", imageUrl: "/teacher/farhad.jpg" },
+  { name: "Prof. Dr. Wahiduzzaman",             title: "Professor & Head, FET SUST", role: "MEMBER", imageUrl: "/teacher/wahid.jpg" },
+  { name: "Prof. Dr. Md. Masum",                title: "Professor & Head, CSE SUST", role: "MEMBER", imageUrl: "/teacher/masum.jpg" },
+  { name: "Prof. Dr. Ar. Iftekhar Rahman",      title: "Associate Professor & Head, ARC SUST", role: "MEMBER", imageUrl: "/teacher/ifti.jpg" },
+  { name: "Mr. Md. Mahmud-Or-Rashid",          title: "Assistant Professor & Head, MEE SUST", role: "MEMBER", imageUrl: "/teacher/rashid.jpg" },
+  { name: " Mr. Abdur Rouf",                      title: "Principal, SEC", role: "MEMBER", imageUrl: "/teacher/" },
   
 ];
 
