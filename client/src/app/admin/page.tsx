@@ -52,11 +52,11 @@ export default function Login() {
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
         </div>
       )}
-      <div className={`flex w-full max-w-2xl h-auto bg-white shadow-lg rounded-lg overflow-hidden ${isLoading ? 'blur-sm' : ''}`}>
-        <div className="relative w-1/2 h-auto">
+      <div className={`flex flex-col md:flex-row w-full max-w-2xl bg-white shadow-lg rounded-lg overflow-hidden ${isLoading ? 'blur-sm' : ''}`}>
+        <div className="relative w-full md:w-1/2 h-48 md:h-auto">
           <Image src="/sustGrafiti.jpg" alt="Mural" layout="fill" objectFit="cover" />
         </div>
-        <div className="w-1/2 p-6 flex flex-col justify-between">
+        <div className="w-full md:w-1/2 p-6 flex flex-col justify-between">
           <h2 className="text-3xl font-bold mb-8 text-center">ADMIN LOGIN</h2>
           <form
             onSubmit={(e) => {
@@ -103,7 +103,7 @@ export default function Login() {
                   type="submit"
                   disabled={isLoading}
                 >
-                  Log in
+                  {isLoading ? 'Logging in...' : 'Log in'}
                 </button>
               </div>
             </div>

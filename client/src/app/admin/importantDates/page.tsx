@@ -19,8 +19,8 @@ const ImportantDates: React.FC = () => {
   const [importantDates, setImportantDates] = useState<Dates[]>([]);
   const [dates, setDates] = useState<Date | null>(null);
   const [description, setDescription] = useState('');
-  const [error, setError] = useState<string | null>(null); 
-  const [success, setSuccess] = useState<boolean>(false); 
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
   const [editId, setEditId] = useState<string | null>(null);
   const router = useRouter();
 
@@ -42,7 +42,7 @@ const ImportantDates: React.FC = () => {
       }
     } catch (error) {
       console.error('Error fetching important dates:', error);
-      setError('Failed to fetch important dates. Please try again.'); 
+      setError('Failed to fetch important dates. Please try again.');
     }
   };
 
@@ -51,8 +51,8 @@ const ImportantDates: React.FC = () => {
       const token = Cookies.get('token');
       const formattedDate = dates ? format(dates, 'dd MMMM yyyy') : '';
 
-      const url = editId 
-        ? `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates/edit/${editId}` 
+      const url = editId
+        ? `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates/edit/${editId}`
         : `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates/add`;
       const method = editId ? 'PUT' : 'POST';
 
@@ -81,7 +81,7 @@ const ImportantDates: React.FC = () => {
       }
     } catch (error) {
       console.error(editId ? 'Error editing important date:' : 'Error adding important date:', error);
-      setError(editId ? 'Failed to edit important date. Please try again.' : 'Failed to add important date. Please try again.'); 
+      setError(editId ? 'Failed to edit important date. Please try again.' : 'Failed to add important date. Please try again.');
     }
   };
 
@@ -99,13 +99,13 @@ const ImportantDates: React.FC = () => {
       if (response.ok) {
         fetchImportantDates();
         setSuccess(true);
-        setTimeout(() => setSuccess(false), 3000); 
+        setTimeout(() => setSuccess(false), 3000);
       } else {
         throw new Error('Failed to delete important date');
       }
     } catch (error) {
       console.error('Error deleting important date:', error);
-      setError('Failed to delete important date. Please try again.'); 
+      setError('Failed to delete important date. Please try again.');
     }
   };
 
@@ -124,7 +124,7 @@ const ImportantDates: React.FC = () => {
   return (
     <div className="flex min-h-screen">
       <Sidebar />
-      <div className="ml-64 flex-1 p-8 overflow-y-auto bg-gray-100 h-screen">
+      <div className="flex-1 p-4 sm:p-8 overflow-y-auto">
         <h1 className="text-3xl font-bold mb-4">Important Dates</h1>
 
         {importantDates.length === 0 && <p>No important dates found</p>}
@@ -141,20 +141,20 @@ const ImportantDates: React.FC = () => {
           </div>
         )}
 
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 mb-4">
           <DatePicker
             selected={dates}
             onChange={(date: Date | null) => setDates(date)}
             dateFormat="dd MMMM, yyyy"
             placeholderText="Select a date"
-            className="p-2 border rounded"
-            popperPlacement="bottom-start" 
+            className="p-2 border rounded w-full sm:w-1/3"
+            popperPlacement="bottom-start"
           />
           <textarea
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="p-2 border rounded w-1/3"
+            className="p-2 border rounded w-full sm:w-1/3"
           ></textarea>
           <div className="flex space-x-2">
             <button
@@ -174,11 +174,10 @@ const ImportantDates: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-8 bg-gray-100">
+        <div className="bg-gray-100">
           <table className="min-w-full bg-white border">
             <thead>
               <tr>
-                <th className="py-2 px-4 border">Date ID</th>
                 <th className="py-2 px-4 border">Date</th>
                 <th className="py-2 px-4 border">Description</th>
                 <th className="py-2 px-4 border">Actions</th>
@@ -187,7 +186,6 @@ const ImportantDates: React.FC = () => {
             <tbody>
               {importantDates.map((date) => (
                 <tr key={date._id}>
-                  <td className="py-2 px-4 border">{date._id}</td>
                   <td className="py-2 px-4 border">{moment(date.date).format('DD MMMM, YYYY')}</td>
                   <td className="py-2 px-4 border">{date.description}</td>
                   <td className="py-2 px-4 border space-x-2">

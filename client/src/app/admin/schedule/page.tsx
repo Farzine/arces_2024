@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import TimePicker from "react-time-picker"; 
+import TimePicker from "react-time-picker";
 import "react-time-picker/dist/TimePicker.css";
 
 interface ScheduleItem {
@@ -189,10 +189,10 @@ const Schedule: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen">
       <Sidebar />
-      <div className="ml-64 flex-1 p-8 overflow-y-auto bg-gray-100">
-        <h1 className="text-3xl font-bold mb-4">Schedule Management</h1>
+      <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100">
+        <h1 className="text-2xl md:text-3xl font-bold mb-4">Schedule Management</h1>
 
         {scheduleItems.length === 0 && <p>No schedule items found</p>}
         {error && (
@@ -227,14 +227,14 @@ const Schedule: React.FC = () => {
             placeholder="Session"
             value={session}
             onChange={(e) => setSession(e.target.value)}
-            className="p-2 border rounded w-1/3"
+            className="p-2 border rounded w-full md:w-1/3"
           ></textarea>
           
           <label className="block font-bold">Start Time</label>
           <TimePicker
             onChange={(start_time: string | null) => setStartTime(start_time)}
             value={start_time}
-            className="p-2 rounded w-1/5 border-4 border-white"
+            className="p-2 rounded w-full md:w-1/5 border-4 border-white"
             disableClock
             format="h:mm a"
           />
@@ -243,7 +243,7 @@ const Schedule: React.FC = () => {
           <TimePicker
             onChange={(end_time: string | null) => setEndTime(end_time)}
             value={end_time}
-            className="p-2 rounded w-1/5 border-4 border-white "
+            className="p-2 rounded w-full md:w-1/5 border-4 border-white"
             disableClock
             format="h:mm a"
           />
@@ -266,7 +266,7 @@ const Schedule: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 overflow-x-auto">
           <table className="min-w-full bg-white border">
             <thead>
               <tr>

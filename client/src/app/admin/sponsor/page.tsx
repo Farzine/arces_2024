@@ -143,7 +143,7 @@ const UploadSponsorImagePage: React.FC = () => {
     };
 
     return (
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
             <Sidebar />
 
             {loading && (
@@ -151,10 +151,10 @@ const UploadSponsorImagePage: React.FC = () => {
                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
                 </div>
             )}
-            <div className={`ml-64 flex-1 p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
-                <h1 className="text-3xl font-bold mb-4">Sponsor Management</h1>
+            <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
+                <h1 className="text-2xl md:text-3xl font-bold mb-4">Sponsor Management</h1>
                 {images.length === 0 && <p>No sponsor items found</p>}
-                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-1/3">
+                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-full md:w-1/3">
                     <input
                         type="file"
                         ref={fileInputRef}
@@ -170,7 +170,7 @@ const UploadSponsorImagePage: React.FC = () => {
                     />
                     <button
                         type="submit"
-                        className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
+                        className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-full md:w-40"
                         disabled={loading}
                     >
                         {loading ? 'Uploading...' : 'Upload Sponsor'}
@@ -192,17 +192,14 @@ const UploadSponsorImagePage: React.FC = () => {
                     </div>
                 )}
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {images.map((image: any) => (
-                        <div key={image._id} className="flex justify-between items-center border p-4 rounded shadow-lg bg-[#eaefef]">
-                            <div style={{ flex: 1 }}>
-                                <p className="mb-2 text-gray-700" style={{ maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                    {truncateText(image.sponsorName, 30)}
-                                </p>
+                        <div key={image._id} className="flex flex-col md:flex-row justify-between items-center border p-4 rounded shadow-lg bg-[#eaefef]">
+                            <div className="flex-1">
+                                <p className="mb-2 text-gray-700 truncate">{truncateText(image.sponsorName, 30)}</p>
                                 <button
                                     onClick={() => handleDelete(image._id)}
                                     className="mt-2 px-2 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
-                                    style={{ fontSize: '0.75rem' }}
                                     disabled={loading}
                                 >
                                     {loading ? 'Deleting...' : 'Delete'}

@@ -157,7 +157,7 @@ const UploadImagePage: React.FC = () => {
     };
 
     return (
-        <div className="flex">
+        <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
             <Sidebar />
 
             {loading && (
@@ -165,16 +165,16 @@ const UploadImagePage: React.FC = () => {
                     <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
                 </div>
             )}
-            <div className={`ml-64 flex-1 p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
+            <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
                 <h1 className="text-3xl font-bold mb-4">Image Management</h1>
 
                 {images.length === 0 && <p>No image items found</p>}
-                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-1/3">
+                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mb-8 w-full md:w-1/3">
                     <input
                         type="file"
                         ref={fileInputRef}
                         onChange={handleFileChange}
-                        className="border-4 border-white p-1"
+                        className="border p-2"
                     />
                     <input
                         type="text"
@@ -203,7 +203,7 @@ const UploadImagePage: React.FC = () => {
                     />
                     <button
                         type="submit"
-                        className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
+                        className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-full md:w-40"
                         disabled={loading}
                     >
                         {loading ? 'Uploading...' : 'Upload Image'}

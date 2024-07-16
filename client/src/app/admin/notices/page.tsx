@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-import { FaEdit, FaTrash } from 'react-icons/fa'; 
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import Sidebar from '@/components/Sidebar';
 
 interface Notice {
@@ -17,8 +17,8 @@ const Notices: React.FC = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [editId, setEditId] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null); 
-  const [success, setSuccess] = useState<boolean>(false); 
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -68,13 +68,13 @@ const Notices: React.FC = () => {
         fetchNotices();
         setTitle('');
         setDescription('');
-        setSuccess(true); 
+        setSuccess(true);
       } else {
         throw new Error('Failed to add notice');
       }
     } catch (error) {
       console.error('Error adding notice:', error);
-      setError('Failed to add notice. Please try again.'); 
+      setError('Failed to add notice. Please try again.');
     }
   };
 
@@ -97,7 +97,7 @@ const Notices: React.FC = () => {
       }
     } catch (error) {
       console.error('Error deleting notice:', error);
-      setError('Failed to delete notice. Please try again.'); 
+      setError('Failed to delete notice. Please try again.');
     }
   };
 
@@ -126,29 +126,27 @@ const Notices: React.FC = () => {
         setEditId(null);
         setTitle('');
         setDescription('');
-        setSuccess(true); 
+        setSuccess(true);
       } else {
         throw new Error('Failed to save notice');
       }
     } catch (error) {
       console.error('Error saving notice:', error);
-      setError('Failed to save notice. Please try again.'); 
+      setError('Failed to save notice. Please try again.');
     }
   };
 
-  
   const dismissMessages = () => {
     setError(null);
     setSuccess(false);
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex flex-col min-h-screen md:flex-row">
       <Sidebar />
-      <div className="ml-64 flex-1 p-8 overflow-y-auto bg-gray-100">
+      <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100">
         <h1 className="text-3xl font-bold mb-4">Notices</h1>
 
-        {/* Success message display */}
         {success && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
             <strong className="font-bold">Success!</strong>
@@ -162,7 +160,6 @@ const Notices: React.FC = () => {
           </div>
         )}
 
-        {/* Error message display */}
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
             <strong className="font-bold">Error!</strong>
@@ -176,33 +173,32 @@ const Notices: React.FC = () => {
           </div>
         )}
 
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 bg-gray-100">
           <input
             type="text"
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="p-2 border rounded w-1/3"
+            className="p-2 border rounded w-full md:w-1/3"
           />
           <textarea
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="p-2 border rounded w-1/3"
+            className="p-2 border rounded w-full md:w-1/3"
           ></textarea>
           <button
             onClick={editId ? handleSaveEdit : handleAddNotice}
-            className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-40"
+            className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-full md:w-40"
           >
             {editId ? 'Save' : 'Submit Notice'}
           </button>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 bg-gray-100">
           <table className="min-w-full bg-white border">
             <thead>
               <tr>
-                <th className="py-2 px-4 border">Notice ID</th>
                 <th className="py-2 px-4 border">Title</th>
                 <th className="py-2 px-4 border">Description</th>
                 <th className="py-2 px-4 border">Actions</th>
@@ -211,19 +207,18 @@ const Notices: React.FC = () => {
             <tbody>
               {notices.map((notice) => (
                 <tr key={notice._id}>
-                  <td className="py-2 px-4 border">{notice._id}</td>
                   <td className="py-2 px-4 border">{notice.title}</td>
                   <td className="py-2 px-4 border">{notice.description}</td>
                   <td className="py-2 px-4 border space-x-2">
                     <button
                       onClick={() => handleEditNotice(notice)}
-                      className=" text-black py-1 px-3 rounded hover:bg-green-600 border-2 border-green-600" 
+                      className="text-black py-1 px-3 rounded hover:bg-green-600 border-2 border-green-600 w-full md:w-auto"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => handleDeleteNotice(notice._id)}
-                      className=" text-black py-1 px-3 rounded hover:bg-red-600 border-2 border-red-600"
+                      className="text-black py-1 px-3 rounded hover:bg-red-600 border-2 border-red-600 w-full md:w-auto"
                     >
                       Delete
                     </button>

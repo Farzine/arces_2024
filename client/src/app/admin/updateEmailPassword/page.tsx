@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
-
 const EmailPage = () => {
   const [newEmail, setNewEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -46,10 +45,10 @@ const EmailPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="ml-64 flex-1 p-8 overflow-y-auto">
-        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-1/3">
+      <div className="flex-1 p-4 md:p-8 overflow-y-auto">
+        <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full md:w-1/3">
           <input
             type="email"
             placeholder="New Email"
@@ -64,7 +63,7 @@ const EmailPage = () => {
             onChange={(e) => setNewPassword(e.target.value)}
             className="border border-gray-300 p-2 rounded"
           />
-          <button type="submit" className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-20">Save</button>
+          <button type="submit" className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-full md:w-20">Save</button>
         </form>
 
         {/* Success message display */}
