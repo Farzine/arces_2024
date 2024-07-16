@@ -39,20 +39,21 @@ const AboutPage: React.FC = () => {
               the disciplines of theoretical, experimental, and applied Engineering and Technology. This conference will bring
               together leading academic scientists, researchers, students, professional and industry practitioners from around
               the world to exchange and share their experiences and research results on all aspects of Engineering and Technology.
+              Every alternative year it is organized by the School of Applied Science & Technology consiting nice academic departments as follow: 
             </p>
           </div>
           <div className="mt-14 text-start mx-16">
             <h3 className="text-xl font-semibold">Departments from School of Applied Science & Technology</h3>
             <ul className="list-disc list-inside mt-5 text-left inline-block pl-14 pb-10">
-              <li>Architecture</li>
-              <li>Chemical Engineering & Polymer Science</li>
-              <li>Civil & Environmental Engineering</li>
-              <li>Computer Science & Engineering</li>
-              <li>Electrical & Electronic Engineering</li>
-              <li>Food Engineering & Tea Technology</li>
-              <li>Industrial & Production Engineering</li>
-              <li>Mechanical Engineering</li>
-              <li>Petroleum and Mining Engineering</li>
+              <li>Architecture (<strong>ARC</strong>)</li>
+              <li>Chemical Engineering & Polymer Science (<strong>CEP</strong>)</li>
+              <li>Civil & Environmental Engineering (<strong>CEE</strong>)</li>
+              <li>Computer Science & Engineering (<strong>CSE</strong>)</li>
+              <li>Electrical & Electronic Engineering (<strong>EEE</strong>)</li>
+              <li>Food Engineering & Tea Technology (<strong>FET</strong>)</li>
+              <li>Industrial & Production Engineering (<strong>IPE</strong>)</li>
+              <li>Mechanical Engineering (<strong>MEE</strong>)</li>
+              <li>Petroleum and Mining Engineering (<strong>PME</strong>)</li>
             </ul>
           </div>
         </div>

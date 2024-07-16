@@ -13,7 +13,7 @@ const Submission: React.FC = () => {
         <Navbar />
       </div>
       <main className="flex-grow">
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 mt-20">
           <h1 className="text-4xl font-bold text-center my-12">
             <Image
               src="/submit.png"
@@ -31,12 +31,12 @@ const Submission: React.FC = () => {
               Extended Abstract and Full Paper Submission
             </h2>
               <p className="mb-2 pl-10 pr-10">
-                <a href="https://easychair.org/conferences/?conf=icerie2025" className="text-blue-600 hover:underline">
+                <a href="https://easychair.org/account2/signin?l=8322975692086448067" className="text-blue-600 hover:underline">
                   Click here
                 </a> to submit your extended abstract and full Paper (after abstract got accepted).
               </p>
               <p className="mb-2 pl-10 pr-10">
-                You must have an <a href="https://easychair.org/" className="text-blue-600 hover:underline">EasyChair</a> account to submit both abstract and full paper online. If you don’t have an account, please <a href="https://easychair.org/account/signup.cgi" className="text-blue-600 hover:underline">click here</a> to create one before submitting the abstract and full paper.
+                You must have an <a href="https://www.easychair.org/" className="text-blue-600 hover:underline">EasyChair</a> account to submit both abstract and full paper online. If you don’t have an account, please <a href="https://www.easychair.org/" className="text-blue-600 hover:underline">click here</a> to create one before submitting the abstract and full paper.
               </p>
               <p className="mb-2 pl-10 pb-4 pr-10">
                 If you face any problem in online submission, please contact to conference secretary (or <a href="mailto:icerie2025@sust.edu" className="text-blue-600 hover:underline">icerie2025@sust.edu</a>)
@@ -50,10 +50,10 @@ const Submission: React.FC = () => {
               Style Guideline
             </h2>
               <p className="mb-2 pl-10 pr-10">
-                The length of the full paper should be minimum 4 pages and maximum 6 pages. Instruction Template for ICERIE-2023 Full paper in <a href="/path/to/docx" className="text-blue-600 hover:underline">.docx</a> format. For abstract submission, please use this <a href="/path/to/template" className="text-blue-600 hover:underline">abstract template</a>.
+                The length of the full paper should be minimum 4 pages and maximum 6 pages. Instruction Template for ICERIE-2023 Full paper in <a href="/doc/ICERIE2025_Abstract_Template.docx" className="text-blue-600 hover:underline">.docx</a> format. For abstract submission, please use this <a href="/doc/ICERIE2025_Abstract_Template.docx" className="text-blue-600 hover:underline">abstract template</a>.
               </p>
               <p className="mb-2 pl-10 pb-4 pr-10">
-                Download the conference brochure of <a href="/path/to/brochure" className="text-blue-600 hover:underline">ICERIE2025</a>.
+                Download the conference brochure of <a href="/doc/ICERIE_2023.pdf" className="text-blue-600 hover:underline">ICERIE2025</a>.
               </p>
             </div>
           </div>
