@@ -212,7 +212,7 @@ const Notices: React.FC = () => {
                   <td className="py-2 px-4 border space-x-2">
                     <button
                       onClick={() => handleEditNotice(notice)}
-                      className="text-black py-1 px-3 rounded hover:bg-green-600 border-2 border-green-600 w-full md:w-auto"
+                      className="text-black py-1 px-3 m-2 rounded hover:bg-green-600 border-2 border-green-600 w-full md:w-auto"
                     >
                       Edit
                     </button>

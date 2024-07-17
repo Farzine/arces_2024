@@ -122,9 +122,9 @@ const ImportantDates: React.FC = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex flex-col min-h-screen md:flex-row">
       <Sidebar />
-      <div className="flex-1 p-4 sm:p-8 overflow-y-auto">
+      <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100">
         <h1 className="text-3xl font-bold mb-4">Important Dates</h1>
 
         {importantDates.length === 0 && <p>No important dates found</p>}
@@ -191,7 +191,7 @@ const ImportantDates: React.FC = () => {
                   <td className="py-2 px-4 border space-x-2">
                     <button
                       onClick={() => handleEditClick(date)}
-                      className="text-black py-1 px-3 rounded hover:bg-green-600 border-2 border-green-600"
+                      className="text-black py-1 px-3 m-2 rounded hover:bg-green-600 border-2 border-green-600"
                     >
                       Edit
                     </button>
