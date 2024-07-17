@@ -34,7 +34,7 @@ export default function Gallery() {
           const data = await response.json();
           console.log("Fetched images:", data);
           setImages(data);
-          setFilteredImages(data); // Initially show all images
+          setFilteredImages(data);
         } else {
           console.error("Error fetching images:", response.statusText);
         }
@@ -60,8 +60,8 @@ export default function Gallery() {
 
   const handleTagClick = (tag: string) => {
     if (selectedTag === tag) {
-      setSelectedTag(null); // Deselect tag if already selected
-      filterImages(null, selectedYear); // Reset filters
+      setSelectedTag(null); 
+      filterImages(null, selectedYear); 
     } else {
       setSelectedTag(tag);
       filterImages(tag, selectedYear);
@@ -70,8 +70,8 @@ export default function Gallery() {
 
   const handleYearClick = (year: number) => {
     if (selectedYear === year) {
-      setSelectedYear(null); // Deselect year if already selected
-      filterImages(selectedTag, null); // Reset filters
+      setSelectedYear(null); 
+      filterImages(selectedTag, null); 
     } else {
       setSelectedYear(year);
       filterImages(selectedTag, year);
