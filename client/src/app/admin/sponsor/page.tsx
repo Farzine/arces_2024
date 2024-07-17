@@ -8,7 +8,8 @@ import Image from 'next/image';
 const UploadSponsorImagePage: React.FC = () => {
     const [images, setImages] = useState<any[]>([]);
     const [file, setFile] = useState<File | null>(null);
-    const [sponsorName, setsponsorName] = useState('');
+    const [sponsorName, setSponsorName] = useState('');
+    const [sponsorType, setSponsorType] = useState(''); // New state for sponsor type
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
@@ -52,7 +53,11 @@ const UploadSponsorImagePage: React.FC = () => {
     };
 
     const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setsponsorName(event.target.value);
+        setSponsorName(event.target.value);
+    };
+
+    const handleSponsorTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setSponsorType(event.target.value);
     };
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -65,6 +70,7 @@ const UploadSponsorImagePage: React.FC = () => {
         const formData = new FormData();
         formData.append('image', file);
         formData.append('sponsorName', sponsorName);
+        formData.append('sponsorType', sponsorType); // Include sponsorType in form data
 
         setLoading(true);
 
@@ -81,7 +87,8 @@ const UploadSponsorImagePage: React.FC = () => {
             if (response.ok) {
                 fetchImages();
                 setFile(null);
-                setsponsorName('');
+                setSponsorName('');
+                setSponsorType(''); // Reset sponsor type
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
@@ -168,6 +175,16 @@ const UploadSponsorImagePage: React.FC = () => {
                         placeholder="Enter Sponsor Name"
                         className="border p-2"
                     />
+                    <select
+                        value={sponsorType}
+                        onChange={handleSponsorTypeChange}
+                        className="border p-2"
+                    >
+                        <option value="" disabled>Select Sponsor Type</option>
+                        <option value="Media Partner">Media Partner</option>
+                        <option value="Technical Partner">Technical Partner</option>
+                        <option value="Supported By">Supported By</option>
+                    </select>
                     <button
                         type="submit"
                         className="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 w-full md:w-40"
@@ -197,6 +214,7 @@ const UploadSponsorImagePage: React.FC = () => {
                         <div key={image._id} className="flex flex-col md:flex-row justify-between items-center border p-4 rounded shadow-lg bg-[#eaefef]">
                             <div className="flex-1">
                                 <p className="mb-2 text-gray-700 truncate">{truncateText(image.sponsorName, 30)}</p>
+                                <p className="mb-2 text-gray-500 truncate">{image.sponsorType}</p> {/* Display sponsor type */}
                                 <button
                                     onClick={() => handleDelete(image._id)}
                                     className="mt-2 px-2 py-1 border border-red-500 text-red-500 rounded hover:bg-red-500 hover:text-white transition-colors duration-200"

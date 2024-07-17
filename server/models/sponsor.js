@@ -11,7 +11,11 @@ const sponsorSchema = new mongoose.Schema({
   },
   sponsorName: {
     type: String,
-    required: false,
+    required: true,
+  },
+  sponsorType: {
+    type: String,
+    required: true,
   }
 });
 

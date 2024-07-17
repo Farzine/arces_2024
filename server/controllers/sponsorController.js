@@ -4,7 +4,7 @@ const Sponsor = require('../models/sponsor');
 exports.uploadSponsorImage = async (req, res) => {
   try {
     const file = req.file;
-    const { sponsorName } = req.body;
+    const { sponsorName, sponsorType } = req.body;
 
     if (!file) {
       return res.status(400).json({ message: 'No file uploaded' });
@@ -13,7 +13,8 @@ exports.uploadSponsorImage = async (req, res) => {
     const image = new Sponsor({
       path: file.path,
       public_id: file.filename,
-      sponsorName
+      sponsorName,
+      sponsorType
     });
 
     await image.save();

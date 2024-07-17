@@ -1,18 +1,72 @@
 "use client";
 
-import Footer from '@/components/Footer';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Navbar from '@/components/NavBar';
 import OrganizedBy from '@/components/OrganizedBy';
+import Footer from '@/components/Footer';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
-import Image from 'next/image';
 
-const Sponsors = () => {
+
+interface Sponsor {
+  _id: string;
+  path: string;
+  sponsorName: string;
+  sponsorType: string;
+}
+
+const SponsorsPage: React.FC = () => {
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+
+  useEffect(() => {
+    const fetchSponsors = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sponsors`, {
+          method: 'GET',
+          credentials: 'include',
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setSponsors(data);
+        } else {
+          console.error('Error fetching sponsors:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching sponsors:', error);
+      }
+    };
+
+    fetchSponsors();
+  }, []);
+
+  const renderSponsorsByType = (type: string) => {
+    const filteredSponsors = sponsors.filter(sponsor => sponsor.sponsorType === type);
+    return (
+      <div className="mb-8">
+        <hr className="mt-8 border-t-2 border-gray-300 mx-56" />
+        <h2 className="text-4xl font-semibold text-center text-orange-500 mb-10 mt-10">{type}</h2>
+        <div className="flex justify-center space-x-8">
+          {filteredSponsors.map((sponsor) => (
+            <div key={sponsor._id} className="text-center">
+              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mr-8">
+                <Image src={sponsor.path} alt={sponsor.sponsorName} width={100} height={100} className="object-cover w-full h-full" />
+              </div>
+              <p className="mt-4 text-sm text-gray-700 mb-10 mr-8">{sponsor.sponsorName}</p>
+            </div>
+          ))}
+        </div>
+        
+      </div>
+    );
+  };
+
   return (
-    <main className="flex flex-col min-h-screen bg-white">
-      <Navbar />
-
-      <div className="flex-grow bg-white mx-auto flex flex-col items-center p-4 md:p-10">
-        <div className='flex justify-center items-center mr-16'>
+    <div className="bg-white min-h-screen">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
+      <div className="container mx-auto px-4 py-8">
+      <div className='flex justify-center items-center mr-16 mt-20'>
           <div className='pt-9 mr-4'>
             <Image
               src="/handshake.png"
@@ -25,64 +79,18 @@ const Sponsors = () => {
             <h1 className="text-4xl font-bold mt-5">Sponsors</h1>
           </div>
         </div>
-
-        <p className="text-center mt-4 text-lg mb-4">
-          8th International Conference on Engineering Research, Innovation and Education <br />(ICERIE 2025)
+        <p className="text-center mb-4">
+          8th International Conference on Engineering Research, Innovation and Education (ICERIE 2025)
         </p>
-
         <OrganizedBy />
-
-        <div className="my-16 w-full max-w-4xl">
-        <hr className="my-8 border-gray-300" />
-          <Section
-            title="Media Partner"
-            images={[
-              { src: "/icerieLogo.jpg", alt: "Media Partner 1" },
-              { src: "/icerieLogo.jpg", alt: "Media Partner 2" },
-              { src: "/icerieLogo.jpg", alt: "Media Partner 3" }
-            ]}
-          />
-          <hr className="my-8 border-gray-300" />
-          <Section
-            title="Technical Partner"
-            images={[
-              { src: "/icerieLogo.jpg", alt: "Technical Partner 1" },
-              { src: "/icerieLogo.jpg", alt: "Technical Partner 2" },
-              { src: "/icerieLogo.jpg", alt: "Technical Partner 3" }
-            ]}
-          />
-          <hr className="my-8 border-gray-300" />
-          <Section
-            title="Supported By"
-            images={[
-              { src: "/icerieLogo.jpg", alt: "Supported By 1" },
-              { src: "/icerieLogo.jpg", alt: "Supported By 2" },
-              { src: "/icerieLogo.jpg", alt: "Supported By 3" }
-            ]}
-          />
-        </div>
+        {renderSponsorsByType('Media Partner')}
+        {renderSponsorsByType('Technical Partner')}
+        {renderSponsorsByType('Supported By')}
       </div>
       <ScrollToTopButton />
       <Footer />
-    </main>
+    </div>
   );
 };
 
-const Section = ({ title, images }: { title: string, images: { src: string, alt: string }[] }) => (
-  <div className="mb-10">
-    <h2 className="text-3xl font-bold text-center text-orange-600 mb-16">{title}</h2>
-    <div className="flex justify-center items-center space-x-16">
-      {images.map((image, index) => (
-        <Image
-          key={index}
-          src={image.src}
-          alt={image.alt}
-          width={100}
-          height={100}
-        />
-      ))}
-    </div>
-  </div>
-);
-
-export default Sponsors;
+export default SponsorsPage;
