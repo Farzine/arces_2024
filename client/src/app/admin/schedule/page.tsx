@@ -289,7 +289,7 @@ const Schedule: React.FC = () => {
                   <td className="py-2 px-4 border space-x-2">
                     <button
                       onClick={() => handleEditClick(item)}
-                      className="text-black py-1 px-3 rounded hover:bg-green-600 border-2 border-green-600"
+                      className="text-black py-1 px-3 m-2 rounded hover:bg-green-600 border-2 border-green-600"
                     >
                       Edit
                     </button>

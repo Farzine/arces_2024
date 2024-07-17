@@ -62,7 +62,8 @@ const Sidebar: React.FC = () => {
             <div
                 className={`fixed h-full bg-[#a8c1c1] w-64 py-8 px-4 flex flex-col items-center transform ${
                     isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-                } transition-transform duration-300 ease-in-out md:translate-x-0 md:relative z-50`}
+                } transition-transform duration-300 ease-in-out md:translate-x-0 md:relative z-50 overflow-y-auto h-screen`}
+                style={{ backgroundColor: '#a8c1c1' }}
             >
                 <div className="text-2xl font-bold mb-8">Hello, Admin</div>
                 <div className="flex flex-col space-y-1 w-full">
