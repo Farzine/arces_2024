@@ -24,10 +24,8 @@ const SponsorsPage: React.FC = () => {
         const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sponsors`, {
           method: 'GET',
           credentials: 'include',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+      });
+        console.log('response:', response);
         if (response.ok) {
           const data = await response.json();
           setSponsors(data);
