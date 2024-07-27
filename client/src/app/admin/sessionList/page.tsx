@@ -3,6 +3,7 @@
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Sidebar from "@/components/Sidebar";
 import { format } from "date-fns";
+import { se } from "date-fns/locale";
 import Cookies from "js-cookie";
 import moment from "moment";
 import { useRouter } from "next/navigation";
@@ -29,6 +30,7 @@ const SessionList: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [editId, setEditId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -61,6 +63,7 @@ const SessionList: React.FC = () => {
       setError("All fields are required.");
       return;
     }
+    setLoading(true);
 
     try {
       const token = Cookies.get("token");
@@ -96,10 +99,13 @@ const SessionList: React.FC = () => {
     } catch (error) {
       console.error("Error adding SessionList item:", error);
       setError("Failed to add SessionList item. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleDeleteSessionListItem = async (id: string) => {
+    setLoading(true);
     try {
       const token = Cookies.get("token");
       if (!token) router.push("/admin");
@@ -123,6 +129,8 @@ const SessionList: React.FC = () => {
     } catch (error) {
       console.error("Error deleting SessionList item:", error);
       setError("Failed to delete SessionList item. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -131,6 +139,7 @@ const SessionList: React.FC = () => {
       setError("All fields are required.");
       return;
     }
+    setLoading(true);
 
     try {
       const token = Cookies.get("token");
@@ -167,6 +176,8 @@ const SessionList: React.FC = () => {
     } catch (error) {
       console.error("Error editing SessionList item:", error);
       setError("Failed to edit SessionList item. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -187,9 +198,14 @@ const SessionList: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100">
+      {loading && (
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
+                    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                </div>
+            )}
+      <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
         <h1 className="text-2xl md:text-3xl font-bold mb-4">Session List Management</h1>
 
         {sessionListItems.length === 0 && <p>No session list items found</p>}
@@ -299,8 +315,8 @@ const SessionList: React.FC = () => {
             </tbody>
           </table>
         </div>
+        <ScrollToTopButton />
       </div>
-      <ScrollToTopButton />
     </div>
   );
 };

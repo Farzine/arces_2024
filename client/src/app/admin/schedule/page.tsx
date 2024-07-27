@@ -29,6 +29,7 @@ const Schedule: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [editId, setEditId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -61,6 +62,8 @@ const Schedule: React.FC = () => {
       setError("All fields are required.");
       return;
     }
+
+    setLoading(true);
 
     try {
       const token = Cookies.get("token");
@@ -97,10 +100,13 @@ const Schedule: React.FC = () => {
     } catch (error) {
       console.error("Error adding schedule item:", error);
       setError("Failed to add schedule item. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleDeleteScheduleItem = async (id: string) => {
+    setLoading(true);
     try {
       const token = Cookies.get("token");
       if (!token) router.push("/admin");
@@ -124,6 +130,8 @@ const Schedule: React.FC = () => {
     } catch (error) {
       console.error("Error deleting schedule item:", error);
       setError("Failed to delete schedule item. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -132,6 +140,8 @@ const Schedule: React.FC = () => {
       setError("All fields are required.");
       return;
     }
+
+    setLoading(true);
 
     try {
       const token = Cookies.get("token");
@@ -169,6 +179,8 @@ const Schedule: React.FC = () => {
     } catch (error) {
       console.error("Error editing schedule item:", error);
       setError("Failed to edit schedule item. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -189,9 +201,14 @@ const Schedule: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100">
+      {loading && (
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
+                    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                </div>
+            )}
+      <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
         <h1 className="text-2xl md:text-3xl font-bold mb-4">Schedule Management</h1>
 
         {scheduleItems.length === 0 && <p>No schedule items found</p>}

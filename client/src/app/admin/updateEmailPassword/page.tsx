@@ -9,13 +9,14 @@ const EmailPage = () => {
   const [newPassword, setNewPassword] = useState('');
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const token = Cookies.get('token');
   if (!token) router.push('/admin');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/admin/update-email-password`, {
         method: 'PUT',
@@ -41,13 +42,20 @@ const EmailPage = () => {
       console.error('Error updating email and password:', error);
       setError('Failed to update. Please try again.');
       setTimeout(() => setError(null), 3000); 
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
       <Sidebar />
-      <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100">
+      {loading && (
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
+                    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                </div>
+            )}
+      <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full md:w-1/3">
           <input
             type="email"

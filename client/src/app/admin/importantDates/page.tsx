@@ -22,6 +22,7 @@ const ImportantDates: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [editId, setEditId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -47,6 +48,7 @@ const ImportantDates: React.FC = () => {
   };
 
   const handleAddOrEditImportantDates = async () => {
+    setLoading(true);
     try {
       const token = Cookies.get('token');
       const formattedDate = dates ? format(dates, 'dd MMMM yyyy') : '';
@@ -82,10 +84,13 @@ const ImportantDates: React.FC = () => {
     } catch (error) {
       console.error(editId ? 'Error editing important date:' : 'Error adding important date:', error);
       setError(editId ? 'Failed to edit important date. Please try again.' : 'Failed to add important date. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleDeleteImportantDates = async (id: string) => {
+    setLoading(true);
     try {
       const token = Cookies.get('token');
       if (!token) router.push('/admin');
@@ -106,6 +111,8 @@ const ImportantDates: React.FC = () => {
     } catch (error) {
       console.error('Error deleting important date:', error);
       setError('Failed to delete important date. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -122,9 +129,14 @@ const ImportantDates: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen md:flex-row">
+    <div className="flex flex-col min-h-screen md:flex-row bg-gray-100">
       <Sidebar />
-      <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100">
+      {loading && (
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
+                    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                </div>
+            )}
+      <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
         <h1 className="text-3xl font-bold mb-4">Important Dates</h1>
 
         {importantDates.length === 0 && <p>No important dates found</p>}

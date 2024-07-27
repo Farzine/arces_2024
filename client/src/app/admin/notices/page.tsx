@@ -19,6 +19,7 @@ const Notices: React.FC = () => {
   const [editId, setEditId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -53,6 +54,7 @@ const Notices: React.FC = () => {
   };
 
   const handleAddNotice = async () => {
+    setLoading(true);
     try {
       const token = Cookies.get('token');
       const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/notices/add`, {
@@ -75,10 +77,13 @@ const Notices: React.FC = () => {
     } catch (error) {
       console.error('Error adding notice:', error);
       setError('Failed to add notice. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleDeleteNotice = async (id: string) => {
+    setLoading(true);
     try {
       const token = Cookies.get('token');
       if (!token) router.push('/admin');
@@ -98,6 +103,8 @@ const Notices: React.FC = () => {
     } catch (error) {
       console.error('Error deleting notice:', error);
       setError('Failed to delete notice. Please try again.');
+    }finally {
+      setLoading(false);
     }
   };
 
@@ -142,9 +149,14 @@ const Notices: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen md:flex-row">
+    <div className="flex flex-col min-h-screen md:flex-row bg-gray-100">
       <Sidebar />
-      <div className="flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100">
+      {loading && (
+                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
+                    <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+                </div>
+            )}
+      <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
         <h1 className="text-3xl font-bold mb-4">Notices</h1>
 
         {success && (
