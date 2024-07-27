@@ -22,13 +22,10 @@ const UploadSponsorImagePage: React.FC = () => {
 
     const fetchImages = async () => {
         try {
-            const token = Cookies.get('token');
+           
             const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sponsors`, {
                 method: 'GET',
                 credentials: 'include',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                }
             });
             if (response.ok) {
                 const data = await response.json();

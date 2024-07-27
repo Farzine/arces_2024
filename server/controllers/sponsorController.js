@@ -37,14 +37,14 @@ exports.deleteSponsorImage = async (req, res) => {
     await cloudinary.uploader.destroy(image.public_id);
     await Sponsor.findByIdAndDelete(id);
 
-    res.status(200).json({ message: 'Image deleted successfully' });
+    res.status(200).json({ message: 'Sponsor Image deleted successfully' });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Server error' });
   }
 };
 
-exports.getSponsorImages = async (req, res) => {
+exports.getSponsorImage = async (req, res) => {
   try {
     const images = await Sponsor.find();
     res.status(200).json(images);

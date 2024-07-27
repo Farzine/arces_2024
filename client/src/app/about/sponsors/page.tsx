@@ -7,7 +7,6 @@ import OrganizedBy from '@/components/OrganizedBy';
 import Footer from '@/components/Footer';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
-
 interface Sponsor {
   _id: string;
   path: string;
@@ -17,23 +16,27 @@ interface Sponsor {
 
 const SponsorsPage: React.FC = () => {
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchSponsors = async () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/sponsors`, {
-          method: 'GET',
-          credentials: 'include',
-      });
-        console.log('response:', response);
-        if (response.ok) {
-          const data = await response.json();
-          setSponsors(data);
-        } else {
-          console.error('Error fetching sponsors:', response.statusText);
+          method: 'GET'
+        });
+
+        if (!response.ok) {
+          throw new Error(`Error fetching sponsors: ${response.status} ${response.statusText}`);
         }
+
+        const data = await response.json();
+        setSponsors(data);
       } catch (error) {
         console.error('Error fetching sponsors:', error);
+        setError('Error fetching sponsors');
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -56,7 +59,6 @@ const SponsorsPage: React.FC = () => {
             </div>
           ))}
         </div>
-        
       </div>
     );
   };
@@ -67,14 +69,9 @@ const SponsorsPage: React.FC = () => {
         <Navbar />
       </div>
       <div className="container mx-auto px-4 py-8">
-      <div className='flex justify-center items-center mr-16 mt-20'>
+        <div className='flex justify-center items-center mr-16 mt-20'>
           <div className='pt-9 mr-4'>
-            <Image
-              src="/handshake.png"
-              alt="handshake icon"
-              width={50}
-              height={50}
-            />
+            <Image src="/handshake.png" alt="handshake icon" width={50} height={50} />
           </div>
           <div>
             <h1 className="text-4xl font-bold mt-5">Sponsors</h1>
@@ -88,6 +85,8 @@ const SponsorsPage: React.FC = () => {
         {renderSponsorsByType('Technical Partner')}
         {renderSponsorsByType('Supported By')}
       </div>
+      {isLoading && <div>Loading...</div>}
+      {error && <div>{error}</div>}
       <ScrollToTopButton />
       <Footer />
     </div>
