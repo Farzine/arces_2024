@@ -5,7 +5,9 @@ const FRONTENDURL = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 const store_id = process.env.STORE_ID;
 const store_passwd = process.env.STORE_PASSWD;
 const is_live = false; //true for live, false for sandbox
-const billAmount = 1000; // registration fee
+// const billAmount = 1000; // registration fee
+const earlyBirdDeadline = new Date("2024-12-10T23:59:59Z");
+const regularDeadline = new Date("2024-12-25T23:59:59Z");
 
 const AttendeePay = async (req, res) => {
   const { id } = req.params;
@@ -16,9 +18,22 @@ const AttendeePay = async (req, res) => {
     } else if (attendee.payment_status) {
       return res.status(400).json({ message: "Already Paid" });
     }
+
+    const currentDate = new Date();
+    let billAmount = 0;
+
+    // Determine the fee based on the deadline
+    if (currentDate <= earlyBirdDeadline) {
+      billAmount = attendee.early_bird_fee;
+    } else if (currentDate <= regularDeadline) {
+      billAmount = attendee.regular_fee;
+    } else {
+      return res.status(400).json({ message: "Payment deadline has passed" });
+    }
+    
     const data = {
       total_amount: billAmount,
-      currency: "BDT",
+      currency: attendee.currency,
       tran_id: id,
       cus_email: attendee.email,
       cus_phone: attendee.phone,

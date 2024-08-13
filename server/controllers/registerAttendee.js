@@ -1,8 +1,44 @@
 const Attendee = require("../models/attendee");
+const feeData = [
+  {
+    category: "Local Delegates (Author)",
+    early_bird_fee: 6000,
+    regular_fee: 7000,
+    currency: "BDT",
+  },
+  {
+    category: "Local Delegates (Participant)",
+    early_bird_fee: 5000,
+    regular_fee: 6000,
+    currency: "BDT",
+  },
+  {
+    category: "Local Students (Author/ Co-author)",
+    early_bird_fee: 4000,
+    regular_fee: 5000,
+    currency: "BDT",
+  },
+  {
+    category: "Foreign Delegates",
+    early_bird_fee: 350,
+    regular_fee: 450,
+    currency: "USD",
+  },
+  {
+    category: "Foreign Students",
+    early_bird_fee: 200,
+    regular_fee: 250,
+    currency: "USD",
+  },
+];
 
 const RegisterAttendee = async (req, res) => {
   const attendee = req.body;
-  attendee.pin = generatePIN();
+  const selectedFee = feeData.find((fee) => fee.category === attendee.category);
+  attendee.regular_fee = selectedFee.regular_fee;
+  attendee.early_bird_fee = selectedFee.early_bird_fee;
+  attendee.currency = selectedFee.currency;
+
   const newAttendee = new Attendee(attendee);
   try {
     await newAttendee.save();
@@ -14,14 +50,16 @@ const RegisterAttendee = async (req, res) => {
 
 const getAllAttendee = async (req, res) => {
   try {
-    const attendees = await Attendee.find().select('_id name email university photoUrl');
+    const attendees = await Attendee.find().select(
+      "_id name email university photoUrl"
+    );
     res.status(200).json(attendees);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 };
 
-const getAttendeeByID = async (req, res) =>{
+const getAttendeeByID = async (req, res) => {
   const { id } = req.params;
   try {
     const attendee = await Attendee.findById(id);
@@ -32,10 +70,6 @@ const getAttendeeByID = async (req, res) =>{
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
-
-const generatePIN = () => {
-  return Math.floor(1000 + Math.random() * 9000);
 };
 
 module.exports = { RegisterAttendee, getAllAttendee, getAttendeeByID };

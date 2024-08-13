@@ -13,7 +13,7 @@ const attendeeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  country: {
+  category: {
     type: String,
     required: true,
   },
@@ -25,6 +25,18 @@ const attendeeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  currency: {
+    type: String,
+    required: true,
+  },
+  regular_fee:{
+    type: Number,
+    required: true,
+  },
+  early_bird_fee:{
+    type: Number,
+    required: true,
+  },
   payment_status: {
     type: Boolean,
     required: true,
@@ -32,10 +44,6 @@ const attendeeSchema = new mongoose.Schema({
   },
   val_id: {
     type: String
-  },
-  pin: {
-    type: Number,
-    required: true
   }
 });
 

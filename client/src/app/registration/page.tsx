@@ -13,44 +13,19 @@ import 'react-toastify/dist/ReactToastify.css';
 const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 const frontendUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
 
-interface Country {
-  name: string;
-  flag: string;
-  callingCode: string;
-}
 
 export default function Registration() {
   const [form, setForm] = useState({
     name: "",
     university: "",
-    country: "",
+    category: "",
     email: "",
     phone: "",
     photoUrl: "",
   });
-  const [countries, setCountries] = useState<Country[]>([]);
+  const categories = ["Local Delegates (Author)","Local Delegates (Participant)","Local Students (Author/ Co-author)","Foreign Delegates","Foreign Students"];
   const [submitting, setSubmitting] = useState<boolean>(false);
   const route = useRouter();
-
-  useEffect(() => {
-    axios
-      .get("https://restcountries.com/v3.1/all")
-      .then((response) => {
-        const countryData = response.data.map((country: any) => ({
-          name: country.name.common,
-          flag: country.flags.svg,
-          callingCode:
-            country.idd.root +
-            (country.idd.suffixes ? country.idd.suffixes[0] : ""),
-        }));
-        // Sort the countries alphabetically by name
-        countryData.sort((a: Country, b: Country) =>
-          a.name.localeCompare(b.name)
-        );
-        setCountries(countryData);
-      })
-      .catch((error) => console.error("Error fetching countries:", error));
-  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -73,7 +48,7 @@ export default function Registration() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    if (!form.name || !form.university || !form.country || !form.email || !form.phone || !form.photoUrl) {
+    if (!form.name || !form.university || !form.category || !form.email || !form.phone || !form.photoUrl) {
       toast.error("Please upload your image.");
       setSubmitting(false);
       return;
@@ -87,8 +62,8 @@ export default function Registration() {
     } catch (error) {
       toast.error("Failed to register. Please try again.")
       console.error("Error registering user:", error);
+      setSubmitting(false);
     }
-    setSubmitting(false);
   };
 
   return (
@@ -156,23 +131,23 @@ export default function Registration() {
               />
             </div>
             <div className="mb-2">
-              <label htmlFor="country" className="mb-1 text-sm">
-                Country<span className="text-red-500">*</span>
+              <label htmlFor="category" className="mb-1 text-sm">
+                Category<span className="text-red-500">*</span>
               </label>
               <select
-                id="country"
-                name="country"
-                value={form.country}
+                id="category"
+                name="category"
+                value={form.category}
                 onChange={handleChange}
                 className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
                 required
               >
                 <option value="" disabled>
-                  Select your country
+                  Select your category
                 </option>
-                {countries.map((country) => (
-                  <option key={country.name} value={country.name}>
-                    {country.name}
+                {categories.map((category,index) => (
+                  <option key={index} value={category}>
+                    {category}
                   </option>
                 ))}
               </select>

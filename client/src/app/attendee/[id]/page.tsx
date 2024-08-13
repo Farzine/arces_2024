@@ -8,25 +8,55 @@ import Image from 'next/image';
 
 const BACKENDURL = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 
+interface AttendeeInterface {
+  _id: string;
+  name: string;
+  email: string;
+  university: string;
+  photoUrl: string;
+  regular_fee: number;
+  early_bird_fee: number;
+  payment_status: boolean;
+  currency: string;
+  category: string;
+}
+
+const earlyBirdDeadline = new Date("2024-12-10T23:59:59Z");
+const regularDeadline = new Date("2024-12-25T23:59:59Z");
+
 export default function SoloAttendee({ params }: { params: { id: string } }) {
-  const [attendee, setAttendee] = useState<any>(null); // Use 'any' type for flexibility
+  const [attendee, setAttendee] = useState<AttendeeInterface | null>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null); // Use 'null' as initial state for error
+  const [error, setError] = useState<string | null>(null);
+  const [billAmount, setBillAmount] = useState<number>(0);
+  const [payable, setPayable] = useState<boolean>(true);
+  const currentDate = new Date();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${BACKENDURL}/registration/${params.id}`);
-        setAttendee(response.data);
+        const attendeeData: AttendeeInterface = response.data;
+
+        // Determine the fee based on the current date
+        if (currentDate <= earlyBirdDeadline) {
+          setBillAmount(attendeeData.early_bird_fee);
+        } else if (currentDate <= regularDeadline) {
+          setBillAmount(attendeeData.regular_fee);
+        } else {
+          setPayable(false); // Disable payment if the deadline has passed
+        }
+
+        setAttendee(attendeeData);
         setLoading(false);
-      } catch (error:any) {
-        setError(error.message); // Set error message in state
+      } catch (error: any) {
+        setError(error.message);
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [params.id]); // Fetch data whenever 'params.id' changes
+  }, [params.id]);
 
   const payment = async () => {
     try {
@@ -38,11 +68,15 @@ export default function SoloAttendee({ params }: { params: { id: string } }) {
     }
   };
 
-  if (loading) return <div role="status" className="flex flex-col justify-center items-center h-screen">
-  <LoaderCircle className="animate-spin" size={45} />
-</div>;
+  if (loading)
+    return (
+      <div role="status" className="flex flex-col justify-center items-center h-screen">
+        <LoaderCircle className="animate-spin" size={45} />
+      </div>
+    );
+
   if (error) return <p>Error: {error}</p>;
-  if (!attendee) return <p>Attendee not found</p>; // Handle case where 'attendee' is null
+  if (!attendee) return <p>Attendee not found</p>;
 
   return (
     <main className="flex flex-col min-h-screen">
@@ -50,28 +84,33 @@ export default function SoloAttendee({ params }: { params: { id: string } }) {
         <Navbar />
       </div>
       <div className="flex flex-grow flex-col justify-center items-center p-4">
-        {/* <h1 className="text-3xl font-semibold mb-4">Attendee Details</h1> */}
         <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md w-full md:w-1/2">
           <Image
             src={attendee.photoUrl}
             alt={`${attendee.name}'s photo`}
             className="w-32 h-32 rounded-full mb-4"
-            width={100} height={100}
+            width={100}
+            height={100}
           />
           <h2 className="text-2xl font-bold">{attendee.name}</h2>
           <p className="text-lg">Email: {attendee.email}</p>
-          <p className="text-lg">Phone: {attendee.phone}</p>
-          <p className="text-lg">Country: {attendee.country}</p>
           <p className="text-lg">University: {attendee.university}</p>
-          <p className="text-lg">Payment Status: {attendee.payment_status ? <span className='text-green-500 font-semibold'>Paid</span> : <span className='text-red-500 font-semibold'>Not Paid</span>}</p>
-          {!attendee.payment_status && (
+          <p className="text-lg">
+            Payment Status: {attendee.payment_status ? (
+              <span className='text-green-500 font-semibold'>Paid</span>
+            ) : (
+              <span className='text-red-500 font-semibold'>Not Paid</span>
+            )}
+          </p>
+          {!attendee.payment_status && payable && (
             <button
               onClick={payment}
               className="px-4 py-2 mt-4 bg-green-500 text-white rounded hover:bg-green-700"
             >
-              Pay now
+              {`Pay ${billAmount} ${attendee.currency}`}
             </button>
           )}
+          {!payable && <p className="text-red-500 font-semibold mt-4">Payment deadline has passed</p>}
         </div>
       </div>
       <Footer />
