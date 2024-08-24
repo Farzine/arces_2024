@@ -51,7 +51,7 @@ const RegisterAttendee = async (req, res) => {
 const getAllAttendee = async (req, res) => {
   try {
     const attendees = await Attendee.find().select(
-      "_id name email university photoUrl"
+      "_id name email university photoUrl category payment_status phone"
     );
     res.status(200).json(attendees);
   } catch (error) {

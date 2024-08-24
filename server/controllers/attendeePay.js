@@ -38,7 +38,7 @@ const AttendeePay = async (req, res) => {
       cus_email: attendee.email,
       cus_phone: attendee.phone,
       shipping_method: "NO",
-      product_name: "Registration for ARCES 2024",
+      product_name: "Registration for ICERIE 2025",
       product_category: "N/A",
       product_profile: "Ticket",
       success_url: `${baseUrl}/registration/paySuccess/${id}`,

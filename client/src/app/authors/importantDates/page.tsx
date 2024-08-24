@@ -2,7 +2,7 @@
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/NavBar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Calendar } from 'lucide-react';
 
 interface ImportantDate {
@@ -42,6 +42,7 @@ const ImportantDates: React.FC = () => {
             <Calendar className="w-8 h-8 mr-2" />
             <h1 className="text-4xl font-bold">IMPORTANT DATES</h1>
           </div>
+          <Suspense fallback={<p>Loading dates...</p>}>
           <div className="bg-white rounded-lg overflow-hidden items-center border-none mb-16">
             <div className="grid grid-cols-2 border-b border-gray-200">
               <div className="p-4 font-bold text-xl shadow-sm flex items-center justify-center border-2">Description</div>
@@ -62,6 +63,7 @@ const ImportantDates: React.FC = () => {
               </div>
             ))}
           </div>
+          </Suspense>
         </div>
       </div>
       <Footer />
