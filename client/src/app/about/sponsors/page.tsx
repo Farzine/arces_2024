@@ -47,15 +47,15 @@ const SponsorsPage: React.FC = () => {
     const filteredSponsors = sponsors.filter(sponsor => sponsor.sponsorType === type);
     return (
       <div className="mb-8">
-        <hr className="mt-8 border-t-2 border-gray-300 mx-56" />
-        <h2 className="text-4xl font-semibold text-center text-orange-500 mb-10 mt-10">{type}</h2>
-        <div className="flex justify-center space-x-8">
+        <hr className="mt-8 border-t-2 border-gray-300 mx-auto w-11/12 sm:w-8/12 lg:w-6/12" />
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-center text-orange-500 mb-6 mt-6 sm:mt-8">{type}</h2>
+        <div className="flex flex-wrap justify-center gap-8">
           {filteredSponsors.map((sponsor) => (
             <div key={sponsor._id} className="text-center">
-              <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mr-8">
+              <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full overflow-hidden">
                 <Image src={sponsor.path} alt={sponsor.sponsorName} width={100} height={100} className="object-cover w-full h-full" />
               </div>
-              <p className="mt-4 text-sm text-gray-700 mb-10 mr-8">{sponsor.sponsorName}</p>
+              <p className="mt-4 text-xs sm:text-sm md:text-base text-gray-700">{sponsor.sponsorName}</p>
             </div>
           ))}
         </div>
@@ -69,15 +69,15 @@ const SponsorsPage: React.FC = () => {
         <Navbar />
       </div>
       <div className="container mx-auto px-4 py-8">
-        <div className='flex justify-center items-center mr-16 mt-20'>
+        <div className='flex justify-center items-center mt-20'>
           <div className='pt-9 mr-4'>
             <Image src="/handshake.png" alt="handshake icon" width={50} height={50} />
           </div>
           <div>
-            <h1 className="text-4xl font-bold mt-5">Sponsors</h1>
+            <h1 className="text-3xl sm:text-4xl font-bold mt-5">Sponsors</h1>
           </div>
         </div>
-        <p className="text-center mb-4">
+        <p className="text-center mb-4 text-sm sm:text-base md:text-lg">
           8th International Conference on Engineering Research, Innovation and Education (ICERIE 2025)
         </p>
         <OrganizedBy />

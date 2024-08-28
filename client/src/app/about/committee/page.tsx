@@ -287,7 +287,7 @@ export default function Committees() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {technicalCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
@@ -300,12 +300,12 @@ export default function Committees() {
           <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Registration and Certification Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
             <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr Mohammad Muhshin Aziz Khan, IPE, SUST</h3>
+              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Mohammad Muhshin Aziz Khan, IPE, SUST</h3>
               <p className="mt-5">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {registrationCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
@@ -313,17 +313,19 @@ export default function Committees() {
           </div>
         </div>
 
+
+
         {/* Publication and Media Committee */}
         <div className="mt-20">
           <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Publication and Media Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
             <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr Mohammad Muhshin Aziz Khan, IPE, SUST</h3>
+              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Mohammad Muhshin Aziz Khan, IPE, SUST</h3>
               <p className="mt-5">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {publicationCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
@@ -341,7 +343,7 @@ export default function Committees() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {foodCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
@@ -359,7 +361,7 @@ export default function Committees() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {fundCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
@@ -377,7 +379,7 @@ export default function Committees() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {websiteAndManuscriptCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
@@ -385,9 +387,9 @@ export default function Committees() {
           </div>
         </div>
 
-        {/* ACCOMODATION, TRANSPORT AND TOUR */}
+        {/* Accommodation, Transport and Tour Committee */}
         <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Accomodation, Transport and Tour Committee</h2>
+          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Accommodation, Transport and Tour Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
             <div className="text-center mb-6">
               <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Md. Misbah Uddin, CEE, SUST</h3>
@@ -395,15 +397,15 @@ export default function Committees() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {accommodationCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        
-        {/* EVENT MANAGEMENT */}
+
+        {/* Event Management Committee */}
         <div className="mt-20">
           <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Event Management Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
@@ -413,15 +415,14 @@ export default function Committees() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {eventManagementCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        {/* VIRTUAL SESSION MANAGEMENT */}
+        {/* Virtual Session Management Committee */}
         <div className="mt-20">
           <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Virtual Session Management Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
@@ -431,14 +432,14 @@ export default function Committees() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {virtualSessionManagementCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
+        
         {/* POSTER SESSION MANAGEMENT */}
         <div className="mt-20">
           <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Poster Session Management Committee</h2>
@@ -449,7 +450,7 @@ export default function Committees() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {posterSessionManagementCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6 ml-40">
+                <div key={index} className="text-lg text-start mb-2 mx-6">
                   <li>{member}</li>
                 </div>
               ))}

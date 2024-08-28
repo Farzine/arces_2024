@@ -5,22 +5,23 @@ import { PiMapPinArea } from "react-icons/pi";
 
 export default function Venue() {
   return (
-    <main className="h-full w-full">
-      <div className="fixed top-0 left-0 right-0 z-50">
+    <div className="flex flex-col min-h-screen">
+      <header className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
-      </div>
-      <div className="w-full h-full bg-white mx-auto flex flex-col items-center p-4 md:p-10 mt-20">
-        {/* heading */}
-        <div className="heading flex w-full justify-center mb-1">
+      </header>
+
+      <main className="flex-grow w-full bg-white mx-auto flex flex-col items-center p-4 md:p-10 mt-20">
+        {/* Heading */}
+        <div className="heading flex items-center justify-center mb-1">
           <PiMapPinArea className="w-10 h-10 md:w-12 md:h-12" />
           <h1 className="font-inter font-bold text-xl md:text-4xl mx-2">
             Venue
           </h1>
         </div>
-        <hr className="w-1/6" />
+        <hr className="w-1/6 mb-4" />
 
-        {/* address */}
-        <address className="font-extralight font-inter text-center my-2">
+        {/* Address */}
+        <address className="font-extralight font-inter text-center my-2 text-sm md:text-base">
           Shahjalal University of Science and Technology
           <br />
           University Ave, Kumargaon,
@@ -28,9 +29,9 @@ export default function Venue() {
           Sylhet 3114, Bangladesh
         </address>
 
-        {/* map */}
-        <div className="google-map-sust w-full h-full drop-shadow-md flex justify-center items-center my-8">
-          <div className="w-full max-w-full lg:w-[1000px] lg:h-[450px]">
+        {/* Map */}
+        <div className="google-map-sust w-full drop-shadow-md flex justify-center items-center my-8">
+          <div className="w-full h-64 md:h-96 lg:w-[1000px] lg:h-[450px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.435552561316!2d91.82933827436678!3d24.91722804298561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3750556002144eab%3A0xe277e14dbca9f2ab!2sShahjalal%20University%20of%20Science%20and%20Technology!5e0!3m2!1sen!2sbd!4v1721041724355!5m2!1sen!2sbd"
               className="w-full h-full"
@@ -41,8 +42,11 @@ export default function Venue() {
             ></iframe>
           </div>
         </div>
-      </div>
-      <Footer />
-    </main>
+      </main>
+
+      <footer className="w-full">
+        <Footer />
+      </footer>
+    </div>
   );
 }
