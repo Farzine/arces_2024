@@ -20,6 +20,7 @@ const Notices: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -50,6 +51,8 @@ const Notices: React.FC = () => {
     } catch (error) {
       console.error('Error fetching notices:', error);
       setError('Failed to fetch notices. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -184,7 +187,7 @@ const Notices: React.FC = () => {
             </span>
           </div>
         )}
-
+        
         <div className="flex flex-col space-y-2 bg-gray-100">
           <input
             type="text"
@@ -239,6 +242,7 @@ const Notices: React.FC = () => {
               ))}
             </tbody>
           </table>
+          {isLoading && <div>Loading...</div>}
         </div>
       </div>
     </div>

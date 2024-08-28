@@ -58,6 +58,7 @@ const SponsorsPage: React.FC = () => {
               <p className="mt-4 text-xs sm:text-sm md:text-base text-gray-700">{sponsor.sponsorName}</p>
             </div>
           ))}
+          {isLoading && <div>Loading...</div>}
         </div>
       </div>
     );
@@ -85,7 +86,6 @@ const SponsorsPage: React.FC = () => {
         {renderSponsorsByType('Technical Partner')}
         {renderSponsorsByType('Supported By')}
       </div>
-      {isLoading && <div>Loading...</div>}
       {error && <div>{error}</div>}
       <ScrollToTopButton />
       <Footer />

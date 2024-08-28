@@ -29,7 +29,7 @@ const ConferenceDateView: React.FC = () => {
 
   // Calculate the maximum description length to determine fixed card width
   const maxDescriptionLength = dates.reduce((max, date) => Math.max(max, date.description.length), 0);
-  const cardWidth = `${maxDescriptionLength * 10 + 120}px`; // Adjust 10 and 120 according to your design
+  const cardWidth = `${maxDescriptionLength * 10 + 120}px`; 
 
   return (
     <div className=" p-7 shadow-sm rounded-lg bg-white">

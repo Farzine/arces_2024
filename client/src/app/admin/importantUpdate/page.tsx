@@ -17,6 +17,7 @@ const ImportantUpdates: React.FC = () => {
   const [error, setError] = useState<string | null>(null); 
   const [success, setSuccess] = useState<boolean>(false); 
   const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -47,6 +48,8 @@ const ImportantUpdates: React.FC = () => {
     } catch (error) {
       console.error('Error fetching important update:', error);
       setError('Failed to fetch important updates. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -227,6 +230,7 @@ const ImportantUpdates: React.FC = () => {
               ))}
             </tbody>
           </table>
+          {isLoading && <div>Loading...</div>}
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ interface AttendeeInterface {
 const AttendeeList: React.FC = () => {
   const [attendeeListItems, setAttendeeListItems] = useState<AttendeeInterface[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -27,7 +27,6 @@ const AttendeeList: React.FC = () => {
   }, []);
 
   const fetchAttendeeList = async () => {
-    setLoading(true);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/registration`,
@@ -47,7 +46,7 @@ const AttendeeList: React.FC = () => {
       console.error("Error fetching AttendeeList items:", error);
       setError("Failed to fetch AttendeeList items. Please try again.");
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -85,12 +84,7 @@ const AttendeeList: React.FC = () => {
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
       <Sidebar />
-      {loading && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-700 bg-opacity-50 z-50">
-          <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
-        </div>
-      )}
-      <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen ${loading ? 'filter blur-sm' : ''}`}>
+      <div className={`flex-1 p-4 md:p-8 overflow-y-auto bg-gray-100 h-screen }`}>
         <h1 className="text-2xl md:text-3xl font-bold mb-4">Attendee Details</h1>
 
         {attendeeListItems.length === 0 && <p>No Attendee Details found</p>}
@@ -139,6 +133,7 @@ const AttendeeList: React.FC = () => {
               ))}
             </tbody>
           </table>
+          {isLoading && <div>Loading...</div>}
         </div>
         <ScrollToTopButton />
       </div>

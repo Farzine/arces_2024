@@ -15,6 +15,7 @@ const UploadImagePage: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
@@ -44,7 +45,9 @@ const UploadImagePage: React.FC = () => {
             }
         } catch (error) {
             console.error('Error fetching images:', error);
-        }
+        }finally {
+            setIsLoading(false);
+          }
     };
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -250,6 +253,7 @@ const UploadImagePage: React.FC = () => {
                             <Image src={image.path} alt={image.description} className="w-32 h-24 object-cover rounded ml-4" width={100} height={100} />
                         </div>
                     ))}
+                    {isLoading && <div>Loading...</div>}
                 </div>
             </div>
         </div>

@@ -23,6 +23,7 @@ const ImportantDates: React.FC = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [editId, setEditId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -44,6 +45,8 @@ const ImportantDates: React.FC = () => {
     } catch (error) {
       console.error('Error fetching important dates:', error);
       setError('Failed to fetch important dates. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -218,6 +221,7 @@ const ImportantDates: React.FC = () => {
               ))}
             </tbody>
           </table>
+          {isLoading && <div>Loading...</div>}
         </div>
       </div>
     </div>

@@ -22,6 +22,7 @@ interface SessionListItem {
 const Schedule: React.FC = () => {
   const [schedule, setSchedule] = useState<ScheduleItem[]>([]);
   const [sessionList, setSessionList] = useState<SessionListItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchSessionList = async () => {
@@ -36,6 +37,8 @@ const Schedule: React.FC = () => {
         setSessionList(data);
       } catch (error) {
         console.error("Error fetching sessionList:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -115,6 +118,7 @@ const Schedule: React.FC = () => {
               checkend={index === schedule.length - 1}
             />
           ))}
+          {isLoading && <div>Loading...</div>}
         </div>
 
 
@@ -164,6 +168,7 @@ const Schedule: React.FC = () => {
               checkend={index === sessionList.length - 1}
             />
           ))}
+          {isLoading && <div>Loading...</div>}
         </div>
 
         {/* Background */}

@@ -31,6 +31,7 @@ const SessionList: React.FC = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [editId, setEditId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -55,6 +56,8 @@ const SessionList: React.FC = () => {
     } catch (error) {
       console.error("Error fetching SessionList items:", error);
       setError("Failed to fetch SessionList items. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -314,6 +317,7 @@ const SessionList: React.FC = () => {
               ))}
             </tbody>
           </table>
+          {isLoading && <div>Loading...</div>}
         </div>
         <ScrollToTopButton />
       </div>

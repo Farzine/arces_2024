@@ -30,6 +30,7 @@ const Schedule: React.FC = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [editId, setEditId] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -54,6 +55,8 @@ const Schedule: React.FC = () => {
     } catch (error) {
       console.error("Error fetching schedule items:", error);
       setError("Failed to fetch schedule items. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -321,6 +324,7 @@ const Schedule: React.FC = () => {
               ))}
             </tbody>
           </table>
+          {isLoading && <div>Loading...</div>}
         </div>
       </div>
       <ScrollToTopButton />
