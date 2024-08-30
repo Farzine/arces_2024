@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Footer from '@/components/Footer';
 import Navbar from '@/components/NavBar';
@@ -9,57 +9,55 @@ import React from 'react';
 const Submission: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
-     <div className="fixed top-0 left-0 right-0 z-50">
+      <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
       <main className="flex-grow">
-        <div className="container mx-auto p-4 mt-20">
-          <h1 className="text-4xl font-bold text-center my-12">
+        <div className="container mx-auto p-4 mt-24">
+          <h1 className="text-3xl md:text-4xl font-bold text-center my-12 flex justify-center items-center">
             <Image
               src="/submit.png"
               alt="Submit Icon"
               height={48}
               width={48}
-              className="inline-block w-12 h-12 mr-4"
+              className="w-10 h-10 md:w-12 md:h-12 mr-4"
             />
             Submission
           </h1>
 
           <div className="mb-16">
-            <div className="bg-gray-100 p-4 rounded-md shadow-md mx-20">
-            <h2 className="text-2xl font-semibold text-red-500 mb-4 underline pb-4 pl-10 pt-4 pr-10">
-              Extended Abstract and Full Paper Submission
-            </h2>
-              <p className="mb-2 pl-10 pr-10">
+            <div className="bg-gray-100 p-6 md:p-8 rounded-md shadow-md mx-4 md:mx-20">
+              <h2 className="text-xl md:text-2xl font-semibold text-red-500 mb-4 underline">
+                Extended Abstract and Full Paper Submission
+              </h2>
+              <p className="mb-4">
                 <a href="https://easychair.org/account2/signin?l=8322975692086448067" className="text-blue-600 hover:underline">
                   Click here
                 </a> to submit your extended abstract and full Paper (after abstract got accepted).
               </p>
-              <p className="mb-2 pl-10 pr-10">
+              <p className="mb-4">
                 You must have an <a href="https://www.easychair.org/" className="text-blue-600 hover:underline">EasyChair</a> account to submit both abstract and full paper online. If you don’t have an account, please <a href="https://www.easychair.org/" className="text-blue-600 hover:underline">click here</a> to create one before submitting the abstract and full paper.
               </p>
-              <p className="mb-2 pl-10 pb-4 pr-10">
-                If you face any problem in online submission, please contact to conference secretary (or <a href="mailto:icerie2025@sust.edu" className="text-blue-600 hover:underline">icerie2025@sust.edu</a>)
+              <p>
+                If you face any problem in online submission, please contact the conference secretary (or <a href="mailto:icerie2025@sust.edu" className="text-blue-600 hover:underline">icerie2025@sust.edu</a>)
               </p>
             </div>
           </div>
 
           <div className="mb-16">
-            <div className="bg-gray-100 p-4 rounded-md shadow-md mx-20">
-            <h2 className="text-2xl font-semibold text-red-500 mb-4 underline pb-4 pl-10 pt-4 pr-10">
-              Style Guideline
-            </h2>
-              <p className="mb-2 pl-10 pr-10">
-                The length of the full paper should be minimum 4 pages and maximum 6 pages. Instruction Template for ICERIE-2023 Full paper in <a href="/doc/ICERIE2025_Abstract_Template.docx" className="text-blue-600 hover:underline">.docx</a> format. For abstract submission, please use this <a href="/doc/ICERIE2025_Abstract_Template.docx" className="text-blue-600 hover:underline">abstract template</a>.
+            <div className="bg-gray-100 p-6 md:p-8 rounded-md shadow-md mx-4 md:mx-20">
+              <h2 className="text-xl md:text-2xl font-semibold text-red-500 mb-4 underline">
+                Style Guideline
+              </h2>
+              <p className="mb-4">
+                The length of the full paper should be minimum 4 pages and maximum 6 pages. Instruction Template for ICERIE-2025 Full paper in <a href="/doc/ICERIE2025_Abstract_Template.docx" className="text-blue-600 hover:underline">.docx</a> format. For abstract submission, please use this <a href="/doc/ICERIE2025_Abstract_Template.docx" className="text-blue-600 hover:underline">abstract template</a>.
               </p>
-              <p className="mb-2 pl-10 pb-4 pr-10">
+              <p>
                 Download the conference brochure of <a href="/doc/ICERIE_2023.pdf" className="text-blue-600 hover:underline">ICERIE2025</a>.
               </p>
             </div>
           </div>
-          <div className='pt-40'>
-
-          </div>
+          <div className="pb-40"></div>
         </div>
       </main>
       <ScrollToTopButton />
