@@ -85,9 +85,9 @@ export default function IndustryTracks() {
       </div>
       <div className="flex flex-col md:flex-row mt-24">
         <aside className="bg-white p-4 w-full md:w-1/4 md:ml-16 mt-8">
-          <div className="flex justify-center items-center mt-2 pt-5 border-2">
+          <div className="flex justify-center items-center mt-2 md:pt-5 border-2">
             <div className="text-center md:text-left">
-              <h2 className="text-3xl md:text-5xl font-bold mt-2 mb-4 md:mb-6">Tracks</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 md:mb-6">Tracks</h2>
             </div>
             <div className="ml-0 md:ml-7 mt-4 md:mt-0">
               <svg
@@ -95,7 +95,7 @@ export default function IndustryTracks() {
                 viewBox="0 0 2048 1762"
                 width="40"  // Adjusted for smaller screens
                 height="40" // Adjusted for smaller screens
-                className="md:w-50 md:h-50" // Responsive size
+                className="md:w-50 md:h-50 mb-4" // Responsive size
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path

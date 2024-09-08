@@ -6,8 +6,11 @@ import ImportantUpdates from "@/components/ImportantUpdateFrontendView";
 import Navbar from "@/components/NavBar";
 import OrganizedBy from "@/components/OrganizedBy";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import Sponsors from "@/components/Sponsors";
 import Image from "next/image";
+import Carousel from "@/js/index";
+import ImportantDates from "@/components/FrontendImportantDateComponent";
+import MessageCard from "@/components/MessageComponent";
+
 
 export default function Home() {
   return (
@@ -68,6 +71,9 @@ export default function Home() {
             </p>
           </blockquote>
         </div>
+        <div>
+          <Carousel/>
+        </div>
       </div>
       <div className="mt-3">
         <ConferenceDateView />
@@ -77,11 +83,12 @@ export default function Home() {
         <OrganizedBy />
       </div>
       <div className="mt-28">
-        <Sponsors />
-
+        <ImportantDates />
+      </div>
+      <div className="mt-28">
+        <MessageCard />
       </div>
       <ScrollToTopButton />
-
       <div>
         <Footer />
       </div>
