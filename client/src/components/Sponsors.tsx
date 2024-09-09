@@ -59,22 +59,22 @@ const Sponsors: React.FC = () => {
           src={Rhombhus}
           alt="Rhombus"
           className="absolute left-1 z-0"
-          width={150} // Smaller width for mobile
-          height={100}
+          width={250} // Smaller width for mobile
+          height={200}
           sizes="(max-width: 768px) 150px, 250px" // Responsive image sizes
         />
         <Image
           src={Rhombhus}
           alt="Rhombus"
           className="absolute right-0 z-0"
-          width={150} // Smaller width for mobile
-          height={100}
+          width={250} // Smaller width for mobile
+          height={200}                     
           sizes="(max-width: 768px) 250px, 150px" // Responsive image sizes
         />
 
         {/* Logo Carousel */}
         <div
-          className="flex gap-10 md:gap-20 overflow-x-scroll no-scrollbar justify-center items-center w-2/6 md:w-4/6 mx-auto h-[100px] md:h-[140px] z-10"
+          className="flex gap-10 md:gap-20 overflow-x-scroll no-scrollbar justify-center items-center w-4/6 md:w-5/6 mx-auto h-[100px] md:h-[140px] z-10"
           ref={carouselRef}
         >             
           {sponsors.length > 0 ? (
