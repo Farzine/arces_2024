@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
-  // State management with a single object for better organization
   const [state, setState] = useState({
     activeLink: "",
     dropdownOpen: "",
@@ -14,29 +13,19 @@ const Navbar = () => {
   const router = useRouter();
 
   // Handle clicking a link, closing the dropdown and menu
-  const handleLinkClick = (link: string) => {
-    setState((prevState) => ({
-      ...prevState,
-      activeLink: link,
-      dropdownOpen: "",
-      menuOpen: false,
-    }));
-  };
-
-  // Handle mouse entering a dropdown item
-  const handleMouseEnter = (link: string) => {
-    setState((prevState) => ({
-      ...prevState,
-      dropdownOpen: link,
-    }));
-  };
-
-  // Handle mouse leaving a dropdown item
-  const handleMouseLeave = () => {
-    setState((prevState) => ({
-      ...prevState,
-      dropdownOpen: "",
-    }));
+  const handleLinkClick = (link:string) => {
+    if (state.dropdownOpen === link) {
+      setState((prevState) => ({
+        ...prevState,
+        dropdownOpen: "",
+      }));
+    } else {
+      setState((prevState) => ({
+        ...prevState,
+        dropdownOpen: link,
+        activeLink: link,
+      }));
+    }
   };
 
   // Toggle mobile menu
@@ -48,7 +37,7 @@ const Navbar = () => {
   };
 
   // Handle navigation and close the menu
-  const handleNavigation = (path: string) => {
+  const handleNavigation = (path:string) => {
     router.push(path);
     setState((prevState) => ({
       ...prevState,
@@ -56,7 +45,6 @@ const Navbar = () => {
     }));
   };
 
-  // Define navigation links (you could move these to a separate config file)
   const home = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
   const tracks = `${home}/tracks`;
   const submissionUrl = `${home}/authors/submission`;
@@ -124,9 +112,9 @@ const Navbar = () => {
   return (
     <header className="bg-white shadow-lg p-3 z-50 relative">
       <nav className="flex justify-between items-center w-full h-14 mx-auto">
-        <div className="flex items-center">
+        <div className="flex items-center justify-between w-full md:w-auto">
           <Image
-            className="ml-10 w-16 cursor-pointer"
+            className="ml-5 md:ml-10 w-16 cursor-pointer"
             src="/icerieLogo.jpg"
             alt="Logo"
             width={1000}
@@ -152,10 +140,6 @@ const Navbar = () => {
             {navLinks.map((link, index) => (
               <li
                 key={index}
-                onMouseEnter={() =>
-                  link.dropdown && handleMouseEnter(link.name)
-                }
-                onMouseLeave={handleMouseLeave}
                 className="relative"
               >
                 <a
@@ -164,8 +148,12 @@ const Navbar = () => {
                       ? "text-black"
                       : "text-gray-700"
                   }`}
-                  href={link.href}
-                  onClick={() => handleLinkClick(link.name)}
+                  href={link.dropdown ? "#" : link.href}
+                  onClick={() =>
+                    link.dropdown
+                      ? handleLinkClick(link.name)
+                      : handleNavigation(link.href ?? "")
+                  }
                   aria-expanded={state.dropdownOpen === link.name}
                 >
                   {link.name}
@@ -201,7 +189,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex items-center gap-6">
           <button
-            className="bg-indigo-700 text-white px-5 py-2 text-lg font-semibold rounded-full hover:bg-indigo-500 flex justify-between items-center mx-5"
+            className="bg-red-500 text-white px-5 py-2 text-lg font-semibold rounded-full hover:bg-indigo-500 flex justify-between items-center mx-5"
             onClick={() => handleNavigation("/registration")}
             aria-label="Register"
           >
