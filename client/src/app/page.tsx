@@ -1,100 +1,90 @@
 "use client";
-import ConferenceDateView from "@/components/ConferenceDateView";
+
 import Footer from "@/components/Footer";
-import Herosection from "@/components/Herosection";
-import ImportantUpdates from "@/components/ImportantUpdateFrontendView";
 import Navbar from "@/components/NavBar";
 import OrganizedBy from "@/components/OrganizedBy";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import Image from "next/image";
-import Carousel from "@/js/index";
 import ImportantDates from "@/components/FrontendImportantDateComponent";
 import MessageCard from "@/components/MessageComponent";
+import LatestUpdates from "@/components/LatestUpdates";
+import Carousel from "@/js/index";
 import Sponsors from "@/components/Sponsors";
-
 
 export default function Home() {
   return (
-    <main className="bg-white">
-      <div className="fixed top-0 left-0 right-0 z-50">
-        <Navbar />
-      </div>
-      <div className="mt-20">
-        <Herosection />
-      </div>
-      <div className="mt-5">
-        <ImportantUpdates />
-      </div>
+    <div>
+      <Navbar />
 
-      <div className="px-4 py-6 lg:px-8">
-
-        <div className="bg-white p-6 border-2 rounded-lg shadow-sm ml-20 mr-20 mt-10 mb-10">
-          <h1 className="text-3xl font-bold mb-4">“Message”</h1>
-          <div className="flex items-center mb-4">
-            <Image
-              src="/logoNavBar.png"
-              alt="Md Farhad Rabbi"
-              className="w-16 h-16 rounded-full mr-4"
-              width={100} height={100}
+      {/* Hero Section */}
+      <section className="hero-section bg-cover bg-center relative mt-48 mb-48">
+        {/* Overlay for darkened effect */}
+        <div className="overlay opacity-70 absolute inset-0"></div>
+        {/* Hero content */}
+        <div className="container mx-auto flex flex-col justify-center items-center h-full text-center relative z-10 px-4">
+          <div className="flex flex-col lg:flex-row items-center justify-center mb-6 space-y-6 lg:space-y-0 lg:space-x-6">
+            {/* Logo in Hero Section */}
+            <img
+              src="./icerieLogo.jpg"
+              alt="ICERIE Logo"
+              className="w-32 h-32 lg:w-40 lg:h-40"
             />
-            <div>
-              <p className="text-xl font-semibold">Md Farhad Rabbi</p>
-              <p className="text-sm text-gray-500">Conference Chair, 2025</p>
-            </div>
+            <h1 className="text-3xl lg:text-5xl font-bold text-black leading-tight">
+              8th International Conference on <br />
+              Engineering Research, Innovation and Education <br /> (ICERIE 2025)
+            </h1>
           </div>
-          <blockquote className="italic text-justify border-l-4 border-blue-500 pl-4">
-            <p className="mb-4">
-              The International Conference on Advanced Research in Computer,
-              Electrical, and Software Engineering (ARCES) is a prestigious platform
-              for research in computer, software, and electrical engineering. The key
-              aspect of ARCES is its encouragement of the necessary interaction between
-              scientists, researchers, engineers, corporate executives, and academic
-              students to bridge the gap between government, business, and academia. To
-              develop this motivation, eminent scholars in pertinent domains provide
-              keynote addresses, tutorials, workshops, exhibitions, and oral
-              <br />
-              <br />
 
-              presentations. Academic researchers will disclose the results and findings
-              of laboratory-based investigations at this conference. To inform academia
-              <br />
-
-              about recent developments and useful findings, industry professionals
-              illustrate cutting-edge research in 4IR technologies. For discussions of
-
-              <br />
-              <br />
-              recent developments in contemporary computing intelligence, the ARCES
-              platform will also address regional and global challenges in the
-              aforementioned fields.
-
-
+          {/* Date and Location */}
+          <div className="text-black text-lg lg:text-xl mt-4 lg:mt-2">
+            <p className="text-red-600 font-medium">09th January 2025</p>
+            <p className="font-normal">
+              University Ave, Sylhet 3114 <br />
+              Shahjalal University of Science and Technology
             </p>
-          </blockquote>
+          </div>
         </div>
-        <div>
-          <Carousel />
+      </section>
+
+      {/* Latest Updates Section */}
+      <div className="container my-16 mx-auto px-4 py-8">
+        <LatestUpdates />
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-col lg:flex-row lg:space-x-8">
+          {/* Important Dates Section */}
+          <div className="w-full lg:w-1/2 mb-8 lg:mb-0 md:mx-0 mx-24">
+            <ImportantDates />
+          </div>
+          {/* Message Section */}
+          <div className="w-full lg:w-1/2 md:mx-0 mx-[-40px] ">
+            <MessageCard />
+          </div>
         </div>
       </div>
-      <div className="mt-3">
-        <ConferenceDateView />
+
+      {/* Carousel Section */}
+      <div className="container mx-auto px-4 py-8">
+        <Carousel />
       </div>
-      <div className="mt-28">
-      <Sponsors/>
+
+      {/* Sponsors Section */}
+      <div className="container mt-10 mb-10 mx-auto px-4 py-8">
+        <Sponsors />
       </div>
-      <div className="mt-28">
-        <OrganizedBy />
-      </div>
-      <div className="mt-28">
-        <ImportantDates />
-      </div>
-      <div className="mt-28">
-        <MessageCard />
-      </div>
+
+      {/* Organized By Section */}
+      <section className="organized-by py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <OrganizedBy />
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <Footer />
+
+      {/* Scroll to Top Button */}
       <ScrollToTopButton />
-      <div>
-        <Footer />
-      </div>
-    </main>
+    </div>
   );
 }

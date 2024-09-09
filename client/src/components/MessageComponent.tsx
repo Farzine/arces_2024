@@ -3,8 +3,8 @@ import Image from 'next/image'; // Importing Next.js Image component
 
 const MessageCard: React.FC = () => {
     return (
-        <div className="flex justify-center items-center p-6">
-            <div className="bg-white shadow-2xl rounded-lg p-8 w-full max-w-5xl ">
+        <div className="flex justify-center items-center ml-32">
+            <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-5xl ">
                 <div className="flex items-center mb-6">
                     <h1 className="text-4xl font-bold text-gray-800">Message</h1>
                     <svg width="40" height="40" className='ml-5' viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
