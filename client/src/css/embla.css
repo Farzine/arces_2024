@@ -1,125 +1,183 @@
 .embla {
-    max-width: 48rem;
-    margin: auto;
-    --slide-height: 19rem;
-    --slide-spacing: 1rem;
-    --slide-size: 80%;
+  max-width: 100%;
+  margin: auto;
+  --slide-height: 45rem;
+  --slide-spacing: 2rem;
+  --slide-size: 80%;
+  position: relative; 
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+
+.embla__slide {
+  transform: translate3d(0, 0, 0);
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  transition: transform 0.0s ease, opacity 0.5s ease;
+}
+
+
+.embla__slide:not(.embla__slide--center) {
+  opacity: 0.2; 
+  z-index: 1; 
+}
+
+.embla__slide__img {
+  border-radius: 1.8rem;
+  display: block;
+  height: var(--slide-height);
+  width: 100%;
+  object-fit: cover;
+}
+
+.embla__controls {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.embla__buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.embla__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -35px;
+  position: absolute;
+  top: calc(50% + var(--slide-height) / 2 + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.embla__dot {
+  background-color: #e0e0e0;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.embla__dot:after {
+  box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  content: '';
+}
+.embla__dot--selected {
+  background-color: #ee4e4e;
+}
+
+.embla__dot--selected:after {
+  box-shadow: inset 0 0 0 0.2rem var(--text-body);
+}
+
+.embla__parallax {
+  border-radius: 1.8rem;
+  height: 100%;
+  overflow: hidden;
+}
+
+.embla__parallax__layer {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.embla__parallax__img {
+  max-width: none;
+  flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
+  object-fit: cover;
+}
+
+.embla__description {
+  text-align: start;
+  margin-top: 5px;
+  margin-left: 140px;
+  font-size: x-large;
+  font-weight: bold;
+  color: #6D6B6A;
+  position: relative;
+  top: calc(50% + var(--slide-height) / 2 + 40px); 
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 768px) { /* Adjust the max-width value as needed */
+  .embla__description {
+    text-align: center;
+    margin-left: 0px;
+    font-size: larger;
+    left: 0; /* Adjust the positioning if needed */
+    transform: none; /* Reset the transform if necessary */
+    top: auto; /* Adjust the top positioning if necessary */
   }
-  .embla__viewport {
-    overflow: hidden;
+}
+.embla__location {
+  text-align: start;
+  margin-bottom: 10px;
+  margin-left: 140px;
+  font-size: medium;
+  color: #6D6B6A;
+  position: relative;
+  top: calc(50% + var(--slide-height) / 2 + 40px); 
+  left: 50%;
+  transform: translateX(-50%);
+}
+@media (max-width: 768px) { 
+  .embla__location {
+    text-align: center;
+    margin-left: 0px;
+    font-size: small;
+    left: 0; 
+    transform: none; 
+    top: auto; 
   }
-  .embla__container {
-    display: flex;
-    touch-action: pan-y pinch-zoom;
-    margin-left: calc(var(--slide-spacing) * -1);
-  }
-  .embla__slide {
-    transform: translate3d(0, 0, 0);
-    flex: 0 0 var(--slide-size);
-    min-width: 0;
-    padding-left: var(--slide-spacing);
-  }
-  .embla__slide__img {
-    border-radius: 1.8rem;
-    display: block;
-    height: var(--slide-height);
-    width: 100%;
-    object-fit: cover;
-  }
-  .embla__controls {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
-    gap: 1.2rem;
-    margin-top: 1.8rem;
-  }
-  .embla__buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.6rem;
-    align-items: center;
-  }
-  .embla__button {
-    -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    touch-action: manipulation;
-    display: inline-flex;
-    text-decoration: none;
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-    width: 3.6rem;
-    height: 3.6rem;
-    z-index: 1;
-    border-radius: 50%;
-    color: var(--text-body);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .embla__button:disabled {
-    color: var(--detail-high-contrast);
-  }
-  .embla__button__svg {
-    width: 35%;
-    height: 35%;
-  }
-  .embla__dots {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-    margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
-  }
-  .embla__dot {
-    -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    touch-action: manipulation;
-    display: inline-flex;
-    text-decoration: none;
-    cursor: pointer;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    width: 2.6rem;
-    height: 2.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
-  .embla__dot:after {
-    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
-    width: 1.4rem;
-    height: 1.4rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    content: '';
-  }
-  .embla__dot--selected:after {
-    box-shadow: inset 0 0 0 0.2rem var(--text-body);
-  }
-  .embla__parallax {
-    border-radius: 1.8rem;
-    height: 100%;
-    overflow: hidden;
-  }
-  .embla__parallax__layer {
-    position: relative;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .embla__parallax__img {
-    max-width: none;
-    flex: 0 0 calc(115% + (var(--slide-spacing) * 2));
-    object-fit: cover;
-  }
+}
+
+
+/* --------- */
+.embla__button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.embla__button--prev {
+  left: -2rem;
+}
+
+.embla__button--next {
+  right: -2rem;
+}
+

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   EmblaCarouselType,
   EmblaEventType,
@@ -15,16 +15,16 @@ import { DotButton, useDotButton } from './EmblaCarouselDotButton';
 const TWEEN_FACTOR_BASE = 0.2;
 
 type PropType = {
-  slides: number[];
   options?: EmblaOptionsType;
 };
 
 const EmblaCarousel: React.FC<PropType> = (props) => {
-  const { slides, options } = props;
-  const [emblaRef, emblaApi] = useEmblaCarousel(options); // Removed autoplay option here
+  const { options } = props;
+  const [emblaRef, emblaApi] = useEmblaCarousel(options); 
   const tweenFactor = useRef(0);
   const tweenNodes = useRef<HTMLElement[]>([]);
-  const autoplayInterval = useRef<NodeJS.Timeout | null>(null); // To store the interval reference
+  const autoplayInterval = useRef<NodeJS.Timeout | null>(null); 
+  const [currentIndex, setCurrentIndex] = useState(0); 
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi);
 
@@ -125,11 +125,56 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     };
   }, [emblaApi, tweenParallax, startAutoplay, stopAutoplay]);
 
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const handleSelect = () => {
+      setCurrentIndex(emblaApi.selectedScrollSnap());
+    };
+
+    emblaApi.on('select', handleSelect);
+    handleSelect();
+
+    return () => {
+      emblaApi.off('select', handleSelect);
+    };
+  }, [emblaApi]);
+
+  const pictures = [
+    {
+      src: '/1.jpg',
+      description: 'Sust Grafiti',
+      location: 'Location 1'
+    },
+    {
+      src: '/2.webp',
+      description: 'Sust Grafiti',
+      location: 'Location 2'
+    },
+    {
+      src: '/3.webp',
+      description: 'Description for Image 3',
+      location: 'Location 3'
+    },
+    {
+      src: '/5.webp',
+      description: 'Description for Image 3',
+      location: 'Location 3'
+    },
+    {
+      src: '/6.webp',
+      description: 'Description for Image 3',
+      location: 'Location 3'
+    },
+    // Add more slides as needed
+  ];
+
   return (
     <div className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((index) => (
+          {pictures.map((picture, index) => (
             <div
               className={`embla__slide ${index === selectedIndex ? 'embla__slide--center' : ''}`}
               key={index}
@@ -138,8 +183,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 <div className="embla__parallax__layer">
                   <img
                     className="embla__slide__img embla__parallax__img"
-                    src={`https://picsum.photos/600/350?v=${index}`}
-                    alt="Your alt text"
+                    src={picture.src}
+                    alt={picture.description}
                   />
                 </div>
               </div>
@@ -160,11 +205,19 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               key={index}
               onClick={() => onDotButtonClick(index)}
               className={'embla__dot'.concat(
-                index === selectedIndex ? ' embla__dot--selected' : ''
+                index === currentIndex ? ' embla__dot--selected' : ''
               )}
             />
           ))}
         </div>
+      </div>
+      <div>
+      <div className="embla__description">
+        {pictures[currentIndex].description}
+      </div>
+      <div className='embla__location'>
+      {pictures[currentIndex].location}
+      </div>
       </div>
     </div>
   );

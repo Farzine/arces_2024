@@ -14,9 +14,7 @@ const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 const Carousel: React.FC = () => (
   <>
-    <Header />
-    <EmblaCarousel slides={SLIDES} options={OPTIONS} />
-    <Footer />
+    <EmblaCarousel options={OPTIONS} />
   </>
 )
 

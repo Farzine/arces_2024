@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     "Engineering Innovation",
     "Research Conference",
     "Conference 2025",
+    "Technology Advancements",
+    "Academic Conference",
+    "Global Engineering Conference",
+    "SUST",
+    "Shahjalal University of Science and Technology",
   ],
   openGraph: {
     title: "ICERIE 2025 | 8th International Conference on Engineering Research, Innovation and Education",
@@ -32,7 +37,7 @@ export const metadata: Metadata = {
         url: "https://res.cloudinary.com/djmgdgx86/image/upload/v1724840698/icerieLogo_zkafbk.jpg", 
         width: 1200,
         height: 630,
-        alt: "ICERIE 2025 Conference",
+        alt: "ICERIE 2025 Conference Banner",
       },
     ],
   },
@@ -66,8 +71,14 @@ export default function RootLayout({
           content="W2s1_KkfRCUr13JIRNW_3mHuY_1FKWU48HYJ4W-15E4"
         />
         <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="canonical" href="https://icerie2025.sust.edu" />
         <link rel="icon" href="/icerieLogo.jpg" sizes="any" />
+        <meta name="author" content="ICERIE 2025 Conference Team" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="ICERIE 2025" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
       </head>
       <body
         className={cn(
