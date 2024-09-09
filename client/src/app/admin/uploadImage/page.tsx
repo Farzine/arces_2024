@@ -17,6 +17,8 @@ const UploadImagePage: React.FC = () => {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const router = useRouter();
+    const token = Cookies.get('token');
+      if (!token) router.push('/admin');
 
     useEffect(() => {
         fetchImages();

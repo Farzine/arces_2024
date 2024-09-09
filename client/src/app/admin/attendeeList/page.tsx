@@ -3,6 +3,7 @@
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Sidebar from "@/components/Sidebar";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 
 interface AttendeeInterface {
@@ -21,6 +22,8 @@ const AttendeeList: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const token = Cookies.get('token');
+      if (!token) router.push('/admin');
 
   useEffect(() => {
     fetchAttendeeList();

@@ -10,6 +10,7 @@ import Image from "next/image";
 import Carousel from "@/js/index";
 import ImportantDates from "@/components/FrontendImportantDateComponent";
 import MessageCard from "@/components/MessageComponent";
+import LatestUpdates from "@/components/LatestUpdates";
 
 
 export default function Home() {
@@ -72,13 +73,16 @@ export default function Home() {
           </blockquote>
         </div>
         <div>
-          <Carousel/>
+          <Carousel />
         </div>
       </div>
       <div className="mt-3">
         <ConferenceDateView />
       </div>
 
+      <div className="mt-3">
+        <LatestUpdates />
+      </div>
       <div className="mt-28">
         <OrganizedBy />
       </div>

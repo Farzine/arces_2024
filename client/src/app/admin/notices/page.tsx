@@ -22,7 +22,9 @@ const Notices: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
-
+  const token = Cookies.get('token');
+  if (!token) router.push('/admin');
+  
   useEffect(() => {
     fetchNotices();
   }, []);
@@ -38,6 +40,8 @@ const Notices: React.FC = () => {
 
   const fetchNotices = async () => {
     try {
+      const token = Cookies.get('token');
+      if (!token) router.push('/admin');
       const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/notices`, {
         method: 'GET',
         credentials: 'include',

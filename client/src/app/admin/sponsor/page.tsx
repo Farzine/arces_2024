@@ -16,6 +16,8 @@ const UploadSponsorImagePage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(true);
     const fileInputRef = useRef<HTMLInputElement | null>(null);
     const router = useRouter();
+    const token = Cookies.get('token');
+      if (!token) router.push('/admin');
 
     useEffect(() => {
         fetchImages();

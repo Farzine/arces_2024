@@ -62,11 +62,24 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -35px;
+  margin-top: -40px;
   position: absolute;
   top: calc(50% + var(--slide-height) / 2 + 20px);
   left: 50%;
   transform: translateX(-50%);
+}
+
+@media (max-width: 768px) { /* Adjust the max-width value as needed */
+  .embla__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2px;
+  position: absolute;
+  top: calc(50% + var(--slide-height) / 2 + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  }
 }
 
 .embla__dot {

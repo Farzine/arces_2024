@@ -25,6 +25,8 @@ const ImportantDates: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
+  const token = Cookies.get('token');
+      if (!token) router.push('/admin');
 
   useEffect(() => {
     fetchImportantDates();
