@@ -3,10 +3,10 @@ import Image from 'next/image'; // Importing Next.js Image component
 
 const MessageCard: React.FC = () => {
     return (
-        <div className="flex justify-center items-center ml-32">
-            <div className="bg-white shadow-xl rounded-lg p-8 w-full max-w-5xl ">
+        <div className="mr-7 md:mr-0">
+            <div className="bg-white shadow-xl rounded-lg md:p-8 w-full md:ml-0 ml-20">
                 <div className="flex items-center mb-6">
-                    <h1 className="text-4xl font-bold text-gray-800">Message</h1>
+                    <h1 className="md:text-4xl font-bold text-gray-800 md:ml-0 ml-5">Message</h1>
                     <svg width="40" height="40" className='ml-5' viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
                         <rect width="40" height="40" fill="url(#pattern0_696_822)" />
                         <defs>
@@ -20,24 +20,24 @@ const MessageCard: React.FC = () => {
                 </div>
 
                 {/* Profile and Text */}
-                <div className="flex items-center mb-6">
+                <div className="flex items-center mb-6 md:ml-0 ml-5">
                     {/* Next.js Image component */}
                     <Image
-                        src="/logoNavBar.png" // Replace with actual image path or URL
+                        src="/teacher/Farhad Rabbi.png" 
                         alt="Md Farhad Rabbi"
-                        width={64}  // Increased width of the image
-                        height={64} // Increased height of the image
-                        className="rounded-full mr-4" // Tailwind CSS classes
+                        width={64}  
+                        height={64} 
+                        className="rounded-full mr-4" 
                     />
                     <div>
-                        <h3 className="font-bold text-gray-800 text-3xl">Md Farhad Rabbi</h3>
-                        <p className="text-xl text-gray-500">Conference Chair, 2025</p>
+                        <h3 className="font-bold text-gray-800 md:text-3xl text-2xl">Md Farhad Rabbi</h3>
+                        <p className="md:text-xl text-lg text-gray-500">Conference Chair, 2025</p>
                     </div>
                 </div>
 
                 {/* Message Content */}
                 <div className="h-60 overflow-y-auto pr-2 scrollbar-hide">
-                    <p className="text-gray-700 text-justify">
+                    <p className="text-gray-700 text-justify text-lg md:text-2xl md:ml-0 ml-5">
                         “The International Conference on Advanced Research in Computer, Electrical, and Software Engineering (ARCES) is a prestigious platform for research in computer, software, and electrical engineering. <br />
                         <br />The key aspect of ARCES is its encouragement of the necessary interaction between scientists, researchers, engineers, corporate executives, and academic students to bridge the gap between government, business, and academia. To develop this motivation, eminent scholars in pertinent domains provide keynote addresses, tutorials, workshops, exhibitions, and oral presentations. <br />
                         <br />Academic researchers will disclose the results and findings of laboratory-based investigations at this conference. To inform academia about recent developments and useful findings, industry professionals illustrate cutting-edge research in 4IR technologies. For discussions of recent developments in contemporary computing intelligence, the ARCES platform will also address regional and global challenges in the aforementioned fields.”

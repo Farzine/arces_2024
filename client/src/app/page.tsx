@@ -12,11 +12,14 @@ import Sponsors from "@/components/Sponsors";
 
 export default function Home() {
   return (
-    <div>
-      <Navbar />
+    <div className="min-h-screen flex flex-col bg-white">
+     
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
 
       {/* Hero Section */}
-      <section className="hero-section bg-cover bg-center relative mt-48 mb-48">
+      <section className="hero-section bg-cover bg-center relative mt-48 mb-36">
         {/* Overlay for darkened effect */}
         <div className="overlay opacity-70 absolute inset-0"></div>
         {/* Hero content */}
@@ -36,7 +39,7 @@ export default function Home() {
 
           {/* Date and Location */}
           <div className="text-black text-lg lg:text-xl mt-4 lg:mt-2">
-            <p className="text-red-600 font-medium">09th January 2025</p>
+            <p className="text-red-600 font-semibold">09th January 2025</p>
             <p className="font-normal">
               University Ave, Sylhet 3114 <br />
               Shahjalal University of Science and Technology
@@ -46,14 +49,14 @@ export default function Home() {
       </section>
 
       {/* Latest Updates Section */}
-      <div className="container my-16 mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 my-10">
         <LatestUpdates />
       </div>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 my-16">
         <div className="flex flex-col lg:flex-row lg:space-x-8">
           {/* Important Dates Section */}
-          <div className="w-full lg:w-1/2 mb-8 lg:mb-0 md:mx-0 mx-24">
+          <div className="w-full lg:w-1/2 mb-16 lg:mb-0 md:mx-0 mx-3 md:mr-0 mr-24">
             <ImportantDates />
           </div>
           {/* Message Section */}

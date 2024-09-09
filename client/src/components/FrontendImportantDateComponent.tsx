@@ -38,10 +38,10 @@ const ImportantDates: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-lg p-4 bg-white rounded-lg shadow-xl">
+    <div className="md:max-w-lg max-w-md p-4 bg-white rounded-lg shadow-xl">
       <div className="flex items-center mb-4">
-        <h2 className="text-4xl font-semibold mr-2">Important Dates</h2>
-        <svg width="30" height="40" className='ml-5' viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+        <h2 className="md:text-4xl text-3xl font-semibold mr-2">Important Dates</h2>
+        <svg className='ml-5 md:w-16 md:h-16 w-14 h-14' viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
           <rect width="40" height="44" fill="url(#pattern0_696_823)" />
           <defs>
             <pattern id="pattern0_696_823" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -55,7 +55,7 @@ const ImportantDates: React.FC = () => {
       <ul>
         {dates.map((date) => (
           <li key={date.id} className="flex items-start mb-4">
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+            <svg className='md:w-12 md:h-12 w-10 h-10' viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
               <path d="M0 0H30V30H0V0Z" fill="url(#pattern0_735_467)" />
               <defs>
                 <pattern id="pattern0_735_467" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -66,9 +66,9 @@ const ImportantDates: React.FC = () => {
             </svg>
 
             <div className="group hover:text-red-600 ml-5">
-              <h3 className="text-3xl font-semibold group-hover:text-red-600 text-red-500">{date.title}</h3>
-              <p className="text-2xl group-hover:text-red-600 text-gray-600">{date.description}</p>
-              <p className="text-xl group-hover:text-red-600 text-gray-400">
+              <h3 className="md:text-3xl font-semibold group-hover:text-red-600 text-red-500">{date.title}</h3>
+              <p className="md:text-2xl text-xl group-hover:text-red-600 text-gray-600">{date.description}</p>
+              <p className="md:text-xl text-lg group-hover:text-red-600 text-gray-400">
                 {new Date(date.date).toLocaleDateString('en-US', {
                   day: '2-digit',
                   month: 'long',

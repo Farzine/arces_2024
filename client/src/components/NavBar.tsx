@@ -136,7 +136,7 @@ const Navbar = () => {
             state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
           } md:opacity-100`}
         >
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black text-lg font-semibold mt-5 w-full">
+          <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-2xl text-lg font-semibold mt-5 w-full">
             {navLinks.map((link, index) => (
               <li
                 key={index}
@@ -161,8 +161,8 @@ const Navbar = () => {
                   <span
                     className={`${
                       state.activeLink === link.name
-                        ? "absolute w-full h-1 bg-customPurple top-5 my-1 left-0"
-                        : "absolute w-full h-1 bg-customPurple top-5 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                        ? "absolute w-full h-1 bg-customPurple top-5 md:mt-3 my-1 left-0"
+                        : "absolute w-full h-1 bg-customPurple top-5 md:mt-3 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
                     }`}
                   ></span>
                 </a>
