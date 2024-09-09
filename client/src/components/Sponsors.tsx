@@ -69,7 +69,7 @@ const Sponsors: React.FC = () => {
           className="absolute right-0 z-0"
           width={150} // Smaller width for mobile
           height={100}
-          sizes="(max-width: 768px) 150px, 250px" // Responsive image sizes
+          sizes="(max-width: 768px) 250px, 150px" // Responsive image sizes
         />
 
         {/* Logo Carousel */}

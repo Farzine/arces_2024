@@ -79,7 +79,9 @@ export default function Home() {
       <div className="mt-3">
         <ConferenceDateView />
       </div>
-
+      <div className="mt-28">
+      <Sponsors/>
+      </div>
       <div className="mt-28">
         <OrganizedBy />
       </div>
