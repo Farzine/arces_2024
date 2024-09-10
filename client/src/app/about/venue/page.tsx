@@ -14,15 +14,15 @@ export default function Venue() {
       <main className="flex-grow w-full bg-white mx-auto flex flex-col items-center p-4 md:p-10 mt-20">
         {/* Heading */}
         <div className="heading flex items-center justify-center mb-1">
-          <PiMapPinArea className="w-10 h-10 md:w-12 md:h-12" />
-          <h1 className="font-inter font-bold text-xl md:text-4xl mx-2">
+          <PiMapPinArea className="w-10 h-10 md:w-12 md:h-12 mr-5" />
+          <h1 className="font-inter font-bold text-xl md:text-6xl mx-2">
             Venue
           </h1>
         </div>
         <hr className="w-1/6 mb-4" />
 
         {/* Address */}
-        <address className="font-extralight font-inter text-center my-2 text-sm md:text-base">
+        <address className="font-extralight font-inter text-center my-2 text-sm md:text-2xl">
           Shahjalal University of Science and Technology
           <br />
           University Ave, Kumargaon,
