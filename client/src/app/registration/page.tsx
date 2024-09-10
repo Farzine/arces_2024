@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { CldUploadWidget } from "next-cloudinary";
 import Image from "next/image";
@@ -7,13 +7,12 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { ImagePlus } from "lucide-react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Carousel from "@/js";
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 const frontendUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
-
 
 export default function Registration() {
   const [form, setForm] = useState({
@@ -24,7 +23,13 @@ export default function Registration() {
     phone: "",
     photoUrl: "",
   });
-  const categories = ["Local Delegates (Author)","Local Delegates (Participant)","Local Students (Author/ Co-author)","Foreign Delegates","Foreign Students"];
+  const categories = [
+    "Local Delegates (Author)",
+    "Local Delegates (Participant)",
+    "Local Students (Author/ Co-author)",
+    "Foreign Delegates",
+    "Foreign Students",
+  ];
   const [submitting, setSubmitting] = useState<boolean>(false);
   const route = useRouter();
 
@@ -45,11 +50,18 @@ export default function Registration() {
       photoUrl: uploadedURL,
     });
   };
-  
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
-    if (!form.name || !form.university || !form.category || !form.email || !form.phone || !form.photoUrl) {
+    if (
+      !form.name ||
+      !form.university ||
+      !form.category ||
+      !form.email ||
+      !form.phone ||
+      !form.photoUrl
+    ) {
       toast.error("Please upload your image.");
       setSubmitting(false);
       return;
@@ -58,20 +70,35 @@ export default function Registration() {
       const response = await axios.post(`${baseUrl}/registration`, form);
       if (response.status === 201) {
         route.push(`${frontendUrl}/attendee/${response.data._id}`);
-        toast.success("Registration successful.")
+        toast.success("Registration successful.");
       }
     } catch (error) {
-      toast.error("Failed to register. Please try again.")
+      toast.error("Failed to register. Please try again.");
       console.error("Error registering user:", error);
       setSubmitting(false);
     }
   };
 
   return (
-    <main className="flex flex-col min-h-screen">
-      <Navbar />
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
-      <div className="grid md:grid-cols-2 grid-cols-1 justify-center items-center">
+    <div className="min-h-screen flex flex-col">
+      {/* Navbar */}
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
+      {/* Main Content */}
+      <div className="flex-grow grid md:grid-cols-2 grid-cols-1 justify-center items-center">
         {/* Background Image Section */}
         <div className="relative h-full bg-black bg-opacity-50 overflow-hidden md:visible invisible">
           <Image
@@ -91,20 +118,21 @@ export default function Registration() {
           </div>
         </div>
         {/* Registration Form Section */}
-        <div className="p-8 bg-white shadow-md rounded-lg flex flex-col items-center ">
+        <div className="rounded-lg flex flex-col items-center px-10 ">
           <Image
             src="/icerieLogo.jpg"
             height={200}
             width={200}
             alt=""
-            className="aspect-square w-32"
+            className="aspect-square w-32 md:w-48"
           />
-          <h1 className="text-2xl font-serif font-semibold mb-8 text-center">
+          <h1 className="text-2xl md:text-4xl font-serif font-semibold mb-8 text-center">
             Register Now
           </h1>
           <form onSubmit={handleSubmit}>
-            <div className="mb-2">
-              <label htmlFor="name" className="mb-1 text-sm">
+            {/* Form Fields */}
+            <div className="mb-8">
+              <label htmlFor="name" className="mb-1 text-xl md:text-2xl">
                 Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -113,12 +141,12 @@ export default function Registration() {
                 name="name"
                 value={form.name}
                 onChange={handleChange}
-                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                className="h-14 w-full rounded-md border border-input bg-background px-3 py-2 text-xl md:text-2xl ring-offset-background"
                 required
               />
             </div>
-            <div className="mb-2">
-              <label htmlFor="university" className="mb-1 text-sm">
+            <div className="mb-8">
+              <label htmlFor="university" className="mb-1 text-xl md:text-2xl">
                 University<span className="text-red-500">*</span>
               </label>
               <input
@@ -127,12 +155,12 @@ export default function Registration() {
                 name="university"
                 value={form.university}
                 onChange={handleChange}
-                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                className="h-14 w-full rounded-md border border-input bg-background px-3 py-2 text-xl md:text-2xl ring-offset-background"
                 required
               />
             </div>
-            <div className="mb-2">
-              <label htmlFor="category" className="mb-1 text-sm">
+            <div className="mb-8">
+              <label htmlFor="category" className="mb-1 text-xl md:text-2xl">
                 Category<span className="text-red-500">*</span>
               </label>
               <select
@@ -140,21 +168,21 @@ export default function Registration() {
                 name="category"
                 value={form.category}
                 onChange={handleChange}
-                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                className="h-14 w-full rounded-md border border-input bg-background px-3 py-2 text-xl md:text-2xl ring-offset-background"
                 required
               >
                 <option value="" disabled>
                   Select your category
                 </option>
-                {categories.map((category,index) => (
+                {categories.map((category, index) => (
                   <option key={index} value={category}>
                     {category}
                   </option>
                 ))}
               </select>
             </div>
-            <div className="mb-2">
-              <label htmlFor="email" className="mb-1 text-sm">
+            <div className="mb-8">
+              <label htmlFor="email" className="mb-1 text-xl md:text-2xl">
                 Email<span className="text-red-500">*</span>
               </label>
               <input
@@ -163,12 +191,12 @@ export default function Registration() {
                 name="email"
                 value={form.email}
                 onChange={handleChange}
-                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                className="h-14 w-full rounded-md border border-input bg-background px-3 py-2 text-xl md:text-2xl ring-offset-background"
                 required
               />
             </div>
-            <div className="mb-2">
-              <label htmlFor="phone" className="mb-1 text-sm">
+            <div className="mb-8">
+              <label htmlFor="phone" className="mb-1 text-xl md:text-2xl">
                 Phone Number<span className="text-red-500">*</span>
               </label>
               <input
@@ -177,7 +205,7 @@ export default function Registration() {
                 name="phone"
                 value={form.phone}
                 onChange={handleChange}
-                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background"
+                className="h-14 w-full rounded-md border border-input bg-background px-3 py-2 text-xl md:text-2xl ring-offset-background"
                 required
               />
             </div>
@@ -217,7 +245,7 @@ export default function Registration() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-2 px-4 rounded-md bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+                className="w-full py-2 px-4 rounded-md bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
               >
                 {submitting ? "Submitting..." : "Submit"}
               </button>
@@ -225,11 +253,14 @@ export default function Registration() {
           </form>
         </div>
       </div>
-          {/* Carousel Section */}
-          <div className="container mx-auto px-4 py-8 hidden">
+
+      {/* Carousel Section */}
+      <div className="container mx-auto px-4 py-8 hidden">
         <Carousel />
       </div>
+
+      {/* Footer */}
       <Footer />
-    </main>
+    </div>
   );
 }
