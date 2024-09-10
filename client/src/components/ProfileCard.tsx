@@ -17,9 +17,9 @@ const ProfileCard: React.FC<ProfileCardProps> = ({ profile }) => {
           <img src={profile.imageUrl} alt={profile.name} className="object-cover w-full h-full" />
         </div>
         <div className="mt-4 text-center px-4">
-          <h2 className="text-lg sm:text-xl font-bold">{profile.name}</h2>
-          <p className="mt-2 text-sm sm:text-base text-gray-600">{profile.title}</p>
-          <p className="mt-1 text-sm sm:text-base font-bold text-gray-600">{profile.role}</p>
+          <h2 className="text-xl sm:text-2xl font-bold">{profile.name}</h2>
+          <p className="mt-2 text-xl sm:text-2xl text-gray-600">{profile.title}</p>
+          <p className="mt-1 text-lg sm:text-xl font-semibold text-gray-600">{profile.role}</p>
         </div>
       </div>
     </div>

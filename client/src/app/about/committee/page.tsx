@@ -247,10 +247,10 @@ export default function Committees() {
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
-      <div className="mt-24 flex-grow container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center my-8">
+      <div className="mt-32 flex-grow container mx-auto px-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-center my-8">
           Organizing Committee
-          <div className="border-b-2 border-black w-1/2 mx-auto mt-3"></div>
+          <div className="border-b-2 border-black w-1/2 mx-auto mt-5"></div>
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-20">
           {profileData.map((profile, index) => (
@@ -259,18 +259,18 @@ export default function Committees() {
         </div>
 
         {/* Conference Secretariat Section */}
-        <div className="text-center mt-20">
-          <h2 className="text-3xl font-semibold text-red-600">Conference Secretariat</h2>
+        <div className="text-center my-56">
+          <h2 className="text-4xl md:text-5xl font-semibold text-red-600">Conference Secretariat</h2>
           <p className="mt-4 font-semibold">School of Applied Sciences and Technology, SUST, Sylhet</p>
         </div>
 
         {/* Advisory Committee Section */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Advisory Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Advisory Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {advisoryCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -279,16 +279,16 @@ export default function Committees() {
         </div>
 
         {/* Technical Programme Committee Section */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Technical Programme Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Technical Programme Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. M. Shahidur Rahman, CSE, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. M. Shahidur Rahman, CSE, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {technicalCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -297,16 +297,16 @@ export default function Committees() {
         </div>
 
         {/* Registration and Certification Committee */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Registration and Certification Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Registration and Certification Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Mohammad Muhshin Aziz Khan, IPE, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. Mohammad Muhshin Aziz Khan, IPE, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {registrationCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -317,16 +317,16 @@ export default function Committees() {
 
 
         {/* Publication and Media Committee */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Publication and Media Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Publication and Media Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Mohammad Muhshin Aziz Khan, IPE, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. Mohammad Muhshin Aziz Khan, IPE, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {publicationCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -335,16 +335,16 @@ export default function Committees() {
         </div>
 
         {/* Food and Refreshment Committee */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Food and Refreshment Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Food and Refreshment Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Iftekhar Ahmad, FET, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. Iftekhar Ahmad, FET, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {foodCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -353,16 +353,16 @@ export default function Committees() {
         </div>
 
         {/* Fund Raising Committee */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Fund Raising Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Fund Raising Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Md. Ariful Islam, Dept. IPE, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. Md. Ariful Islam, Dept. IPE, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {fundCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -371,16 +371,16 @@ export default function Committees() {
         </div>
 
         {/* Website and Manuscript Submission Committee */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Website and Manuscript Submission Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Website and Manuscript Submission Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Mohammad Abdullah Al Mumin, CSE, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. Mohammad Abdullah Al Mumin, CSE, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {websiteAndManuscriptCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -389,16 +389,16 @@ export default function Committees() {
         </div>
 
         {/* Accommodation, Transport and Tour Committee */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Accommodation, Transport and Tour Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Accommodation, Transport and Tour Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Md. Misbah Uddin, CEE, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. Md. Misbah Uddin, CEE, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {accommodationCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -407,16 +407,16 @@ export default function Committees() {
         </div>
 
         {/* Event Management Committee */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Event Management Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Event Management Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. Mohammad Shahidur Rahman, CEE, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. Mohammad Shahidur Rahman, CEE, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {eventManagementCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -424,16 +424,16 @@ export default function Committees() {
           </div>
         </div>
         {/* Virtual Session Management Committee */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Virtual Session Management Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Virtual Session Management Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Prof. Dr. M. Jahirul Islam, CSE, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Prof. Dr. M. Jahirul Islam, CSE, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {virtualSessionManagementCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
@@ -442,16 +442,16 @@ export default function Committees() {
         </div>
         
         {/* POSTER SESSION MANAGEMENT */}
-        <div className="mt-20">
-          <h2 className="text-3xl font-semibold text-center mb-10 text-red-600">Poster Session Management Committee</h2>
+        <div className="mt-32 mb-32">
+          <h2 className="text-4xl md:text-5xl font-semibold text-center mb-10 text-red-600">Poster Session Management Committee</h2>
           <div className="bg-white rounded-lg py-6 mt-4 mx-4 sm:mx-10 my-16">
-            <div className="text-center mb-6">
-              <h3 className="text-xl font-semibold">CONVENER: Ar. Kawshik Saha, ARC, SUST</h3>
-              <p className="mt-5">(Not as per seniority)</p>
+            <div className="text-center mb-6 mt-6">
+              <h3 className="md:text-3xl text-2xl px-2 font-semibold">CONVENER: Ar. Kawshik Saha, ARC, SUST</h3>
+              <p className="mt-5 mb-8">(Not as per seniority)</p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
               {posterSessionManagementCommittee.map((member, index) => (
-                <div key={index} className="text-lg text-start mb-2 mx-6">
+                <div key={index} className="text-xl md:text-2xl text-start mb-2 mx-6 md:mx-16">
                   <li>{member}</li>
                 </div>
               ))}
