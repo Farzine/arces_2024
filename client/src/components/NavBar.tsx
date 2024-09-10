@@ -13,7 +13,7 @@ const Navbar = () => {
   const router = useRouter();
 
   // Handle clicking a link, closing the dropdown and menu
-  const handleLinkClick = (link: string) => {
+  const handleLinkClick = (link:string) => {
     if (state.dropdownOpen === link) {
       setState((prevState) => ({
         ...prevState,
@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   // Handle navigation and close the menu
-  const handleNavigation = (path: string) => {
+  const handleNavigation = (path:string) => {
     router.push(path);
     setState((prevState) => ({
       ...prevState,
@@ -107,13 +107,19 @@ const Navbar = () => {
       ],
     },
     { name: "Contact Us", href: contactUs },
+
+    // Register button as a menu item
+    {
+      name: "Register",
+      href: "/registration",
+    },
   ];
 
   return (
     <header className="bg-white shadow-lg p-3 z-50 relative">
       <nav className="flex justify-between items-center w-full h-14 mx-auto">
         <div className="flex items-center justify-between w-full md:w-auto">
-          <div className="flex ">
+          <div className="flex">
             <Image
               className="ml-5 md:ml-10 w-16 cursor-pointer"
               src="/icerieLogo.jpg"
@@ -122,7 +128,9 @@ const Navbar = () => {
               height={1000}
               priority
             />
-            <span className="ml-5 text-nowrap mt-3 font-semibold text-red-500">ICERIE 2025</span>
+            <span className="ml-5 text-nowrap mt-3 font-semibold text-red-500">
+              ICERIE 2025
+            </span>
           </div>
           <div className="md:hidden ml-2">
             <button
@@ -134,81 +142,83 @@ const Navbar = () => {
             </button>
           </div>
         </div>
+
+        {/* Menu Links */}
         <div
           className={`nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
             } md:opacity-100`}
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-3xl text-2xl font-semibold mt-5 w-full">
             {navLinks.map((link, index) => (
-              <li
-                key={index}
-                className="relative"
-              >
-                <a
-                  className={`relative inline-block group ${state.activeLink === link.name
-                      ? "text-black"
-                      : "text-gray-700"
-                    }`}
-                  href={link.dropdown ? "#" : link.href}
-                  onClick={() =>
-                    link.dropdown
-                      ? handleLinkClick(link.name)
-                      : handleNavigation(link.href ?? "")
-                  }
-                  aria-expanded={state.dropdownOpen === link.name}
-                >
-                  {link.name}
-                  {link.dropdown && <FaAngleDown className="inline ml-1" />}
-                  <span
-                    className={`${state.activeLink === link.name
-                        ? "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0"
-                        : "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
-                      }`}
-                  ></span>
-                </a>
-                {state.dropdownOpen === link.name && link.dropdown && (
-                  <ul className="absolute bg-white shadow-lg rounded w-48 z-50 pt-5">
-                    {link.dropdown.map((sublink, subIndex) => (
-                      <li
-                        key={subIndex}
-                        className="hover:bg-gray-200 mx-2 mr-2 mb-2"
-                      >
-                        <a
-                          href={sublink.href}
-                          className="block px-4 py-2 text-xl font-semibold"
-                        >
-                          {sublink.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+              <li key={index} className="relative">
+                {link.name === "Register" ? (
+                  <button
+                    className="bg-red-500 text-white px-5 py-2 text-2xl font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5"
+                    onClick={() => handleNavigation("/registration")}
+                    aria-label="Register"
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="3"
+                        d="M12 4v16m8-8H4"
+                      ></path>
+                    </svg>
+                    Register
+                  </button>
+                ) : (
+                  <>
+                    <a
+                      className={`relative inline-block group ${state.activeLink === link.name
+                        ? "text-black"
+                        : "text-gray-700"
+                        }`}
+                      href={link.dropdown ? "#" : link.href}
+                      onClick={() =>
+                        link.dropdown
+                          ? handleLinkClick(link.name)
+                          : handleNavigation(link.href ?? "")
+                      }
+                      aria-expanded={state.dropdownOpen === link.name}
+                    >
+                      {link.name}
+                      {link.dropdown && <FaAngleDown className="inline ml-1" />}
+                      <span
+                        className={`${state.activeLink === link.name
+                          ? "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0"
+                          : "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                          }`}
+                      ></span>
+                    </a>
+                    {state.dropdownOpen === link.name && link.dropdown && (
+                      <ul className="absolute bg-white shadow-lg rounded w-48 z-50 pt-5">
+                        {link.dropdown.map((sublink, subIndex) => (
+                          <li
+                            key={subIndex}
+                            className="hover:bg-gray-200 mx-2 mr-2 mb-2"
+                          >
+                            <a
+                              href={sublink.href}
+                              className="block px-4 py-2 text-xl font-semibold"
+                            >
+                              {sublink.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </>
                 )}
               </li>
             ))}
           </ul>
-        </div>
-        <div className="hidden md:flex items-center gap-6">
-          <button
-            className="bg-red-500 text-white px-5 py-2 text-2xl font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5"
-            onClick={() => handleNavigation("/registration")}
-            aria-label="Register"
-          >
-            <svg
-              className="w-4 h-4 mr-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="3"
-                d="M12 4v16m8-8H4"
-              ></path>
-            </svg>
-            Register
-          </button>
         </div>
       </nav>
     </header>
