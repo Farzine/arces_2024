@@ -1,9 +1,17 @@
 // src/app/about/accommodation/page.tsx
+"use client"
+import Footer from '@/components/Footer';
+import Navbar from '@/components/NavBar';
+import Carousel from '@/js';
 import Link from 'next/link';
+// Import the Carousel component
 
 export default function Accommodation() {
   return (
-    <main className="h-screen flex flex-col justify-center items-center bg-white">
+    <div>
+      <Navbar/>
+      <div  className="h-screen flex flex-col justify-center items-center bg-white">
+      
       <h1 className="text-3xl font-semibold mb-4">Accommodation</h1>
       <p className="text-lg text-gray-600 mb-6">
         We will announce the accommodation details soon.
@@ -14,6 +22,15 @@ export default function Accommodation() {
       >
         Continue
       </Link>
-    </main>
+    </div>
+    {/* Wrap the Carousel and Footer components inside a div */}
+    <div>
+      {/* Carousel Section */}
+      <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
+      </div>
+      <Footer/>
+    </div>
+    </div>
   );
 }
