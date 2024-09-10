@@ -89,14 +89,14 @@ export default function SoloAttendee({ params }: { params: { id: string } }) {
           <Image
             src={attendee.photoUrl}
             alt={`${attendee.name}'s photo`}
-            className="w-32 h-32 rounded-full mb-4"
+            className="w-32 h-32 md:w-52 md:h-52 rounded-full mb-4"
             width={100}
             height={100}
           />
-          <h2 className="text-2xl font-bold">{attendee.name}</h2>
-          <p className="text-lg">Email: {attendee.email}</p>
-          <p className="text-lg">University: {attendee.university}</p>
-          <p className="text-lg">
+          <h2 className="md:text-4xl text-3xl font-bold">{attendee.name}</h2>
+          <p className="md:text-2xl text-xl">Email: {attendee.email}</p>
+          <p className="md:text-2xl text-xl">University: {attendee.university}</p>
+          <p className="md:text-2xl text-xl">
             Payment Status: {attendee.payment_status ? (
               <span className='text-green-500 font-semibold'>Paid</span>
             ) : (

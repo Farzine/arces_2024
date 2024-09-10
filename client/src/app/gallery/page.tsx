@@ -89,15 +89,15 @@ export default function Gallery() {
         {/* left side bar */}
         <div className="leftbar w-full md:w-1/5 h-auto md:h-screen bg-white hidden md:block">
           <div className="tags">
-            <h1 className="text-center my-12 font-semibold font-inter text-md">
+            <h1 className="text-center my-12 font-semibold text-4xl">
               TAGS
             </h1>
           </div>
 
           <ul className="text-semibold text-center px-10">
             <div
-              className={`text-xl text-semibold rounded-full text-slate-950 font-roboto w-25 h-10 my-1 py-2 cursor-pointer ${
-                selectedTag === "conference" ? "bg-indigo-600 text-white" : ""
+              className={`text-2xl md:text-3xl rounded-full text-slate-950 font-roboto w-25 h-10 my-1 py-2 cursor-pointer ${
+                selectedTag === "conference" ? "bg-red-400 text-white" : ""
               }`}
               onClick={() => handleTagClick("conference")}
             >
@@ -106,8 +106,8 @@ export default function Gallery() {
               </li>
             </div>
             <div
-              className={`text-xl text-semibold rounded-full text-slate-950 font-roboto w-25 h-10 my-1 py-2 cursor-pointer ${
-                selectedTag === "meeting" ? "bg-indigo-600 text-white" : ""
+              className={`text-2xl md:text-3xl mt-5 rounded-full text-slate-950 font-roboto w-25 h-10 my-1 py-2 cursor-pointer ${
+                selectedTag === "meeting" ? "bg-red-400 text-white" : ""
               }`}
               onClick={() => handleTagClick("meeting")}
             >
@@ -116,8 +116,8 @@ export default function Gallery() {
               </li>
             </div>
             <div
-              className={`text-xl text-semibold rounded-full text-slate-950 font-roboto w-25 h-10 my-1 py-2 cursor-pointer ${
-                selectedTag === "tour" ? "bg-indigo-600 text-white" : ""
+              className={`text-2xl md:text-3xl mt-5 rounded-full text-slate-950 font-roboto w-25 h-10 my-1 py-2 cursor-pointer ${
+                selectedTag === "tour" ? "bg-red-400 text-white" : ""
               }`}
               onClick={() => handleTagClick("tour")}
             >
@@ -126,8 +126,8 @@ export default function Gallery() {
               </li>
             </div>
             <div
-              className={`text-xl text-semibold rounded-full text-slate-950 font-roboto w-25 h-10 my-1 py-2 cursor-pointer ${
-                selectedTag === "program" ? "bg-indigo-600" : ""
+              className={`text-2xl md:text-3xl mt-5 rounded-full text-slate-950 font-roboto w-25 h-10 my-1 py-2 cursor-pointer ${
+                selectedTag === "program" ? "bg-red-400" : ""
               }`}
               onClick={() => handleTagClick("program")}
             >
@@ -141,9 +141,9 @@ export default function Gallery() {
         {/* rightbar */}
         <div className="rightbar w-full md:w-4/5 h-auto bg-neutral-100 md:h-screen">
           {/* Heading */}
-          <div className="heading flex justify-center items-center">
-            <CiImageOn className="w-10 h-10 mt-5 mr-3" />
-            <h1 className="text-center font-semibold font-inter text-2xl my-5 pt-5">
+          <div className="heading flex justify-center items-center md:mt-20">
+            <CiImageOn className="w-12 h-12 md:w-14 md:h-14 mt-5 mr-3" />
+            <h1 className="text-center font-semibold font-inter text-4xl md:text-5xl my-5 pt-5">
               GALLERY
             </h1>
           </div>
@@ -151,24 +151,24 @@ export default function Gallery() {
           {/* years button */}
           <div className="years flex flex-wrap justify-center md:justify-start">
             <div
-              className={`w-20 h-10 border-gray-200 border-2 m-2 rounded-full font-semibold font-inter text-md text-center p-2 cursor-pointer hover:bg-indigo-100 ${
-                selectedYear === 2025 ? "bg-indigo-600 text-white" : ""
+              className={`w-24 h-16 border-gray-200 border-2 m-2 rounded-full font-semibold font-inter text-md text-center p-2 cursor-pointer hover:bg-red-100 ${
+                selectedYear === 2025 ? "bg-red-400 text-white" : ""
               }`}
               onClick={() => handleYearClick(2025)}
             >
               2025
             </div>
             <div
-              className={`w-20 h-10 border-gray-200 border-2 m-2 rounded-full font-semibold font-inter text-md text-center p-2 cursor-pointer hover:bg-indigo-100 ${
-                selectedYear === 2024 ? "bg-indigo-600 text-white" : ""
+              className={`w-24 h-16 border-gray-200 border-2 m-2 rounded-full font-semibold font-inter text-md text-center p-2 cursor-pointer hover:bg-red-100 ${
+                selectedYear === 2024 ? "bg-red-400 text-white" : ""
               }`}
               onClick={() => handleYearClick(2024)}
             >
               2024
             </div>
             <div
-              className={`w-20 h-10 border-gray-200 border-2 m-2 rounded-full font-semibold font-inter text-md text-center p-2 cursor-pointer hover:bg-indigo-100 ${
-                selectedYear === 2023 ? "bg-indigo-600 text-white" : ""
+              className={`w-24 h-16 border-gray-200 border-2 m-2 rounded-full font-semibold font-inter text-md text-center p-2 cursor-pointer hover:bg-red-100 ${
+                selectedYear === 2023 ? "bg-red-400 text-white" : ""
               }`}
               onClick={() => handleYearClick(2023)}
             >
@@ -185,7 +185,7 @@ export default function Gallery() {
             <ul className="text-center my-5">
               <li
                 className={`cursor-pointer ${
-                  selectedTag === "conference" ? "bg-indigo-600 text-white" : ""
+                  selectedTag === "conference" ? "bg-red-400 text-white" : ""
                 }`}
                 onClick={() => handleTagClick("conference")}
               >
@@ -193,7 +193,7 @@ export default function Gallery() {
               </li>
               <li
                 className={`cursor-pointer ${
-                  selectedTag === "meeting" ? "bg-indigo-600" : ""
+                  selectedTag === "meeting" ? "bg-red-400" : ""
                 }`}
                 onClick={() => handleTagClick("meeting")}
               >
@@ -201,7 +201,7 @@ export default function Gallery() {
               </li>
               <li
                 className={`cursor-pointer ${
-                  selectedTag === "tour" ? "bg-indigo-600" : ""
+                  selectedTag === "tour" ? "bg-red-400" : ""
                 }`}
                 onClick={() => handleTagClick("tour")}
               >
@@ -209,7 +209,7 @@ export default function Gallery() {
               </li>
               <li
                 className={`cursor-pointer ${
-                  selectedTag === "program" ? "bg-indigo-600" : ""
+                  selectedTag === "program" ? "bg-red-400" : ""
                 }`}
                 onClick={() => handleTagClick("program")}
               >
@@ -225,7 +225,7 @@ export default function Gallery() {
               <div role="status ">
                 <svg
                   aria-hidden="true"
-                  className="w-20 h-20  text-center text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                  className="w-20 h-20  text-center text-gray-200 animate-spin dark:text-gray-600 fill-red-500"
                   viewBox="0 0 100 101"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +243,7 @@ export default function Gallery() {
               </div>
             </div>
           ) : (
-            <div className="imagegallery w-full h-4/5 grid grid-cols-2 mx-auto overflow-y-auto sm:grid-cols-2  md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-7 gap-1 overflow-y-auto">
+            <div className="imagegallery w-full h-4/5 grid grid-cols-2 mx-auto sm:grid-cols-2  md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-7 gap-1 overflow-y-auto md:py-10 md:px-10">
               {filteredImages.map((item, index) => (
                 <Imageholder
                   key={index}

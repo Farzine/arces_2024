@@ -32,9 +32,9 @@ function AttendeeCard(props: AttendeeCardProps) {
         width={128} 
         height={128} 
       />
-      <p className='text-lg font-semibold mt-4 text-center'>{props.name}</p>
-      <p className='text-sm text-gray-500 text-center'>{props.email}</p>
-      <p className='text-sm text-blue-500 text-center'>{props.university}</p>      
+      <p className='text-xl font-semibold mt-4 text-center'>{props.name}</p>
+      <p className='text-md text-gray-500 text-center'>{props.email}</p>
+      <p className='text-md text-blue-500 text-center'>{props.university}</p>      
     </div>
   );
 }

@@ -46,20 +46,20 @@ export default function Attendee() {
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
-      <div className="flex-grow mt-24">
+      <div className="flex-grow mt-36">
         {fetching ? (
           <div role="status" className="flex flex-col justify-center items-center h-screen">
           <LoaderCircle className="animate-spin" size={45} />
         </div>
         ) : (
           <>
-            <h1 className="text-4xl font-bold text-center my-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-center my-6">
               Meet our attendees
             </h1>
-            <div className="flex justify-center mx-6">
+            <div className="flex justify-center mx-6 md:h-20 mt-16">
               <input
                 placeholder="Search with name, email"
-                className="max-w-screen-md w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="max-w-screen-md w-full rounded-md border border-input bg-background px-6 py-2 text-xl md:text-2xl ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
               />
