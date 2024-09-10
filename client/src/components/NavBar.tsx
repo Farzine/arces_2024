@@ -134,7 +134,10 @@ const Navbar = () => {
   return (
     <header className="bg-white shadow-lg p-3 z-50 relative">
       <nav className="flex justify-between items-center w-full h-14 mx-auto">
+   
         <div className="flex items-center justify-between w-full md:w-auto">
+         
+        <Link href='/'>
           <div className="flex">
             <Image
               className="ml-5 md:ml-10 w-16 cursor-pointer"
@@ -148,6 +151,7 @@ const Navbar = () => {
               ICERIE 2025
             </span>
           </div>
+          </Link>
           <div className="md:hidden ml-2">
             <button onClick={toggleMenu} aria-expanded={state.menuOpen}>
               {state.menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
