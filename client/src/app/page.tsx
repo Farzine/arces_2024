@@ -9,6 +9,7 @@ import MessageCard from "@/components/MessageComponent";
 import LatestUpdates from "@/components/LatestUpdates";
 import Carousel from "@/js/index";
 import Sponsors from "@/components/Sponsors";
+import Notices from "@/components/Notice";
 
 export default function Home() {
   return (
@@ -39,7 +40,7 @@ export default function Home() {
 
           {/* Date and Location */}
           <div className="text-black text-lg lg:text-xl mt-4 lg:mt-2">
-            <p className="text-red-600 font-semibold">09th January 2025</p>
+            <p className="text-red-600 text-4xl my-10  font-semibold">09th January 2025</p>
             <p className="font-normal">
               University Ave, Sylhet 3114 <br />
               Shahjalal University of Science and Technology
@@ -53,21 +54,24 @@ export default function Home() {
         <LatestUpdates />
       </div>
 
-      <div className="container mx-auto px-4 py-8 my-16 md:pl-56">
-        <div className="flex flex-col lg:flex-row lg:space-x-8">
+      <div className="container  mx-auto my-5 md:my-40">
+        <div className="flex flex-col  px-10 lg:flex-row  justify-center items-center mx-auto md:px-40 lg:space-x-8">
           {/* Important Dates Section */}
-          <div className="w-full lg:w-1/3 mb-16 lg:mb-0 md:mx-0 mx-3 md:mr-0 mr-24 md:pl-40">
+        
             <ImportantDates />
-          </div>
+         
           {/* Message Section */}
-          <div className="w-full lg:w-1/2 md:mx-0 mx-[-40px] md:mt-[-14px]">
+         
             <MessageCard />
-          </div>
+      
+         
+            <Notices/>
+          
         </div>
       </div>
 
       {/* Carousel Section */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-10 md:px-40 py-8">
         <Carousel />
       </div>
 

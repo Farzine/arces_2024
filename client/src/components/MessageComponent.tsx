@@ -3,8 +3,8 @@ import Image from 'next/image'; // Importing Next.js Image component
 
 const MessageCard: React.FC = () => {
     return (
-        <div className="mr-7 md:mr-0">
-            <div className="bg-white shadow-xl rounded-lg md:p-8 w-full md:ml-0 ml-20">
+        <div className=" md:mr-0 ">
+            <div className="bg-white shadow-xl my-10  h-[400px] border-2 rounded-lg md:p-8 w-full  ">
                 <div className="flex items-center mb-6">
                     <h1 className="md:text-4xl font-bold text-gray-800 md:ml-0 ml-5">Message</h1>
                     <svg width="40" height="40" className='ml-5' viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
@@ -36,8 +36,8 @@ const MessageCard: React.FC = () => {
                 </div>
 
                 {/* Message Content */}
-                <div className="h-60 overflow-y-auto pr-2 scrollbar-hide">
-                    <p className="text-gray-700 text-justify text-lg md:text-2xl md:ml-0 ml-5">
+                <div className="h-80 overflow-y-auto px-5 scrollbar-hide">
+                    <p className="text-gray-700 text-justify text-lg md:text-2xl md:ml-0 ">
                         “The International Conference on Advanced Research in Computer, Electrical, and Software Engineering (ARCES) is a prestigious platform for research in computer, software, and electrical engineering. <br />
                         <br />The key aspect of ARCES is its encouragement of the necessary interaction between scientists, researchers, engineers, corporate executives, and academic students to bridge the gap between government, business, and academia. To develop this motivation, eminent scholars in pertinent domains provide keynote addresses, tutorials, workshops, exhibitions, and oral presentations. <br />
                         <br />Academic researchers will disclose the results and findings of laboratory-based investigations at this conference. To inform academia about recent developments and useful findings, industry professionals illustrate cutting-edge research in 4IR technologies. For discussions of recent developments in contemporary computing intelligence, the ARCES platform will also address regional and global challenges in the aforementioned fields.”
