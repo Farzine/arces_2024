@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
-import Link from "next/link";
 
 const Navbar = () => {
   const [state, setState] = useState({
@@ -13,20 +13,36 @@ const Navbar = () => {
 
   const router = useRouter();
 
-  // Handle clicking a link, closing the dropdown and menu
-  const handleLinkClick = (link:string) => {
-    if (state.dropdownOpen === link) {
-      setState((prevState) => ({
-        ...prevState,
-        dropdownOpen: "",
-      }));
+  // Close menu if clicked outside
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (state.menuOpen && target && !target.closest(".nav-links")) {
+        setState((prevState) => ({
+          ...prevState,
+          menuOpen: false,
+        }));
+      }
+    };
+
+    if (state.menuOpen) {
+      document.addEventListener("click", handleOutsideClick);
     } else {
-      setState((prevState) => ({
-        ...prevState,
-        dropdownOpen: link,
-        activeLink: link,
-      }));
+      document.removeEventListener("click", handleOutsideClick);
     }
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [state.menuOpen]);
+
+  // Handle clicking a link
+  const handleLinkClick = (link: string) => {
+    setState((prevState) => ({
+      ...prevState,
+      dropdownOpen: prevState.dropdownOpen === link ? "" : link,
+      activeLink: prevState.activeLink === link ? "" : link, // Toggle active link
+    }));
   };
 
   // Toggle mobile menu
@@ -38,12 +54,13 @@ const Navbar = () => {
   };
 
   // Handle navigation and close the menu
-  const handleNavigation = (path:string) => {
-    router.push(path);
+  const handleNavigation = (path: string) => {
     setState((prevState) => ({
       ...prevState,
       menuOpen: false,
+      activeLink: prevState.activeLink === path ? "" : path, // Toggle active link
     }));
+    router.push(path);
   };
 
   const home = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
@@ -59,9 +76,9 @@ const Navbar = () => {
   const aboutIcerie = `${home}/about/icerie`;
   const committee = `${home}/about/committee`;
   const sponsors = `${home}/about/sponsors`;
-  const accommodation = `${home}/about/accommodation`;
-  const venue = `${home}/about/venue`;
-  const contactUs = `${home}/contact`;
+  const accommodation = `${home}/about/accommodation}`;
+  const venue = `${home}/about/venue}`;
+  const contactUs = `${home}/contact}`;
 
   const navLinks = [
     { name: "Home", href: home },
@@ -108,8 +125,6 @@ const Navbar = () => {
       ],
     },
     { name: "Contact Us", href: contactUs },
-
-    // Register button as a menu item
     {
       name: "Register",
       href: "/registration",
@@ -120,10 +135,7 @@ const Navbar = () => {
     <header className="bg-white shadow-lg p-3 z-50 relative">
       <nav className="flex justify-between items-center w-full h-14 mx-auto">
         <div className="flex items-center justify-between w-full md:w-auto">
-        <Link href='/'>
           <div className="flex">
-            
-            
             <Image
               className="ml-5 md:ml-10 w-16 cursor-pointer"
               src="/icerieLogo.jpg"
@@ -135,87 +147,74 @@ const Navbar = () => {
             <span className="ml-5 text-nowrap mt-3 font-semibold text-red-500">
               ICERIE 2025
             </span>
-           
           </div>
-          </Link>
           <div className="md:hidden ml-2">
-            <button
-              onClick={toggleMenu}
-              aria-expanded={state.menuOpen}
-              aria-label="Toggle menu"
-            >
+            <button onClick={toggleMenu} aria-expanded={state.menuOpen}>
               {state.menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Menu Links */}
+        {state.menuOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-30 z-40"></div>
+        )}
+
         <div
-          className={`nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
-            } md:opacity-100`}
+          className={`nav-links md:static absolute bg-white md:min-h-fit min-h-[50vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${
+            state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
+          } md:opacity-100`}
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-3xl text-2xl font-semibold mt-5 w-full">
             {navLinks.map((link, index) => (
               <li key={index} className="relative">
                 {link.name === "Register" ? (
                   <button
-                    className="bg-red-500 text-white px-5 py-2 text-2xl font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5"
-                    onClick={() => handleNavigation("/registration")}
-                    aria-label="Register"
+                    className={`bg-red-500 text-white px-5 py-2 text-2xl font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5 ${
+                      state.activeLink === link.href && "bg-red-600"
+                    }`}
+                    onClick={() => handleNavigation(link.href ?? "")}
                   >
-                    <svg
-                      className="w-4 h-4 mr-2"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="3"
-                        d="M12 4v16m8-8H4"
-                      ></path>
-                    </svg>
                     Register
                   </button>
                 ) : (
                   <>
-                    <a
-                      className={`relative inline-block group ${state.activeLink === link.name
-                        ? "text-black"
-                        : "text-gray-700"
-                        }`}
-                      href={link.dropdown ? "#" : link.href}
+                    <Link
+                      className={`relative inline-block group ${
+                        state.activeLink === link.href
+                          ? "text-black"
+                          : "text-gray-700"
+                      }`}
+                      href={link.dropdown ? "#" : (link.href as string)}
                       onClick={() =>
                         link.dropdown
-                          ? handleLinkClick(link.name)
-                          : handleNavigation(link.href ?? "")
+                          ? handleLinkClick(link.href)
+                          : handleNavigation(link.href as string)
                       }
-                      aria-expanded={state.dropdownOpen === link.name}
                     >
                       {link.name}
                       {link.dropdown && <FaAngleDown className="inline ml-1" />}
                       <span
-                        className={`${state.activeLink === link.name
-                          ? "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0"
-                          : "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
-                          }`}
+                        className={`${
+                          state.activeLink === link.href
+                            ? "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0 scale-x-100"
+                            : "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0 transition ease-in-out duration-300 transform origin-center scale-x-0 group-hover:scale-x-100"
+                        }`}
                       ></span>
-                    </a>
-                    {state.dropdownOpen === link.name && link.dropdown && (
+                    </Link>
+                    {state.dropdownOpen === link.href && link.dropdown && (
                       <ul className="absolute bg-white shadow-lg rounded w-48 z-50 pt-5">
                         {link.dropdown.map((sublink, subIndex) => (
                           <li
                             key={subIndex}
                             className="hover:bg-gray-200 mx-2 mr-2 mb-2"
                           >
-                            <a
+                            <Link
                               href={sublink.href}
                               className="block px-4 py-2 text-xl font-semibold"
+                              onClick={() => handleNavigation(sublink.href)}
                             >
                               {sublink.name}
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </ul>
