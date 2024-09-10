@@ -9,7 +9,9 @@ import Link from 'next/link';
 export default function Accommodation() {
   return (
     <div>
-      <Navbar/>
+    <div className="fixed top-0 left-0 right-0 z-50">
+        <Navbar />
+      </div>
       <div  className="h-screen flex flex-col justify-center items-center bg-white">
       
       <h1 className="text-3xl font-semibold mb-4">Accommodation</h1>
