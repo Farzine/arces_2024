@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/NavBar';
 import React from 'react';
 import Image from 'next/image';
+import Carousel from '@/js';
 
 const ContactUs: React.FC = () => {
   return (
@@ -76,6 +77,10 @@ const ContactUs: React.FC = () => {
             </p>
           </div>
         </div>
+      </div>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
       </div>
       <Footer />
     </div>

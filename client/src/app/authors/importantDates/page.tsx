@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
 import React, { useState, useEffect, Suspense } from "react";
 import { Calendar } from "lucide-react";
+import Carousel from "@/js";
 
 interface ImportantDate {
   description: string;
@@ -78,6 +79,10 @@ const ImportantDates: React.FC = () => {
               {isLoading && <div>Loading...</div>}
             </div>
         </div>
+      </div>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
       </div>
       <Footer />
     </div>

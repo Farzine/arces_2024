@@ -6,6 +6,7 @@ import Navbar from '@/components/NavBar';
 import OrganizedBy from '@/components/OrganizedBy';
 import Footer from '@/components/Footer';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
+import Carousel from '@/js';
 
 interface Sponsor {
   _id: string;
@@ -87,6 +88,10 @@ const SponsorsPage: React.FC = () => {
         {renderSponsorsByType('Supported By')}
       </div>
       {error && <div>{error}</div>}
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
+      </div>
       <ScrollToTopButton />
       <Footer />
     </div>

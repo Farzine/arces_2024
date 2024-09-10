@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
 import Schedulecard from "@/components/Schedulecard";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import Carousel from "@/js";
 import { useEffect, useState } from "react";
 
 interface ScheduleItem {
@@ -176,7 +177,10 @@ const Schedule: React.FC = () => {
           {isLoading && <div>Loading...</div>}
         </div>
       </div>
-
+            {/* Carousel Section */}
+            <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
+      </div>
       <Footer />
       <ScrollToTopButton />
     </div>

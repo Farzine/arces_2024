@@ -3,6 +3,7 @@
 import Footer from '@/components/Footer';
 import Navbar from '@/components/NavBar';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
+import Carousel from '@/js';
 import Image from 'next/image';
 import React from 'react';
 
@@ -60,6 +61,10 @@ const Submission: React.FC = () => {
           <div className="pb-40"></div>
         </div>
       </main>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
+      </div>
       <ScrollToTopButton />
       <Footer />
     </div>

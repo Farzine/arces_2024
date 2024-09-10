@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
 import OrganizedBy from "@/components/OrganizedBy";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import Carousel from "@/js";
 import Image from "next/image";
 
 export default function Authors() {
@@ -61,6 +62,10 @@ export default function Authors() {
         <OrganizedBy />
       </div>
       <ScrollToTopButton />
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
+      </div>
       <Footer />
     </main>
   );

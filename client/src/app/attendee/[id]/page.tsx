@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/NavBar';
 import { LoaderCircle } from 'lucide-react';
 import Image from 'next/image';
+import Carousel from '@/js';
 
 const BACKENDURL = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 
@@ -112,6 +113,10 @@ export default function SoloAttendee({ params }: { params: { id: string } }) {
           )}
           {!payable && <p className="text-red-500 font-semibold mt-4">Payment deadline has passed</p>}
         </div>
+      </div>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel/>
       </div>
       <Footer />
     </main>

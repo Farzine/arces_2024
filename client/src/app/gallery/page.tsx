@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer";
 import Imageholder from "@/components/Imageholder";
 import Navbar from "@/components/NavBar";
+import Carousel from "@/js";
 import { useEffect, useState } from "react";
 import { CiImageOn } from "react-icons/ci";
 
@@ -254,6 +255,10 @@ export default function Gallery() {
             </div>
           )}
         </div>
+      </div>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
       </div>
       <Footer />
     </main>

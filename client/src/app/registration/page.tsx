@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { ImagePlus } from "lucide-react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Carousel from "@/js";
 
 const baseUrl = process.env.NEXT_PUBLIC_APP_BACKEND_URL;
 const frontendUrl = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
@@ -223,6 +224,10 @@ export default function Registration() {
             </div>
           </form>
         </div>
+      </div>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
       </div>
       <Footer />
     </main>

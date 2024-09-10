@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
 import ProfileCard from "@/components/ProfileCard";
+import Carousel from "@/js";
 
 const profileData = [
   { name: "Professor Farid Uddin Ahmed", title: "Vice Chancellor, SUST", role: "CHIEF PATRON", imageUrl: "/teacher/vc.jpg" },
@@ -458,6 +459,10 @@ export default function Committees() {
           </div>
         </div>
 
+      </div>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
       </div>
       <div className="mt-12">
         <Footer />

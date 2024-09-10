@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import Carousel from "@/js";
 
 export default function IndustryTracks() {
   const sections = [
@@ -155,6 +156,10 @@ export default function IndustryTracks() {
             </section>
           ))}
         </main>
+      </div>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
       </div>
       <ScrollToTopButton />
       <Footer />

@@ -13,7 +13,7 @@ const Navbar = () => {
   const router = useRouter();
 
   // Handle clicking a link, closing the dropdown and menu
-  const handleLinkClick = (link:string) => {
+  const handleLinkClick = (link: string) => {
     if (state.dropdownOpen === link) {
       setState((prevState) => ({
         ...prevState,
@@ -37,7 +37,7 @@ const Navbar = () => {
   };
 
   // Handle navigation and close the menu
-  const handleNavigation = (path:string) => {
+  const handleNavigation = (path: string) => {
     router.push(path);
     setState((prevState) => ({
       ...prevState,
@@ -113,14 +113,17 @@ const Navbar = () => {
     <header className="bg-white shadow-lg p-3 z-50 relative">
       <nav className="flex justify-between items-center w-full h-14 mx-auto">
         <div className="flex items-center justify-between w-full md:w-auto">
-          <Image
-            className="ml-5 md:ml-10 w-16 cursor-pointer"
-            src="/icerieLogo.jpg"
-            alt="Logo"
-            width={1000}
-            height={1000}
-            priority
-          />
+          <div className="flex ">
+            <Image
+              className="ml-5 md:ml-10 w-16 cursor-pointer"
+              src="/icerieLogo.jpg"
+              alt="Logo"
+              width={1000}
+              height={1000}
+              priority
+            />
+            <span className="ml-5 text-nowrap mt-3 font-semibold text-red-500">ICERIE 2025</span>
+          </div>
           <div className="md:hidden ml-2">
             <button
               onClick={toggleMenu}
@@ -132,9 +135,8 @@ const Navbar = () => {
           </div>
         </div>
         <div
-          className={`nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${
-            state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
-          } md:opacity-100`}
+          className={`nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
+            } md:opacity-100`}
         >
           <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-2xl text-lg font-semibold mt-5 w-full">
             {navLinks.map((link, index) => (
@@ -143,11 +145,10 @@ const Navbar = () => {
                 className="relative"
               >
                 <a
-                  className={`relative inline-block group ${
-                    state.activeLink === link.name
+                  className={`relative inline-block group ${state.activeLink === link.name
                       ? "text-black"
                       : "text-gray-700"
-                  }`}
+                    }`}
                   href={link.dropdown ? "#" : link.href}
                   onClick={() =>
                     link.dropdown
@@ -159,11 +160,10 @@ const Navbar = () => {
                   {link.name}
                   {link.dropdown && <FaAngleDown className="inline ml-1" />}
                   <span
-                    className={`${
-                      state.activeLink === link.name
+                    className={`${state.activeLink === link.name
                         ? "absolute w-full h-1 bg-customPurple top-5 md:mt-3 my-1 left-0"
                         : "absolute w-full h-1 bg-customPurple top-5 md:mt-3 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
-                    }`}
+                      }`}
                   ></span>
                 </a>
                 {state.dropdownOpen === link.name && link.dropdown && (
@@ -189,7 +189,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex items-center gap-6">
           <button
-            className="bg-red-500 text-white px-5 py-2 text-lg font-semibold rounded-full hover:bg-indigo-500 flex justify-between items-center mx-5"
+            className="bg-red-500 text-white px-5 py-2 text-lg font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5"
             onClick={() => handleNavigation("/registration")}
             aria-label="Register"
           >

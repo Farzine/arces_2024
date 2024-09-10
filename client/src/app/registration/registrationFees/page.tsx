@@ -6,6 +6,7 @@ import ScrollToTopButton from '@/components/ScrollToTopButton';
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Carousel from '@/js';
 
 const RegistrationFees: React.FC = () => {
 
@@ -141,6 +142,10 @@ const RegistrationFees: React.FC = () => {
 
             {/* Scroll to Top Button */}
             <ScrollToTopButton />
+                {/* Carousel Section */}
+        <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
+      </div>
 
             {/* Footer */}
             <Footer />

@@ -1,6 +1,7 @@
 "use client";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
+import Carousel from "@/js";
 import { PiMapPinArea } from "react-icons/pi";
 
 export default function Venue() {
@@ -43,6 +44,11 @@ export default function Venue() {
           </div>
         </div>
       </main>
+
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
+      </div>
 
       <footer className="w-full">
         <Footer />

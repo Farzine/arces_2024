@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import AttendeeCard from "./AttendeeCard";
 import Footer from "@/components/Footer";
 import { LoaderCircle } from "lucide-react";
+import Carousel from "@/js";
 
 // Define the interface
 interface AttendeeInterface {
@@ -83,6 +84,10 @@ export default function Attendee() {
             </div>
           </>
         )}
+      </div>
+          {/* Carousel Section */}
+          <div className="container mx-auto px-4 py-8 hidden">
+        <Carousel />
       </div>
       <Footer />
     </main>
