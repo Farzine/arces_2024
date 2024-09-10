@@ -86,8 +86,8 @@ export default function IndustryTracks() {
         <Navbar />
       </div>
       <div className="flex flex-col md:flex-row mt-24">
-        <aside className="bg-white p-4 w-full md:w-1/4 md:ml-16 mt-8">
-          <div className="flex justify-center items-center mt-2 md:pt-5 border-2">
+        <aside className="bg-white px-20 w-full md:w-1/4 md:ml-16 mt-8">
+          <div className="flex justify-center items-center mt-2 md:pt-5 ">
             <div className="text-center md:text-left">
               <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4 md:mb-6">Tracks</h2>
             </div>
