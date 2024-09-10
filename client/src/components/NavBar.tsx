@@ -138,7 +138,7 @@ const Navbar = () => {
           className={`nav-links md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
             } md:opacity-100`}
         >
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-2xl text-lg font-semibold mt-5 w-full">
+          <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-3xl text-2xl font-semibold mt-5 w-full">
             {navLinks.map((link, index) => (
               <li
                 key={index}
@@ -161,8 +161,8 @@ const Navbar = () => {
                   {link.dropdown && <FaAngleDown className="inline ml-1" />}
                   <span
                     className={`${state.activeLink === link.name
-                        ? "absolute w-full h-1 bg-customPurple top-5 md:mt-3 my-1 left-0"
-                        : "absolute w-full h-1 bg-customPurple top-5 md:mt-3 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
+                        ? "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0"
+                        : "absolute w-full h-1 bg-red-500 top-7 md:mt-3 my-1 left-0 transition ease-in-out duration-300 transform origin-left scale-x-0 group-hover:scale-x-100"
                       }`}
                   ></span>
                 </a>
@@ -175,7 +175,7 @@ const Navbar = () => {
                       >
                         <a
                           href={sublink.href}
-                          className="block px-4 py-2 text-base font-normal"
+                          className="block px-4 py-2 text-xl font-semibold"
                         >
                           {sublink.name}
                         </a>
@@ -189,7 +189,7 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex items-center gap-6">
           <button
-            className="bg-red-500 text-white px-5 py-2 text-lg font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5"
+            className="bg-red-500 text-white px-5 py-2 text-2xl font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5"
             onClick={() => handleNavigation("/registration")}
             aria-label="Register"
           >

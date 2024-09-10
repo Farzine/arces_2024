@@ -12,20 +12,20 @@ const Footer: React.FC = () => {
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Social Icons Section */}
         <div className="flex space-x-6 justify-center mb-4 md:mb-0">
-          <a href="https://wa.me/yourphonenumber" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
-            <FaWhatsapp className="w-6 h-6 md:w-8 md:h-8" />
+          <a href="https://wa.me/+8801700000000" target="_blank" rel="noopener noreferrer" className="hover:text-green-500 transition">
+            <FaWhatsapp className="w-8 h-8 md:w-10 md:h-10" />
           </a>
-          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition">
-            <FaFacebookF className="w-6 h-6 md:w-8 md:h-8" />
+          <a href="https://www.facebook.com/ICERIE2023" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition">
+            <FaFacebookF className="w-8 h-8 md:w-10 md:h-10" />
           </a>
           <a href="mailto:icerie2025@sust.edu" className="hover:text-red-500 transition">
-            <FaEnvelope className="w-6 h-6 md:w-8 md:h-8" />
+            <FaEnvelope className="w-8 h-8 md:w-10 md:h-10" />
           </a>
         </div>
 
         {/* Copyright and Contact Section */}
         <div className="text-center md:text-right text-xs md:text-sm">
-          <p className="mb-2 md:mb-0">
+          <p className="mb-2 md:mb-0 md:text-xl text-base">
             Copyright © 2024. All rights reserved |{' '}
             <button onClick={copyEmailToClipboard} className="underline cursor-pointer">
               Contact: icerie2025@sust.edu

@@ -48,7 +48,7 @@ const LatestUpdates: React.FC = () => {
             <div className="w-full overflow-hidden bg-white-500 py-4 flex items-center relative">
         <div className="flex whitespace-nowrap animate-scroll">
           {updates.map((update, index) => (
-            <span key={index} className="mr-12 border-gray-400 text-lg md:text-3xl">
+            <span key={index} className="mr-12 border-gray-400 text-lg md:text-3xl text-red-600">
               **{update}
             </span>
           ))}

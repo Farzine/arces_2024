@@ -15,8 +15,8 @@ const OrganizedBy = () => {
           className="w-20 h-20 sm:w-24 sm:h-24 object-contain"
         />
         <div className="text-center sm:text-left">
-          <p className="text-lg sm:text-xl text-gray-500">School of Applied Sciences & Technology</p>
-          <p className="text-lg sm:text-2xl font-bold">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-500">School of Applied Sciences & Technology</p>
+          <p className="text-lg sm:text-2xl md:text-3xl font-bold">
             Shahjalal University of Science and Technology
           </p>
         </div>

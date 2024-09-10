@@ -56,13 +56,13 @@ const ScheduleCard: React.FC<ScheduleCardProps> = ({
       )}
 
       <div className="flex flex-col md:flex-row w-11/12 bg-gray-200 items-center p-2 md:p-4">
-        <h2 className="text-sm md:text-base font-inter font-semibold text-center w-full md:w-1/3 break-words">
+        <h2 className="text-lg md:text-2xl font-inter  text-center w-full md:w-1/3 break-words md:mr-14">
           {title}
         </h2>
-        <p className="text-sm md:text-base font-inter font-semibold text-center w-full md:w-1/4 mt-2 md:mt-0 break-words">
+        <p className="text-lg md:text-2xl text-center w-full md:w-1/4 mt-2 md:mt-0 break-words md:mr-20">
           {date}
         </p>
-        <p className="text-sm md:text-base font-inter font-semibold text-center w-full md:w-1/4 mt-2 md:mt-0 break-words">
+        <p className="text-lg md:text-2xl font-inter text-center w-full md:w-1/4 mt-2 md:mt-0 break-words md:ml-16">
           {start_time} - {end_time}
         </p>
       </div>

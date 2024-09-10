@@ -89,7 +89,7 @@ export default function IndustryTracks() {
         <aside className="bg-white p-4 w-full md:w-1/4 md:ml-16 mt-8">
           <div className="flex justify-center items-center mt-2 md:pt-5 border-2">
             <div className="text-center md:text-left">
-              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 md:mb-6">Tracks</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mt-2 mb-4 md:mb-6">Tracks</h2>
             </div>
             <div className="ml-0 md:ml-7 mt-4 md:mt-0">
               <svg
@@ -138,17 +138,17 @@ export default function IndustryTracks() {
             <button
               key={section.id}
               onClick={() => handleScroll(section.id)}
-              className="block border-2 w-full text-left mt-7 p-2 mb-2 bg-white hover:bg-gray-100"
+              className="block border-2 w-full text-left mt-7 p-2 mb-2 bg-white hover:bg-gray-100 px-5"
             >
               {section.title}
             </button>
           ))}
         </aside>
-        <main className="flex-1 p-4 bg-white mb-20 md:ml-8">
+        <main className="flex-1 p-4 bg-white mb-20 md:ml-8 px-10">
           {sections.map(section => (
-            <section key={section.id} id={section.id} className="mb-8 mt-14">
-              <h3 className="text-xl md:text-2xl font-bold mb-4 text-red-500">{section.title}</h3>
-              <ul className="list-disc list-inside">
+            <section key={section.id} id={section.id} className="mb-8 mt-14 px-5">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-red-500">{section.title}</h3>
+              <ul className="list-disc list-outside">
                 {section.description.map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}

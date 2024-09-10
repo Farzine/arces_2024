@@ -53,14 +53,14 @@ export default function Home() {
         <LatestUpdates />
       </div>
 
-      <div className="container mx-auto px-4 py-8 my-16">
+      <div className="container mx-auto px-4 py-8 my-16 md:pl-56">
         <div className="flex flex-col lg:flex-row lg:space-x-8">
           {/* Important Dates Section */}
-          <div className="w-full lg:w-1/2 mb-16 lg:mb-0 md:mx-0 mx-3 md:mr-0 mr-24">
+          <div className="w-full lg:w-1/3 mb-16 lg:mb-0 md:mx-0 mx-3 md:mr-0 mr-24 md:pl-40">
             <ImportantDates />
           </div>
           {/* Message Section */}
-          <div className="w-full lg:w-1/2 md:mx-0 mx-[-40px] ">
+          <div className="w-full lg:w-1/2 md:mx-0 mx-[-40px] md:mt-[-14px]">
             <MessageCard />
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Home() {
       </div>
 
       {/* Sponsors Section */}
-      <div className="container mt-10 mb-10 mx-auto px-4 py-8">
+      <div className="container mt-32 mb-10 mx-auto px-4 py-8">
         <Sponsors />
       </div>
 
