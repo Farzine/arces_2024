@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
+import Link from "next/link";
 
 const Navbar = () => {
   const [state, setState] = useState({
@@ -119,7 +120,10 @@ const Navbar = () => {
     <header className="bg-white shadow-lg p-3 z-50 relative">
       <nav className="flex justify-between items-center w-full h-14 mx-auto">
         <div className="flex items-center justify-between w-full md:w-auto">
+        <Link href='/'>
           <div className="flex">
+            
+            
             <Image
               className="ml-5 md:ml-10 w-16 cursor-pointer"
               src="/icerieLogo.jpg"
@@ -131,7 +135,9 @@ const Navbar = () => {
             <span className="ml-5 text-nowrap mt-3 font-semibold text-red-500">
               ICERIE 2025
             </span>
+           
           </div>
+          </Link>
           <div className="md:hidden ml-2">
             <button
               onClick={toggleMenu}
