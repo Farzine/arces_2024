@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Cookies from 'js-cookie';
 import { FaBell, FaImage, FaEnvelope, FaCalendarCheck, FaHandshake } from 'react-icons/fa';
-import { FaNoteSticky, FaPeopleGroup } from 'react-icons/fa6';
+import { FaMessage, FaNoteSticky, FaPeopleGroup } from 'react-icons/fa6';
 import { RiListCheck, RiTimerLine } from "react-icons/ri";
 import { FiMenu, FiX } from 'react-icons/fi';
 
@@ -73,6 +73,13 @@ const Sidebar: React.FC = () => {
                     >
                         <FaBell className="h-6 w-6" />
                         <span>Notice</span>
+                    </div>
+                    <div
+                        onClick={() => handleNavigation('/admin/messages')}
+                        className={`flex items-center space-x-3 cursor-pointer hover:text-green-600 p-5 rounded ${getActiveClass('/admin/messages')}`}
+                    >
+                        <FaMessage className="h-6 w-6" />
+                        <span>Chair Message</span>
                     </div>
                     <div
                         onClick={() => handleNavigation('/admin/uploadImage')}
