@@ -68,7 +68,7 @@ const Notices: React.FC = () => {
           </defs>
         </svg>
       </div>
-      <ul className="overflow-y-scroll px-10  w-full md:w-[350px] text-wrap h-[340px]">
+      <ul className="overflow-y-scroll no-scrollbar px-10  w-full md:w-[350px] text-wrap h-[340px]">
         {Notices.map((notice) => (
           <li key={notice.id} className="flex items-start mb-4 overflow-hidden ">
             <svg

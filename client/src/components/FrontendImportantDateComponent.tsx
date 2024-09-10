@@ -52,7 +52,7 @@ const ImportantDates: React.FC = () => {
         </svg>
 
       </div>
-      <ul className='overflow-y-scroll w-full md:w-[350px] text-wrap h-[320px]'>
+      <ul className='overflow-y-scroll no-scrollbar w-full md:w-[350px] text-wrap h-[320px]'>
         {dates.map((date) => (
           <li key={date.id} className="flex items-start mb-4">
             <svg className='md:w-12 md:h-12 w-10 h-10' viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
