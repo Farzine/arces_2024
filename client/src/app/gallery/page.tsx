@@ -262,5 +262,6 @@ export default function Gallery() {
       </div>
       <Footer />
     </main>
+    // fixed
   );
 }
