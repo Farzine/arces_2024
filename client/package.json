@@ -30,6 +30,7 @@
     "react-time-picker": "^7.0.0",
     "react-toastify": "^10.0.5",
     "shadcn-ui": "^0.2.3",
+    "sitemap": "^8.0.0",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
