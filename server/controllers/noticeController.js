@@ -40,6 +40,32 @@ exports.getNotices = async (req, res) => {
   }
 };
 
+// Handle show/hide
+exports.ShowNotice = async (req, res) => {
+  const { id } = req.params;
+  const {show} = req.body;
+
+  
+  try {
+    const notice = await Notice.findByIdAndUpdate(
+      id,
+      { show },
+      { new: true, runValidators: true }
+    );
+
+    if (!notice) return res.status(404).json({ message: 'Notice not found' });
+
+    res.status(200).json({ message: 'Notice Show Status updated successfully', notice });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+
+}
+
+
+
+
 exports.editNotice = async (req, res) => {
   const { id } = req.params;
   const { title, description } = req.body;
