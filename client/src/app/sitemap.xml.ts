@@ -46,7 +46,7 @@ function generateSitemap() {
 }
 
 // Create a server-side function to serve the sitemap
-export const getServerSideProps = async ({ res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const sitemap = generateSitemap();
 
   res.setHeader('Content-Type', 'text/xml');
