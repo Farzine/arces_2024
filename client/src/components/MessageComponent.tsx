@@ -21,30 +21,29 @@ const MessageCard: React.FC = () => {
           
 
             // Format each message and join them with separators
-            const formattedMessages = data
-              .map((msgObj: { messages: string; }) => {
-                const messageText = msgObj.messages ?? ''; // Ensure message is a string
-                return messageText.replace(/\n\n/g, '<br /><br />'); // Format the message
-              })
-              .join('<br /><br />'); // Separator between messages (you can change this to any separator you like)
-              if(!data[0].show)
-                {
-                  setMessage("Message is Null")
-                }
-                else{
-                  setMessage(formattedMessages);
-                }
-         
-          } catch (error) {
-            console.error('An error occurred while fetching the messages:', error);
-            setError('Failed to load messages');
-          } finally {
-            setIsLoading(false);
-          }
-        };
-      
-        fetchMessages();
-      }, []);
+             const formattedMessages = data
+        .filter((msgObj: { messages: string; show: boolean }) => msgObj.show)
+        .map((msgObj: { messages: string; }) => {
+          const messageText = msgObj.messages ?? ''; // Ensure message is a string
+          return messageText.replace(/\n\n/g, '<br /><br />'); // Format the message
+        })
+        .join('<br /><br />'); // Separator between messages (you can change this to any separator you like)
+
+      // Handle case where no messages are to be shown
+      if (!formattedMessages) {
+        setMessage("Message is Null");
+      } else {
+        setMessage(formattedMessages);
+      }
+
+    } catch (error) {
+      console.error('An error occurred while fetching the messages:', error);
+      setError('Failed to load messages');
+    } finally {
+      setIsLoading(false);
+    }
+  };  fetchMessages();
+}, []);
 
     return (
         <div className=" md:mr-0 ">
