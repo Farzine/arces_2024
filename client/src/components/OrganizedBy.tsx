@@ -4,7 +4,7 @@ const OrganizedBy = () => {
   return (
     <div className="flex flex-col items-center justify-center mt-10 mb-10 py-10 bg-white">
       <div className="flex justify-center items-center mb-8 md:mb-5">
-        <h1 className="text-2xl mx-5 md:text-4xl font-semibold text-black-500">Organiser</h1>
+        <h1 className="text-4xl mx-5 md:text-5xl font-semibold text-black-500">Organizer</h1>
         <svg width="30" height="30" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 <rect width="80" height="80" fill="url(#pattern0_696_811)"/>
 <defs>

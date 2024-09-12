@@ -41,7 +41,7 @@ export default function Home() {
           {/* Date and Location */}
           <div className="text-black text-lg lg:text-xl mt-4 lg:mt-2">
             <p className="text-red-600 text-4xl my-10  font-semibold">09th January 2025</p>
-            <p className="font-normal">
+            <p className="text-xl">
               University Ave, Sylhet 3114 <br />
               Shahjalal University of Science and Technology
             </p>

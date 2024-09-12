@@ -56,7 +56,7 @@ export default function Attendee() {
             <h1 className="text-4xl md:text-5xl font-bold text-center my-6">
               Meet our attendees
             </h1>
-            <div className="flex justify-center mx-6 md:h-20 mt-16">
+            <div className="flex justify-center mx-6 h-16 md:h-20 mt-16">
               <input
                 placeholder="Search with name, email"
                 className="max-w-screen-md w-full rounded-md border border-input bg-background px-6 py-2 text-xl md:text-2xl ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

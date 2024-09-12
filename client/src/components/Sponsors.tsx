@@ -49,7 +49,7 @@ const Sponsors: React.FC = () => {
     <div className="w-full text-center flex flex-col px-4">
       {/* Sponsor Title with SVG Icon */}
       <div className="flex justify-center items-center mb-8 md:mb-5">
-        <h1 className="text-2xl md:text-4xl font-semibold text-black-500">Sponsors</h1>
+        <h1 className="text-4xl md:text-5xl font-semibold text-black-500">Sponsors</h1>
         <Image src={SupportIcon} alt="Support Icon" width={30} height={30} className="ml-2 md:ml-4" />
       </div>
       

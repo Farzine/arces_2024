@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://icerie2025.sust.edu/sitemap.xml
+Sitemap: https://icerie2025.sust.edu/sitemap.xml.ts

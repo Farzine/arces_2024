@@ -13,9 +13,9 @@ export default function Venue() {
 
       <main className="flex-grow w-full bg-white mx-auto flex flex-col items-center p-4 md:p-10 mt-20">
         {/* Heading */}
-        <div className="heading flex items-center justify-center mb-1">
+        <div className="heading flex items-center justify-center mb-1 mt-24">
           <PiMapPinArea className="w-10 h-10 md:w-12 md:h-12 mr-5" />
-          <h1 className="font-inter font-bold text-xl md:text-6xl mx-2">
+          <h1 className="font-inter font-bold text-5xl md:text-6xl mx-2">
             Venue
           </h1>
         </div>
@@ -31,7 +31,7 @@ export default function Venue() {
         </address>
 
         {/* Map */}
-        <div className="google-map-sust w-full drop-shadow-md flex justify-center items-center my-8">
+        <div className="google-map-sust w-full drop-shadow-md flex justify-center items-center my-8 px-5">
           <div className="w-full h-64 md:h-96 lg:w-[1000px] lg:h-[450px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.435552561316!2d91.82933827436678!3d24.91722804298561!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3750556002144eab%3A0xe277e14dbca9f2ab!2sShahjalal%20University%20of%20Science%20and%20Technology!5e0!3m2!1sen!2sbd!4v1721041724355!5m2!1sen!2sbd"
