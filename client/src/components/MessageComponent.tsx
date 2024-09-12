@@ -82,16 +82,16 @@ const MessageCard: React.FC = () => {
                     <p className="text-gray-800 text-xl md:text-2xl font-normal md:ml-0 ml-5" dangerouslySetInnerHTML={{ __html: message }}></p>
                     {isLoading && 
        
-       <div role="status" className=" w-[480px] h-[400px] animate-pulse">
+       <div role="status" className="  w-[250px] md:w-[480px] h-[400px] animate-pulse">
            <div className="h-2.5  my-8 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700  max-w-[360px] mb-2.5"></div>
            <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
-           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[180px] mb-2.5"></div>
-           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
-           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[140px] mb-2.5"></div>
-           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[200px] mb-2.5"></div>
-           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700  max-w-[330px] mb-2.5"></div>
+           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700  max-w-[180px] mb-2.5"></div>
+           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700  max-w-[360px]"></div>
+           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700  max-w-[140px] mb-2.5"></div>
+           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700  max-w-[200px] mb-2.5"></div>
+           <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700  max-w-[360px]"></div>
            <span className="sr-only">Loading...</span>
        </div>}
                 </div>
