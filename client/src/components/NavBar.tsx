@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { usePathname } from 'next/navigation';
 import { FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [state, setState] = useState({
     activeLink: "",
     dropdownOpen: "",
@@ -12,6 +13,15 @@ const Navbar = () => {
   });
 
   const router = useRouter();
+  const pathname = usePathname(); // Use usePathname from next/navigation
+
+  useEffect(() => {
+    // Update activeLink based on current pathname
+    setState((prevState) => ({
+      ...prevState,
+      activeLink: pathname,
+    }));
+  }, [pathname]); // Add pathname to dependency array
 
   // Close menu if clicked outside
   useEffect(() => {
@@ -41,7 +51,7 @@ const Navbar = () => {
     setState((prevState) => ({
       ...prevState,
       dropdownOpen: prevState.dropdownOpen === link ? "" : link,
-      activeLink: prevState.activeLink === link ? "" : link, // Toggle active link
+      // Active link management is handled by pathname
     }));
   };
 
@@ -58,51 +68,34 @@ const Navbar = () => {
     setState((prevState) => ({
       ...prevState,
       menuOpen: false,
-      activeLink: prevState.activeLink === path ? "" : path, // Toggle active link
     }));
     router.push(path);
   };
 
-  const home = process.env.NEXT_PUBLIC_APP_FRONTEND_URL;
-  const tracks = `${home}/tracks`;
-  const submissionUrl = `${home}/authors/submission`;
-  const callForPaperUrl = `${home}/authors/callForPaper`;
-  const conferenceTracks = `${home}/tracks`;
-  const importantDates = `${home}/authors/importantDates`;
-  const registrationFees = `${home}/registration/registrationFees`;
-  const attendee = `${home}/attendee`;
-  const schedule = `${home}/schedule`;
-  const gallery = `${home}/gallery`;
-  const aboutIcerie = `${home}/about/icerie`;
-  const committee = `${home}/about/committee`;
-  const sponsors = `${home}/about/sponsors`;
-  const accommodation = `${home}/about/accommodation`;
-  const venue = `${home}/about/venue`;
-  const contactUs = `${home}/contact`;
-
+  const home = process.env.NEXT_PUBLIC_APP_FRONTEND_URL || '';
   const navLinks = [
     { name: "Home", href: home },
-    { name: "Tracks", href: tracks },
+    { name: "Tracks", href: `${home}/tracks` },
     {
       name: "For Authors",
       href: "#For-Authors",
       dropdown: [
-        { name: "Submission", href: submissionUrl },
-        { name: "Call For Paper", href: callForPaperUrl },
-        { name: "Conference Tracks", href: conferenceTracks },
-        { name: "Important Dates", href: importantDates },
+        { name: "Submission", href: `${home}/authors/submission` },
+        { name: "Call For Paper", href: `${home}/authors/callForPaper` },
+        { name: "Conference Tracks", href: `${home}/tracks` },
+        { name: "Important Dates", href: `${home}/authors/importantDates` },
       ],
     },
     {
       name: "Registration",
       href: "#registration",
       dropdown: [
-        { name: "Registration Fees", href: registrationFees },
-        { name: "Attending", href: attendee },
+        { name: "Registration Fees", href: `${home}/registration/registrationFees` },
+        { name: "Attending", href: `${home}/attendee` },
       ],
     },
-    { name: "Schedule", href: schedule },
-    { name: "Gallery", href: gallery },
+    { name: "Schedule", href: `${home}/schedule` },
+    { name: "Gallery", href: `${home}/gallery` },
     {
       name: "Previous Conferences",
       href: "#Previous-Conferences",
@@ -117,14 +110,14 @@ const Navbar = () => {
       name: "About",
       href: "#about",
       dropdown: [
-        { name: "About ICERIE", href: aboutIcerie },
-        { name: "Committee", href: committee },
-        { name: "Sponsors", href: sponsors },
-        { name: "Accommodation", href: accommodation },
-        { name: "Venue", href: venue },
+        { name: "About ICERIE", href: `${home}/about/icerie` },
+        { name: "Committee", href: `${home}/about/committee` },
+        { name: "Sponsors", href: `${home}/about/sponsors` },
+        { name: "Accommodation", href: `${home}/about/accommodation` },
+        { name: "Venue", href: `${home}/about/venue` },
       ],
     },
-    { name: "Contact Us", href: contactUs },
+    { name: "Contact Us", href: `${home}/contact` },
     {
       name: "Register",
       href: "/registration",
@@ -133,24 +126,22 @@ const Navbar = () => {
 
   return (
     <header className="bg-white shadow-lg p-3 z-50 relative">
-      <nav className="flex justify-between items-center w-full h-14 mx-auto">
-   
+      <nav className="flex justify-between items-center w-full min-h-fit mx-auto">
         <div className="flex items-center justify-between w-full md:w-auto">
-         
-        <Link href='/'>
-          <div className="flex">
-            <Image
-              className="ml-5 md:ml-10 w-16 cursor-pointer"
-              src="/icerieLogo.jpg"
-              alt="Logo"
-              width={1000}
-              height={1000}
-              priority
-            />
-            <span className="ml-5 text-nowrap mt-3 font-semibold text-red-500">
-              ICERIE 2025
-            </span>
-          </div>
+          <Link href='/'>
+            <div className="flex">
+              <Image
+                className="ml-5 md:ml-10 w-16 cursor-pointer"
+                src="/icerieLogo.jpg"
+                alt="Logo"
+                width={1000}
+                height={1000}
+                priority
+              />
+              <span className="ml-5 text-nowrap mt-3 font-semibold text-red-500">
+                ICERIE 2025
+              </span>
+            </div>
           </Link>
           <div className="md:hidden ml-2">
             <button onClick={toggleMenu} aria-expanded={state.menuOpen}>
@@ -164,17 +155,17 @@ const Navbar = () => {
         )}
 
         <div
-          className={`nav-links md:static absolute bg-white md:min-h-fit min-h-[50vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${
+          className={`nav-links md:static  absolute bg-white md:min-h-fit min-h-[80vh] left-0 top-0 md:w-auto w-full flex items-center px-5 z-50 transition-all duration-500 ${
             state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
           } md:opacity-100`}
         >
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-2xl text-2xl font-bold mt-5 w-full">
+          <ul className="flex md:flex-row flex-col my-1  md:items-center md:gap-8 gap-4 text-black md:text-2xl text-2xl font-bold mt-5 w-full">
             {navLinks.map((link, index) => (
               <li key={index} className="relative">
                 {link.name === "Register" ? (
                   <button
-                    className={`bg-red-500 text-white px-5 py-2 text-2xl font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5 ${
-                      state.activeLink === link.href && "bg-red-600"
+                    className={`bg-red-500 text-white my-2 px-8 py-3 text-2xl font-semibold rounded-full hover:bg-red-600 flex justify-between items-center mx-5 ${
+                      state.activeLink === link.href ? "bg-red-600" : ""
                     }`}
                     onClick={() => handleNavigation(link.href ?? "")}
                   >
@@ -183,7 +174,7 @@ const Navbar = () => {
                 ) : (
                   <>
                     <Link
-                      className={`relative inline-block group ${
+                      className={`relative inline-block group  ${
                         state.activeLink === link.href
                           ? "text-black"
                           : "text-gray-700"
