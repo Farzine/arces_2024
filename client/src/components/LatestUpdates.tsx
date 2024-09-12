@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 // Define the notice type
-type Notice = {
+type Update = {
     id: string;
     title: string;
+    show:boolean;
 };
 
 
@@ -16,7 +17,7 @@ const LatestUpdates: React.FC = () => {
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-updates`);
         const data = await response.json();
-        setUpdates(data.map((update: { title: string }) => update.title));
+        setUpdates(data.filter((update: { show: any; }) => update.show).map((update: { title: string }) => update.title));
       } catch (error) {
         console.error('Error fetching updates:', error);
       }finally {

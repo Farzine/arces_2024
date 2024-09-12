@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 interface ImportantUpdate {
   id: string;
   title: string;
-  show: unknown;
+
 }
 const ImportantUpdates: React.FC = () => {
   const [updates, setUpdates] = useState<ImportantUpdate[]>([]);
@@ -43,7 +43,7 @@ const ImportantUpdates: React.FC = () => {
       <div className="w-full overflow-hidden bg-red-500 py-4 flex items-center relative">
         <div className="flex whitespace-nowrap animate-scroll">
           {updates
-            .filter((update) => update.show) // Filter updates where 'show' is true
+             // Filter updates where 'show' is true
             .map((update) => (
               <span key={update.id} className="mr-12 text-white font-bold text-xl">
                 **{update.title}
