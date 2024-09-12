@@ -118,7 +118,7 @@ export default function Registration() {
           </div>
         </div>
         {/* Registration Form Section */}
-        <div className="rounded-lg flex flex-col items-center px-10 ">
+        <div className="rounded-lg flex flex-col items-center py-20 px-10 ">
           <Image
             src="/icerieLogo.jpg"
             height={200}

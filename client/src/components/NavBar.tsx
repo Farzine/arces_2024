@@ -76,9 +76,9 @@ const Navbar = () => {
   const aboutIcerie = `${home}/about/icerie`;
   const committee = `${home}/about/committee`;
   const sponsors = `${home}/about/sponsors`;
-  const accommodation = `${home}/about/accommodation}`;
-  const venue = `${home}/about/venue}`;
-  const contactUs = `${home}/contact}`;
+  const accommodation = `${home}/about/accommodation`;
+  const venue = `${home}/about/venue`;
+  const contactUs = `${home}/contact`;
 
   const navLinks = [
     { name: "Home", href: home },
@@ -168,7 +168,7 @@ const Navbar = () => {
             state.menuOpen ? "top-14 opacity-100" : "top-[-490px] opacity-0"
           } md:opacity-100`}
         >
-          <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-3xl text-2xl font-semibold mt-5 w-full">
+          <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 text-black md:text-2xl text-2xl font-bold mt-5 w-full">
             {navLinks.map((link, index) => (
               <li key={index} className="relative">
                 {link.name === "Register" ? (
