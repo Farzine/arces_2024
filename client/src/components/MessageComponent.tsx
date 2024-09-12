@@ -16,8 +16,10 @@ const MessageCard: React.FC = () => {
             }
       
             const data = await response.json();
-            console.log('Fetched messages:', data);
-      
+            console.log('Fetched messages:', data );
+           
+          
+
             // Format each message and join them with separators
             const formattedMessages = data
               .map((msgObj: { messages: string; }) => {
@@ -25,8 +27,14 @@ const MessageCard: React.FC = () => {
                 return messageText.replace(/\n\n/g, '<br /><br />'); // Format the message
               })
               .join('<br /><br />'); // Separator between messages (you can change this to any separator you like)
-      
-            setMessage(formattedMessages);
+              if(!data[0].show)
+                {
+                  setMessage("Message is Null")
+                }
+                else{
+                  setMessage(formattedMessages);
+                }
+         
           } catch (error) {
             console.error('An error occurred while fetching the messages:', error);
             setError('Failed to load messages');

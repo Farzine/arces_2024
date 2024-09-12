@@ -28,7 +28,7 @@ const Messages: React.FC = () => {
   // for Show on/off
   const handleShow = async (id: string, show: boolean | undefined) => {
 
-
+    console.log('msg id :'+id+' '+RevShow);
     setRevShow(!show);
 
     try {
