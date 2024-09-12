@@ -9,5 +9,6 @@ router.post('/add', authenticateToken, importantUpdateController.addImportantUpd
 router.delete('/:id', authenticateToken, importantUpdateController.deleteImportantUpdate);
 router.get('/', importantUpdateController.getImportantUpdate);
 router.put('/edit/:id', authenticateToken, importantUpdateController.editImportantUpdate);
+router.put('/show/:id',importantUpdateController.ShowImportantUpdate);
 
 module.exports = router;

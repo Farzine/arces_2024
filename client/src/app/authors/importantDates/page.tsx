@@ -9,6 +9,7 @@ import Carousel from "@/js";
 interface ImportantDate {
   description: string;
   date: string;
+  show: unknown;
 }
 
 const ImportantDates: React.FC = () => {
@@ -60,7 +61,7 @@ const ImportantDates: React.FC = () => {
                   Date
                 </div>
               </div>
-              {dates.map((item, index) => (
+              {dates.filter((dates)=>dates.show).map((item, index) => (
                 <div key={index} className="relative py-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-4">
                     <div className="p-6 bg-white border-2 text-xl md:text-2xl font-semibold text-center md:text-left">

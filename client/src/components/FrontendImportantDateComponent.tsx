@@ -8,6 +8,7 @@ interface ImportantDate {
   title: string;
   description: string;
   date: string;
+  show: unknown;
 }
 
 const ImportantDates: React.FC = () => {
@@ -53,7 +54,7 @@ const ImportantDates: React.FC = () => {
 
       </div>
       <ul className='overflow-y-scroll no-scrollbar w-full md:w-[350px] text-wrap h-[320px]'>
-        {dates.map((date) => (
+        {dates.filter((dates)=>dates.show).map((date) => (
           <li key={date.id} className="flex items-start mb-4">
             <svg className='md:w-12 md:h-12 w-10 h-10' viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
               <path d="M0 0H30V30H0V0Z" fill="url(#pattern0_735_467)" />

@@ -8,6 +8,7 @@ import Sidebar from '@/components/Sidebar';
 interface ImportantUpdate {
   _id: string;
   title: string;
+  show: boolean | undefined;
 }
 
 const ImportantUpdates: React.FC = () => {
@@ -18,9 +19,43 @@ const ImportantUpdates: React.FC = () => {
   const [success, setSuccess] = useState<boolean>(false); 
   const [loading, setLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [RevShow, setRevShow] = useState<boolean>(false);
   const router = useRouter();
   const token = Cookies.get('token');
       if (!token) router.push('/admin');
+
+  // for Show on/off
+  const handleShow = async (id: string, show: boolean | undefined) => {
+
+    setRevShow(!show);
+
+    try {
+      const token = Cookies.get("token");
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-updates/show/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          credentials: "include",
+          body: JSON.stringify({ "show": RevShow }),
+        }
+      );
+      if (response.ok) {
+        fetchImportantUpdate();
+
+      } else {
+        throw new Error("Failed to save important-updates");
+      }
+    } catch (error) {
+      console.error("Error saving important-updates:", error);
+      setError("Failed to save important-updates. Please try again.");
+    }
+
+
+  };
 
   useEffect(() => {
     fetchImportantUpdate();
@@ -208,6 +243,7 @@ const ImportantUpdates: React.FC = () => {
               <tr>
                 <th className="py-2 px-4 border">Title</th>
                 <th className="py-2 px-4 border">Actions</th>
+                <th className="py-2 px-4 border">Show/Hide</th>
               </tr>
             </thead>
             <tbody>
@@ -227,6 +263,18 @@ const ImportantUpdates: React.FC = () => {
                     >
                       Delete
                     </button>
+                  </td>
+                  <td className=" border space-x-2 ">
+                    <label className="flex items-center justify-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        className="sr-only peer"
+                        checked={notice.show}
+                        onChange={()=>handleShow(notice._id,notice.show)} // Trigger state update on change
+                      />
+                      <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                      
+                    </label>
                   </td>
                 </tr>
               ))}
