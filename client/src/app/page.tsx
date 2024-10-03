@@ -40,7 +40,7 @@ export default function Home() {
 
           {/* Date and Location */}
           <div className="text-black text-lg lg:text-xl mt-4 lg:mt-2">
-            <p className="text-red-600 text-4xl my-10  font-semibold">09th January 2025</p>
+            <p className="text-red-600 text-4xl my-10  font-semibold">24-26th April 2025</p>
             <p className="text-xl">
               University Ave, Sylhet 3114 <br />
               Shahjalal University of Science and Technology
@@ -55,7 +55,7 @@ export default function Home() {
       </div>
 
       <div className="container  mx-auto my-5 md:my-40">
-        <div className="flex flex-col  px-10 lg:flex-row  justify-center items-center mx-auto md:px-40 lg:space-x-8">
+        <div className="flex flex-col  px-10 lg:flex-row  justify-center items-center mx-auto md:px-40 lg:space-x-5">
           {/* Important Dates Section */}
         
             <ImportantDates />

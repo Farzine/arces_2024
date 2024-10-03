@@ -34,12 +34,12 @@ export default function Authors() {
           <div className="bg-gray-100 shadow-md rounded-lg p-6 mb-14 py-20">
             <h2 className="text-2xl md:text-3xl font-bold text-red-600 mb-4">Important Deadlines:</h2>
             <ul className="list-disc list-outside text-xl md:text-2xl px-5">
-              <li>Conference Date: <strong>January 09-11, 2025</strong></li>
-              <li>Extended Abstract Submission: <strong>July 30, 2024</strong></li>
-              <li>Notification of Acceptance of Abstract: <strong>August 16, 2024</strong></li>
-              <li>Full Paper Submission: <strong>September 30, 2024</strong></li>
-              <li>Notification of Full Paper: <strong>November 30, 2024</strong></li>
-              <li>Camera-ready Paper Submission: <strong>November 30, 2024</strong></li>
+              <li>Conference Date: <strong>April 24-26, 2025</strong></li>
+              <li>Extended Abstract Submission: <strong>November 30, 2024</strong></li>
+              <li>Notification of Acceptance of Abstract: <strong>December 30, 2024</strong></li>
+              <li>Full Paper Submission: <strong>January  30, 2025</strong></li>
+              <li>Notification of Full Paper: <strong>February 28, 2025</strong></li>
+              <li>Camera-ready Paper Submission: <strong>March 30, 2025</strong></li>
             </ul>
           </div>
 

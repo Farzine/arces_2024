@@ -39,7 +39,7 @@ const ImportantDates: React.FC = () => {
   }, []);
 
   return (
-    <div className=" w-full md:w-[400px] border-2 my-10  h-[400px]  p-4 bg-white rounded-lg shadow-xl">
+    <div className=" w-full md:w-[330px] border-2 my-10 h-[400px]  p-4 bg-white rounded-lg shadow-xl">
       <div className="flex items-center mb-4">
         <h2 className="md:text-4xl text-3xl font-semibold mr-2">Important Dates</h2>
         <svg className='ml-5 md:w-16 md:h-16 w-14 h-14' viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
@@ -66,7 +66,7 @@ const ImportantDates: React.FC = () => {
               </defs>
             </svg>
 
-            <div className="group text-wrap w-full max-w-[400px] hover:text-red-600 ml-5">
+            <div className="group text-wrap w-full max-w-[350px] hover:text-red-600 ml-5">
               <h3 className="md:text-3xl font-semibold group-hover:text-red-600 text-red-500">{date.title}</h3>
               <p className="md:text-2xl text-xl group-hover:text-red-600 text-gray-600">{date.description}</p>
               <p className="md:text-xl text-lg group-hover:text-red-600 text-gray-400">

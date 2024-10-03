@@ -5,7 +5,7 @@ import ProfileCard from "@/components/ProfileCard";
 import Carousel from "@/js";
 
 const profileData = [
-  { name: "Professor Farid Uddin Ahmed", title: "Vice Chancellor, SUST", role: "CHIEF PATRON", imageUrl: "/teacher/vc.jpg" },
+  { name: "Professor Dr. A. M. Sarwaruddin Chowdhury", title: "Vice Chancellor, SUST", role: "CHIEF PATRON", imageUrl: "/teacher/vc.png" },
   { name: "Prof. Dr. Md. Reza Selim", title: "Dean, School of Applied Sciences and Technology, SUST", role: "CONFERENCE CHAIR", imageUrl: "/teacher/selim.jpeg" },
   { name: "Prof. Dr. Muhammad Muhsin Aziz Khan", title: "Professor, IPE SUST", role: "CONFERENCE TREASURER", imageUrl: "/teacher/Aziz Khan.png" },
   { name: "Prof. Dr. Md. Tamez Uddin", title: "Professor & Head, CEP SUST", role: "CONFERENCE SECRETARY", imageUrl: "/teacher/Tammiz Uddin.png" },

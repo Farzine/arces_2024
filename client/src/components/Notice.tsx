@@ -39,7 +39,7 @@ const Notices: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full md:w-[400px] my-10 border-2 p-4 h-[400px]  bg-white rounded-lg shadow-xl">
+    <div className="w-full md:w-[300px] my-10 border-2 p-4 h-[400px]  bg-white rounded-lg shadow-xl">
       <div className="flex items-center mb-4">
         <h2 className="md:text-4xl text-3xl font-semibold mr-2">Notices</h2>
         <svg

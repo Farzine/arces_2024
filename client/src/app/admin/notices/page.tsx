@@ -38,6 +38,7 @@ const Notices: React.FC = () => {
 
     try {
       const token = Cookies.get("token");
+      if(!token) router.push("/admin");
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/notices/show/${id}`,
         {
