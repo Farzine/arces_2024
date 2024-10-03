@@ -37,7 +37,7 @@ const Submission: React.FC = () => {
                 </a> to submit your extended abstract and full Paper (after abstract got accepted).
               </p>
               <p className="mb-4 text-xl md:text-2xl">
-                You must have an <a href="https://cmt3.research.microsoft.com" className="text-blue-600 hover:underline">'Microsoft CMT'</a> account to submit both abstract and full paper online. If you don’t have an account, please <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2F" className="text-blue-600 hover:underline">click here</a> to create one before submitting the abstract and full paper.
+                You must have an <a href="https://cmt3.research.microsoft.com" className="text-blue-600 hover:underline">'Microsoft CMT'</a> account to submit both abstract and full paper online. If you don&apos;t have an account, please <a href="https://cmt3.research.microsoft.com/User/Login?ReturnUrl=%2F" className="text-blue-600 hover:underline">click here</a> to create one before submitting the abstract and full paper.
               </p>
               <p className='text-xl md:text-2xl'>
                 If you face any problem in online submission, please contact the conference secretary (or <a href="mailto:icerie2025@sust.edu" className="text-blue-600 hover:underline">icerie2025@sust.edu</a>)
