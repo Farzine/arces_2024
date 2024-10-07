@@ -105,7 +105,7 @@ const Notices: React.FC = () => {
               </defs>
             </svg>
             <div className="group text-wrap  sm:max-w-[350px] hover:text-red-600 ml-5">
-              <h3 className="text-2xl sm:text-2xl font-semibold group-hover:text-red-600 text-red-500 overflow-wrap break-words whitespace-normal">
+              <h3 className="text-2xl w-full sm:text-2xl font-semibold group-hover:text-red-600 text-red-500 overflow-wrap break-words whitespace-normal">
                 {notice.title}
               </h3>
               <p className="text-lg sm:text-xl  group-hover:text-red-600 font-bold overflow-wrap break-words whitespace-normal">
@@ -113,7 +113,7 @@ const Notices: React.FC = () => {
               </p>
 
               <p className="text-md sm:text-xl group-hover:text-red-600 text-gray-400 overflow-wrap break-words whitespace-normal">
-                {new Date(notice.createdAt).toLocaleDateString("en-US", {
+                Updated :{new Date(notice.createdAt).toLocaleDateString("en-US", {
                   day: "2-digit",
                   month: "long",
                   year: "numeric",
