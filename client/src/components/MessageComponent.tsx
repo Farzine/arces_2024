@@ -44,7 +44,7 @@ const MessageCard: React.FC = () => {
 
   return (
     <div className=" md:mr-0 ">
-      <div className="bg-white shadow-xl my-10  h-[400px] border-2 rounded-lg md:p-8 w-full  ">
+      <div className="bg-white md:shadow-xl my-10  h-[400px] border rounded-lg md:p-8 w-full  ">
         <div className="flex items-center mb-6">
           <h1 className="md:text-4xl font-bold text-gray-800 md:ml-0 ml-5">Message</h1>
           <svg width="40" height="40" className='ml-5' viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">

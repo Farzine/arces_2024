@@ -39,7 +39,7 @@ const Notices: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full md:w-[300px] my-10 border-2 p-4 h-[400px]  bg-white rounded-lg shadow-xl">
+    <div className="w-full md:w-[330px] text-wrap my-10 border p-4 h-[400px]  bg-white rounded-lg md:shadow-xl">
       <div className="flex items-center mb-4">
         <h2 className="md:text-4xl text-3xl font-semibold mr-2">Notices</h2>
         <svg
@@ -69,11 +69,11 @@ const Notices: React.FC = () => {
           </defs>
         </svg>
       </div>
-      <ul className="overflow-y-scroll no-scrollbar px-10  w-full md:w-[330px] text-wrap h-[340px]">
+      <ul className="overflow-y-scroll no-scrollbar px-5 w-full md:w-[330px]  h-[340px]">
         {Notices.filter((notice) => notice.show).map((notice) => (
           <li
             key={notice.id}
-            className="flex w-full text-wrap items-start mb-4 overflow-hidden "
+            className="flex w-full  items-start mb-4 overflow-hidden "
           >
             <svg
               width="25"
@@ -104,7 +104,7 @@ const Notices: React.FC = () => {
                 />
               </defs>
             </svg>
-            <div className="group text-wrap  sm:max-w-[350px] hover:text-red-600 ml-5">
+            <div className="group  sm:max-w-[350px] hover:text-red-600 ml-5">
               <h3 className="text-2xl w-full sm:text-2xl font-semibold group-hover:text-red-600 text-red-500 overflow-wrap break-words whitespace-normal">
                 {notice.title}
               </h3>

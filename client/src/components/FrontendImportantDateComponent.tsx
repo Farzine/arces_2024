@@ -39,10 +39,10 @@ const ImportantDates: React.FC = () => {
   }, []);
 
   return (
-    <div className=" w-full md:w-[330px] border-2 my-10 h-[400px]  p-4 bg-white rounded-lg shadow-xl">
+    <div className=" w-full md:w-[330px]  px-auto border my-10 h-auto md:h-[400px]   p-4 bg-white rounded-lg md:shadow-xl">
       <div className="flex items-center mb-4">
-        <h2 className="md:text-4xl text-3xl font-semibold mr-2">Important Dates</h2>
-        <svg className='ml-5 md:w-16 md:h-16 w-14 h-14' viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+        <h2 className="md:text-4xl  text-3xl font-semibold mr-2">Important Dates</h2>
+        <svg className='ml-5 md:w-16 md:h-16 w-14 h-14 ' viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
           <rect width="40" height="44" fill="url(#pattern0_696_823)" />
           <defs>
             <pattern id="pattern0_696_823" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -53,7 +53,7 @@ const ImportantDates: React.FC = () => {
         </svg>
 
       </div>
-      <ul className='overflow-y-scroll no-scrollbar w-full md:w-[350px] text-wrap h-[320px]'>
+      <ul className='overflow-y-scroll no-scrollbar w-full md:w-[330px] text-wrap h-[320px]'>
         {dates.filter((dates)=>dates.show).map((date) => (
           <li key={date.id} className="flex items-start mb-4">
             <svg className='md:w-12 md:h-12 w-10 h-10' viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">

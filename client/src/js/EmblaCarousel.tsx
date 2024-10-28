@@ -145,27 +145,27 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     {
       src: '/1.jpg',
       description: 'Sust Grafiti',
-      location: 'Location 1'
+      location: 'Chetona 71 ,SUST'
     },
     {
       src: '/2.webp',
-      description: 'Sust Grafiti',
-      location: 'Location 2'
+      description: 'Shaheed Minar ',
+      location: 'Shaheed Minar,SUST'
     },
     {
-      src: '/3.webp',
-      description: 'Description for Image 3',
-      location: 'Location 3'
+      src: '/3.jpg',
+      description: 'Gol Chottor',
+      location: 'SUST'
     },
     {
       src: '/5.webp',
-      description: 'Description for Image 3',
-      location: 'Location 3'
+      description: 'Central Auditorium',
+      location: 'Central Auditorium,SUST'
     },
     {
       src: '/6.webp',
-      description: 'Description for Image 3',
-      location: 'Location 3'
+    description: 'IICT',
+      location: 'IICT,SUST'
     },
     // Add more slides as needed
   ];

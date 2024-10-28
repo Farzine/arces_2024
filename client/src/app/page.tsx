@@ -54,8 +54,8 @@ export default function Home() {
         <LatestUpdates />
       </div>
 
-      <div className="container  mx-auto my-5 md:my-40">
-        <div className="flex flex-col  px-10 lg:flex-row  justify-center items-center mx-auto md:px-40 lg:space-x-5">
+      <div className="container mx-auto my-5 md:my-40">
+        <div className="flex flex-col  px-2 lg:flex-row  justify-center items-center  md:px-40 lg:space-x-5">
           {/* Important Dates Section */}
         
             <ImportantDates />
