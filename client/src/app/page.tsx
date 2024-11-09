@@ -10,11 +10,11 @@ import LatestUpdates from "@/components/LatestUpdates";
 import Carousel from "@/js/index";
 import Sponsors from "@/components/Sponsors";
 import Notices from "@/components/Notice";
+import { TfiDownload } from "react-icons/tfi";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
-     
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
@@ -34,13 +34,26 @@ export default function Home() {
             />
             <h1 className="text-3xl lg:text-5xl font-bold text-black leading-tight">
               8th International Conference on <br />
-              Engineering Research, Innovation and Education <br /> (ICERIE 2025)
+              Engineering Research, Innovation and Education <br /> (ICERIE
+              2025)
             </h1>
           </div>
 
           {/* Date and Location */}
           <div className="text-black text-lg lg:text-xl mt-4 lg:mt-2">
-            <p className="text-red-600 text-4xl my-10  font-semibold">24-26th April 2025</p>
+            <p className="text-red-600 text-4xl my-10  font-semibold">
+              24-26th April 2025
+            </p>{" "}
+            <p className="text-xl hover:text-red-600 hover:border-red-600 flex justify-center items-center my-3 border rounded-md p-2 md:text-2xl">
+              <a
+                href="/doc/Flyer_ICERIE 2025_SUST.pdf"
+                className=" font-semibold  mx-2"
+                download
+              >
+                Download Brochure
+              </a>
+              <TfiDownload className=" font-semibold " />
+            </p>
             <p className="text-xl">
               University Ave, Sylhet 3114 <br />
               Shahjalal University of Science and Technology
@@ -57,16 +70,14 @@ export default function Home() {
       <div className="container mx-auto my-5 md:my-40">
         <div className="flex flex-col  px-2 lg:flex-row  justify-center items-center  md:px-40 lg:space-x-5">
           {/* Important Dates Section */}
-        
-            <ImportantDates />
-         
+
+          <ImportantDates />
+
           {/* Message Section */}
-         
-            <MessageCard />
-      
-         
-            <Notices/>
-          
+
+          <MessageCard />
+
+          <Notices />
         </div>
       </div>
 

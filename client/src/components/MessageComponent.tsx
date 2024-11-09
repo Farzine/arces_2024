@@ -47,7 +47,7 @@ const MessageCard: React.FC = () => {
       <div className="bg-white md:shadow-xl my-10  h-[400px] border rounded-lg md:p-8 w-full  ">
         <div className="flex items-center mb-6">
           <h1 className="md:text-4xl font-bold text-gray-800 md:ml-0 ml-5">Message</h1>
-          <svg width="40" height="40" className='ml-5' viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
+          <svg width="25" height="25" className='ml-5' viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
             <rect width="40" height="40" fill="url(#pattern0_696_822)" />
             <defs>
               <pattern id="pattern0_696_822" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -76,7 +76,7 @@ const MessageCard: React.FC = () => {
 
         {/* Message Content */}
         <div className="h-80 overflow-y-auto px-5 scrollbar-hide">
-          <ReactMarkdown className="text-gray-800 text-xl md:text-2xl font-normal md:ml-0 ml-5">
+          <ReactMarkdown className="text-gray-800 text-xl md:text-2xl font-thin md:ml-0 ml-5">
             {message}
           </ReactMarkdown>
           {isLoading &&
@@ -94,6 +94,8 @@ const MessageCard: React.FC = () => {
               <span className="sr-only">Loading...</span>
             </div>}
         </div>
+
+        
       </div>
     </div>
   );

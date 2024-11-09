@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
         </div>
 
         
-          <span className="bg-gradient-to-r from-indigo-500 to-blue-500 md:absolute left-0 mx-4  text-white text-sm py-2 px-4 rounded-full shadow-md">
+          <span className="bg-gradient-to-r border border-white md:absolute font-semibold left-0 mx-4  text-white text-sm py-2 px-4 rounded-full shadow-md">
             Software Engineering-IICT, SUST
           </span>
        

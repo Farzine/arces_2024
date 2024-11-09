@@ -40,10 +40,10 @@ const ImportantDates: React.FC = () => {
 
   return (
     <div className=" w-full md:w-[330px]  px-auto border my-10 h-auto md:h-[400px]   p-4 bg-white rounded-lg md:shadow-xl">
-      <div className="flex items-center mb-4">
+      <div className="flex items-center  mb-4">
         <h2 className="md:text-4xl  text-3xl font-semibold mr-2">Important Dates</h2>
         <svg className='ml-5 md:w-16 md:h-16 w-14 h-14 ' viewBox="0 0 40 44" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
-          <rect width="40" height="44" fill="url(#pattern0_696_823)" />
+          <rect width="25" height="25" fill="url(#pattern0_696_823)" />
           <defs>
             <pattern id="pattern0_696_823" patternContentUnits="objectBoundingBox" width="1" height="1">
               <use xlinkHref="#image0_696_823" transform="matrix(0.00859375 0 0 0.0078125 -0.05 0)" />
@@ -53,7 +53,7 @@ const ImportantDates: React.FC = () => {
         </svg>
 
       </div>
-      <ul className='overflow-y-scroll no-scrollbar w-full md:w-[330px] text-wrap h-[320px]'>
+      <ul className='overflow-y-scroll no-scrollbar w-full md:w-[300px] text-wrap h-[320px]'>
         {dates.filter((dates)=>dates.show).map((date) => (
           <li key={date.id} className="flex items-start mb-4">
             <svg className='md:w-12 md:h-12 w-10 h-10' viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink">
@@ -66,10 +66,10 @@ const ImportantDates: React.FC = () => {
               </defs>
             </svg>
 
-            <div className="group text-wrap w-full max-w-[350px] hover:text-red-600 ml-5">
-              <h3 className="md:text-3xl font-semibold group-hover:text-red-600 text-red-500">{date.title}</h3>
-              <p className="md:text-2xl text-xl group-hover:text-red-600 text-gray-600">{date.description}</p>
-              <p className="md:text-xl text-lg group-hover:text-red-600 text-gray-400">
+            <div className="group text-wrap w-full max-w-[340px] hover:bg-slate-200 ml-5">
+              <h3 className="md:text-3xl w-full font-semibold group-hover:bg-slate-200">{date.title}</h3>
+              <p className="md:text-2xl w-full text-xl group-hover:bg-slate-200 text-gray-600">{date.description}</p>
+              <p className="md:text-xl w-full  text-lg font-semibold group-hover:bg-slate-200 text-red-500">
                 {new Date(date.date).toLocaleDateString('en-US', {
                   day: '2-digit',
                   month: 'long',

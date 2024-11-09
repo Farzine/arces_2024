@@ -102,40 +102,40 @@ const RegistrationFees: React.FC = () => {
                     </div>
                     <p className="flex items-center mb-4">
                         <span className="text-xl md:text-2xl font-semibold">Early Bird</span>
-                        <span className="ml-4 md:ml-8 text-xl md:text-2xl font-semibold">Date: Dec 01-Dec 10, 2024</span>
+                        <span className="ml-4 md:ml-8 text-xl md:text-2xl font-semibold">Date: March 15-March 25, 2025</span>
                     </p>
                     <p className="flex items-center">
                         <span className="text-xl md:text-2xl font-semibold">Regular</span>
-                        <span className="ml-4 md:ml-12 text-xl md:text-2xl font-semibold">Date: Dec 11-Dec 25, 2024</span>
+                        <span className="ml-4 md:ml-12 text-xl md:text-2xl font-semibold">Date:  March 26-April 10, 2025</span>
                     </p>
                 </div>
 
                 {/* Payment System */}
                 <div className="mb-8 ml-4 md:ml-24 mt-16">
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">PAYMENT SYSTEM</h2>
-                    <p className="text-blue-500 cursor-pointer mb-4 hover:underline text-xl md:text-2xl">Click for Details</p>
+                    <p className="text-2xl  cursor-pointer mb-4 ">
+                        Payment can be made online during registration process through conference website
+                    </p>
                 </div>
 
                 {/* Proceedings */}
                 <div className="mb-8 ml-4 md:ml-24">
                     <h2 className="text-2xl md:text-3xl font-semibold mb-4 underline text-red-600 mt-16">Proceedings:</h2>
                     <p className="mb-4 text-justify text-xl md:text-2xl">
-                        The proceedings of the conference will be published in two forms: printed book (only extended abstract) and Pen drive (full proceedings).
+                    The proceedings of the conference will be published in two forms: printed book (only extended abstract) and Pen drive (full proceedings). Selected papers will be considered for publication in the Journal of Engineering Research, Innovation and Education. We are in the process of indexing the proceedings in renowned digital repositories that are available online.
                     </p>
-                    <p className="mb-4 text-justify text-xl md:text-2xl">
-                        Selected papers will be considered for publication in the Journal of Engineering Research, Innovation and Education. We are in the process of indexing the proceedings in renowned digital repositories that are available online.
-                    </p>
-                    <p className="mb-4 text-justify text-xl md:text-2xl">For Adults and BDT 1000 for Children above three years.</p>
+                    
+                    
                 </div>
 
                 {/* Conference Tour */}
                 <div className="mb-44 ml-4 md:ml-24 mt-16">
                     <h2 className="text-2xl md:text-3xl font-semibold mb-4 underline text-red-600">Conference Tour:</h2>
                     <p className="mb-4 text-justify text-xl md:text-2xl">
-                        An attractive tour will be arranged for delegates and accompanying persons to a beautiful location in Sylhet named “SADA PATHOR” in Volagonj.
+                    An attractive tour will be arranged for delegates and accompanying persons to a beautiful location in Sylhet named "SADA PATHOR" in Volagonj. It is adjacent to the Indian boarder. The location is one-hour travelling distance from conference venue. 
                     </p>
                     <p className="mb-4 text-justify text-xl md:text-2xl">
-                        It is adjacent to the Indian border. The location is one-hour traveling distance from the conference venue. Those who want to participate in the tour must register separately paying the required fees: BDT 1500
+                    Those who want to participate in the tour must registrar separately paying the required fees: BDT 1500 for Adults and BDT 1000 for Children above three years
                     </p>
                 </div>
             </div>
