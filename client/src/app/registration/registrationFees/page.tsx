@@ -132,7 +132,7 @@ const RegistrationFees: React.FC = () => {
                 <div className="mb-44 ml-4 md:ml-24 mt-16">
                     <h2 className="text-2xl md:text-3xl font-semibold mb-4 underline text-red-600">Conference Tour:</h2>
                     <p className="mb-4 text-justify text-xl md:text-2xl">
-                    An attractive tour will be arranged for delegates and accompanying persons to a beautiful location in Sylhet named "SADA PATHOR" in Volagonj. It is adjacent to the Indian boarder. The location is one-hour travelling distance from conference venue. 
+                    An attractive tour will be arranged for delegates and accompanying persons to a beautiful location in Sylhet named &quot;SADA PATHOR&quot; in Volagonj. It is adjacent to the Indian boarder. The location is one-hour travelling distance from conference venue. 
                     </p>
                     <p className="mb-4 text-justify text-xl md:text-2xl">
                     Those who want to participate in the tour must registrar separately paying the required fees: BDT 1500 for Adults and BDT 1000 for Children above three years
