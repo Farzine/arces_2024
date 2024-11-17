@@ -101,7 +101,7 @@ const Schedule: React.FC = () => {
           </div>
 
           {/* schedule table */}
-          <div className="bg-red-400 flex flex-col md:flex-row justify-around py-3 my-2 px-4 md:px-40 items-center">
+          <div className="bg-red-500 flex flex-col md:flex-row justify-around py-3 my-2 px-4 md:px-40 items-center">
             <h1 className="text-white font-semibold text-2xl md:text-3xl text-center w-full md:w-1/3 md:ml-0 ml-14">
               Session
             </h1>
@@ -151,7 +151,7 @@ const Schedule: React.FC = () => {
           </div>
 
           {/* session list table */}
-          <div className="bg-red-400 flex flex-col md:flex-row justify-around py-3 my-2 px-4 md:px-40 items-center">
+          <div className="bg-red-500 flex flex-col md:flex-row justify-around py-3 my-2 px-4 md:px-40 items-center">
             <h1 className="text-white font-semibold text-2xl md:text-3xl text-center w-full md:w-1/3 md:ml-0 ml-14">
               Session Theme
             </h1>

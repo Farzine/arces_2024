@@ -108,12 +108,23 @@ const Notices: React.FC = () => {
               <h3 className="text-2xl w-full sm:text-2xl font-semibold group-hover:bg-slate-200 text-red-500 overflow-wrap break-words whitespace-normal">
                 {notice.title}
               </h3>
-              <p className="text-lg w-full sm:text-xl  group-hover:bg-slate-200 font-semibold overflow-wrap break-words whitespace-normal">
-                {notice.description}
-              </p>
+              {notice.description.includes("http") ? (
+                <a
+                  href={notice.description}
+                  target="_blank"
+                  className="text-lg w-full sm:text-xl  group-hover:bg-slate-200 font-semibold hover:text-blue-700 hover:u overflow-wrap break-words whitespace-normal"
+                >
+                  {notice.description}
+                </a>
+              ) : (
+                <p className="text-lg w-full sm:text-xl  group-hover:bg-slate-200 font-semibold overflow-wrap break-words whitespace-normal">
+                  {notice.description}
+                </p>
+              )}
 
               <p className="text-md w-full sm:text-xl group-hover:bg-slate-200 text-gray-400 overflow-wrap break-words whitespace-normal">
-                Updated :{new Date(notice.createdAt).toLocaleDateString("en-US", {
+                Updated :
+                {new Date(notice.createdAt).toLocaleDateString("en-US", {
                   day: "2-digit",
                   month: "long",
                   year: "numeric",

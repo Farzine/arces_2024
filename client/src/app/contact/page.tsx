@@ -11,8 +11,8 @@ const ContactUs: React.FC = () => {
       <div className="fixed top-0 left-0 right-0 z-50">
         <Navbar />
       </div>
-      <div className="min-h-screen px-4 py-8 mt-32 md:px-56">
-        <div className='flex items-center justify-center md:mb-24 mb-16'>
+      <div className="min-h-screen  px-4 py-8 flex justify-center items-center gap-2 md:px-56">
+        <div className='flex items-center justify-center  md:mb-24 mb-16'>
           <div className='mb-5'>
             <Image
               src="/support.png"
@@ -26,7 +26,7 @@ const ContactUs: React.FC = () => {
           <h1 className="text-4xl md:text-5xl mt-3 font-bold mb-4 text-center">CONTACT US</h1>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mx-40 mx-10">
+        <div className="flex flex-col gap-10 md:flex-row justify-between items-start md:items-center mb-8 md:mx-40 mx-10">
           <div className="relative text-left mb-8 md:mb-0 pl-6 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-blue-500">
             <h2 className="text-4xl font-bold text-red-600 mb-4">Conference Secretary</h2>
             <p className='font-semibold text-xxl mb-2'>Dr Md Tamej Uddin</p>
