@@ -54,7 +54,7 @@ const Submission: React.FC = () => {
                 The length of the full paper should be minimum 4 pages and maximum 6 pages. Instruction Template for ICERIE-2025 Full paper in <a href="/doc/ICERIE2025_Abstract_Template.docx" className="text-blue-600 hover:underline">.docx</a> format. For abstract submission, please use this <a href="/doc/ICERIE2025_Abstract_Template.docx" className="text-blue-600 hover:underline">abstract template</a>.
               </p>
               <p className='text-xl md:text-2xl'>
-                Download the conference brochure of <a href="/doc/ICERIE_2023.pdf" className="text-blue-600 hover:underline">ICERIE2025</a>.
+                Download the conference brochure of <a href="/doc/Flyer_ICERIE 2025_SUST.pdf" className="text-blue-600 hover:underline">ICERIE2025</a>.
               </p>
             </div>
           </div>
