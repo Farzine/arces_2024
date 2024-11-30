@@ -4,9 +4,46 @@ import Navbar from "@/components/NavBar";
 import OrganizedBy from "@/components/OrganizedBy";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Carousel from "@/js";
+import axios from "axios";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+// Define the types for the date data
+interface ImportantDate {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  show: unknown;
+}
 
 export default function Authors() {
+  const [dates, setDates] = useState<ImportantDate[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch the important dates from the backend API
+  useEffect(() => {
+    const fetchImportantDates = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_APP_BACKEND_URL}/important-dates`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setDates(data);
+        } else {
+          console.error("Failed to fetch important dates");
+          setError("Error fetching important dates");
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchImportantDates();
+  }, []);
+
   return (
     <main className="min-h-screen">
       <div className="fixed top-0 left-0 right-0 z-50">
@@ -32,30 +69,26 @@ export default function Authors() {
             </div>
           </div>
 
-          <div className="bg-gray-100 shadow-md rounded-lg p-6 mb-14 py-20">
+          <div className="bg-gray-100 shadow-md rounded-lg p-4 mb-14 py-10">
             <h2 className="text-2xl md:text-3xl font-bold text-red-600 mb-4">
               Important Deadlines:
             </h2>
             <ul className="list-disc list-outside text-xl md:text-2xl px-5">
-              <li>
-                Conference Date: <strong>April 24-26, 2025</strong>
-              </li>
-              <li>
-                Extended Abstract Submission: <strong>November 30, 2024</strong>
-              </li>
-              <li>
-                Notification of Acceptance of Abstract:{" "}
-                <strong>February 15, 2024</strong>
-              </li>
-              <li>
-                Full Paper Submission: <strong>January 30, 2025</strong>
-              </li>
-              <li>
-                Notification of Full Paper: <strong>February 15, 2025</strong>
-              </li>
-              <li>
-                Camera-ready Paper Submission: <strong>March 30, 2025</strong>
-              </li>
+              {dates
+                .filter((dates) => dates.show)
+                .map((date, index) => (
+                  <li key={index}>
+                    {date.description}:{" "}
+                    <strong>
+                      {" "}
+                      {new Date(date.date).toLocaleDateString("en-US", {
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </strong>
+                  </li>
+                ))}
             </ul>
           </div>
 
