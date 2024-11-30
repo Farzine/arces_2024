@@ -86,6 +86,19 @@ export default function Authors() {
                         month: "long",
                         year: "numeric",
                       })}
+                      {isLoading && (
+                        <div
+                          role="status"
+                          className="max-w-sm px-5 w-full h-full animate-pulse"
+                        >
+                          <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[180px] mb-2.5"></div>
+                          <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+                          <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[140px] mb-2.5"></div>
+                          <div className="h-2 my-8 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[200px] mb-2.5"></div>
+
+                          <span className="sr-only">Loading...</span>
+                        </div>
+                      )}
                     </strong>
                   </li>
                 ))}
