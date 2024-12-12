@@ -42,6 +42,7 @@ export default function Authors() {
     };
 
     fetchImportantDates();
+    
   }, []);
 
   return (
